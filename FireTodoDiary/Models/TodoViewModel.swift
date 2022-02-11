@@ -101,7 +101,44 @@ class TodoViewModel: ObservableObject {
     }
     
     public func readAchievedTodos() {
-        //TODO: Add snapshot listener for achieved todos
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("isAchieved", isEqualTo: true)
+            .addSnapshotListener {(snapshot, error) in
+                guard let snapshot = snapshot else {
+                    print("HELLO! Fail! Error fetching snapshots: \(error!)")
+                    return
+                }
+                print("HELLO! Success! Read documents from todos")
+                snapshot.documentChanges.forEach { diff in
+                    if diff.type == .added {
+                        let newTodo = self.toTodo(from: diff.document)
+                        withAnimation {
+                            self.achievedTodos.append(newTodo)
+                        }
+                    }
+                    if diff.type == .modified {
+                        let id = diff.document.documentID
+                        let index = self.achievedTodos.firstIndex(where: {$0.id == id})!
+                        let newTodo = self.toTodo(from: diff.document)
+                        if !newTodo.isAchieved {
+                            withAnimation {
+                                self.achievedTodos.removeAll(where: {$0.id == id})
+                            }
+                        } else {
+                            withAnimation {
+                                self.achievedTodos[index] = newTodo
+                            }
+                        }
+                    }
+                    if diff.type == .removed {
+                        let id = diff.document.documentID
+                        withAnimation {
+                            self.achievedTodos.removeAll(where: {$0.id == id})
+                        }
+                    }
+                }
+            }
     }
     
     private func toTodo(from: QueryDocumentSnapshot) -> Todo {

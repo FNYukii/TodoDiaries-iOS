@@ -8,7 +8,30 @@
 import SwiftUI
 
 struct SecondView: View {
+    
+    @ObservedObject var todoViewModel = TodoViewModel()
+    
+    @State var isShowEditSheet = false
+    
+    init() {
+        todoViewModel.readAchievedTodos()
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(todoViewModel.achievedTodos) {todo in
+                    Button(todo.content) {
+                        isShowEditSheet.toggle()
+                    }
+                    .foregroundColor(.primary)
+                    .sheet(isPresented: $isShowEditSheet) {
+                        EditTodoView(todo: todo)
+                    }
+                }
+            }
+            
+            .navigationTitle("達成済み")
+        }
     }
 }
