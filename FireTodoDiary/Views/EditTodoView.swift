@@ -11,12 +11,14 @@ struct EditTodoView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    let id: String
     @State var content = ""
     @State var isPinned = false
     @State var isAchieved = false
     @State var achievedAt: Date = Date()
     
     init(todo: Todo) {
+        self.id = todo.id
         _content = State(initialValue: todo.content)
         _isPinned = State(initialValue: todo.isPinned)
         _isAchieved = State(initialValue: todo.isAchieved)
@@ -62,10 +64,10 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        //TODO: Update document
+                        TodoViewModel.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
-                        Text("追加")
+                        Text("完了")
                             .fontWeight(.bold)
                     }
                     .disabled(content.isEmpty)

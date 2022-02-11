@@ -61,9 +61,7 @@ class TodoViewModel: ObservableObject {
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // User id
         let userId = "kflahglakgihg"
-        
-        let newAchievedAt: Date? = isAchieved ? achievedAt : nil
-        
+                
         // Add new document
         let db = Firestore.firestore()
         db.collection("todos")
@@ -73,7 +71,7 @@ class TodoViewModel: ObservableObject {
                 "createdAt": Date(),
                 "isPinned": isPinned,
                 "isAchieved": isAchieved,
-                "achievedAt": newAchievedAt as Any
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any
             ]) { error in
                 if let error = error {
                     print("HELLO! Fail! Error adding new document: \(error)")
@@ -84,7 +82,21 @@ class TodoViewModel: ObservableObject {
     }
     
     static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        //TODO: Update document
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "content": content,
+                "isPinned": isPinned,
+                "isAchieved": isAchieved,
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating document: \(err)")
+                } else {
+                    print("HELLO! Success! Updated document")
+                }
+            }
     }
     
     static func delete(id: String) {
