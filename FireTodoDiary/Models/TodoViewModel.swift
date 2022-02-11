@@ -137,7 +137,7 @@ class TodoViewModel: ObservableObject {
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // User id
-        let userId = "kflahglakgihg"
+        let userId = "hellohello"
                 
         // Add new document
         let db = Firestore.firestore()
