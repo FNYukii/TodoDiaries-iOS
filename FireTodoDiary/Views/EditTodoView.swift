@@ -1,5 +1,5 @@
 //
-//  CreateTodoView.swift
+//  EditTodoView.swift
 //  FireTodoDiary
 //
 //  Created by Yu on 2022/02/11.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CreateTodoView: View {
+struct EditTodoView: View {
     
     @Environment(\.dismiss) var dismiss
     
@@ -15,6 +15,13 @@ struct CreateTodoView: View {
     @State var isPinned = false
     @State var isAchieved = false
     @State var achievedAt: Date = Date()
+    
+    init(todo: Todo) {
+        _content = State(initialValue: todo.content)
+        _isPinned = State(initialValue: todo.isPinned)
+        _isAchieved = State(initialValue: todo.isAchieved)
+        _achievedAt = State(initialValue: todo.achievedAt ?? Date())
+    }
     
     var body: some View {
         NavigationView {
@@ -36,9 +43,17 @@ struct CreateTodoView: View {
                         DatePicker("達成日時", selection: $achievedAt)
                     }
                 }
+                
+                Button(action: {
+                    //TODO: Delete document
+                }){
+                    Text("Todoを削除")
+                        .foregroundColor(.red)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
             }
             
-            .navigationBarTitle("新規Todo", displayMode: .inline)
+            .navigationBarTitle("Todoを編集", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("キャンセル"){

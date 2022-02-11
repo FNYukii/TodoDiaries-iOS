@@ -12,6 +12,7 @@ struct ContentView: View {
     @ObservedObject var todoViewModel = TodoViewModel()
     
     @State var isShowCreateSheet = false
+    @State var isShowEditSheet = false
     
     var body: some View {
         
@@ -19,7 +20,13 @@ struct ContentView: View {
             
             List {
                 ForEach(todoViewModel.todos){todo in
-                    Text(todo.content)
+                    Button(todo.content) {
+                        isShowEditSheet.toggle()
+                    }
+                    .foregroundColor(.primary)
+                    .sheet(isPresented: $isShowEditSheet) {
+                        EditTodoView(todo: todo)
+                    }
                 }
             }
             
