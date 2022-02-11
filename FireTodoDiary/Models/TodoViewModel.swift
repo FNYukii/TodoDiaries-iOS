@@ -26,6 +26,7 @@ class TodoViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
+                print("HELLO! Success! Read documents from todos")
                 snapshot.documentChanges.forEach { diff in
                     
                     if diff.type == .added {
@@ -44,7 +45,7 @@ class TodoViewModel: ObservableObject {
                     }
                     
                     if diff.type == .modified {
-                        //TODO: Update todos
+                        //TODO: Update todos array
                     }
                     
                     if diff.type == .removed {
@@ -58,7 +59,28 @@ class TodoViewModel: ObservableObject {
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        //TODO: Add new document
+        // User id
+        let userId = "kflahglakgihg"
+        
+        let newAchievedAt: Date? = isAchieved ? achievedAt : nil
+        
+        // Add new document
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .addDocument(data: [
+                "userId": userId,
+                "content": content,
+                "createdAt": Date(),
+                "isPinned": isPinned,
+                "isAchieved": isAchieved,
+                "achievedAt": newAchievedAt as Any
+            ]) { error in
+                if let error = error {
+                    print("HELLO! Fail! Error adding new document: \(error)")
+                } else {
+                    print("HELLO! Success! Added new document to todos")
+                }
+            }
     }
     
     static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {

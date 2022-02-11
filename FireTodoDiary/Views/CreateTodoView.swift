@@ -48,12 +48,13 @@ struct CreateTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        // TODO: Add new todo to Clud Firestore
+                        TodoViewModel.create(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
                         Text("追加")
                             .fontWeight(.bold)
                     }
+                    .disabled(content.isEmpty)
                 }
             }
             
