@@ -11,6 +11,8 @@ struct ContentView: View {
     
     @ObservedObject var todoViewModel = TodoViewModel()
     
+    @State var isShowCreateSheet = false
+    
     
     var body: some View {
         
@@ -22,8 +24,20 @@ struct ContentView: View {
                 }
             }
             
-            .navigationBarTitle("Todos")
+            .sheet(isPresented: $isShowCreateSheet) {
+                CreateTodoView()
+            }
             
+            .navigationBarTitle("Todos")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isShowCreateSheet.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
         
         
