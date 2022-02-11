@@ -15,7 +15,7 @@ struct CreateTodoView: View {
     @State var isPinned = false
     @State var isAchieved = false
     @State var achievedAt: Date = Date()
-
+    
     var body: some View {
         NavigationView {
             

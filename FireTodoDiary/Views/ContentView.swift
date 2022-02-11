@@ -13,7 +13,6 @@ struct ContentView: View {
     
     @State var isShowCreateSheet = false
     
-    
     var body: some View {
         
         NavigationView {
@@ -39,10 +38,5 @@ struct ContentView: View {
                 }
             }
         }
-        
-        
-        
-        
-        
     }
 }
