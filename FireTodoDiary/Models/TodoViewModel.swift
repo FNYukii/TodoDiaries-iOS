@@ -100,6 +100,15 @@ class TodoViewModel: ObservableObject {
     }
     
     static func delete(id: String) {
-        //TODO: Delete document
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .delete() { err in
+                if let err = err {
+                    print("HELLO! Fail! Error removing document: \(err)")
+                } else {
+                    print("HELLO! Success! Removed document")
+                }
+            }
     }
 }

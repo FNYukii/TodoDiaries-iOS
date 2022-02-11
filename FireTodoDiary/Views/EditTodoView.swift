@@ -47,7 +47,9 @@ struct EditTodoView: View {
                 }
                 
                 Button(action: {
-                    //TODO: Delete document
+                    //TODO: Show Action Sheet
+                    TodoViewModel.delete(id: id)
+                    dismiss()
                 }){
                     Text("Todoを削除")
                         .foregroundColor(.red)
