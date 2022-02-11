@@ -39,7 +39,6 @@ struct CreateTodoView: View {
                 }
             }
             
-            // Navigation Bar
             .navigationBarTitle("新規Todo", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
