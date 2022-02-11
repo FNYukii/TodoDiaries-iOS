@@ -36,17 +36,10 @@ class TodoViewModel: ObservableObject {
                     }
                     
                     if diff.type == .modified {
-                        let id = diff.document.documentID
-                        let index = self.unpinnedTodos.firstIndex(where: {$0.id == id})!
                         let newTodo = self.toTodo(from: diff.document)
-                        if newTodo.isPinned {
-                            withAnimation {
-                                self.unpinnedTodos.removeAll(where: {$0.id == id})
-                            }
-                        } else {
-                            withAnimation {
-                                self.unpinnedTodos[index] = newTodo
-                            }
+                        let index = self.unpinnedTodos.firstIndex(where: {$0.id == diff.document.documentID})!
+                        withAnimation {
+                            self.unpinnedTodos[index] = newTodo
                         }
                     }
                     
@@ -79,17 +72,10 @@ class TodoViewModel: ObservableObject {
                         }
                     }
                     if diff.type == .modified {
-                        let id = diff.document.documentID
-                        let index = self.pinnedTodos.firstIndex(where: {$0.id == id})!
                         let newTodo = self.toTodo(from: diff.document)
-                        if !newTodo.isPinned {
-                            withAnimation {
-                                self.pinnedTodos.removeAll(where: {$0.id == id})
-                            }
-                        } else {
-                            withAnimation {
-                                self.pinnedTodos[index] = newTodo
-                            }
+                        let index = self.pinnedTodos.firstIndex(where: {$0.id == diff.document.documentID})!
+                        withAnimation {
+                            self.pinnedTodos[index] = newTodo
                         }
                     }
                     if diff.type == .removed {
@@ -120,17 +106,10 @@ class TodoViewModel: ObservableObject {
                         }
                     }
                     if diff.type == .modified {
-                        let id = diff.document.documentID
-                        let index = self.achievedTodos.firstIndex(where: {$0.id == id})!
                         let newTodo = self.toTodo(from: diff.document)
-                        if !newTodo.isAchieved {
-                            withAnimation {
-                                self.achievedTodos.removeAll(where: {$0.id == id})
-                            }
-                        } else {
-                            withAnimation {
-                                self.achievedTodos[index] = newTodo
-                            }
+                        let index = self.achievedTodos.firstIndex(where: {$0.id == diff.document.documentID})!
+                        withAnimation {
+                            self.achievedTodos[index] = newTodo
                         }
                     }
                     if diff.type == .removed {
