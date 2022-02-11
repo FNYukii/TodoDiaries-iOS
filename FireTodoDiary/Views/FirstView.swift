@@ -35,6 +35,12 @@ struct FirstView: View {
                                 EditTodoView(todo: todo)
                             }
                         }
+                        .onMove {sourceIndexSet, destination in
+                            //TODO: Update order
+                        }
+                        .onDelete {indexSet in
+                            //TODO: Delete document
+                        }
                     }
                 }
                 // Not Pinned Todos Section
@@ -48,6 +54,12 @@ struct FirstView: View {
                             .sheet(isPresented: $isShowEditSheet) {
                                 EditTodoView(todo: todo)
                             }
+                        }
+                        .onMove {sourceIndexSet, destination in
+                            //TODO: Update order
+                        }
+                        .onDelete {indexSet in
+                            //TODO: Delete document
                         }
                     }
                 }
