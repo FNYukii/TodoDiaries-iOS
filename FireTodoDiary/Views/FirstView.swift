@@ -14,18 +14,41 @@ struct FirstView: View {
     @State var isShowCreateSheet = false
     @State var isShowEditSheet = false
     
+    init() {
+        todoViewModel.readUnpinnedTodos()
+        todoViewModel.readPinnedTodos()
+    }
+    
     var body: some View {
-        
         NavigationView {
             
             List {
-                ForEach(todoViewModel.todos){todo in
-                    Button(todo.content) {
-                        isShowEditSheet.toggle()
+                // Pinned Todos Section
+                if todoViewModel.pinnedTodos.count != 0 {
+                    Section(header: Text("固定済み")) {
+                        ForEach(todoViewModel.pinnedTodos){todo in
+                            Button(todo.content) {
+                                isShowEditSheet.toggle()
+                            }
+                            .foregroundColor(.primary)
+                            .sheet(isPresented: $isShowEditSheet) {
+                                EditTodoView(todo: todo)
+                            }
+                        }
                     }
-                    .foregroundColor(.primary)
-                    .sheet(isPresented: $isShowEditSheet) {
-                        EditTodoView(todo: todo)
+                }
+                // Not Pinned Todos Section
+                if todoViewModel.unpinnedTodos.count != 0{
+                    Section(header: todoViewModel.pinnedTodos.count == 0 ? nil : Text("その他")) {
+                        ForEach(todoViewModel.unpinnedTodos){todo in
+                            Button(todo.content) {
+                                isShowEditSheet.toggle()
+                            }
+                            .foregroundColor(.primary)
+                            .sheet(isPresented: $isShowEditSheet) {
+                                EditTodoView(todo: todo)
+                            }
+                        }
                     }
                 }
             }

@@ -11,16 +11,14 @@ import SwiftUI
 
 class TodoViewModel: ObservableObject {
     
-    @Published var todos: [Todo] = []
-    
-    init() {
-        read()
-    }
-    
-    private func read() {
+    @Published var unpinnedTodos: [Todo] = []
+    @Published var pinnedTodos: [Todo] = []
+    @Published var achievedTodos: [Todo] = []
+        
+    public func readUnpinnedTodos() {
         let db = Firestore.firestore()
         db.collection("todos")
-            .order(by: "createdAt", descending: true)
+            .whereField("isPinned", isEqualTo: false)
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
@@ -32,27 +30,78 @@ class TodoViewModel: ObservableObject {
                     if diff.type == .added {
                         let newTodo = self.toTodo(from: diff.document)
                         withAnimation {
-                            self.todos.append(newTodo)
+                            self.unpinnedTodos.append(newTodo)
                         }
                     }
                     
                     if diff.type == .modified {
                         let id = diff.document.documentID
+                        let index = self.unpinnedTodos.firstIndex(where: {$0.id == id})!
                         let newTodo = self.toTodo(from: diff.document)
-                        let index = self.todos.firstIndex(where: {$0.id == id})!
-                        withAnimation {
-                            self.todos[index] = newTodo
+                        if newTodo.isPinned {
+                            withAnimation {
+                                self.unpinnedTodos.removeAll(where: {$0.id == id})
+                            }
+                        } else {
+                            withAnimation {
+                                self.unpinnedTodos[index] = newTodo
+                            }
                         }
                     }
                     
                     if diff.type == .removed {
                         let id = diff.document.documentID
                         withAnimation {
-                            self.todos.removeAll(where: {$0.id == id})
+                            self.unpinnedTodos.removeAll(where: {$0.id == id})
                         }
                     }
                 }
             }
+    }
+    
+    public func readPinnedTodos() {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("isPinned", isEqualTo: true)
+            .addSnapshotListener {(snapshot, error) in
+                guard let snapshot = snapshot else {
+                    print("HELLO! Fail! Error fetching snapshots: \(error!)")
+                    return
+                }
+                print("HELLO! Success! Read documents from todos")
+                snapshot.documentChanges.forEach { diff in
+                    if diff.type == .added {
+                        let newTodo = self.toTodo(from: diff.document)
+                        withAnimation {
+                            self.pinnedTodos.append(newTodo)
+                        }
+                    }
+                    if diff.type == .modified {
+                        let id = diff.document.documentID
+                        let index = self.pinnedTodos.firstIndex(where: {$0.id == id})!
+                        let newTodo = self.toTodo(from: diff.document)
+                        if !newTodo.isPinned {
+                            withAnimation {
+                                self.pinnedTodos.removeAll(where: {$0.id == id})
+                            }
+                        } else {
+                            withAnimation {
+                                self.pinnedTodos[index] = newTodo
+                            }
+                        }
+                    }
+                    if diff.type == .removed {
+                        let id = diff.document.documentID
+                        withAnimation {
+                            self.pinnedTodos.removeAll(where: {$0.id == id})
+                        }
+                    }
+                }
+            }
+    }
+    
+    public func readAchievedTodos() {
+        //TODO: Add snapshot listener for achieved todos
     }
     
     private func toTodo(from: QueryDocumentSnapshot) -> Todo {
