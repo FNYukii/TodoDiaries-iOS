@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var todoViewModel = TodoViewModel()
+    
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+            
+            List {
+                ForEach(todoViewModel.todos){todo in
+                    Text(todo.content)
+                }
+            }
+            
+            .navigationBarTitle("Todos")
+            
+        }
+        
+        
+        
+        
+        
     }
 }

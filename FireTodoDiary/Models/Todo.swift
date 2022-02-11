@@ -14,5 +14,5 @@ struct Todo: Identifiable {
     let createdAt: Date
     let isPinned: Bool
     let isAchieved: Bool
-    let achievedAt: Date
+    let achievedAt: Date?
 }
