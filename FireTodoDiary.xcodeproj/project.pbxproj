@@ -59,7 +59,9 @@
 			children = (
 				5418DC3C27B64C4F007D98B0 /* FireTodoDiaryApp.swift */,
 				5418DC4F27B65101007D98B0 /* GoogleService-Info.plist */,
-				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
+				5418DC5727B65285007D98B0 /* Components */,
+				5418DC5627B6527B007D98B0 /* Models */,
+				5418DC5527B65271007D98B0 /* Views */,
 				5418DC4027B64C51007D98B0 /* Assets.xcassets */,
 				5418DC4227B64C51007D98B0 /* Preview Content */,
 			);
@@ -72,6 +74,28 @@
 				5418DC5327B651FB007D98B0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5418DC5527B65271007D98B0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5418DC5627B6527B007D98B0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5418DC5727B65285007D98B0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
