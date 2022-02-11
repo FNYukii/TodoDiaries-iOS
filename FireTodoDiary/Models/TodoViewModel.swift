@@ -45,7 +45,21 @@ class TodoViewModel: ObservableObject {
                     }
                     
                     if diff.type == .modified {
-                        //TODO: Update todos array
+                        // Create todo variable
+                        let id = diff.document.documentID
+                        let userId = diff.document.get("userId") as! String
+                        let content = diff.document.get("content") as! String
+                        let createdAt = (diff.document.get("createdAt") as! Timestamp).dateValue()
+                        let isPinned = diff.document.get("isPinned") as! Bool
+                        let isAchieved = diff.document.get("isAchieved") as! Bool
+                        let achievedTimestamp: Timestamp? = diff.document.get("achievedAt") as? Timestamp
+                        let achievedAt: Date? = achievedTimestamp?.dateValue()
+                        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        // update element in todos array
+                        let index = self.todos.firstIndex(where: {$0.id == id})!
+                        withAnimation {
+                            self.todos[index] = newTodo
+                        }
                     }
                     
                     if diff.type == .removed {
