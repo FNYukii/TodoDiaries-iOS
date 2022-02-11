@@ -17,7 +17,7 @@ class TodoViewModel: ObservableObject {
         read()
     }
     
-    func read() {
+    private func read() {
         let db = Firestore.firestore()
         db.collection("todos")
             .order(by: "createdAt", descending: true)
