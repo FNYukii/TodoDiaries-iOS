@@ -18,6 +18,9 @@
 		5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */; };
 		5418DC5F27B66753007D98B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5418DC5E27B66753007D98B0 /* GoogleService-Info.plist */; };
 		5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6027B6680F007D98B0 /* EditTodoView.swift */; };
+		5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6227B673DB007D98B0 /* FirstView.swift */; };
+		5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6427B674CF007D98B0 /* SecondView.swift */; };
+		5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6627B674DE007D98B0 /* ThirdView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoView.swift; sourceTree = "<group>"; };
 		5418DC5E27B66753007D98B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5418DC6027B6680F007D98B0 /* EditTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoView.swift; sourceTree = "<group>"; };
+		5418DC6227B673DB007D98B0 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		5418DC6427B674CF007D98B0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		5418DC6627B674DE007D98B0 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
+				5418DC6227B673DB007D98B0 /* FirstView.swift */,
+				5418DC6427B674CF007D98B0 /* SecondView.swift */,
+				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
 				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
 				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
 			);
@@ -188,7 +197,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */,
+				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* TodoViewModel.swift in Sources */,
+				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
