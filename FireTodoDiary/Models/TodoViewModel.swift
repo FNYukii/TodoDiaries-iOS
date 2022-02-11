@@ -14,10 +14,10 @@ class TodoViewModel: ObservableObject {
     @Published var todos: [Todo] = []
     
     init() {
-        startListening()
+        read()
     }
     
-    func startListening() {
+    func read() {
         let db = Firestore.firestore()
         db.collection("todos")
             .order(by: "createdAt", descending: true)
@@ -57,8 +57,12 @@ class TodoViewModel: ObservableObject {
             }
     }
     
-    static func add(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         //TODO: Add new document
+    }
+    
+    static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+        //TODO: Update document
     }
     
     static func delete(id: String) {
