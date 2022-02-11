@@ -30,32 +30,15 @@ class TodoViewModel: ObservableObject {
                 snapshot.documentChanges.forEach { diff in
                     
                     if diff.type == .added {
-                        let id = diff.document.documentID
-                        let userId = diff.document.get("userId") as! String
-                        let content = diff.document.get("content") as! String
-                        let createdAt = (diff.document.get("createdAt") as! Timestamp).dateValue()
-                        let isPinned = diff.document.get("isPinned") as! Bool
-                        let isAchieved = diff.document.get("isAchieved") as! Bool
-                        let achievedTimestamp: Timestamp? = diff.document.get("achievedAt") as? Timestamp
-                        let achievedAt: Date? = achievedTimestamp?.dateValue()
-                        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        let newTodo = self.toTodo(from: diff.document)
                         withAnimation {
                             self.todos.append(newTodo)
                         }
                     }
                     
                     if diff.type == .modified {
-                        // Create todo variable
                         let id = diff.document.documentID
-                        let userId = diff.document.get("userId") as! String
-                        let content = diff.document.get("content") as! String
-                        let createdAt = (diff.document.get("createdAt") as! Timestamp).dateValue()
-                        let isPinned = diff.document.get("isPinned") as! Bool
-                        let isAchieved = diff.document.get("isAchieved") as! Bool
-                        let achievedTimestamp: Timestamp? = diff.document.get("achievedAt") as? Timestamp
-                        let achievedAt: Date? = achievedTimestamp?.dateValue()
-                        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
-                        // update element in todos array
+                        let newTodo = self.toTodo(from: diff.document)
                         let index = self.todos.firstIndex(where: {$0.id == id})!
                         withAnimation {
                             self.todos[index] = newTodo
@@ -70,6 +53,19 @@ class TodoViewModel: ObservableObject {
                     }
                 }
             }
+    }
+    
+    private func toTodo(from: QueryDocumentSnapshot) -> Todo {
+        let id = from.documentID
+        let userId = from.get("userId") as! String
+        let content = from.get("content") as! String
+        let createdAt = (from.get("createdAt") as! Timestamp).dateValue()
+        let isPinned = from.get("isPinned") as! Bool
+        let isAchieved = from.get("isAchieved") as! Bool
+        let achievedTimestamp: Timestamp? = from.get("achievedAt") as? Timestamp
+        let achievedAt: Date? = achievedTimestamp?.dateValue()
+        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+        return newTodo
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
