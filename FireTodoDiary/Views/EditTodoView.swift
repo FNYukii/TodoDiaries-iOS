@@ -62,7 +62,7 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        TodoViewModel.create(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        //TODO: Update document
                         dismiss()
                     }){
                         Text("追加")
