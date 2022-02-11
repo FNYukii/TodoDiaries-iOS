@@ -18,6 +18,7 @@ class TodoViewModel: ObservableObject {
     public func readUnpinnedTodos() {
         let db = Firestore.firestore()
         db.collection("todos")
+            .whereField("userId", isEqualTo: "hellohello")
             .whereField("isAchieved", isEqualTo: false)
             .whereField("isPinned", isEqualTo: false)
             .addSnapshotListener {(snapshot, error) in
@@ -56,6 +57,7 @@ class TodoViewModel: ObservableObject {
     public func readPinnedTodos() {
         let db = Firestore.firestore()
         db.collection("todos")
+            .whereField("userId", isEqualTo: "hellohello")
             .whereField("isAchieved", isEqualTo: false)
             .whereField("isPinned", isEqualTo: true)
             .addSnapshotListener {(snapshot, error) in
@@ -91,6 +93,7 @@ class TodoViewModel: ObservableObject {
     public func readAchievedTodos() {
         let db = Firestore.firestore()
         db.collection("todos")
+            .whereField("userId", isEqualTo: "hellohello")
             .whereField("isAchieved", isEqualTo: true)
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
