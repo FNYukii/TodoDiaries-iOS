@@ -66,6 +66,9 @@ struct FirstView: View {
                         Image(systemName: "plus")
                     }
                 }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    CustomEditButton()
+                }
             }
         }
     }
