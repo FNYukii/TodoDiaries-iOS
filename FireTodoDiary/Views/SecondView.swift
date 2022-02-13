@@ -11,41 +11,42 @@ struct SecondView: View {
     
     @ObservedObject var achievedTodoViewModel = TodoViewModel(isAchieved: true)
     
+    @State var achievedDays: [Int] = []
     @State var isShowEditSheet = false
-        
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(achievedTodoViewModel.todos) {todo in
-                    Button(todo.content) {
-                        isShowEditSheet.toggle()
-                    }
-                    .foregroundColor(.primary)
-                    .sheet(isPresented: $isShowEditSheet) {
-                        EditTodoView(todo: todo)
-                    }
+                ForEach(achievedDays, id: \.self){ achievedDay in
+                    AchievedTodoSection(achievedDay: achievedDay)
                 }
             }
             
-            .onChange(of: achievedTodoViewModel.todos){ value in
-                // 達成済みの全てのTodo
-                let achievedTodos = achievedTodoViewModel.todos
-                
-                // Todo達成日の配列 [20220213, 20220214, ...]
-                var achievedDays: [Int] = []
-                for achievedTodo in achievedTodos {
-                    let achievedDay = achievedTodo.achievedDay!
-                    achievedDays.append(achievedDay)
-                }
-                
-                // 配列から重複した要素を削除
-                let orderdSet = NSOrderedSet(array: achievedDays)
-                achievedDays = orderdSet.array as! [Int]
-                
-                print("HELLO! achievedDays: \(achievedDays)")
+            .onAppear(perform: loadAchievedDays)
+            .onChange(of: achievedTodoViewModel.todos) { _ in
+                loadAchievedDays()
             }
             
             .navigationTitle("達成済み")
         }
     }
+    
+    private func loadAchievedDays() {
+        // 達成済みの全てのTodo
+        let achievedTodos = achievedTodoViewModel.todos
+        
+        // Todo達成日の配列 [20220213, 20220214, ...]
+        var achievedDays: [Int] = []
+        for achievedTodo in achievedTodos {
+            let achievedDay = achievedTodo.achievedDay!
+            achievedDays.append(achievedDay)
+        }
+        
+        // 配列から重複した要素を削除
+        let orderdSet = NSOrderedSet(array: achievedDays)
+        achievedDays = orderdSet.array as! [Int]
+                
+        self.achievedDays = achievedDays
+    }
+    
 }
