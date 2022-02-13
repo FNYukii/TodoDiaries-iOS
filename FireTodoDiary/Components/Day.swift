@@ -54,4 +54,15 @@ class Day {
         return toYmdwString(from: date)
     }
     
+    // Date -> "14:53"
+    static func toHmString(from: Date) -> String {
+        let inputDate = from
+        let calendar = Calendar(identifier: .gregorian)
+        let hour = calendar.component(.hour, from: inputDate)
+        let minute = calendar.component(.minute, from: inputDate)
+        let hourStr = String(NSString(format: "%02d", hour))
+        let minuteStr = String(NSString(format: "%02d", minute))
+        return hourStr + ":" + minuteStr
+    }
+    
 }

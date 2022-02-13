@@ -22,15 +22,20 @@ struct AchievedTodoSection: View {
     var body: some View {
         Section(header: Text(headerText)) {
             ForEach(todoViewModel.todos){todo in
-                Button(todo.content) {
+                Button(action: {
                     isShowEditSheet.toggle()
+                }) {
+                    HStack {
+                        Text(Day.toHmString(from: todo.achievedAt!))
+                            .foregroundColor(.secondary)
+                        Text(todo.content)
+                            .foregroundColor(.primary)
+                    }
                 }
-                .foregroundColor(.primary)
                 .sheet(isPresented: $isShowEditSheet) {
                     EditTodoView(todo: todo)
                 }
             }
-            
         }
     }
 }
