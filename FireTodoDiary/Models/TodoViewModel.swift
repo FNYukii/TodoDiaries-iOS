@@ -28,14 +28,14 @@ class TodoViewModel: ObservableObject {
             query = query
                 .whereField("isAchieved", isEqualTo: isAchieved!)
         }
-        if isAchieved == true {
-            query = query
-                .order(by: "achievedAt")
-        }
         
         if achievedDay != nil {
             query = query
                 .whereField("achievedDay", isEqualTo: achievedDay!)
+        }
+        
+        if isAchieved == true || achievedDay != nil {
+            query = query
                 .order(by: "achievedAt")
         }
             
