@@ -10,7 +10,7 @@ import Foundation
 class Day {
     
     // Date -> 20220214
-    static func toYmd(from: Date) -> Int {
+    static func toInt(from: Date) -> Int {
         let calendar = Calendar(identifier: .gregorian)
         let year = calendar.component(.year, from: from)
         let month = calendar.component(.month, from: from)

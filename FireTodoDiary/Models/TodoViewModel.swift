@@ -61,14 +61,15 @@ class TodoViewModel: ObservableObject {
         let isAchieved = from.get("isAchieved") as! Bool
         let achievedTimestamp: Timestamp? = from.get("achievedAt") as? Timestamp
         let achievedAt: Date? = achievedTimestamp?.dateValue()
-        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+        let achievedDay: Int? = from.get("achievedDay") as? Int
+        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt, achievedDay: achievedDay)
         return newTodo
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // User id
         let userId = "hellohello"
-                
+        
         // Add new document
         let db = Firestore.firestore()
         db.collection("todos")
@@ -78,7 +79,8 @@ class TodoViewModel: ObservableObject {
                 "createdAt": Date(),
                 "isPinned": isPinned,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
+                "achievedDay": (isAchieved ? Day.toInt(from: achievedAt) : nil) as Any
             ]) { error in
                 if let error = error {
                     print("HELLO! Fail! Error adding new document: \(error)")
@@ -96,7 +98,8 @@ class TodoViewModel: ObservableObject {
                 "content": content,
                 "isPinned": isPinned,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
+                "achievedDay": (isAchieved ? Day.toInt(from: achievedAt) : nil) as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")
