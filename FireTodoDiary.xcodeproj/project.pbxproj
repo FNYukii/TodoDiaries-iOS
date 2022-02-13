@@ -22,6 +22,7 @@
 		5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6427B674CF007D98B0 /* SecondView.swift */; };
 		5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6627B674DE007D98B0 /* ThirdView.swift */; };
 		5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6827B68658007D98B0 /* CustomEditButton.swift */; };
+		54491F6427B9885900E784D4 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6327B9885900E784D4 /* Day.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		5418DC6427B674CF007D98B0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		5418DC6627B674DE007D98B0 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		5418DC6827B68658007D98B0 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
+		54491F6327B9885900E784D4 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
+				54491F6327B9885900E784D4 /* Day.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* TodoViewModel.swift in Sources */,
+				54491F6427B9885900E784D4 /* Day.swift in Sources */,
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
