@@ -16,7 +16,7 @@ class TodoViewModel: ObservableObject {
     init(isPinned: Bool = false, isAchieved: Bool = false) {
         let db = Firestore.firestore()
         db.collection("todos")
-            .whereField("userId", isEqualTo: "hellohello")
+            .whereField("userId", isEqualTo: "helloHelloMan")
             .whereField("isAchieved", isEqualTo: isAchieved)
             .whereField("isPinned", isEqualTo: isPinned)
             .addSnapshotListener {(snapshot, error) in
@@ -68,7 +68,7 @@ class TodoViewModel: ObservableObject {
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // User id
-        let userId = "hellohello"
+        let userId = "helloHelloMan"
         
         // Add new document
         let db = Firestore.firestore()
