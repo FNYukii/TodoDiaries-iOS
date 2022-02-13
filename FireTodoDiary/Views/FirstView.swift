@@ -9,24 +9,20 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject var todoViewModel = TodoViewModel()
+    @ObservedObject var pinnedTodoViewModel = TodoViewModel(isPinned: true)
+    @ObservedObject var unpinnedTodoViewModel = TodoViewModel()
     
     @State var isShowCreateSheet = false
     @State var isShowEditSheet = false
-    
-    init() {
-        todoViewModel.readUnpinnedTodos()
-        todoViewModel.readPinnedTodos()
-    }
     
     var body: some View {
         NavigationView {
             
             List {
                 // Pinned Todos Section
-                if todoViewModel.pinnedTodos.count != 0 {
+                if pinnedTodoViewModel.todos.count != 0 {
                     Section(header: Text("固定済み")) {
-                        ForEach(todoViewModel.pinnedTodos){todo in
+                        ForEach(pinnedTodoViewModel.todos){todo in
                             Button(todo.content) {
                                 isShowEditSheet.toggle()
                             }
@@ -37,16 +33,13 @@ struct FirstView: View {
                         }
                         .onMove {sourceIndexSet, destination in
                             //TODO: Update order
-                        }
-                        .onDelete {indexSet in
-                            //TODO: Delete document
                         }
                     }
                 }
                 // Not Pinned Todos Section
-                if todoViewModel.unpinnedTodos.count != 0{
-                    Section(header: todoViewModel.pinnedTodos.count == 0 ? nil : Text("その他")) {
-                        ForEach(todoViewModel.unpinnedTodos){todo in
+                if unpinnedTodoViewModel.todos.count != 0{
+                    Section(header: pinnedTodoViewModel.todos.count == 0 ? nil : Text("その他")) {
+                        ForEach(unpinnedTodoViewModel.todos){todo in
                             Button(todo.content) {
                                 isShowEditSheet.toggle()
                             }
@@ -57,9 +50,6 @@ struct FirstView: View {
                         }
                         .onMove {sourceIndexSet, destination in
                             //TODO: Update order
-                        }
-                        .onDelete {indexSet in
-                            //TODO: Delete document
                         }
                     }
                 }

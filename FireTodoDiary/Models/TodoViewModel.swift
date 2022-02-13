@@ -10,56 +10,15 @@ import Firebase
 import SwiftUI
 
 class TodoViewModel: ObservableObject {
-    
-    @Published var unpinnedTodos: [Todo] = []
-    @Published var pinnedTodos: [Todo] = []
-    @Published var achievedTodos: [Todo] = []
         
-    public func readUnpinnedTodos() {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: "hellohello")
-            .whereField("isAchieved", isEqualTo: false)
-            .whereField("isPinned", isEqualTo: false)
-            .addSnapshotListener {(snapshot, error) in
-                guard let snapshot = snapshot else {
-                    print("HELLO! Fail! Error fetching snapshots: \(error!)")
-                    return
-                }
-                print("HELLO! Success! Read documents from todos")
-                snapshot.documentChanges.forEach { diff in
-                    
-                    if diff.type == .added {
-                        let newTodo = self.toTodo(from: diff.document)
-                        withAnimation {
-                            self.unpinnedTodos.append(newTodo)
-                        }
-                    }
-                    
-                    if diff.type == .modified {
-                        let newTodo = self.toTodo(from: diff.document)
-                        let index = self.unpinnedTodos.firstIndex(where: {$0.id == diff.document.documentID})!
-                        withAnimation {
-                            self.unpinnedTodos[index] = newTodo
-                        }
-                    }
-                    
-                    if diff.type == .removed {
-                        let id = diff.document.documentID
-                        withAnimation {
-                            self.unpinnedTodos.removeAll(where: {$0.id == id})
-                        }
-                    }
-                }
-            }
-    }
+    @Published var todos: [Todo] = []
     
-    public func readPinnedTodos() {
+    init(isPinned: Bool = false, isAchieved: Bool = false) {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: "hellohello")
-            .whereField("isAchieved", isEqualTo: false)
-            .whereField("isPinned", isEqualTo: true)
+            .whereField("isAchieved", isEqualTo: isAchieved)
+            .whereField("isPinned", isEqualTo: isPinned)
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
@@ -67,58 +26,26 @@ class TodoViewModel: ObservableObject {
                 }
                 print("HELLO! Success! Read documents from todos")
                 snapshot.documentChanges.forEach { diff in
+                    
                     if diff.type == .added {
                         let newTodo = self.toTodo(from: diff.document)
                         withAnimation {
-                            self.pinnedTodos.append(newTodo)
+                            self.todos.append(newTodo)
                         }
                     }
+                    
                     if diff.type == .modified {
                         let newTodo = self.toTodo(from: diff.document)
-                        let index = self.pinnedTodos.firstIndex(where: {$0.id == diff.document.documentID})!
+                        let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
                         withAnimation {
-                            self.pinnedTodos[index] = newTodo
+                            self.todos[index] = newTodo
                         }
                     }
+                    
                     if diff.type == .removed {
                         let id = diff.document.documentID
                         withAnimation {
-                            self.pinnedTodos.removeAll(where: {$0.id == id})
-                        }
-                    }
-                }
-            }
-    }
-    
-    public func readAchievedTodos() {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: "hellohello")
-            .whereField("isAchieved", isEqualTo: true)
-            .addSnapshotListener {(snapshot, error) in
-                guard let snapshot = snapshot else {
-                    print("HELLO! Fail! Error fetching snapshots: \(error!)")
-                    return
-                }
-                print("HELLO! Success! Read documents from todos")
-                snapshot.documentChanges.forEach { diff in
-                    if diff.type == .added {
-                        let newTodo = self.toTodo(from: diff.document)
-                        withAnimation {
-                            self.achievedTodos.append(newTodo)
-                        }
-                    }
-                    if diff.type == .modified {
-                        let newTodo = self.toTodo(from: diff.document)
-                        let index = self.achievedTodos.firstIndex(where: {$0.id == diff.document.documentID})!
-                        withAnimation {
-                            self.achievedTodos[index] = newTodo
-                        }
-                    }
-                    if diff.type == .removed {
-                        let id = diff.document.documentID
-                        withAnimation {
-                            self.achievedTodos.removeAll(where: {$0.id == id})
+                            self.todos.removeAll(where: {$0.id == id})
                         }
                     }
                 }

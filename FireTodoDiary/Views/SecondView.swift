@@ -9,18 +9,14 @@ import SwiftUI
 
 struct SecondView: View {
     
-    @ObservedObject var todoViewModel = TodoViewModel()
+    @ObservedObject var achievedTodoViewModel = TodoViewModel(isAchieved: true)
     
     @State var isShowEditSheet = false
-    
-    init() {
-        todoViewModel.readAchievedTodos()
-    }
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(todoViewModel.achievedTodos) {todo in
+                ForEach(achievedTodoViewModel.todos) {todo in
                     Button(todo.content) {
                         isShowEditSheet.toggle()
                     }
