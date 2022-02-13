@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Todo: Identifiable {
+struct Todo: Identifiable, Equatable {
     let id: String
     let userId: String
     let content: String
