@@ -9,18 +9,18 @@ import SwiftUI
 
 struct AchievedTodoSection: View {
         
-    let achievedDay: Int
+    let headerText: String
     
     @ObservedObject var todoViewModel: TodoViewModel
     @State var isShowEditSheet = false
     
     init(achievedDay: Int) {
-        self.achievedDay = achievedDay
+        self.headerText = Day.toYmdwString(from: achievedDay)
         self.todoViewModel = TodoViewModel(achievedDay: achievedDay)
     }
     
     var body: some View {
-        Section(header: Text("\(achievedDay)")) {
+        Section(header: Text(headerText)) {
             ForEach(todoViewModel.todos){todo in
                 Button(todo.content) {
                     isShowEditSheet.toggle()
