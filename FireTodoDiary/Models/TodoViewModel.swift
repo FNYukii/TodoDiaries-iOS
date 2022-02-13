@@ -13,12 +13,28 @@ class TodoViewModel: ObservableObject {
         
     @Published var todos: [Todo] = []
     
-    init(isPinned: Bool = false, isAchieved: Bool = false) {
+    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
         let db = Firestore.firestore()
-        db.collection("todos")
+        
+        var query = db.collection("todos")
             .whereField("userId", isEqualTo: "helloHelloMan")
-            .whereField("isAchieved", isEqualTo: isAchieved)
-            .whereField("isPinned", isEqualTo: isPinned)
+        
+        if isPinned != nil {
+            query = query
+                .whereField("isPinned", isEqualTo: isPinned!)
+        }
+        
+        if isAchieved != nil {
+            query = query
+                .whereField("isAchieved", isEqualTo: isAchieved!)
+        }
+        
+        if achievedDay != nil {
+            query = query
+                .whereField("achievedDay", isEqualTo: achievedDay!)
+        }
+            
+        query
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
