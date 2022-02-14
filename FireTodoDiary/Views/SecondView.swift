@@ -29,6 +29,7 @@ struct SecondView: View {
             
             .navigationTitle("achieved")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     private func loadAchievedDays() {

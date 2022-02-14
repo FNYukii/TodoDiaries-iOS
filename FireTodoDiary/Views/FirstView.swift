@@ -91,5 +91,6 @@ struct FirstView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
