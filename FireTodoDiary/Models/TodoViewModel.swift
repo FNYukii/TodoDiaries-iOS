@@ -13,7 +13,7 @@ class TodoViewModel: ObservableObject {
         
     @Published var todos: [Todo] = []
     
-    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
+    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil, isWithAnimation: Bool = false) {
         let db = Firestore.firestore()
         
         var query = db.collection("todos")
@@ -50,7 +50,11 @@ class TodoViewModel: ObservableObject {
                     
                     if diff.type == .added {
                         let newTodo = self.toTodo(from: diff.document)
-                        withAnimation {
+                        if isWithAnimation {
+                            withAnimation {
+                                self.todos.append(newTodo)
+                            }
+                        } else {
                             self.todos.append(newTodo)
                         }
                     }
@@ -58,14 +62,22 @@ class TodoViewModel: ObservableObject {
                     if diff.type == .modified {
                         let newTodo = self.toTodo(from: diff.document)
                         let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
-                        withAnimation {
+                        if isWithAnimation {
+                            withAnimation {
+                                self.todos[index] = newTodo
+                            }
+                        } else {
                             self.todos[index] = newTodo
                         }
                     }
                     
                     if diff.type == .removed {
                         let id = diff.document.documentID
-                        withAnimation {
+                        if isWithAnimation {
+                            withAnimation {
+                                self.todos.removeAll(where: {$0.id == id})
+                            }
+                        } else {
                             self.todos.removeAll(where: {$0.id == id})
                         }
                     }
