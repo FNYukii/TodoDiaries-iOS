@@ -152,6 +152,39 @@ class TodoViewModel: ObservableObject {
             }
     }
     
+    static func update(id: String, isPinned: Bool) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "isPinned": isPinned
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating document: \(err)")
+                } else {
+                    print("HELLO! Success! Updated document")
+                }
+            }
+    }
+    
+    static func update(id: String, isAchieved: Bool) {
+        let now = Date()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "isAchieved": isAchieved,
+                "achievedAt": (isAchieved ? now : nil) as Any,
+                "achievedDay": (isAchieved ? Day.toInt(from: now) : nil) as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating document: \(err)")
+                } else {
+                    print("HELLO! Success! Updated document")
+                }
+            }
+    }
+    
     static func delete(id: String) {
         let db = Firestore.firestore()
         db.collection("todos")

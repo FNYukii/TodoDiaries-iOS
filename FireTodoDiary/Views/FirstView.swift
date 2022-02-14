@@ -31,7 +31,7 @@ struct FirstView: View {
                                 EditTodoView(todo: todo)
                             }
                             .contextMenu {
-                                ContextMenuGroup(isPinned: true)
+                                ContextMenuGroup(todoId: todo.id, isPinned: true)
                             }
                         }
                         .onMove {sourceIndexSet, destination in
@@ -51,7 +51,7 @@ struct FirstView: View {
                                 EditTodoView(todo: todo)
                             }
                             .contextMenu {
-                                ContextMenuGroup()
+                                ContextMenuGroup(todoId: todo.id)
                             }
                         }
                         .onMove {sourceIndexSet, destination in

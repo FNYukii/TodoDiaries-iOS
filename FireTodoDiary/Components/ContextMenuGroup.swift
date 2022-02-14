@@ -9,44 +9,46 @@ import SwiftUI
 
 struct ContextMenuGroup: View {
     
-    let isPinned: Bool
-    let isAchieved: Bool
+    let todoId: String
+    let todoIsPinned: Bool
+    let todoIsAchieved: Bool
     
-    init(isPinned: Bool = false, isAchieved: Bool = false) {
-        self.isPinned = isPinned
-        self.isAchieved = isAchieved
+    init(todoId: String, isPinned: Bool = false, isAchieved: Bool = false) {
+        self.todoId = todoId
+        self.todoIsPinned = isPinned
+        self.todoIsAchieved = isAchieved
     }
     
     var body: some View {
         Group {
             
-            if !isPinned {
+            if !todoIsPinned {
                 Button(action: {
-                    // TODO: isPinned = true
+                    TodoViewModel.update(id: todoId, isPinned: true)
                 }) {
                     Label("固定する", systemImage: "pin")
                 }
             }
             
-            if isPinned {
+            if todoIsPinned {
                 Button(action: {
-                    // TODO: isPinned = false
+                    TodoViewModel.update(id: todoId, isPinned: false)
                 }) {
                     Label("固定を解除", systemImage: "pin.slash")
                 }
             }
             
-            if !isAchieved {
+            if !todoIsAchieved {
                 Button(action: {
-                    // TODO: isAchieved = true
+                    TodoViewModel.update(id: todoId, isAchieved: true)
                 }) {
                     Label("達成済みにする", systemImage: "checkmark")
                 }
             }
             
-            if isAchieved {
+            if todoIsAchieved {
                 Button(action: {
-                    // TODO: isAchieved = false
+                    TodoViewModel.update(id: todoId, isAchieved: false)
                 }) {
                     Label("未達成に戻す", systemImage: "xmark")
                 }
