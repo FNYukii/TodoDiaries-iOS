@@ -44,8 +44,8 @@ struct AchievedTodoSection: View {
             }
         }
         
-        .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
-            Button("Todoを削除", role: .destructive) {
+        .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
+            Button("deleteTodo", role: .destructive) {
                 TodoViewModel.delete(id: todoUnderConfirm!.id)
             }
         } message: {

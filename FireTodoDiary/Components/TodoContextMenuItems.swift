@@ -27,7 +27,7 @@ struct TodoContextMenuItems: View {
                 Button(action: {
                     TodoViewModel.update(id: todo.id, isPinned: true)
                 }) {
-                    Label("固定する", systemImage: "pin")
+                    Label("pin", systemImage: "pin")
                 }
             }
             
@@ -35,7 +35,7 @@ struct TodoContextMenuItems: View {
                 Button(action: {
                     TodoViewModel.update(id: todo.id, isPinned: false)
                 }) {
-                    Label("固定を解除", systemImage: "pin.slash")
+                    Label("unpin", systemImage: "pin.slash")
                 }
             }
             
@@ -43,7 +43,7 @@ struct TodoContextMenuItems: View {
                 Button(action: {
                     TodoViewModel.update(id: todo.id, isAchieved: true)
                 }) {
-                    Label("達成済みにする", systemImage: "checkmark")
+                    Label("achieve", systemImage: "checkmark")
                 }
             }
             
@@ -51,7 +51,7 @@ struct TodoContextMenuItems: View {
                 Button(action: {
                     TodoViewModel.update(id: todo.id, isAchieved: false)
                 }) {
-                    Label("未達成に戻す", systemImage: "xmark")
+                    Label("unachieve", systemImage: "xmark")
                 }
             }
             
@@ -59,7 +59,7 @@ struct TodoContextMenuItems: View {
                 todoUnderConfirming = todo
                 isConfirming.toggle()
             } label: {
-                Label("削除", systemImage: "trash")
+                Label("delete", systemImage: "trash")
             }
         }
     }

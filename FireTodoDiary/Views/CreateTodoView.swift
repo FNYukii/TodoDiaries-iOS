@@ -26,7 +26,7 @@ struct CreateTodoView: View {
                         .introspectTextView { textEditor in
                             textEditor.becomeFirstResponder()
                         }
-                    Text("やること")
+                    Text("todo")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)
                         .padding(.top, 8)
@@ -34,19 +34,19 @@ struct CreateTodoView: View {
                 }
                 
                 Section {
-                    Toggle("Todoを固定", isOn: $isPinned)
-                    Toggle("達成済み", isOn: $isAchieved.animation())
+                    Toggle("pinTodo", isOn: $isPinned)
+                    Toggle("achieveTodo", isOn: $isAchieved.animation())
                     if isAchieved {
-                        DatePicker("達成日時", selection: $achievedAt)
+                        DatePicker("achievedAt", selection: $achievedAt)
                             .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
             }
             
-            .navigationBarTitle("新規Todo", displayMode: .inline)
+            .navigationBarTitle("newTodo", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル"){
+                    Button("cancel"){
                         dismiss()
                     }
                 }
@@ -55,7 +55,7 @@ struct CreateTodoView: View {
                         TodoViewModel.create(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
-                        Text("追加")
+                        Text("add")
                             .fontWeight(.bold)
                     }
                     .disabled(content.isEmpty)

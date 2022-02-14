@@ -6,7 +6,34 @@
   
 */
 
-// TabBar items and NavigationBar titles
+// TabBar and NavigationBar
 "todos" = "Todo";
 "achieved" = "達成済み";
 "achievementGraph" = "達成グラフ";
+
+// FirstView
+"pinned" = "固定済み";
+"others" = "その他";
+"newTodo" = "新規Todo";
+"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
+"deleteTodo" = "Todoを削除";
+
+// CustomEditButton
+"edit" = "編集";
+
+// CreateTodoView and EditTodoView
+"editTodo" = "Todoを編集";
+"cancel" = "キャンセル";
+"add" = "追加";
+"done" = "完了";
+"todo" = "Todo";
+"pinTodo" = "Todoを固定";
+"achieveTodo" = "Todoを達成";
+"achievedAt" = "達成日時";
+
+// TodoContextMenuItems
+"pin" = "固定する";
+"unpin" = "固定を解除";
+"achieve" = "達成済みにする";
+"unachieve" = "未達成に戻す";
+"delete" = "削除";
