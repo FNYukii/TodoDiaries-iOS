@@ -6,7 +6,36 @@
   
 */
 
-// TabBar items and NavigationBar titles
+// Noun
+"todo" = "Todo";
 "todos" = "Todos";
-"achieved" = "Achieved";
+"newTodo" = "New Todo";
+
+"achievedAt" = "Achieved at";
 "achievementGraph" = "Achievement graph";
+
+"others" = "Others";
+
+// Adjective
+"pinned" = "Pinned";
+"achieved" = "Achieved";
+
+// Verb
+"cancel" = "Cancel";
+"add" = "Add";
+"done" = "Done";
+"edit" = "Edit";
+
+"editTodo" = "Edit Todo";
+
+"delete" = "Delete";
+"deleteTodo" = "Delete Todo";
+
+"pin" = "Pin";
+"unpin" = "Unpin";
+
+"makeAchieved" = "Make achieved";
+"makeUnachieved" = "Make unachieved";
+
+// Question
+"areYouSureYouWantToDeleteThisTodo" = "Are you sure you want to delete this Todo?";
