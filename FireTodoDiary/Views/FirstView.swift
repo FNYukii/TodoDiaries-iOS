@@ -9,11 +9,11 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject var pinnedTodoViewModel = TodoViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
-    @ObservedObject var unpinnedTodoViewModel = TodoViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var pinnedTodoViewModel = TodoViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var unpinnedTodoViewModel = TodoViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
     
-    @State var isShowCreateSheet = false
-    @State var isShowEditSheet = false
+    @State private var isShowCreateSheet = false
+    @State private var isShowEditSheet = false
     
     var body: some View {
         NavigationView {

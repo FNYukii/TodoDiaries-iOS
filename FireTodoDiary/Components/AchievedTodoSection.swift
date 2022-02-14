@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AchievedTodoSection: View {
         
-    let headerText: String
+    private let headerText: String
     
-    @ObservedObject var todoViewModel: TodoViewModel
-    @State var isShowEditSheet = false
+    @ObservedObject private var todoViewModel: TodoViewModel
+    @State private var isShowEditSheet = false
     
     init(achievedDay: Int) {
         self.headerText = Day.toYmdwString(from: achievedDay)

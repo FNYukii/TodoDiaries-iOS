@@ -9,13 +9,13 @@ import SwiftUI
 
 struct EditTodoView: View {
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     let id: String
-    @State var content = ""
-    @State var isPinned = false
-    @State var isAchieved = false
-    @State var achievedAt: Date = Date()
+    @State private var content = ""
+    @State private var isPinned = false
+    @State private var isAchieved = false
+    @State private var achievedAt: Date = Date()
     
     @State private var isConfirming = false
     

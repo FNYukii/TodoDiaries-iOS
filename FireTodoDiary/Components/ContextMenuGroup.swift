@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContextMenuGroup: View {
     
-    let todoId: String
-    let todoIsPinned: Bool
-    let todoIsAchieved: Bool
+    private let todoId: String
+    private let todoIsPinned: Bool
+    private let todoIsAchieved: Bool
     
     init(todoId: String, isPinned: Bool = false, isAchieved: Bool = false) {
         self.todoId = todoId
