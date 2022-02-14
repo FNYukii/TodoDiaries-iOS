@@ -33,7 +33,7 @@ struct EditTodoView: View {
             Form {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
-                    Text("やること")
+                    Text("todo")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)
                         .padding(.top, 8)
@@ -41,43 +41,42 @@ struct EditTodoView: View {
                 }
                 
                 Section {
-                    Toggle("Todoを固定", isOn: $isPinned)
-                    Toggle("達成済み", isOn: $isAchieved.animation())
+                    Toggle("pin", isOn: $isPinned)
+                    Toggle("makeAchieved", isOn: $isAchieved.animation())
                     if isAchieved {
-                        DatePicker("達成日時", selection: $achievedAt)
-                            .environment(\.locale, Locale(identifier: "ja_JP"))
+                        DatePicker("achievedAt", selection: $achievedAt)
                     }
                 }
                 
                 Button(action: {
                     isConfirming.toggle()
                 }){
-                    Text("Todoを削除")
+                    Text("deleteTodo")
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
             
-            .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
-                Button("Todoを削除", role: .destructive) {
-                    TodoViewModel.delete(id: id)
+            .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("deleteTodo", role: .destructive) {
+                    TodoDocument.delete(id: id)
                     dismiss()
                 }
             }
             
-            .navigationBarTitle("Todoを編集", displayMode: .inline)
+            .navigationBarTitle("editTodo", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル"){
+                    Button("cancel"){
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        TodoViewModel.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        TodoDocument.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
-                        Text("完了")
+                        Text("done")
                             .fontWeight(.bold)
                     }
                     .disabled(content.isEmpty)

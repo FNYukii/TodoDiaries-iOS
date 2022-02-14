@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject private var pinnedTodoViewModel = TodoViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
-    @ObservedObject private var unpinnedTodoViewModel = TodoViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var pinnedTodosViewModel = TodosViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var unpinnedTodosViewModel = TodosViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
     
     @State private var isShowCreateSheet = false
     @State private var isShowEditSheet = false
@@ -23,9 +23,9 @@ struct FirstView: View {
             
             List {
                 // Pinned Todos Section
-                if pinnedTodoViewModel.todos.count != 0 {
-                    Section(header: Text("固定済み")) {
-                        ForEach(pinnedTodoViewModel.todos){todo in
+                if pinnedTodosViewModel.todos.count != 0 {
+                    Section(header: Text("pinned")) {
+                        ForEach(pinnedTodosViewModel.todos){todo in
                             Button(todo.content) {
                                 isShowEditSheet.toggle()
                             }
@@ -43,9 +43,9 @@ struct FirstView: View {
                     }
                 }
                 // Not Pinned Todos Section
-                if unpinnedTodoViewModel.todos.count != 0{
-                    Section(header: pinnedTodoViewModel.todos.count == 0 ? nil : Text("その他")) {
-                        ForEach(unpinnedTodoViewModel.todos){todo in
+                if unpinnedTodosViewModel.todos.count != 0{
+                    Section(header: pinnedTodosViewModel.todos.count == 0 ? nil : Text("others")) {
+                        ForEach(unpinnedTodosViewModel.todos){todo in
                             Button(todo.content) {
                                 isShowEditSheet.toggle()
                             }
@@ -68,22 +68,22 @@ struct FirstView: View {
                 CreateTodoView()
             }
             
-            .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
-                Button("Todoを削除", role: .destructive) {
-                    TodoViewModel.delete(id: todoUnderConfirm!.id)
+            .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("deleteTodo", role: .destructive) {
+                    TodoDocument.delete(id: todoUnderConfirm!.id)
                 }
             } message: {
                 Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
             }
             
-            .navigationBarTitle("Todos")
+            .navigationBarTitle("todos")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isShowCreateSheet.toggle()
                     }) {
                         Image(systemName: "plus.circle.fill")
-                        Text("新規Todo")
+                        Text("newTodo")
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {

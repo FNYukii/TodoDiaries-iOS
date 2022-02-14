@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  FireTodoDiary
+
+  Created by Yu on 2022/02/14.
+  
+*/
+
+// Noun
+"todo" = "Todo";
+"todos" = "Todo";
+"newTodo" = "新規Todo";
+
+"achievedAt" = "達成日時";
+"achievementGraph" = "達成グラフ";
+
+"others" = "その他";
+
+// Adjective
+"pinned" = "固定済み";
+"achieved" = "達成済み";
+
+// Verb
+"cancel" = "キャンセル";
+"add" = "追加";
+"done" = "完了";
+"edit" = "編集";
+
+"editTodo" = "Todoを編集";
+
+"delete" = "削除";
+"deleteTodo" = "Todoを削除";
+
+"pin" = "固定する";
+"unpin" = "固定を解除";
+
+"makeAchieved" = "達成済みにする";
+"makeUnachieved" = "未達成にする";
+
+// Question
+"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";

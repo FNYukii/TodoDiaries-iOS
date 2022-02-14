@@ -11,25 +11,25 @@ struct AchievedTodoSection: View {
         
     private let headerText: String
     
-    @ObservedObject private var todoViewModel: TodoViewModel
-    @State private var isShowEditSheet = false
+    @ObservedObject private var todosViewModel: TodosViewModel
     
+    @State private var isShowEditSheet = false
     @State private var isConfirming = false
     @State private var todoUnderConfirm: Todo? = nil
     
     init(achievedDay: Int) {
-        self.headerText = Day.toYmdwString(from: achievedDay)
-        self.todoViewModel = TodoViewModel(achievedDay: achievedDay)
+        self.headerText = Day.toDateString(from: achievedDay)
+        self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
     }
     
     var body: some View {
         Section(header: Text(headerText)) {
-            ForEach(todoViewModel.todos){todo in
+            ForEach(todosViewModel.todos){todo in
                 Button(action: {
                     isShowEditSheet.toggle()
                 }) {
                     HStack {
-                        Text(Day.toHmString(from: todo.achievedAt!))
+                        Text(Day.toTimeString(from: todo.achievedAt!))
                             .foregroundColor(.secondary)
                         Text(todo.content)
                             .foregroundColor(.primary)
@@ -44,9 +44,9 @@ struct AchievedTodoSection: View {
             }
         }
         
-        .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
-            Button("Todoを削除", role: .destructive) {
-                TodoViewModel.delete(id: todoUnderConfirm!.id)
+        .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
+            Button("deleteTodo", role: .destructive) {
+                TodoDocument.delete(id: todoUnderConfirm!.id)
             }
         } message: {
             Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
