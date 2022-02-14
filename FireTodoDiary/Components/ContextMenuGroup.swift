@@ -22,7 +22,7 @@ struct ContextMenuGroup: View {
     var body: some View {
         Group {
             
-            if !todoIsPinned {
+            if !todoIsPinned && !todoIsAchieved {
                 Button(action: {
                     TodoViewModel.update(id: todoId, isPinned: true)
                 }) {
@@ -30,7 +30,7 @@ struct ContextMenuGroup: View {
                 }
             }
             
-            if todoIsPinned {
+            if todoIsPinned && !todoIsAchieved {
                 Button(action: {
                     TodoViewModel.update(id: todoId, isPinned: false)
                 }) {

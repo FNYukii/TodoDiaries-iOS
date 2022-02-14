@@ -35,6 +35,9 @@ struct AchievedTodoSection: View {
                 .sheet(isPresented: $isShowEditSheet) {
                     EditTodoView(todo: todo)
                 }
+                .contextMenu {
+                    ContextMenuGroup(todoId: todo.id, isAchieved: true)
+                }
             }
         }
     }
