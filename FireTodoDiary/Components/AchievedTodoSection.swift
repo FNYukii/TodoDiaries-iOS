@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AchievedTodoSection: View {
         
-    private let headerText: String
+    private let title: String
     
     @ObservedObject private var todosViewModel: TodosViewModel
     
@@ -18,12 +18,12 @@ struct AchievedTodoSection: View {
     @State private var todoUnderConfirm: Todo? = nil
     
     init(achievedDay: Int) {
-        self.headerText = Day.toDateString(from: achievedDay)
+        self.title = Day.toDateString(from: achievedDay)
         self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
     }
     
     var body: some View {
-        Section(header: Text(headerText)) {
+        Section(header: Text(title)) {
             ForEach(todosViewModel.todos){todo in
                 Button(action: {
                     isShowEditSheet.toggle()
