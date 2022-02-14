@@ -70,7 +70,7 @@ struct FirstView: View {
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
-                    TodoViewModel.delete(id: todoUnderConfirm!.id)
+                    TodoDocument.delete(id: todoUnderConfirm!.id)
                 }
             } message: {
                 Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")

@@ -25,7 +25,7 @@ struct TodoContextMenuItems: View {
             
             if !todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todo.id, isPinned: true)
+                    TodoDocument.update(id: todo.id, isPinned: true)
                 }) {
                     Label("pin", systemImage: "pin")
                 }
@@ -33,7 +33,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todo.id, isPinned: false)
+                    TodoDocument.update(id: todo.id, isPinned: false)
                 }) {
                     Label("unpin", systemImage: "pin.slash")
                 }
@@ -41,7 +41,7 @@ struct TodoContextMenuItems: View {
             
             if !todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todo.id, isAchieved: true)
+                    TodoDocument.update(id: todo.id, isAchieved: true)
                 }) {
                     Label("makeAchieved", systemImage: "checkmark")
                 }
@@ -49,7 +49,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todo.id, isAchieved: false)
+                    TodoDocument.update(id: todo.id, isAchieved: false)
                 }) {
                     Label("makeUnachieved", systemImage: "xmark")
                 }

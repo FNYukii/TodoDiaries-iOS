@@ -59,7 +59,7 @@ struct EditTodoView: View {
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
-                    TodoViewModel.delete(id: id)
+                    TodoDocument.delete(id: id)
                     dismiss()
                 }
             }
@@ -73,7 +73,7 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        TodoViewModel.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        TodoDocument.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
                         Text("done")
