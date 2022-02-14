@@ -38,6 +38,7 @@ struct CreateTodoView: View {
                     Toggle("達成済み", isOn: $isAchieved.animation())
                     if isAchieved {
                         DatePicker("達成日時", selection: $achievedAt)
+                            .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
             }
