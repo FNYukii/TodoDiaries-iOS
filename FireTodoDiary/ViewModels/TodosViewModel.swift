@@ -50,7 +50,7 @@ class TodosViewModel: ObservableObject {
                 if !isWithAnimation {
                     var newTodos: [Todo] = []
                     snapshot.documents.forEach { document in
-                        let newTodo = self.toTodo(from: document)
+                        let newTodo = Todo(document: document)
                         newTodos.append(newTodo)
                     }
                     self.todos = newTodos
@@ -59,7 +59,7 @@ class TodosViewModel: ObservableObject {
                 if isWithAnimation {
                     snapshot.documentChanges.forEach { diff in
                         if diff.type == .added {
-                            let newTodo = self.toTodo(from: diff.document)
+                            let newTodo = Todo(document: diff.document)
                             if isWithAnimation {
                                 withAnimation {
                                     self.todos.append(newTodo)
@@ -69,7 +69,7 @@ class TodosViewModel: ObservableObject {
                             }
                         }
                         if diff.type == .modified {
-                            let newTodo = self.toTodo(from: diff.document)
+                            let newTodo = Todo(document: diff.document)
                             let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
                             if isWithAnimation {
                                 withAnimation {
@@ -93,19 +93,5 @@ class TodosViewModel: ObservableObject {
                 }
                 
             }
-    }
-    
-    private func toTodo(from: QueryDocumentSnapshot) -> Todo {
-        let id = from.documentID
-        let userId = from.get("userId") as! String
-        let content = from.get("content") as! String
-        let createdAt = (from.get("createdAt") as! Timestamp).dateValue()
-        let isPinned = from.get("isPinned") as! Bool
-        let isAchieved = from.get("isAchieved") as! Bool
-        let achievedTimestamp: Timestamp? = from.get("achievedAt") as? Timestamp
-        let achievedAt: Date? = achievedTimestamp?.dateValue()
-        let achievedDay: Int? = from.get("achievedDay") as? Int
-        let newTodo = Todo(id: id, userId: userId, content: content, createdAt: createdAt, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt, achievedDay: achievedDay)
-        return newTodo
     }
 }
