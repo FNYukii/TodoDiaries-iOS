@@ -11,12 +11,14 @@
 "todos" = "Todo";
 "newTodo" = "新規Todo";
 
-"pinned" = "固定済み";
+"achievedAt" = "達成日時";
+"achievementGraph" = "達成グラフ";
+
 "others" = "その他";
 
-"achievedAt" = "達成日時";
+// Adjective
+"pinned" = "固定済み";
 "achieved" = "達成済み";
-"achievementGraph" = "達成グラフ";
 
 // Verb
 "cancel" = "キャンセル";
