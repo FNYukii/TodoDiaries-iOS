@@ -43,7 +43,7 @@ struct TodoContextMenuItems: View {
                 Button(action: {
                     TodoViewModel.update(id: todo.id, isAchieved: true)
                 }) {
-                    Label("achieve", systemImage: "checkmark")
+                    Label("makeAchieved", systemImage: "checkmark")
                 }
             }
             
@@ -51,7 +51,7 @@ struct TodoContextMenuItems: View {
                 Button(action: {
                     TodoViewModel.update(id: todo.id, isAchieved: false)
                 }) {
-                    Label("unachieve", systemImage: "xmark")
+                    Label("makeUnachieved", systemImage: "xmark")
                 }
             }
             

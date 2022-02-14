@@ -30,12 +30,10 @@
 "deleteTodo" = "Todoを削除";
 
 "pin" = "固定する";
-"pinTodo" = "Todoを固定";
 "unpin" = "固定を解除";
 
-"achieve" = "達成済みにする";
-"achieveTodo" = "Todoを達成";
-"unachieve" = "未達成に戻す";
+"makeAchieved" = "達成済みにする";
+"makeUnachieved" = "未達成にする";
 
 // Question
 "areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";

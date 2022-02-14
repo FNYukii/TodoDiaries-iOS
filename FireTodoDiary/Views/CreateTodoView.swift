@@ -34,8 +34,8 @@ struct CreateTodoView: View {
                 }
                 
                 Section {
-                    Toggle("pinTodo", isOn: $isPinned)
-                    Toggle("achieveTodo", isOn: $isAchieved.animation())
+                    Toggle("pin", isOn: $isPinned)
+                    Toggle("makeAchieved", isOn: $isAchieved.animation())
                     if isAchieved {
                         DatePicker("achievedAt", selection: $achievedAt)
                             .environment(\.locale, Locale(identifier: "ja_JP"))
