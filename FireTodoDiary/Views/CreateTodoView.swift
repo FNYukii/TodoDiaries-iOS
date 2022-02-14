@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CreateTodoView: View {
     
@@ -22,6 +23,9 @@ struct CreateTodoView: View {
             Form {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
+                        .introspectTextView { textEditor in
+                            textEditor.becomeFirstResponder()
+                        }
                     Text("やること")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)

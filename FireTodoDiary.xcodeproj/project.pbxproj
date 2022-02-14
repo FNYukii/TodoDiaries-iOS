@@ -25,6 +25,7 @@
 		54491F6427B9885900E784D4 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6327B9885900E784D4 /* Day.swift */; };
 		54491F6827B99A1500E784D4 /* AchievedTodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6727B99A1500E784D4 /* AchievedTodoSection.swift */; };
 		54491F6C27B9FD7200E784D4 /* ContextMenuGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6B27B9FD7200E784D4 /* ContextMenuGroup.swift */; };
+		54491F7027BA101400E784D4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54491F6F27BA101400E784D4 /* Introspect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5418DC4C27B65048007D98B0 /* FirebaseAuth in Frameworks */,
+				54491F7027BA101400E784D4 /* Introspect in Frameworks */,
 				5418DC4E27B65048007D98B0 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +168,7 @@
 			packageProductDependencies = (
 				5418DC4B27B65048007D98B0 /* FirebaseAuth */,
 				5418DC4D27B65048007D98B0 /* FirebaseFirestore */,
+				54491F6F27BA101400E784D4 /* Introspect */,
 			);
 			productName = FireTodoDiary;
 			productReference = 5418DC3927B64C4F007D98B0 /* FireTodoDiary.app */;
@@ -197,6 +200,7 @@
 			mainGroup = 5418DC3027B64C4F007D98B0;
 			packageReferences = (
 				5418DC4A27B65048007D98B0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				54491F6E27BA101400E784D4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 5418DC3A27B64C4F007D98B0 /* Products */;
 			projectDirPath = "";
@@ -450,6 +454,14 @@
 				kind = branch;
 			};
 		};
+		54491F6E27BA101400E784D4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -462,6 +474,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5418DC4A27B65048007D98B0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		54491F6F27BA101400E784D4 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 54491F6E27BA101400E784D4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
