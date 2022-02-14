@@ -45,7 +45,6 @@ struct EditTodoView: View {
                     Toggle("makeAchieved", isOn: $isAchieved.animation())
                     if isAchieved {
                         DatePicker("achievedAt", selection: $achievedAt)
-                            .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
                 
