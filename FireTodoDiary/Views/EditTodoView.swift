@@ -17,6 +17,8 @@ struct EditTodoView: View {
     @State var isAchieved = false
     @State var achievedAt: Date = Date()
     
+    @State private var isConfirming = false
+    
     init(todo: Todo) {
         self.id = todo.id
         _content = State(initialValue: todo.content)
@@ -47,13 +49,18 @@ struct EditTodoView: View {
                 }
                 
                 Button(action: {
-                    //TODO: Show Action Sheet
-                    TodoViewModel.delete(id: id)
-                    dismiss()
+                    isConfirming.toggle()
                 }){
                     Text("Todoを削除")
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+            
+            .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("Todoを削除", role: .destructive) {
+                    TodoViewModel.delete(id: id)
+                    dismiss()
                 }
             }
             
