@@ -41,7 +41,9 @@ struct TodoSection: View {
                 TodoDocument.delete(id: todoUnderConfirm!.id)
             }
         } message: {
-            Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
+            if todoUnderConfirm != nil {
+                Text(todoUnderConfirm!.content)
+            }
         }
     }
 }
