@@ -82,7 +82,8 @@ struct FirstView: View {
                     Button(action: {
                         isShowCreateSheet.toggle()
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle.fill")
+                        Text("新規Todo")
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
