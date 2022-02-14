@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import SwiftUI
 
-class TodoViewModel: ObservableObject {
+class TodosViewModel: ObservableObject {
         
     @Published var todos: [Todo] = []
     

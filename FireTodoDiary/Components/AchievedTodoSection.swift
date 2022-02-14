@@ -11,20 +11,20 @@ struct AchievedTodoSection: View {
         
     private let headerText: String
     
-    @ObservedObject private var todoViewModel: TodoViewModel
-    @State private var isShowEditSheet = false
+    @ObservedObject private var todosViewModel: TodosViewModel
     
+    @State private var isShowEditSheet = false
     @State private var isConfirming = false
     @State private var todoUnderConfirm: Todo? = nil
     
     init(achievedDay: Int) {
         self.headerText = Day.toDateString(from: achievedDay)
-        self.todoViewModel = TodoViewModel(achievedDay: achievedDay)
+        self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
     }
     
     var body: some View {
         Section(header: Text(headerText)) {
-            ForEach(todoViewModel.todos){todo in
+            ForEach(todosViewModel.todos){todo in
                 Button(action: {
                     isShowEditSheet.toggle()
                 }) {

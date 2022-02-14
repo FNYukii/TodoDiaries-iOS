@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject private var pinnedTodoViewModel = TodoViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
-    @ObservedObject private var unpinnedTodoViewModel = TodoViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var pinnedTodosViewModel = TodosViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var unpinnedTodosViewModel = TodosViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
     
     @State private var isShowCreateSheet = false
     @State private var isShowEditSheet = false
@@ -23,9 +23,9 @@ struct FirstView: View {
             
             List {
                 // Pinned Todos Section
-                if pinnedTodoViewModel.todos.count != 0 {
+                if pinnedTodosViewModel.todos.count != 0 {
                     Section(header: Text("pinned")) {
-                        ForEach(pinnedTodoViewModel.todos){todo in
+                        ForEach(pinnedTodosViewModel.todos){todo in
                             Button(todo.content) {
                                 isShowEditSheet.toggle()
                             }
@@ -43,9 +43,9 @@ struct FirstView: View {
                     }
                 }
                 // Not Pinned Todos Section
-                if unpinnedTodoViewModel.todos.count != 0{
-                    Section(header: pinnedTodoViewModel.todos.count == 0 ? nil : Text("others")) {
-                        ForEach(unpinnedTodoViewModel.todos){todo in
+                if unpinnedTodosViewModel.todos.count != 0{
+                    Section(header: pinnedTodosViewModel.todos.count == 0 ? nil : Text("others")) {
+                        ForEach(unpinnedTodosViewModel.todos){todo in
                             Button(todo.content) {
                                 isShowEditSheet.toggle()
                             }
