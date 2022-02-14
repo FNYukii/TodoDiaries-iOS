@@ -6,34 +6,36 @@
   
 */
 
-// TabBar and NavigationBar
+// Noun
+"todo" = "Todo";
 "todos" = "Todo";
+"newTodo" = "新規Todo";
+
+"pinned" = "固定済み";
+"others" = "その他";
+
+"achievedAt" = "達成日時";
 "achieved" = "達成済み";
 "achievementGraph" = "達成グラフ";
 
-// FirstView
-"pinned" = "固定済み";
-"others" = "その他";
-"newTodo" = "新規Todo";
-"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
-"deleteTodo" = "Todoを削除";
-
-// CustomEditButton
-"edit" = "編集";
-
-// CreateTodoView and EditTodoView
-"editTodo" = "Todoを編集";
+// Verb
 "cancel" = "キャンセル";
 "add" = "追加";
 "done" = "完了";
-"todo" = "Todo";
-"pinTodo" = "Todoを固定";
-"achieveTodo" = "Todoを達成";
-"achievedAt" = "達成日時";
+"edit" = "編集";
 
-// TodoContextMenuItems
-"pin" = "固定する";
-"unpin" = "固定を解除";
-"achieve" = "達成済みにする";
-"unachieve" = "未達成に戻す";
+"editTodo" = "Todoを編集";
+
 "delete" = "削除";
+"deleteTodo" = "Todoを削除";
+
+"pin" = "固定する";
+"pinTodo" = "Todoを固定";
+"unpin" = "固定を解除";
+
+"achieve" = "達成済みにする";
+"achieveTodo" = "Todoを達成";
+"unachieve" = "未達成に戻す";
+
+// Question
+"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
