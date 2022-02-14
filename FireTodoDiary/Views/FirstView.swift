@@ -30,6 +30,9 @@ struct FirstView: View {
                             .sheet(isPresented: $isShowEditSheet) {
                                 EditTodoView(todo: todo)
                             }
+                            .contextMenu {
+                                ContextMenuGroup(todoId: todo.id, isPinned: true)
+                            }
                         }
                         .onMove {sourceIndexSet, destination in
                             //TODO: Update order
@@ -46,6 +49,9 @@ struct FirstView: View {
                             .foregroundColor(.primary)
                             .sheet(isPresented: $isShowEditSheet) {
                                 EditTodoView(todo: todo)
+                            }
+                            .contextMenu {
+                                ContextMenuGroup(todoId: todo.id)
                             }
                         }
                         .onMove {sourceIndexSet, destination in
