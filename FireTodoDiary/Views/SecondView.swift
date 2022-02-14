@@ -9,10 +9,10 @@ import SwiftUI
 
 struct SecondView: View {
     
-    @ObservedObject var achievedTodoViewModel = TodoViewModel(isAchieved: true)
+    @ObservedObject private var achievedTodoViewModel = TodoViewModel(isAchieved: true)
     
-    @State var achievedDays: [Int] = []
-    @State var isShowEditSheet = false
+    @State private var achievedDays: [Int] = []
+    @State private var isShowEditSheet = false
     
     var body: some View {
         NavigationView {

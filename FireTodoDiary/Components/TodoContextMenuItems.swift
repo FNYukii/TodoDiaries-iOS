@@ -7,55 +7,57 @@
 
 import SwiftUI
 
-struct ContextMenuGroup: View {
+struct TodoContextMenuItems: View {
     
-    let todoId: String
-    let todoIsPinned: Bool
-    let todoIsAchieved: Bool
+    private let todo: Todo
     
-    init(todoId: String, isPinned: Bool = false, isAchieved: Bool = false) {
-        self.todoId = todoId
-        self.todoIsPinned = isPinned
-        self.todoIsAchieved = isAchieved
+    @Binding private var isConfirming: Bool
+    @Binding private var todoUnderConfirming: Todo?
+    
+    init(todo: Todo, isConfirming: Binding<Bool>, todoUnderConfirming: Binding<Todo?>) {
+        self.todo = todo
+        self._isConfirming = isConfirming
+        self._todoUnderConfirming = todoUnderConfirming
     }
     
     var body: some View {
         Group {
             
-            if !todoIsPinned && !todoIsAchieved {
+            if !todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todoId, isPinned: true)
+                    TodoViewModel.update(id: todo.id, isPinned: true)
                 }) {
                     Label("固定する", systemImage: "pin")
                 }
             }
             
-            if todoIsPinned && !todoIsAchieved {
+            if todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todoId, isPinned: false)
+                    TodoViewModel.update(id: todo.id, isPinned: false)
                 }) {
                     Label("固定を解除", systemImage: "pin.slash")
                 }
             }
             
-            if !todoIsAchieved {
+            if !todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todoId, isAchieved: true)
+                    TodoViewModel.update(id: todo.id, isAchieved: true)
                 }) {
                     Label("達成済みにする", systemImage: "checkmark")
                 }
             }
             
-            if todoIsAchieved {
+            if todo.isAchieved {
                 Button(action: {
-                    TodoViewModel.update(id: todoId, isAchieved: false)
+                    TodoViewModel.update(id: todo.id, isAchieved: false)
                 }) {
                     Label("未達成に戻す", systemImage: "xmark")
                 }
             }
             
             Button(role: .destructive) {
-                TodoViewModel.delete(id: todoId)
+                todoUnderConfirming = todo
+                isConfirming.toggle()
             } label: {
                 Label("削除", systemImage: "trash")
             }

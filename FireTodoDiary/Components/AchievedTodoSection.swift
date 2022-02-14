@@ -9,10 +9,13 @@ import SwiftUI
 
 struct AchievedTodoSection: View {
         
-    let headerText: String
+    private let headerText: String
     
-    @ObservedObject var todoViewModel: TodoViewModel
-    @State var isShowEditSheet = false
+    @ObservedObject private var todoViewModel: TodoViewModel
+    @State private var isShowEditSheet = false
+    
+    @State private var isConfirming = false
+    @State private var todoUnderConfirm: Todo? = nil
     
     init(achievedDay: Int) {
         self.headerText = Day.toYmdwString(from: achievedDay)
@@ -36,9 +39,18 @@ struct AchievedTodoSection: View {
                     EditTodoView(todo: todo)
                 }
                 .contextMenu {
-                    ContextMenuGroup(todoId: todo.id, isAchieved: true)
+                    TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                 }
             }
         }
+        
+        .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
+            Button("Todoを削除", role: .destructive) {
+                TodoViewModel.delete(id: todoUnderConfirm!.id)
+            }
+        } message: {
+            Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
+        }
+        
     }
 }

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct EditTodoView: View {
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
     let id: String
-    @State var content = ""
-    @State var isPinned = false
-    @State var isAchieved = false
-    @State var achievedAt: Date = Date()
+    @State private var content = ""
+    @State private var isPinned = false
+    @State private var isAchieved = false
+    @State private var achievedAt: Date = Date()
+    
+    @State private var isConfirming = false
     
     init(todo: Todo) {
         self.id = todo.id
@@ -43,17 +45,23 @@ struct EditTodoView: View {
                     Toggle("達成済み", isOn: $isAchieved.animation())
                     if isAchieved {
                         DatePicker("達成日時", selection: $achievedAt)
+                            .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
                 
                 Button(action: {
-                    //TODO: Show Action Sheet
-                    TodoViewModel.delete(id: id)
-                    dismiss()
+                    isConfirming.toggle()
                 }){
                     Text("Todoを削除")
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+            
+            .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("Todoを削除", role: .destructive) {
+                    TodoViewModel.delete(id: id)
+                    dismiss()
                 }
             }
             

@@ -9,11 +9,14 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject var pinnedTodoViewModel = TodoViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
-    @ObservedObject var unpinnedTodoViewModel = TodoViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var pinnedTodoViewModel = TodoViewModel(isPinned: true, isAchieved: false, isWithAnimation: true)
+    @ObservedObject private var unpinnedTodoViewModel = TodoViewModel(isPinned: false, isAchieved: false, isWithAnimation: true)
     
-    @State var isShowCreateSheet = false
-    @State var isShowEditSheet = false
+    @State private var isShowCreateSheet = false
+    @State private var isShowEditSheet = false
+    
+    @State private var isConfirming = false
+    @State private var todoUnderConfirm: Todo? = nil
     
     var body: some View {
         NavigationView {
@@ -31,7 +34,7 @@ struct FirstView: View {
                                 EditTodoView(todo: todo)
                             }
                             .contextMenu {
-                                ContextMenuGroup(todoId: todo.id, isPinned: true)
+                                TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                             }
                         }
                         .onMove {sourceIndexSet, destination in
@@ -51,7 +54,7 @@ struct FirstView: View {
                                 EditTodoView(todo: todo)
                             }
                             .contextMenu {
-                                ContextMenuGroup(todoId: todo.id)
+                                TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                             }
                         }
                         .onMove {sourceIndexSet, destination in
@@ -65,13 +68,22 @@ struct FirstView: View {
                 CreateTodoView()
             }
             
+            .confirmationDialog("このTodoを削除してもよろしいですか?", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("Todoを削除", role: .destructive) {
+                    TodoViewModel.delete(id: todoUnderConfirm!.id)
+                }
+            } message: {
+                Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
+            }
+            
             .navigationBarTitle("Todos")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         isShowCreateSheet.toggle()
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "plus.circle.fill")
+                        Text("新規Todo")
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {

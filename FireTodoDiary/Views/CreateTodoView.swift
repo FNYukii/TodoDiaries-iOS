@@ -6,15 +6,16 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CreateTodoView: View {
     
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.dismiss) private var dismiss
     
-    @State var content = ""
-    @State var isPinned = false
-    @State var isAchieved = false
-    @State var achievedAt: Date = Date()
+    @State private var content = ""
+    @State private var isPinned = false
+    @State private var isAchieved = false
+    @State private var achievedAt: Date = Date()
     
     var body: some View {
         NavigationView {
@@ -22,6 +23,9 @@ struct CreateTodoView: View {
             Form {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
+                        .introspectTextView { textEditor in
+                            textEditor.becomeFirstResponder()
+                        }
                     Text("やること")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)
@@ -34,6 +38,7 @@ struct CreateTodoView: View {
                     Toggle("達成済み", isOn: $isAchieved.animation())
                     if isAchieved {
                         DatePicker("達成日時", selection: $achievedAt)
+                            .environment(\.locale, Locale(identifier: "ja_JP"))
                     }
                 }
             }
