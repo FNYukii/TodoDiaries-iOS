@@ -1,40 +1,29 @@
 //
-//  TodosOfTheDaySection.swift
+//  UnachievedTodoSection.swift
 //  FireTodoDiary
 //
-//  Created by Yu on 2022/02/14.
+//  Created by Yu on 2022/02/15.
 //
 
 import SwiftUI
 
-struct AchievedTodoSection: View {
-        
-    private let title: String
+struct TodoSection: View {
     
-    @ObservedObject private var todosViewModel: TodosViewModel
+    let todos: [Todo]
+    let header: Text?
     
     @State private var isShowEditSheet = false
     @State private var isConfirming = false
     @State private var todoUnderConfirm: Todo? = nil
     
-    init(achievedDay: Int) {
-        self.title = Day.toDateString(from: achievedDay)
-        self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
-    }
-    
     var body: some View {
-        Section(header: Text(title)) {
-            ForEach(todosViewModel.todos){todo in
-                Button(action: {
+        
+        Section(header: header) {
+            ForEach(todos){todo in
+                Button(todo.content) {
                     isShowEditSheet.toggle()
-                }) {
-                    HStack {
-                        Text(Day.toTimeString(from: todo.achievedAt!))
-                            .foregroundColor(.secondary)
-                        Text(todo.content)
-                            .foregroundColor(.primary)
-                    }
                 }
+                .foregroundColor(.primary)
                 .sheet(isPresented: $isShowEditSheet) {
                     EditTodoView(todo: todo)
                 }
@@ -42,15 +31,19 @@ struct AchievedTodoSection: View {
                     TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                 }
             }
+            .onMove {sourceIndexSet, destination in
+                //TODO: Update order
+            }
         }
-        
+            
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
                 TodoDocument.delete(id: todoUnderConfirm!.id)
             }
         } message: {
-            Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
+            if todoUnderConfirm != nil {
+                Text(todoUnderConfirm!.content)
+            }
         }
-        
     }
 }
