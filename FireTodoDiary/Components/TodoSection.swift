@@ -10,7 +10,7 @@ import SwiftUI
 struct TodoSection: View {
     
     let todos: [Todo]
-    let title: String?
+    let header: Text?
     
     @State private var isShowEditSheet = false
     @State private var isConfirming = false
@@ -18,7 +18,7 @@ struct TodoSection: View {
     
     var body: some View {
         
-        Section(header: title != nil ? Text(title!) : nil) {
+        Section(header: header) {
             ForEach(todos){todo in
                 Button(todo.content) {
                     isShowEditSheet.toggle()

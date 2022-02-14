@@ -19,10 +19,10 @@ struct FirstView: View {
             
             List {
                 if pinnedTodosViewModel.todos.count != 0 {
-                    TodoSection(todos: pinnedTodosViewModel.todos, title: "pinned")
+                    TodoSection(todos: pinnedTodosViewModel.todos, header: Text("pinned"))
                 }
                 if unpinnedTodosViewModel.todos.count != 0{
-                    TodoSection(todos: unpinnedTodosViewModel.todos, title: pinnedTodosViewModel.todos.count == 0 ? nil : "others")
+                    TodoSection(todos: unpinnedTodosViewModel.todos, header: pinnedTodosViewModel.todos.count != 0 ? Text("others") : nil)
                 }
             }
             
