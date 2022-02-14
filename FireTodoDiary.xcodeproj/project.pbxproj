@@ -79,6 +79,7 @@
 			children = (
 				5418DC3C27B64C4F007D98B0 /* FireTodoDiaryApp.swift */,
 				5418DC5E27B66753007D98B0 /* GoogleService-Info.plist */,
+				54491F6A27B9FD1100E784D4 /* Utilities */,
 				5418DC5727B65285007D98B0 /* Components */,
 				5418DC5627B6527B007D98B0 /* Models */,
 				5418DC5527B65271007D98B0 /* Views */,
@@ -122,10 +123,17 @@
 			isa = PBXGroup;
 			children = (
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
-				54491F6327B9885900E784D4 /* Day.swift */,
 				54491F6727B99A1500E784D4 /* AchievedTodoSection.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		54491F6A27B9FD1100E784D4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				54491F6327B9885900E784D4 /* Day.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
