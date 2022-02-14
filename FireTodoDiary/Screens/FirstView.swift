@@ -18,11 +18,9 @@ struct FirstView: View {
         NavigationView {
             
             List {
-                // Pinned Todos Section
                 if pinnedTodosViewModel.todos.count != 0 {
                     TodoSection(todos: pinnedTodosViewModel.todos, title: "pinned")
                 }
-                // Not Pinned Todos Section
                 if unpinnedTodosViewModel.todos.count != 0{
                     TodoSection(todos: unpinnedTodosViewModel.todos, title: pinnedTodosViewModel.todos.count == 0 ? nil : "others")
                 }
