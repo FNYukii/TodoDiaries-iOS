@@ -55,7 +55,7 @@ struct ContextMenuGroup: View {
             }
             
             Button(role: .destructive) {
-                // TODO: Delete document
+                TodoViewModel.delete(id: todoId)
             } label: {
                 Label("削除", systemImage: "trash")
             }
