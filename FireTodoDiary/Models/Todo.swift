@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Todo: Identifiable {
+struct Todo: Identifiable, Equatable {
     let id: String
     let userId: String
     let content: String
@@ -15,4 +15,5 @@ struct Todo: Identifiable {
     let isPinned: Bool
     let isAchieved: Bool
     let achievedAt: Date?
+    let achievedDay: Int?
 }
