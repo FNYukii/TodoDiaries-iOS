@@ -34,19 +34,16 @@ struct SecondView: View {
     private func loadAchievedDays() {
         // 達成済みの全てのTodo
         let achievedTodos = achievedTodoViewModel.todos
-        
         // Todo達成日の配列 [20220213, 20220214, ...]
-        var achievedDays: [Int] = []
+        var newAchievedDays: [Int] = []
         for achievedTodo in achievedTodos {
             let achievedDay = achievedTodo.achievedDay!
-            achievedDays.append(achievedDay)
+            newAchievedDays.append(achievedDay)
         }
-        
         // 配列から重複した要素を削除
-        let orderdSet = NSOrderedSet(array: achievedDays)
-        achievedDays = orderdSet.array as! [Int]
-                
-        self.achievedDays = achievedDays
+        let orderdSet = NSOrderedSet(array: newAchievedDays)
+        newAchievedDays = orderdSet.array as! [Int]
+        // プロパティに反映
+        self.achievedDays = newAchievedDays
     }
-    
 }
