@@ -28,6 +28,7 @@
 		54491F7027BA101400E784D4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54491F6F27BA101400E784D4 /* Introspect */; };
 		54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54491F7527BA7F8900E784D4 /* Localizable.strings */; };
 		54491F7827BAB33D00E784D4 /* TodoDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* TodoDocument.swift */; };
+		54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7927BACEB700E784D4 /* TodoSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		54491F7427BA7F8900E784D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7627BA7F8F00E784D4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7727BAB33D00E784D4 /* TodoDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDocument.swift; sourceTree = "<group>"; };
+		54491F7927BACEB700E784D4 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
+				54491F7927BACEB700E784D4 /* TodoSection.swift */,
 				54491F6727B99A1500E784D4 /* AchievedTodoSection.swift */,
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
 			);
@@ -246,6 +249,7 @@
 				54491F6427B9885900E784D4 /* Day.swift in Sources */,
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
+				54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */,
 				54491F6827B99A1500E784D4 /* AchievedTodoSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
