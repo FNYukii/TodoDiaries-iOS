@@ -9,16 +9,9 @@ import SwiftUI
 
 struct TodoContextMenuItems: View {
     
-    private let todo: Todo
-    
-    @Binding private var isConfirming: Bool
-    @Binding private var todoUnderConfirming: Todo?
-    
-    init(todo: Todo, isConfirming: Binding<Bool>, todoUnderConfirming: Binding<Todo?>) {
-        self.todo = todo
-        self._isConfirming = isConfirming
-        self._todoUnderConfirming = todoUnderConfirming
-    }
+    let todo: Todo
+    @Binding var isConfirming: Bool
+    @Binding var todoUnderConfirming: Todo?
     
     var body: some View {
         Group {
