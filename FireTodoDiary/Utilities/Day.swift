@@ -20,10 +20,9 @@ class Day {
     
     // 20210923 -> Date
     static func toDate(from: Int) -> Date {
-        let inputYmd = from
-        let year = inputYmd / 10000
-        let month = (inputYmd % 10000) / 100
-        let day = (inputYmd % 100)
+        let year = from / 10000
+        let month = (from % 10000) / 100
+        let day = (from % 100)
         let dateComponent = DateComponents(calendar: Calendar.current, year: year, month: month, day: day)
         return dateComponent.date!
     }
