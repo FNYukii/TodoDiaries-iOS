@@ -46,42 +46,52 @@ class TodoViewModel: ObservableObject {
                     return
                 }
                 print("HELLO! Success! Read documents from todos")
-                snapshot.documentChanges.forEach { diff in
-                    
-                    if diff.type == .added {
-                        let newTodo = self.toTodo(from: diff.document)
-                        if isWithAnimation {
-                            withAnimation {
+                
+                if !isWithAnimation {
+                    var newTodos: [Todo] = []
+                    snapshot.documents.forEach { document in
+                        let newTodo = self.toTodo(from: document)
+                        newTodos.append(newTodo)
+                    }
+                    self.todos = newTodos
+                }
+                
+                if isWithAnimation {
+                    snapshot.documentChanges.forEach { diff in
+                        if diff.type == .added {
+                            let newTodo = self.toTodo(from: diff.document)
+                            if isWithAnimation {
+                                withAnimation {
+                                    self.todos.append(newTodo)
+                                }
+                            } else {
                                 self.todos.append(newTodo)
                             }
-                        } else {
-                            self.todos.append(newTodo)
                         }
-                    }
-                    
-                    if diff.type == .modified {
-                        let newTodo = self.toTodo(from: diff.document)
-                        let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
-                        if isWithAnimation {
-                            withAnimation {
+                        if diff.type == .modified {
+                            let newTodo = self.toTodo(from: diff.document)
+                            let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
+                            if isWithAnimation {
+                                withAnimation {
+                                    self.todos[index] = newTodo
+                                }
+                            } else {
                                 self.todos[index] = newTodo
                             }
-                        } else {
-                            self.todos[index] = newTodo
                         }
-                    }
-                    
-                    if diff.type == .removed {
-                        let id = diff.document.documentID
-                        if isWithAnimation {
-                            withAnimation {
+                        if diff.type == .removed {
+                            let id = diff.document.documentID
+                            if isWithAnimation {
+                                withAnimation {
+                                    self.todos.removeAll(where: {$0.id == id})
+                                }
+                            } else {
                                 self.todos.removeAll(where: {$0.id == id})
                             }
-                        } else {
-                            self.todos.removeAll(where: {$0.id == id})
                         }
                     }
                 }
+                
             }
     }
     

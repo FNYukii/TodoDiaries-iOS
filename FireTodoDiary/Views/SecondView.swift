@@ -43,6 +43,7 @@ struct SecondView: View {
         // 配列から重複した要素を削除
         let orderdSet = NSOrderedSet(array: newAchievedDays)
         newAchievedDays = orderdSet.array as! [Int]
+        print("HELLO newAchievedDays: \(newAchievedDays)")
         // プロパティに反映
         self.achievedDays = newAchievedDays
     }
