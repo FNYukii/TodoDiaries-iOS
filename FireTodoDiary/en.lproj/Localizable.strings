@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  FireTodoDiary
+
+  Created by Yu on 2022/02/14.
+  
+*/
+
+// TabBar items and NavigationBar titles
+"todos" = "Todos";
+"achieved" = "Achieved";
+"achievementGraph" = "Achievement graph";

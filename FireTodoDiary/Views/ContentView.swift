@@ -13,15 +13,15 @@ struct ContentView: View {
         TabView {
             FirstView()
                 .tabItem{
-                    Label("Todo", systemImage: "list.bullet")
+                    Label("todos", systemImage: "list.bullet")
                 }
             SecondView()
                 .tabItem {
-                    Label("達成済み", systemImage: "checkmark")
+                    Label("achieved", systemImage: "checkmark")
                 }
             ThirdView()
                 .tabItem {
-                    Label("達成グラフ", systemImage: "chart.xyaxis.line")
+                    Label("achievementGraph", systemImage: "chart.xyaxis.line")
                 }
         }
     }

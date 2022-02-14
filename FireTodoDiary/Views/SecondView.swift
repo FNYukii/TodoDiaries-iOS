@@ -27,7 +27,7 @@ struct SecondView: View {
                 loadAchievedDays()
             }
             
-            .navigationTitle("達成済み")
+            .navigationTitle("achieved")
         }
     }
     

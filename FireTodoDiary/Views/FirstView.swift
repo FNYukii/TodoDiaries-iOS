@@ -76,7 +76,7 @@ struct FirstView: View {
                 Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
             }
             
-            .navigationBarTitle("Todos")
+            .navigationBarTitle("todos")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
