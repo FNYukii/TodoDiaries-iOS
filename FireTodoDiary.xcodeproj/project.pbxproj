@@ -84,6 +84,7 @@
 				54491F6A27B9FD1100E784D4 /* Utilities */,
 				5418DC5727B65285007D98B0 /* Components */,
 				5418DC5627B6527B007D98B0 /* Models */,
+				54491F6D27BA0B1B00E784D4 /* ViewModels */,
 				5418DC5527B65271007D98B0 /* Views */,
 				5418DC4027B64C51007D98B0 /* Assets.xcassets */,
 				5418DC4227B64C51007D98B0 /* Preview Content */,
@@ -116,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				5418DC5827B652C7007D98B0 /* Todo.swift */,
-				5418DC5A27B6534D007D98B0 /* TodoViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,6 +137,14 @@
 				54491F6327B9885900E784D4 /* Day.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		54491F6D27BA0B1B00E784D4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5418DC5A27B6534D007D98B0 /* TodoViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
