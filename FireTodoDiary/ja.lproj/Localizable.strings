@@ -11,10 +11,14 @@
 "todos" = "Todo";
 "newTodo" = "新規Todo";
 
-"achievedAt" = "達成日時";
-"achievementGraph" = "達成グラフ";
+"achievements" = "実績";
+"calendar" = "カレンダー";
+"profile" = "プロフィール";
 
+"achievedAt" = "達成日時";
 "others" = "その他";
+"email" = "メールアドレス";
+"stats" = "統計";
 
 // Adjective
 "pinned" = "固定済み";
@@ -37,5 +41,8 @@
 "makeAchieved" = "達成済みにする";
 "makeUnachieved" = "未達成にする";
 
+"signOut" = "サインアウト";
+
 // Question
 "areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
+"areYouSureYouWantToSignOut" = "ログアウトしてもよろしいですか?";

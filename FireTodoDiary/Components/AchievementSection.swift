@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AchievedTodoSection: View {
+struct AchievementSection: View {
         
     private let title: String
     

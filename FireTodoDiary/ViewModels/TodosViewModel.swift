@@ -13,9 +13,17 @@ class TodosViewModel: ObservableObject {
     @Published var todos: [Todo] = []
     
     init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
+        
+        // User id
+        var userId = ""
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userId = user.uid
+        }
+        
         let db = Firestore.firestore()
         var query = db.collection("todos")
-            .whereField("userId", isEqualTo: "helloHelloMan")
+            .whereField("userId", isEqualTo: userId)
         
         if let isPinned = isPinned {
             query = query

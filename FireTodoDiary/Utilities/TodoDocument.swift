@@ -10,8 +10,13 @@ import Firebase
 class TodoDocument {
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+        
         // User id
-        let userId = "helloHelloMan"
+        var userId = ""
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userId = user.uid
+        }
         
         // Add new document
         let db = Firestore.firestore()

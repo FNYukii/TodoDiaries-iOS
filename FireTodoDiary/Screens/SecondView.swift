@@ -18,11 +18,11 @@ struct SecondView: View {
         NavigationView {
             List {
                 ForEach(daysViewModel.achievedDays, id: \.self){ achievedDay in
-                    AchievedTodoSection(achievedDay: achievedDay)
+                    AchievementSection(achievedDay: achievedDay)
                 }
             }
             
-            .navigationTitle("achieved")
+            .navigationTitle("achievements")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
