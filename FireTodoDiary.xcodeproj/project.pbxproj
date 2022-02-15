@@ -37,6 +37,7 @@
 		547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */; };
 		547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */; };
 		547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FE27BBA05A00B18176 /* WelcomeView.swift */; };
+		547F370127BBC2CE00B18176 /* FourthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370027BBC2CE00B18176 /* FourthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		547F370027BBC2CE00B18176 /* FourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				5418DC6227B673DB007D98B0 /* FirstView.swift */,
 				5418DC6427B674CF007D98B0 /* SecondView.swift */,
 				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
+				547F370027BBC2CE00B18176 /* FourthView.swift */,
 				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
 				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
 				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
@@ -282,6 +285,7 @@
 				54491F6827B99A1500E784D4 /* AchievedTodoSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */,
+				547F370127BBC2CE00B18176 /* FourthView.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
 				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,

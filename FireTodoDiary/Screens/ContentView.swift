@@ -31,6 +31,10 @@ struct ContentView: View {
                     .tabItem {
                         Label("achievementGraph", systemImage: "chart.xyaxis.line")
                     }
+                FourthView()
+                    .tabItem {
+                        Label("profile", systemImage: "person")
+                    }
             }
         }
     }
