@@ -13,39 +13,9 @@ struct OnePage: View {
     private let showMonth: Int
     
     init(monthOffset: Int){
-        // 現在の年と月を取得
-        let now = Date()
-        var year = Calendar.current.component(.year, from: now)
-        var month = Calendar.current.component(.month, from: now)
-        
-        // monthOffsetの数だけ次の月へ進む
-        if monthOffset > 0 {
-            for _ in 0 ..< monthOffset {
-                if month == 12 {
-                    month = 1
-                    year += 1
-                } else {
-                    month += 1
-                }
-            }
-        }
-        
-        // offsetの数だけ前の月へ戻る
-        if monthOffset < 0 {
-            let absoluteMonthOffset = -monthOffset
-            for _ in 0 ..< absoluteMonthOffset {
-                if month == 1 {
-                    month = 12
-                    year -= 1
-                } else {
-                    month -= 1
-                }
-            }
-        }
-        
-        // プロパティへ適用
-        self.showYear = year
-        self.showMonth = month
+        let yearAndMonth = Day.yearAndMonth(monthOffset: monthOffset)
+        self.showYear = yearAndMonth[0]
+        self.showMonth = yearAndMonth[1]
     }
     
     var body: some View {
