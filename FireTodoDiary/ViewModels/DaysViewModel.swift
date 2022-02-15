@@ -12,8 +12,17 @@ class DaysViewModel: ObservableObject {
     @Published var achievedDays: [Int] = []
     
     init() {
+        
+        // User id
+        var userId = ""
+        let user = Auth.auth().currentUser
+        if let user = user {
+            userId = user.uid
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .addSnapshotListener { querySnapshot, error in
