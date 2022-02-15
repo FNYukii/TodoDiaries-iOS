@@ -15,8 +15,9 @@ struct ThirdView: View {
         NavigationView {
             
             TabView(selection: $selection) {
-                ForEach(-50..<51){ index in
-                    Text("\(index)").tag(index)
+                ForEach(-50 ..< 51){ index in
+                    OnePage(monthOffset: index)
+                        .tag(index)
                 }
             }
             .tabViewStyle(PageTabViewStyle())
