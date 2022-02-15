@@ -13,9 +13,8 @@ struct OnePage: View {
     private let showMonth: Int
     
     init(monthOffset: Int){
-        let yearAndMonth = Day.yearAndMonth(monthOffset: monthOffset)
-        self.showYear = yearAndMonth[0]
-        self.showMonth = yearAndMonth[1]
+        self.showYear = Day.shiftedYear(monthOffset: monthOffset)
+        self.showMonth = Day.shiftedMonth(monthOffset: monthOffset)
     }
     
     var body: some View {
