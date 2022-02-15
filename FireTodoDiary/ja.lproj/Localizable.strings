@@ -17,6 +17,8 @@
 
 "achievedAt" = "達成日時";
 "others" = "その他";
+"email" = "メールアドレス";
+"stats" = "統計";
 
 // Adjective
 "pinned" = "固定済み";
