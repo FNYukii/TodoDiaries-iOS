@@ -14,6 +14,8 @@ struct FourthView: View {
     @State private var todoCount = 0
     @State private var achievementCount = 0
     
+    @State private var isConfirming = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -41,14 +43,20 @@ struct FourthView: View {
                 }
                 
                 Button("signOut") {
+                    isConfirming.toggle()
+                }
+                .foregroundColor(.red)
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
+            
+            .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("signOut", role: .destructive) {
                     do {
                         try Auth.auth().signOut()
                     } catch {
                         print("HELLO! Fail! Error signing out")
                     }
                 }
-                .foregroundColor(.red)
-                .frame(maxWidth: .infinity, alignment: .center)
             }
             
             .navigationBarTitle("profile")

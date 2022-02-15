@@ -45,3 +45,4 @@
 
 // Question
 "areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
+"areYouSureYouWantToSignOut" = "ログアウトしてもよろしいですか?";
