@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Firebase
 
 struct FourthView: View {
     
@@ -51,11 +50,7 @@ struct FourthView: View {
             
             .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("signOut", role: .destructive) {
-                    do {
-                        try Auth.auth().signOut()
-                    } catch {
-                        print("HELLO! Fail! Error signing out")
-                    }
+                    CurrentUser.signOut()
                 }
             }
             

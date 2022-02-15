@@ -25,4 +25,12 @@ class CurrentUser {
         }
         return ""
     }
+    
+    static func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("HELLO! Fail! Error signing out")
+        }
+    }
 }
