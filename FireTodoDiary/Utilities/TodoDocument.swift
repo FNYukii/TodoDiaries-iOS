@@ -11,12 +11,8 @@ class TodoDocument {
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         
-        // User id
-        var userId = ""
-        let user = Auth.auth().currentUser
-        if let user = user {
-            userId = user.uid
-        }
+        // user id
+        let userId = CurrentUser.userId()
         
         // Add new document
         let db = Firestore.firestore()
