@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct FirstView: View {
     
@@ -41,7 +42,14 @@ struct FirstView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    CustomEditButton()
+//                    CustomEditButton()
+                    Button("Sign out") {
+                        do {
+                            try Auth.auth().signOut()
+                        } catch {
+                            print("Error")
+                        }
+                    }
                 }
             }
         }

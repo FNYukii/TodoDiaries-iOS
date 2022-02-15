@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject private var signInStateViewModel = SignInStateViewModel()
+    
     var body: some View {
         
-        TabView {
-            FirstView()
-                .tabItem{
-                    Label("todos", systemImage: "list.bullet")
-                }
-            SecondView()
-                .tabItem {
-                    Label("achieved", systemImage: "checkmark")
-                }
-            ThirdView()
-                .tabItem {
-                    Label("achievementGraph", systemImage: "chart.xyaxis.line")
-                }
+        if !signInStateViewModel.isSignedIn {
+            WelcomeView()
+        }
+        
+        if signInStateViewModel.isSignedIn {
+            TabView {
+                FirstView()
+                    .tabItem{
+                        Label("todos", systemImage: "list.bullet")
+                    }
+                SecondView()
+                    .tabItem {
+                        Label("achieved", systemImage: "checkmark")
+                    }
+                ThirdView()
+                    .tabItem {
+                        Label("achievementGraph", systemImage: "chart.xyaxis.line")
+                    }
+            }
         }
     }
 }
