@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import SwiftUI
 
 class DaysViewModel: ObservableObject {
     
@@ -40,9 +41,17 @@ class DaysViewModel: ObservableObject {
                 // 配列から重複した要素を削除
                 newAchievedDays = NSOrderedSet(array: newAchievedDays).array as! [Int]
                 
-                if self.achievedDays != newAchievedDays {
-                    self.achievedDays = newAchievedDays
+                // Todo達成日に変化があった際、achievedDaysプロパティに適用
+                let difference = newAchievedDays.difference(from: self.achievedDays)
+                for change in difference {
+                    switch change {
+                    case let .remove(offset, _, _):
+                        self.achievedDays.remove(at: offset)
+                    case let .insert(offset, newElement, _):
+                        self.achievedDays.insert(newElement, at: offset)
+                    }
                 }
+                
             }
     }
 }
