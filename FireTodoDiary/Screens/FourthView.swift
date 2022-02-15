@@ -11,8 +11,8 @@ import Firebase
 struct FourthView: View {
     
     @State private var userEmail = ""
-    @State private var todoCount = 0
-    @State private var achievementCount = 0
+    @State private var unachievedTodoCount = 0
+    @State private var achievedTodoCount = 0
     
     @State private var isConfirming = false
     
@@ -31,13 +31,13 @@ struct FourthView: View {
                     HStack {
                         Text("todos")
                         Spacer()
-                        Text(String(todoCount))
+                        Text(String(unachievedTodoCount))
                             .foregroundColor(.secondary)
                     }
                     HStack {
                         Text("achievements")
                         Spacer()
-                        Text(String(achievementCount))
+                        Text(String(achievedTodoCount))
                             .foregroundColor(.secondary)
                     }
                 }
@@ -65,39 +65,17 @@ struct FourthView: View {
         
         .onAppear {
             // Read user email
-            self.userEmail = CurrentUser.email()
+            userEmail = CurrentUser.email()
             
             // Read unachieved todo count
-            let userId = CurrentUser.userId()
-            let db = Firestore.firestore()
-            db.collection("todos")
-                .whereField("userId", isEqualTo: userId)
-                .whereField("isAchieved", isEqualTo: false)
-                .getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("HELLO! Fail! Error getting documents: \(err)")
-                        return
-                    }
-                    print("HELLO! Success! Read documents in todos")
-                    if let querySnapshot = querySnapshot {
-                        todoCount = querySnapshot.documents.count
-                    }
-                }
+            TodoDocument.readCount(isAchieved: false) {count in
+                unachievedTodoCount = count
+            }
             
-            // Read achieved todo count
-            db.collection("todos")
-                .whereField("userId", isEqualTo: userId)
-                .whereField("isAchieved", isEqualTo: true)
-                .getDocuments() { (querySnapshot, err) in
-                    if let err = err {
-                        print("HELLO! Fail! Error getting documents: \(err)")
-                        return
-                    }
-                    print("HELLO! Success! Read documents in todos")
-                    if let querySnapshot = querySnapshot {
-                        achievementCount = querySnapshot.documents.count
-                    }
-                }
+            // Read unachieved todo count
+            TodoDocument.readCount(isAchieved: true) {count in
+                achievedTodoCount = count
+            }
         }
         
     }
