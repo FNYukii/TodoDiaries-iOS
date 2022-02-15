@@ -25,7 +25,7 @@ struct ContentView: View {
                     }
                 SecondView()
                     .tabItem {
-                        Label("achieved", systemImage: "checkmark")
+                        Label("achievements", systemImage: "checkmark")
                     }
                 ThirdView()
                     .tabItem {

@@ -22,7 +22,7 @@ struct SecondView: View {
                 }
             }
             
-            .navigationTitle("achieved")
+            .navigationTitle("achievements")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

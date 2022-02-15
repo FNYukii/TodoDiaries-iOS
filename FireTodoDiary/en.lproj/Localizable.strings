@@ -11,9 +11,11 @@
 "todos" = "Todos";
 "newTodo" = "New Todo";
 
-"achievedAt" = "Achieved at";
-"achievementGraph" = "Achievement graph";
+"achievements" = "Achievements";
+"calendar" = "Calendar";
+"profile" = "Profile";
 
+"achievedAt" = "Achieved at";
 "others" = "Others";
 
 // Adjective
@@ -36,6 +38,8 @@
 
 "makeAchieved" = "Make achieved";
 "makeUnachieved" = "Make unachieved";
+
+"signOut" = "Sign out";
 
 // Question
 "areYouSureYouWantToDeleteThisTodo" = "Are you sure you want to delete this Todo?";
