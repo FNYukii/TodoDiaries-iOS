@@ -8,7 +8,22 @@
 import SwiftUI
 
 struct ThirdView: View {
+    
+    @State private var selection = 0
+        
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            
+            TabView(selection: $selection) {
+                ForEach(-50 ..< 51){ index in
+                    OnePage(monthOffset: index)
+                        .tag(index)
+                }
+            }
+            .tabViewStyle(PageTabViewStyle())
+            
+            .navigationTitle("calendar")
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }

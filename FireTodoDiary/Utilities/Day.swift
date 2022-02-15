@@ -46,4 +46,69 @@ class Day {
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: from)
     }
+    
+    // 5 -> 2022 (if now is Jan 2022)
+    static func shiftedYear(monthOffset: Int) -> Int {
+        // 現在の年と月を取得
+        let now = Date()
+        var year = Calendar.current.component(.year, from: now)
+        var month = Calendar.current.component(.month, from: now)
+        // monthOffsetの数だけ次の月へ進む
+        if monthOffset > 0 {
+            for _ in 0 ..< monthOffset {
+                if month == 12 {
+                    month = 1
+                    year += 1
+                } else {
+                    month += 1
+                }
+            }
+        }
+        // offsetの数だけ前の月へ戻る
+        if monthOffset < 0 {
+            let absoluteMonthOffset = -monthOffset
+            for _ in 0 ..< absoluteMonthOffset {
+                if month == 1 {
+                    month = 12
+                    year -= 1
+                } else {
+                    month -= 1
+                }
+            }
+        }
+        return year
+    }
+    
+    // 5 -> 6 (if now is Jan 2022)
+    static func shiftedMonth(monthOffset: Int) -> Int {
+        // 現在の年と月を取得
+        let now = Date()
+        var year = Calendar.current.component(.year, from: now)
+        var month = Calendar.current.component(.month, from: now)
+        // monthOffsetの数だけ次の月へ進む
+        if monthOffset > 0 {
+            for _ in 0 ..< monthOffset {
+                if month == 12 {
+                    month = 1
+                    year += 1
+                } else {
+                    month += 1
+                }
+            }
+        }
+        // offsetの数だけ前の月へ戻る
+        if monthOffset < 0 {
+            let absoluteMonthOffset = -monthOffset
+            for _ in 0 ..< absoluteMonthOffset {
+                if month == 1 {
+                    month = 12
+                    year -= 1
+                } else {
+                    month -= 1
+                }
+            }
+        }
+        return month
+    }
+    
 }
