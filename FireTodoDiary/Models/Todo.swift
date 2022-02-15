@@ -5,7 +5,6 @@
 //  Created by Yu on 2022/02/11.
 //
 
-import Foundation
 import Firebase
 
 struct Todo: Identifiable, Equatable {

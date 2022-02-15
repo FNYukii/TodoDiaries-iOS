@@ -5,7 +5,6 @@
 //  Created by Yu on 2022/02/15.
 //
 
-import Foundation
 import Firebase
 
 class TodoDocument {
