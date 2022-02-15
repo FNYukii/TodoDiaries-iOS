@@ -13,7 +13,6 @@ class TodosViewModel: ObservableObject {
     @Published var todos: [Todo] = []
     
     init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
-        
         // User id
         let userId = CurrentUser.userId()
         

@@ -10,7 +10,6 @@ import Firebase
 class TodoDocument {
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        
         // user id
         let userId = CurrentUser.userId()
         

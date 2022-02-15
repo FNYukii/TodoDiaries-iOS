@@ -12,7 +12,6 @@ class DaysViewModel: ObservableObject {
     @Published var achievedDays: [Int] = []
     
     init() {
-        
         // User id
         let userId = CurrentUser.userId()
         
