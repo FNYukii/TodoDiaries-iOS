@@ -10,15 +10,15 @@ import FirebaseAuthUI
 import FirebaseGoogleAuthUI
 import FirebaseOAuthUI
 
-struct FirebaseUIView: UIViewControllerRepresentable {
+struct FirebaseAuthView: UIViewControllerRepresentable {
     
     @Binding var isShowSheet: Bool
 
     class Coordinator: NSObject, FUIAuthDelegate {
         
-        let parent: FirebaseUIView
+        let parent: FirebaseAuthView
 
-        init(_ parent: FirebaseUIView) {
+        init(_ parent: FirebaseAuthView) {
             self.parent = parent
         }
         
