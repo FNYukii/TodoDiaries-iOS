@@ -24,7 +24,7 @@ struct FirebaseAuthView: UIViewControllerRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-
+    
     func makeUIViewController(context: Context) -> UINavigationController {
         
         // Get FirebaseUI

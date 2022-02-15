@@ -68,7 +68,6 @@ struct FourthView: View {
         .navigationViewStyle(StackNavigationViewStyle())
         
         .onAppear {
-                        
             // Read user email
             let userEmail = Auth.auth().currentUser?.email
             if let userEmail = userEmail {
@@ -96,7 +95,7 @@ struct FourthView: View {
                     if let querySnapshot = querySnapshot {
                         todoCount = querySnapshot.documents.count
                     }
-            }
+                }
             
             // Read achieved todo count
             db.collection("todos")
@@ -111,7 +110,7 @@ struct FourthView: View {
                     if let querySnapshot = querySnapshot {
                         achievementCount = querySnapshot.documents.count
                     }
-            }
+                }
         }
         
     }

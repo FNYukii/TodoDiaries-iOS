@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AchievementSection: View {
-        
+    
     private let title: String
     
     @ObservedObject private var todosViewModel: TodosViewModel

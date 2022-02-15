@@ -9,7 +9,7 @@ import Firebase
 import SwiftUI
 
 class TodosViewModel: ObservableObject {
-        
+    
     @Published var todos: [Todo] = []
     
     init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
@@ -41,7 +41,7 @@ class TodosViewModel: ObservableObject {
                 .whereField("achievedDay", isEqualTo: achievedDay)
                 .order(by: "achievedAt")
         }
-            
+        
         query
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
@@ -49,7 +49,7 @@ class TodosViewModel: ObservableObject {
                     return
                 }
                 print("HELLO! Success! Read documents from todos")
-                                
+                
                 snapshot.documentChanges.forEach { diff in
                     if diff.type == .added {
                         let newTodo = Todo(document: diff.document)
