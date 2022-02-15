@@ -25,22 +25,24 @@ class DaysViewModel: ObservableObject {
                 print("HELLO! Success! Read documents in todos")
                 
                 // 達成済みTodoの配列
-                var achievedTodos: [Todo] = []
+                var newAchievedTodos: [Todo] = []
                 documents.forEach { document in
                     let todo = Todo(document: document)
-                    achievedTodos.append(todo)
+                    newAchievedTodos.append(todo)
                 }
                 
                 // Todo達成日の配列
-                var achievedDays: [Int] = []
-                for todo in achievedTodos {
+                var newAchievedDays: [Int] = []
+                for todo in newAchievedTodos {
                     let achievedDay = todo.achievedDay!
-                    achievedDays.append(achievedDay)
+                    newAchievedDays.append(achievedDay)
                 }
                 // 配列から重複した要素を削除
-                achievedDays = NSOrderedSet(array: achievedDays).array as! [Int]
+                newAchievedDays = NSOrderedSet(array: newAchievedDays).array as! [Int]
                 
-                self.achievedDays = achievedDays
+                if self.achievedDays != newAchievedDays {
+                    self.achievedDays = newAchievedDays
+                }
             }
     }
 }
