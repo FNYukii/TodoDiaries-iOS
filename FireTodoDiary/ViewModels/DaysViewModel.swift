@@ -40,6 +40,7 @@ class DaysViewModel: ObservableObject {
                 // 配列から重複した要素を削除
                 achievedDays = NSOrderedSet(array: achievedDays).array as! [Int]
                 
+                print("HELLO! achievedDays: \(achievedDays)")
                 self.achievedDays = achievedDays
             }
     }
