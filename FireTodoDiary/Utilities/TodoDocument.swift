@@ -5,7 +5,6 @@
 //  Created by Yu on 2022/02/15.
 //
 
-import Foundation
 import Firebase
 
 class TodoDocument {
@@ -21,7 +20,7 @@ class TodoDocument {
                 "userId": userId,
                 "content": content,
                 "createdAt": Date(),
-                "isPinned": isPinned,
+                "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
                 "achievedAt": (isAchieved ? achievedAt : nil) as Any,
                 "achievedDay": (isAchieved ? Day.toInt(from: achievedAt) : nil) as Any
@@ -40,7 +39,7 @@ class TodoDocument {
             .document(id)
             .updateData([
                 "content": content,
-                "isPinned": isPinned,
+                "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
                 "achievedAt": (isAchieved ? achievedAt : nil) as Any,
                 "achievedDay": (isAchieved ? Day.toInt(from: achievedAt) : nil) as Any
@@ -74,6 +73,7 @@ class TodoDocument {
         db.collection("todos")
             .document(id)
             .updateData([
+                "isPinned": false,
                 "isAchieved": isAchieved,
                 "achievedAt": (isAchieved ? now : nil) as Any,
                 "achievedDay": (isAchieved ? Day.toInt(from: now) : nil) as Any

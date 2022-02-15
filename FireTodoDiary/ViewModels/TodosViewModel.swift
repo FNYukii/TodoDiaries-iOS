@@ -5,7 +5,6 @@
 //  Created by Yu on 2022/02/11.
 //
 
-import Foundation
 import Firebase
 import SwiftUI
 
@@ -13,7 +12,7 @@ class TodosViewModel: ObservableObject {
         
     @Published var todos: [Todo] = []
     
-    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil, isWithAnimation: Bool = false) {
+    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
         let db = Firestore.firestore()
         
         var query = db.collection("todos")
@@ -46,48 +45,25 @@ class TodosViewModel: ObservableObject {
                     return
                 }
                 print("HELLO! Success! Read documents from todos")
-                
-                if !isWithAnimation {
-                    var newTodos: [Todo] = []
-                    snapshot.documents.forEach { document in
-                        let newTodo = Todo(document: document)
-                        newTodos.append(newTodo)
+                                
+                snapshot.documentChanges.forEach { diff in
+                    if diff.type == .added {
+                        let newTodo = Todo(document: diff.document)
+                        withAnimation {
+                            self.todos.append(newTodo)
+                        }
                     }
-                    self.todos = newTodos
-                }
-                
-                if isWithAnimation {
-                    snapshot.documentChanges.forEach { diff in
-                        if diff.type == .added {
-                            let newTodo = Todo(document: diff.document)
-                            if isWithAnimation {
-                                withAnimation {
-                                    self.todos.append(newTodo)
-                                }
-                            } else {
-                                self.todos.append(newTodo)
-                            }
+                    if diff.type == .modified {
+                        let newTodo = Todo(document: diff.document)
+                        let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
+                        withAnimation {
+                            self.todos[index] = newTodo
                         }
-                        if diff.type == .modified {
-                            let newTodo = Todo(document: diff.document)
-                            let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
-                            if isWithAnimation {
-                                withAnimation {
-                                    self.todos[index] = newTodo
-                                }
-                            } else {
-                                self.todos[index] = newTodo
-                            }
-                        }
-                        if diff.type == .removed {
-                            let id = diff.document.documentID
-                            if isWithAnimation {
-                                withAnimation {
-                                    self.todos.removeAll(where: {$0.id == id})
-                                }
-                            } else {
-                                self.todos.removeAll(where: {$0.id == id})
-                            }
+                    }
+                    if diff.type == .removed {
+                        let id = diff.document.documentID
+                        withAnimation {
+                            self.todos.removeAll(where: {$0.id == id})
                         }
                     }
                 }
