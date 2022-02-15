@@ -33,7 +33,7 @@ struct ContentView: View {
                     }
                 FourthView()
                     .tabItem {
-                        Label("profile", systemImage: "person")
+                        Label("account", systemImage: "person")
                     }
             }
         }

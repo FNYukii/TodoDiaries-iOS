@@ -59,7 +59,7 @@ struct FourthView: View {
                 }
             }
             
-            .navigationBarTitle("profile")
+            .navigationBarTitle("account")
         }
         .navigationViewStyle(StackNavigationViewStyle())
         
