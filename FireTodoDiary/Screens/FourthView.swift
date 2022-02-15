@@ -9,6 +9,11 @@ import SwiftUI
 import FirebaseAuth
 
 struct FourthView: View {
+    
+    @State private var userEmail = ""
+    @State private var todoCount = 0
+    @State private var achievementCount = 0
+    
     var body: some View {
         NavigationView {
             Form {
@@ -16,7 +21,7 @@ struct FourthView: View {
                 HStack {
                     Text("email")
                     Spacer()
-                    Text("\("example@gmail.com")")
+                    Text(userEmail)
                         .foregroundColor(.secondary)
                 }
                 
@@ -49,5 +54,13 @@ struct FourthView: View {
             .navigationBarTitle("profile")
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        
+        .onAppear {
+            let userEmail = Auth.auth().currentUser?.email
+            if let userEmail = userEmail {
+                self.userEmail = userEmail
+            }
+        }
+        
     }
 }
