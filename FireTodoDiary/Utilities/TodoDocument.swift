@@ -9,14 +9,28 @@ import Firebase
 
 class TodoDocument {
     
+    static func readCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: isAchieved)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read documents in todos")
+                if let querySnapshot = querySnapshot {
+                    let todoCount = querySnapshot.documents.count
+                    completion?(todoCount)
+                }
+            }
+    }
+    
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        
-        // User id
-        var userId = ""
-        let user = Auth.auth().currentUser
-        if let user = user {
-            userId = user.uid
-        }
+        // user id
+        let userId = CurrentUser.userId()
         
         // Add new document
         let db = Firestore.firestore()

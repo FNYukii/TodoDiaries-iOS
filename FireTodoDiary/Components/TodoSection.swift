@@ -35,7 +35,7 @@ struct TodoSection: View {
                 //TODO: Update order
             }
         }
-            
+        
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
                 TodoDocument.delete(id: todoUnderConfirm!.id)

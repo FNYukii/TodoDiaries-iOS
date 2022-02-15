@@ -12,13 +12,8 @@ class DaysViewModel: ObservableObject {
     @Published var achievedDays: [Int] = []
     
     init() {
-        
         // User id
-        var userId = ""
-        let user = Auth.auth().currentUser
-        if let user = user {
-            userId = user.uid
-        }
+        let userId = CurrentUser.userId()
         
         let db = Firestore.firestore()
         db.collection("todos")

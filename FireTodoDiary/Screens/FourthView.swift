@@ -6,13 +6,12 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct FourthView: View {
     
     @State private var userEmail = ""
-    @State private var todoCount = 0
-    @State private var achievementCount = 0
+    @State private var unachievedTodoCount = 0
+    @State private var achievedTodoCount = 0
     
     @State private var isConfirming = false
     
@@ -31,13 +30,13 @@ struct FourthView: View {
                     HStack {
                         Text("todos")
                         Spacer()
-                        Text("5")
+                        Text(String(unachievedTodoCount))
                             .foregroundColor(.secondary)
                     }
                     HStack {
                         Text("achievements")
                         Spacer()
-                        Text("23")
+                        Text(String(achievedTodoCount))
                             .foregroundColor(.secondary)
                     }
                 }
@@ -51,22 +50,26 @@ struct FourthView: View {
             
             .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("signOut", role: .destructive) {
-                    do {
-                        try Auth.auth().signOut()
-                    } catch {
-                        print("HELLO! Fail! Error signing out")
-                    }
+                    CurrentUser.signOut()
                 }
             }
             
-            .navigationBarTitle("profile")
+            .navigationBarTitle("account")
         }
         .navigationViewStyle(StackNavigationViewStyle())
         
         .onAppear {
-            let userEmail = Auth.auth().currentUser?.email
-            if let userEmail = userEmail {
-                self.userEmail = userEmail
+            // Read user email
+            userEmail = CurrentUser.email()
+            
+            // Read unachieved todo count
+            TodoDocument.readCount(isAchieved: false) {count in
+                unachievedTodoCount = count
+            }
+            
+            // Read unachieved todo count
+            TodoDocument.readCount(isAchieved: true) {count in
+                achievedTodoCount = count
             }
         }
         
