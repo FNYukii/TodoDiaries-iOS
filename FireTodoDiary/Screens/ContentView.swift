@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
                 ThirdView()
                     .tabItem {
-                        Label("achievementGraph", systemImage: "chart.xyaxis.line")
+                        Label("calendar", systemImage: "calendar")
                     }
                 FourthView()
                     .tabItem {
