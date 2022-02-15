@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct ThirdView: View {
+        
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            
+            TabView() {
+                ForEach(-5..<6){ index in
+                    Text("\(index)")
+                }
+            }
+            .tabViewStyle(PageTabViewStyle())
+            
+            .navigationTitle("calendar")
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
