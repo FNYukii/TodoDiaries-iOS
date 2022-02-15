@@ -20,11 +20,14 @@ struct FourthView: View {
         NavigationView {
             Form {
                 
-                HStack {
-                    Text("email")
-                    Spacer()
-                    Text(userEmail)
-                        .foregroundColor(.secondary)
+                ScrollView(.horizontal) {
+                    HStack {
+                        Text("email")
+                        Spacer()
+                        Text(userEmail)
+                            .foregroundColor(.secondary)
+                            .lineLimit(1)
+                    }
                 }
                 
                 Section(header: Text("stats")) {
