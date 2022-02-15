@@ -20,7 +20,7 @@ struct WelcomeView: View {
         }
         
         .sheet(isPresented: $isShowSheet) {
-            FirebaseAuthView(isShowSheet: $isShowSheet)
+            FirebaseAuthView()
         }
         
     }
