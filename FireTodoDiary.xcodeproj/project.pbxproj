@@ -24,7 +24,7 @@
 		5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6627B674DE007D98B0 /* ThirdView.swift */; };
 		5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6827B68658007D98B0 /* CustomEditButton.swift */; };
 		54491F6427B9885900E784D4 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6327B9885900E784D4 /* Day.swift */; };
-		54491F6827B99A1500E784D4 /* AchievedTodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6727B99A1500E784D4 /* AchievedTodoSection.swift */; };
+		54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6727B99A1500E784D4 /* AchievementSection.swift */; };
 		54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */; };
 		54491F7027BA101400E784D4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54491F6F27BA101400E784D4 /* Introspect */; };
 		54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54491F7527BA7F8900E784D4 /* Localizable.strings */; };
@@ -57,7 +57,7 @@
 		5418DC6627B674DE007D98B0 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		5418DC6827B68658007D98B0 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
 		54491F6327B9885900E784D4 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		54491F6727B99A1500E784D4 /* AchievedTodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedTodoSection.swift; sourceTree = "<group>"; };
+		54491F6727B99A1500E784D4 /* AchievementSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSection.swift; sourceTree = "<group>"; };
 		54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
 		54491F7427BA7F8900E784D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7627BA7F8F00E784D4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 			children = (
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
 				54491F7927BACEB700E784D4 /* TodoSection.swift */,
-				54491F6727B99A1500E784D4 /* AchievedTodoSection.swift */,
+				54491F6727B99A1500E784D4 /* AchievementSection.swift */,
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
 			);
 			path = Components;
@@ -282,7 +282,7 @@
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */,
-				54491F6827B99A1500E784D4 /* AchievedTodoSection.swift in Sources */,
+				54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */,
 				547F370127BBC2CE00B18176 /* FourthView.swift in Sources */,
