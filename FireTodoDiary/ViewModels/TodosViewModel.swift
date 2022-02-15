@@ -14,27 +14,23 @@ class TodosViewModel: ObservableObject {
     
     init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
         let db = Firestore.firestore()
-        
         var query = db.collection("todos")
             .whereField("userId", isEqualTo: "helloHelloMan")
         
-        if isPinned != nil {
+        if let isPinned = isPinned {
             query = query
-                .whereField("isPinned", isEqualTo: isPinned!)
+                .whereField("isPinned", isEqualTo: isPinned)
         }
         
-        if isAchieved != nil {
+        if let isAchieved = isAchieved {
             query = query
-                .whereField("isAchieved", isEqualTo: isAchieved!)
+                .whereField("isAchieved", isEqualTo: isAchieved)
+                .order(by: "achievedAt")
         }
         
-        if achievedDay != nil {
+        if let achievedDay = achievedDay {
             query = query
-                .whereField("achievedDay", isEqualTo: achievedDay!)
-        }
-        
-        if isAchieved == true || achievedDay != nil {
-            query = query
+                .whereField("achievedDay", isEqualTo: achievedDay)
                 .order(by: "achievedAt")
         }
             
