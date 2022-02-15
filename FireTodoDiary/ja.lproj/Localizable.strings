@@ -13,7 +13,7 @@
 
 "achievements" = "実績";
 "calendar" = "カレンダー";
-"account" = "アカウント";
+"profile" = "プロフィール";
 
 "achievedAt" = "達成日時";
 "others" = "その他";
@@ -45,4 +45,4 @@
 
 // Question
 "areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
-"areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";
+"areYouSureYouWantToSignOut" = "ログアウトしてもよろしいですか?";
