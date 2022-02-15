@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ThirdView: View {
+    
+    @State private var selection = 0
         
     var body: some View {
         NavigationView {
             
-            TabView() {
-                ForEach(-5..<6){ index in
-                    Text("\(index)")
+            TabView(selection: $selection) {
+                ForEach(-50..<51){ index in
+                    Text("\(index)").tag(index)
                 }
             }
             .tabViewStyle(PageTabViewStyle())
