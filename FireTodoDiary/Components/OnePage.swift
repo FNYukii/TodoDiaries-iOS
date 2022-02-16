@@ -28,12 +28,13 @@ struct OnePage: View {
         
         ZStack {
             
-            VStack {
+            VStack(alignment: .leading) {
                 Text("\(showYear)年 \(showMonth)月")
+                    .font(.title)
                 BarChart(achievedTodoCounts: achievedTodoCounts)
-                    .frame(height: 300)
                 Spacer()
             }
+            .frame(height: 300)
             
             if isLoading {
                 ProgressView()
