@@ -6,16 +6,23 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseDatabase
 
 struct OnePage: View {
     
     private let showYear: Int
     private let showMonth: Int
     
+    private var achievedTodoCounts: [Int] = []
+    
     init(monthOffset: Int){
         let date = Day.shiftedDate(monthOffset: monthOffset)
         self.showYear = Calendar.current.component(.year, from: date)
         self.showMonth = Calendar.current.component(.month, from: date)
+        
+        let ref: DatabaseReference = Database.database().reference()
+        
     }
     
     var body: some View {
