@@ -13,6 +13,8 @@ struct ThirdView: View {
     
     @State private var unachievedTodoCount = 0
     @State private var achievedTodoCount = 0
+    
+    @State private var isShowAccountSheet = false
         
     var body: some View {
         NavigationView {
@@ -46,7 +48,21 @@ struct ThirdView: View {
                 
             }
             
+            .sheet(isPresented: $isShowAccountSheet) {
+                AccountView()
+            }
+            
             .navigationTitle("stats")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        isShowAccountSheet.toggle()
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title3)
+                    }
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
         

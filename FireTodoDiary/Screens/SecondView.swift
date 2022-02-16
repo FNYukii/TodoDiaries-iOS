@@ -13,6 +13,7 @@ struct SecondView: View {
     
     @State private var achievedDays: [Int] = []
     @State private var isShowEditSheet = false
+    @State private var isShowAccountSheet = false
     
     var body: some View {
         NavigationView {
@@ -22,7 +23,21 @@ struct SecondView: View {
                 }
             }
             
+            .sheet(isPresented: $isShowAccountSheet) {
+                AccountView()
+            }
+            
             .navigationTitle("achievements")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        isShowAccountSheet.toggle()
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title3)
+                    }
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

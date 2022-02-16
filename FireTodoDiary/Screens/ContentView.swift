@@ -31,10 +31,6 @@ struct ContentView: View {
                     .tabItem {
                         Label("stats", systemImage: "chart.bar.xaxis")
                     }
-                FourthView()
-                    .tabItem {
-                        Label("account", systemImage: "person")
-                    }
             }
         }
     }

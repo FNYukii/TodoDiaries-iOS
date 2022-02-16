@@ -13,6 +13,7 @@ struct FirstView: View {
     @ObservedObject private var unpinnedTodosViewModel = TodosViewModel(isPinned: false, isAchieved: false)
     
     @State private var isShowCreateSheet = false
+    @State private var isShowAccountSheet = false
     
     var body: some View {
         NavigationView {
@@ -29,6 +30,9 @@ struct FirstView: View {
             .sheet(isPresented: $isShowCreateSheet) {
                 CreateTodoView()
             }
+            .sheet(isPresented: $isShowAccountSheet) {
+                AccountView()
+            }
             
             .navigationTitle("todos")
             .toolbar {
@@ -41,7 +45,12 @@ struct FirstView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    CustomEditButton()
+                    Button(action: {
+                        isShowAccountSheet.toggle()
+                    }) {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title3)
+                    }
                 }
             }
         }
