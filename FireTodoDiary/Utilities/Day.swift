@@ -11,10 +11,9 @@ class Day {
     
     // Date -> 20220214
     static func toInt(from: Date) -> Int {
-        let calendar = Calendar(identifier: .gregorian)
-        let year = calendar.component(.year, from: from)
-        let month = calendar.component(.month, from: from)
-        let day = calendar.component(.day, from: from)
+        let year = Calendar.current.component(.year, from: from)
+        let month = Calendar.current.component(.month, from: from)
+        let day = Calendar.current.component(.day, from: from)
         return year * 10000 + month * 100 + day
     }
     
