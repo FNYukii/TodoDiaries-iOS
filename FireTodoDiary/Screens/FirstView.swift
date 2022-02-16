@@ -49,7 +49,7 @@ struct FirstView: View {
                         isShowAccountSheet.toggle()
                     }) {
                         Image(systemName: "person.crop.circle")
-                            .font(.title3)
+                            .font(.title2)
                     }
                 }
             }
