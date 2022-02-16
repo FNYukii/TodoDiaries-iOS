@@ -35,15 +35,20 @@ struct OnePage: View {
                 .reference()
                     
             databaseReference
-                .child("achievedTodoCounts/helloMan/202201/1")
+                .child("achievedTodoCounts/helloMan/202201")
                 .getData(completion:  { error, snapshot in
-                    guard error == nil else {
-                        print(error!.localizedDescription)
+                    if let error = error {
+                        print(error.localizedDescription)
                         return
                     }
-                    let count = snapshot.value as? Int
-                    if let count = count {
-                        print("now: \(self.showYear) - \(self.showMonth), count: \(count)")
+                    
+                    let counts = snapshot.value as? NSArray
+                    if let counts = counts {
+                        
+                        let countsArray = counts as! [Int?]
+                        print("now: \(self.showYear) - \(self.showMonth), counts: \(countsArray)")
+                    } else {
+                        print("counts: nil")
                     }
                 })
         }
