@@ -28,7 +28,6 @@ class FirestoreTodo {
             }
     }
     
-    // TODO: Use
     static func readCount(achievedDay: Int, completion: ((Int) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
@@ -48,20 +47,33 @@ class FirestoreTodo {
             }
     }
     
-    // TODO: Use
     static func readAchievedTodoCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+        // for内の非同期処理でappendしていくので、順序がずれる。Dictionaryなら後で整列できる。
+        var achievedTodoCountsDic: [Int: Int] = [:]
+        
+        // 日数分ループ 0日...30日
         let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
-        
-        var achievedTodoCounts: [Int] = []
         for index in (0 ..< dayCount) {
+                        
+            // 指定日に達成したTodoの数を取得
             let achievedDay = Day.toInt(year: year, month: month, day: index + 1)
-            print(achievedDay)
-            // TODO: 指定日に達成したTodoの数を取得
-            let achievedTodoCount = 5
-            achievedTodoCounts.append(achievedTodoCount)
+            readCount(achievedDay: achievedDay) { todoCount in
+                
+                // todoCountをDictionaryに追加
+                achievedTodoCountsDic[index] = todoCount
+                
+                // Dictionaryに全ての日のtodoCountを追加できたら、整列された配列を生成
+                if achievedTodoCountsDic.count >= dayCount {
+                    var achievedTodoCounts: [Int] = []
+                    for index in 0 ..< achievedTodoCountsDic.count {
+                        achievedTodoCounts.append(achievedTodoCountsDic[index]!)
+                        
+                    }
+                    // 大成功!
+                    completion?(achievedTodoCounts)
+                }
+            }
         }
-        
-        completion?(achievedTodoCounts)
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {

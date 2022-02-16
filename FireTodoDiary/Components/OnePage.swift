@@ -42,7 +42,7 @@ struct OnePage: View {
         .onAppear {
             // Read achievedTodoCounts
             isLoading = true
-            RealtimeDB.readAchievedTodoCounts(showYear: showYear, showMonth: showMonth) { achievedTodoCounts in
+            FirestoreTodo.readAchievedTodoCounts(year: showYear, month: showMonth) { achievedTodoCounts in
                 self.achievedTodoCounts = achievedTodoCounts
                 isLoading = false
             }
