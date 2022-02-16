@@ -16,6 +16,7 @@ struct OnePage: View {
     
     // 表示月の日別Todo達成数 例:[2, 4, 6, 1, 8, 12, 4, 2, ...] 要素数は表示月の日数
     @State private var achievedTodoCounts: [Int] = []
+    @State private var isLoading = false
     
     init(monthOffset: Int){
         let date = Day.shiftedDate(monthOffset: monthOffset)
@@ -25,15 +26,25 @@ struct OnePage: View {
     
     var body: some View {
         
-        VStack {
-            Text("\(showYear)年 \(showMonth)月")
-            LineChart(achievedTodoCounts: achievedTodoCounts)
+        ZStack {
+            
+            VStack {
+                Text("\(showYear)年 \(showMonth)月")
+                LineChart(achievedTodoCounts: achievedTodoCounts)
+            }
+            
+            if isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
         }
         
         .onAppear {
             // Read achievedTodoCounts
+            isLoading = true
             RealtimeDB.readAchievedTodoCounts(showYear: showYear, showMonth: showMonth) { achievedTodoCounts in
                 self.achievedTodoCounts = achievedTodoCounts
+                isLoading = false
             }
         }
         
