@@ -31,6 +31,8 @@ struct OnePage: View {
             VStack {
                 Text("\(showYear)年 \(showMonth)月")
                 LineChart(achievedTodoCounts: achievedTodoCounts)
+                    .frame(height: 300)
+                Spacer()
             }
             
             if isLoading {
