@@ -147,13 +147,13 @@
 			children = (
 				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
 				547F36FE27BBA05A00B18176 /* WelcomeView.swift */,
+				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
 				5418DC6227B673DB007D98B0 /* FirstView.swift */,
 				5418DC6427B674CF007D98B0 /* SecondView.swift */,
 				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
 				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
 				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
 				547F373A27BD815E00B18176 /* AccountView.swift */,
-				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -174,8 +174,8 @@
 				54491F6727B99A1500E784D4 /* AchievementSection.swift */,
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
 				547F370427BC06D100B18176 /* OnePage.swift */,
-				547F370927BCB24600B18176 /* LineChart.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
+				547F370927BCB24600B18176 /* LineChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
