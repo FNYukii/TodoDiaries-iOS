@@ -18,6 +18,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.legend.enabled = false //チャートの概要非表示
         barChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 縦グリッドの色
         barChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
+        barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
         barChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
         barChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
         barChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの区切り地
