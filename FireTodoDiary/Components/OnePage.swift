@@ -14,24 +14,39 @@ struct OnePage: View {
     private let showYear: Int
     private let showMonth: Int
     
-    private var achievedTodoCounts: [Int] = []
+    @State private var achievedTodoCounts: [Int] = []
     
     init(monthOffset: Int){
         let date = Day.shiftedDate(monthOffset: monthOffset)
         self.showYear = Calendar.current.component(.year, from: date)
         self.showMonth = Calendar.current.component(.month, from: date)
-        
-        let ref: DatabaseReference = Database.database().reference()
-        
     }
     
     var body: some View {
         
         VStack {
             Text("\(showYear)年 \(showMonth)月")
-            LineChart(showYear: showYear, showMonth: showMonth)
+//            LineChart(showYear: showYear, showMonth: showMonth)
         }
         
+        .onAppear {
+            let databaseReference = Database
+                .database(url: "https://firetododiary-default-rtdb.asia-southeast1.firebasedatabase.app")
+                .reference()
+                    
+            databaseReference
+                .child("achievedTodoCounts/helloMan/202201/1")
+                .getData(completion:  { error, snapshot in
+                    guard error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    let count = snapshot.value as? Int
+                    if let count = count {
+                        print("now: \(self.showYear) - \(self.showMonth), count: \(count)")
+                    }
+                })
+        }
         
     }
 }

@@ -15,7 +15,7 @@ struct ThirdView: View {
         NavigationView {
             
             TabView(selection: $selection) {
-                ForEach(-50 ..< 51){ index in
+                ForEach(-2 ..< 3){ index in
                     OnePage(monthOffset: index)
                         .tag(index)
                 }
