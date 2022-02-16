@@ -17,6 +17,11 @@ class Day {
         return year * 10000 + month * 100 + day
     }
     
+    // 2022, 2, 14 -> 20220214
+    static func toInt(year: Int, month: Int, day: Int) -> Int {
+        return year * 10000 + month * 100 + day
+    }
+    
     // 20210923 -> Date
     static func toDate(from: Int) -> Date {
         let year = from / 10000
