@@ -23,8 +23,8 @@ class Day {
         let year = from / 10000
         let month = (from % 10000) / 100
         let day = (from % 100)
-        let dateComponent = DateComponents(calendar: Calendar.current, year: year, month: month, day: day)
-        return dateComponent.date!
+        let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
+        return date
     }
     
     // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
