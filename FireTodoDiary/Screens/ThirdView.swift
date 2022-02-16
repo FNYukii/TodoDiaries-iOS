@@ -22,7 +22,7 @@ struct ThirdView: View {
             }
             .tabViewStyle(PageTabViewStyle())
             
-            .navigationTitle("calendar")
+            .navigationTitle("charts")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
