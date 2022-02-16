@@ -19,6 +19,12 @@ struct OnePage: View {
     }
     
     var body: some View {
-        Text("\(showYear)年 \(showMonth)月")
+        
+        VStack {
+            Text("\(showYear)年 \(showMonth)月")
+            LineChart(showYear: showYear, showMonth: showMonth)
+        }
+        
+        
     }
 }

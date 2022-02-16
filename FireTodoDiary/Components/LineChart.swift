@@ -17,16 +17,42 @@ struct LineChart : UIViewRepresentable {
     func makeUIView(context: Context) -> LineChartView {
         // LineChartViewを生成
         let lineChartView = LineChartView()
-        
-        // TODO: チャートのスタイルをカスタマイズ
+        lineChartView.legend.enabled = false //チャートのデータ概要非表示
+        lineChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
+        lineChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
+        lineChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの区切り地
+        lineChartView.doubleTapToZoomEnabled = false //ダブルタップによるズームを無効
+        lineChartView.scaleXEnabled = false //X軸ピンチアウトを無効
+        lineChartView.scaleYEnabled = false //Y軸ピンチアウトを無効
+        lineChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示を無効
+        lineChartView.highlightPerTapEnabled = false //タップによるハイライト線表示を無効
         
         return lineChartView
     }
     
     func updateUIView(_ uiView: LineChartView, context: Context) {
-        // TODO: 表示月の日数を取得
+        // 月の日数を取得
         let dayCountAtTheMonth = Day.dayCountAtTheMonth(year: showYear, month: showMonth)
         
         // TODO: 当月のTodo日別達成数の配列を生成
+        let achievedTodoCounts: [Int] = [2, 5, 1, 7]
+        
+        // ChartDataEntryを生成
+        var chartDataEntry : [ChartDataEntry] = []
+        for index in (0 ..< achievedTodoCounts.count) {
+            chartDataEntry.append(ChartDataEntry(x: Double(index + 1), y: Double(achievedTodoCounts[index])))
+        }
+        
+        // LineChartDataSetを生成
+        let lineChartDataSet = LineChartDataSet(entries: chartDataEntry)
+        lineChartDataSet.drawCirclesEnabled = false // 折れ線グラフのデータ値の丸を非表示
+        lineChartDataSet.setColor(UIColor.systemBlue) // 折れ線グラフの色
+        
+        // LineChartDataを生成
+        let lineChartData = LineChartData(dataSet: lineChartDataSet)
+        lineChartData.setDrawValues(false) // 折れ線グラフのデータ値非表示
+        
+        // LineChartViewが表示するデータを更新
+        uiView.data = lineChartData
     }
 }
