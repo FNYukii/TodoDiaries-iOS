@@ -30,7 +30,7 @@ struct OnePage: View {
             
             VStack {
                 Text("\(showYear)年 \(showMonth)月")
-                LineChart(achievedTodoCounts: achievedTodoCounts)
+                BarChart(achievedTodoCounts: achievedTodoCounts)
                     .frame(height: 300)
                 Spacer()
             }

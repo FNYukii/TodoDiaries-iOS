@@ -43,6 +43,7 @@
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
 		547F373327BD0C5B00B18176 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373227BD0C5B00B18176 /* FirebaseDatabase */; };
 		547F373527BD0C5B00B18176 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373427BD0C5B00B18176 /* FirebaseFirestore */; };
+		547F373927BD6C2C00B18176 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* BarChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		547F370427BC06D100B18176 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
 		547F370927BCB24600B18176 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
 				547F370427BC06D100B18176 /* OnePage.swift */,
 				547F370927BCB24600B18176 /* LineChart.swift */,
+				547F373827BD6C2C00B18176 /* BarChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */,
 				547F370127BBC2CE00B18176 /* FourthView.swift in Sources */,
+				547F373927BD6C2C00B18176 /* BarChart.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
 				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,
