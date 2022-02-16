@@ -29,7 +29,7 @@ struct ContentView: View {
                     }
                 ThirdView()
                     .tabItem {
-                        Label("charts", systemImage: "chart.bar.xaxis")
+                        Label("stats", systemImage: "chart.bar.xaxis")
                     }
                 FourthView()
                     .tabItem {

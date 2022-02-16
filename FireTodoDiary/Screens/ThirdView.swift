@@ -15,7 +15,7 @@ struct ThirdView: View {
         NavigationView {
             List {
                 
-                Section(header: Text("achievements")) {
+                Section(header: Text("charts")) {
                     TabView(selection: $selection) {
                         ForEach(-2 ..< 3){ index in
                             OnePage(monthOffset: index)
@@ -28,7 +28,7 @@ struct ThirdView: View {
                 
             }
             
-            .navigationTitle("charts")
+            .navigationTitle("stats")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
