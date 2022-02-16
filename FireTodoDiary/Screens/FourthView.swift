@@ -63,12 +63,12 @@ struct FourthView: View {
             userEmail = CurrentUser.email()
             
             // Read unachieved todo count
-            TodoDocument.readCount(isAchieved: false) {count in
+            FirestoreTodo.readCount(isAchieved: false) {count in
                 unachievedTodoCount = count
             }
             
             // Read unachieved todo count
-            TodoDocument.readCount(isAchieved: true) {count in
+            FirestoreTodo.readCount(isAchieved: true) {count in
                 achievedTodoCount = count
             }
         }

@@ -18,7 +18,7 @@ struct TodoContextMenuItems: View {
             
             if !todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    TodoDocument.update(id: todo.id, isPinned: true)
+                    FirestoreTodo.update(id: todo.id, isPinned: true)
                 }) {
                     Label("pin", systemImage: "pin")
                 }
@@ -26,7 +26,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    TodoDocument.update(id: todo.id, isPinned: false)
+                    FirestoreTodo.update(id: todo.id, isPinned: false)
                 }) {
                     Label("unpin", systemImage: "pin.slash")
                 }
@@ -34,7 +34,7 @@ struct TodoContextMenuItems: View {
             
             if !todo.isAchieved {
                 Button(action: {
-                    TodoDocument.update(id: todo.id, isAchieved: true)
+                    FirestoreTodo.update(id: todo.id, isAchieved: true)
                 }) {
                     Label("makeAchieved", systemImage: "checkmark")
                 }
@@ -42,7 +42,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isAchieved {
                 Button(action: {
-                    TodoDocument.update(id: todo.id, isAchieved: false)
+                    FirestoreTodo.update(id: todo.id, isAchieved: false)
                 }) {
                     Label("makeUnachieved", systemImage: "xmark")
                 }

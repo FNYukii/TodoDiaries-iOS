@@ -11,10 +11,14 @@ class Day {
     
     // Date -> 20220214
     static func toInt(from: Date) -> Int {
-        let calendar = Calendar(identifier: .gregorian)
-        let year = calendar.component(.year, from: from)
-        let month = calendar.component(.month, from: from)
-        let day = calendar.component(.day, from: from)
+        let year = Calendar.current.component(.year, from: from)
+        let month = Calendar.current.component(.month, from: from)
+        let day = Calendar.current.component(.day, from: from)
+        return year * 10000 + month * 100 + day
+    }
+    
+    // 2022, 2, 14 -> 20220214
+    static func toInt(year: Int, month: Int, day: Int) -> Int {
         return year * 10000 + month * 100 + day
     }
     
@@ -23,8 +27,8 @@ class Day {
         let year = from / 10000
         let month = (from % 10000) / 100
         let day = (from % 100)
-        let dateComponent = DateComponents(calendar: Calendar.current, year: year, month: month, day: day)
-        return dateComponent.date!
+        let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
+        return date
     }
     
     // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
@@ -47,13 +51,13 @@ class Day {
         return dateFormatter.string(from: from)
     }
     
-    // 5 -> 2022 (if now is Jan 2022)
-    static func shiftedYear(monthOffset: Int) -> Int {
+    // 月が前後にシフトされた年月
+    static func shiftedDate(monthOffset: Int) -> Date {
         // 現在の年と月を取得
         let now = Date()
         var year = Calendar.current.component(.year, from: now)
         var month = Calendar.current.component(.month, from: now)
-        // monthOffsetの数だけ次の月へ進む
+        // monthOffsetの数だけ次の月へシフト
         if monthOffset > 0 {
             for _ in 0 ..< monthOffset {
                 if month == 12 {
@@ -64,7 +68,7 @@ class Day {
                 }
             }
         }
-        // offsetの数だけ前の月へ戻る
+        // monthOffsetの数だけ前の月へシフト
         if monthOffset < 0 {
             let absoluteMonthOffset = -monthOffset
             for _ in 0 ..< absoluteMonthOffset {
@@ -76,39 +80,19 @@ class Day {
                 }
             }
         }
-        return year
+        // シフトされたyearとmonthをDate型変数に格納
+        let date = DateComponents(calendar: Calendar.current, year: year, month: month).date!
+        return date
     }
     
-    // 5 -> 6 (if now is Jan 2022)
-    static func shiftedMonth(monthOffset: Int) -> Int {
-        // 現在の年と月を取得
-        let now = Date()
-        var year = Calendar.current.component(.year, from: now)
-        var month = Calendar.current.component(.month, from: now)
-        // monthOffsetの数だけ次の月へ進む
-        if monthOffset > 0 {
-            for _ in 0 ..< monthOffset {
-                if month == 12 {
-                    month = 1
-                    year += 1
-                } else {
-                    month += 1
-                }
-            }
-        }
-        // offsetの数だけ前の月へ戻る
-        if monthOffset < 0 {
-            let absoluteMonthOffset = -monthOffset
-            for _ in 0 ..< absoluteMonthOffset {
-                if month == 1 {
-                    month = 12
-                    year -= 1
-                } else {
-                    month -= 1
-                }
-            }
-        }
-        return month
+    // その月の日数
+    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month + 1
+        dateComponents.day = 0
+        let date = Calendar.current.date(from: dateComponents)!
+        let dayCount = Calendar.current.component(.day, from: date)
+        return dayCount
     }
-    
 }

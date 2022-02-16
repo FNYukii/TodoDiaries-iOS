@@ -13,16 +13,22 @@ struct ThirdView: View {
         
     var body: some View {
         NavigationView {
-            
-            TabView(selection: $selection) {
-                ForEach(-50 ..< 51){ index in
-                    OnePage(monthOffset: index)
-                        .tag(index)
+            List {
+                
+                Section(header: Text("achievements")) {
+                    TabView(selection: $selection) {
+                        ForEach(-2 ..< 3){ index in
+                            OnePage(monthOffset: index)
+                                .tag(index)
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                    .frame(height: 400)
                 }
+                
             }
-            .tabViewStyle(PageTabViewStyle())
             
-            .navigationTitle("calendar")
+            .navigationTitle("charts")
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
