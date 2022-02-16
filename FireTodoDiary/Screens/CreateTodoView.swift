@@ -42,7 +42,8 @@ struct CreateTodoView: View {
                 }
             }
             
-            .navigationBarTitle("newTodo", displayMode: .inline)
+            .navigationTitle("newTodo")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("cancel"){

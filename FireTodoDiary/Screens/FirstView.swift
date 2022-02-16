@@ -30,7 +30,7 @@ struct FirstView: View {
                 CreateTodoView()
             }
             
-            .navigationBarTitle("todos")
+            .navigationTitle("todos")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
