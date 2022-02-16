@@ -28,6 +28,42 @@ class FirestoreTodo {
             }
     }
     
+    // TODO:
+    static func readCount(achievedDay: Int, completion: ((Int) -> Void)?) {
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("achievedDay", isEqualTo: achievedDay)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read documents in todos")
+                if let querySnapshot = querySnapshot {
+                    let todoCount = querySnapshot.documents.count
+                    completion?(todoCount)
+                }
+            }
+    }
+    
+    // TODO: 
+    static func readAchievedTodoCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+        let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
+        
+        var achievedTodoCounts: [Int] = []
+        for index in (0 ..< dayCount) {
+            let achievedDay = Day.toInt(year: year, month: month, day: index + 1)
+            print(achievedDay)
+            // TODO: 指定日に達成したTodoの数を取得
+            let achievedTodoCount = 5
+            achievedTodoCounts.append(achievedTodoCount)
+        }
+        
+        completion?(achievedTodoCounts)
+    }
+    
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // user id
         let userId = CurrentUser.userId()
