@@ -25,7 +25,7 @@ struct LineChart : UIViewRepresentable {
     
     func updateUIView(_ uiView: LineChartView, context: Context) {
         // TODO: 表示月の日数を取得
-        let dayCountOfTheMonth = Day.dayCountAtTheMonth(year: showYear, month: showMonth)
+        let dayCountAtTheMonth = Day.dayCountAtTheMonth(year: showYear, month: showMonth)
         
         // TODO: 当月のTodo日別達成数の配列を生成
     }
