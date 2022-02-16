@@ -28,7 +28,7 @@ class FirestoreTodo {
             }
     }
     
-    // TODO:
+    // TODO: Use
     static func readCount(achievedDay: Int, completion: ((Int) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
@@ -48,7 +48,7 @@ class FirestoreTodo {
             }
     }
     
-    // TODO: 
+    // TODO: Use
     static func readAchievedTodoCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
         let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
         
