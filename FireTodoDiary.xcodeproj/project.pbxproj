@@ -42,6 +42,8 @@
 		547F370527BC06D100B18176 /* OnePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370427BC06D100B18176 /* OnePage.swift */; };
 		547F370827BC8A5B00B18176 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547F370727BC8A5B00B18176 /* Charts */; };
 		547F370A27BCB24600B18176 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370927BCB24600B18176 /* LineChart.swift */; };
+		547F371327BCF44F00B18176 /* StatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F371227BCF44F00B18176 /* StatViewModel.swift */; };
+		547F371527BCF49B00B18176 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F371427BCF49B00B18176 /* Stat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		547F370427BC06D100B18176 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
 		547F370927BCB24600B18176 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		547F371227BCF44F00B18176 /* StatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatViewModel.swift; sourceTree = "<group>"; };
+		547F371427BCF49B00B18176 /* Stat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC5827B652C7007D98B0 /* Todo.swift */,
+				547F371427BCF49B00B18176 /* Stat.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 			children = (
 				5418DC5A27B6534D007D98B0 /* TodosViewModel.swift */,
 				54491F7D27BAE46000E784D4 /* DaysViewModel.swift */,
+				547F371227BCF44F00B18176 /* StatViewModel.swift */,
 				547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */,
 			);
 			path = ViewModels;
@@ -298,6 +304,7 @@
 				54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */,
 				54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
+				547F371327BCF44F00B18176 /* StatViewModel.swift in Sources */,
 				54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */,
 				547F370127BBC2CE00B18176 /* FourthView.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
@@ -306,6 +313,7 @@
 				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
 				547F370527BC06D100B18176 /* OnePage.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
+				547F371527BCF49B00B18176 /* Stat.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
