@@ -51,7 +51,7 @@ struct CreateTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        TodoDocument.create(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        FirestoreTodo.create(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
                         Text("add")

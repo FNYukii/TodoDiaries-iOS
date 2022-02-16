@@ -59,7 +59,7 @@ struct EditTodoView: View {
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
-                    TodoDocument.delete(id: id)
+                    FirestoreTodo.delete(id: id)
                     dismiss()
                 }
             }
@@ -73,7 +73,7 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        TodoDocument.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        FirestoreTodo.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         dismiss()
                     }){
                         Text("done")

@@ -7,7 +7,7 @@
 
 import Firebase
 
-class TodoDocument {
+class FirestoreTodo {
     
     static func readCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
         let userId = CurrentUser.userId()

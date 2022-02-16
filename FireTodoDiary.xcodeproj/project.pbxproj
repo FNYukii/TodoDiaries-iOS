@@ -25,7 +25,7 @@
 		54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */; };
 		54491F7027BA101400E784D4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54491F6F27BA101400E784D4 /* Introspect */; };
 		54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54491F7527BA7F8900E784D4 /* Localizable.strings */; };
-		54491F7827BAB33D00E784D4 /* TodoDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* TodoDocument.swift */; };
+		54491F7827BAB33D00E784D4 /* FirestoreTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* FirestoreTodo.swift */; };
 		54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7927BACEB700E784D4 /* TodoSection.swift */; };
 		54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7D27BAE46000E784D4 /* DaysViewModel.swift */; };
 		547F36F527BB9BBC00B18176 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F427BB9BBC00B18176 /* FirebaseAuthUI */; };
@@ -66,7 +66,7 @@
 		54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
 		54491F7427BA7F8900E784D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7627BA7F8F00E784D4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		54491F7727BAB33D00E784D4 /* TodoDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDocument.swift; sourceTree = "<group>"; };
+		54491F7727BAB33D00E784D4 /* FirestoreTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTodo.swift; sourceTree = "<group>"; };
 		54491F7927BACEB700E784D4 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
 		54491F7D27BAE46000E784D4 /* DaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewModel.swift; sourceTree = "<group>"; };
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		54491F6A27B9FD1100E784D4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				54491F7727BAB33D00E784D4 /* TodoDocument.swift */,
+				54491F7727BAB33D00E784D4 /* FirestoreTodo.swift */,
 				54491F6327B9885900E784D4 /* Day.swift */,
 				547F370227BBE61800B18176 /* CurrentUser.swift */,
 			);
@@ -291,7 +291,7 @@
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
 				547F370A27BCB24600B18176 /* LineChart.swift in Sources */,
-				54491F7827BAB33D00E784D4 /* TodoDocument.swift in Sources */,
+				54491F7827BAB33D00E784D4 /* FirestoreTodo.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* TodosViewModel.swift in Sources */,
 				54491F6427B9885900E784D4 /* Day.swift in Sources */,
