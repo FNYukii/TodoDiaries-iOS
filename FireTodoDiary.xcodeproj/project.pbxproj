@@ -41,6 +41,7 @@
 		547F370327BBE61800B18176 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* CurrentUser.swift */; };
 		547F370527BC06D100B18176 /* OnePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370427BC06D100B18176 /* OnePage.swift */; };
 		547F370827BC8A5B00B18176 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547F370727BC8A5B00B18176 /* Charts */; };
+		547F370A27BCB24600B18176 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370927BCB24600B18176 /* LineChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		547F370027BBC2CE00B18176 /* FourthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthView.swift; sourceTree = "<group>"; };
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		547F370427BC06D100B18176 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
+		547F370927BCB24600B18176 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				54491F6727B99A1500E784D4 /* AchievementSection.swift */,
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
 				547F370427BC06D100B18176 /* OnePage.swift */,
+				547F370927BCB24600B18176 /* LineChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */,
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
+				547F370A27BCB24600B18176 /* LineChart.swift in Sources */,
 				54491F7827BAB33D00E784D4 /* TodoDocument.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* TodosViewModel.swift in Sources */,
