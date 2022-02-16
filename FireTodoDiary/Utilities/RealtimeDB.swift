@@ -14,16 +14,19 @@ class RealtimeDB {
         let yyyyMm = showYear * 100 + showMonth
         print("yyyyMn: \(yyyyMm)")
         
+//        let userId = CurrentUser.userId()
+        let userId = "helloMan"
+        
         // Realtime Databaseから読み取り
         Database.database(url: "https://firetododiary-default-rtdb.asia-southeast1.firebasedatabase.app")
             .reference()
-            .child("achievedTodoCounts/helloMan/\(yyyyMm)")
+            .child("achievedTodoCounts/\(userId)/\(yyyyMm)")
             .getData(completion:  { error, snapshot in
                 if error != nil {
-                    print("HELLO! Fail! Error reading /achievedTodoCounts/helloMan/\(yyyyMm)")
+                    print("HELLO! Fail! Error reading /achievedTodoCounts/\(userId)/\(yyyyMm)")
                     completion?([])
                 }
-                print("HELLO! Success! Read /achievedTodoCounts/helloMan/\(yyyyMm)")
+                print("HELLO! Success! Read /achievedTodoCounts/\(userId)/\(yyyyMm)")
                 
                 // オプショナル型のachievedTodoCountsを生成
                 let countsNSArray = snapshot.value as? NSArray ?? []
