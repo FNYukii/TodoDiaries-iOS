@@ -51,7 +51,7 @@ class Day {
         return dateFormatter.string(from: from)
     }
     
-    // 5 -> June 2022 (if now is Jan 2022)
+    // 月が前後にシフトされた年月
     static func shiftedDate(monthOffset: Int) -> Date {
         // 現在の年と月を取得
         let now = Date()
@@ -85,7 +85,7 @@ class Day {
         return date
     }
     
-    // 1, 2022 -> 31
+    // その月の日数
     static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
         var dateComponents = DateComponents()
         dateComponents.year = year
