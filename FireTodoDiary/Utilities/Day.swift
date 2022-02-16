@@ -79,4 +79,15 @@ class Day {
         let date = DateComponents(calendar: Calendar.current, year: year, month: month).date!
         return date
     }
+    
+    // 1, 2022 -> 31
+    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month + 1
+        dateComponents.day = 0
+        let date = Calendar.current.date(from: dateComponents)!
+        let dayCount = Calendar.current.component(.day, from: date)
+        return dayCount
+    }
 }
