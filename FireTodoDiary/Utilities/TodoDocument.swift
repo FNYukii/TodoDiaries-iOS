@@ -28,20 +28,6 @@ class TodoDocument {
             }
     }
     
-    static func readAchievedTodoCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
-        let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
-        
-        var achievedTodoCounts: [Int] = []
-        for index in (0 ..< dayCount) {
-            let achievedDay = Day.toInt(year: year, month: month, day: index + 1)
-            // TODO: 指定日に達成したTodoの数を取得
-            let achievedTodoCount = 5
-            achievedTodoCounts.append(achievedTodoCount)
-        }
-        
-        completion?(achievedTodoCounts)
-    }
-    
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // user id
         let userId = CurrentUser.userId()
