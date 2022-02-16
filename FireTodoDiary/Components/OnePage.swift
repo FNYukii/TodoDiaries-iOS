@@ -30,26 +30,43 @@ struct OnePage: View {
         }
         
         .onAppear {
-            let databaseReference = Database
-                .database(url: "https://firetododiary-default-rtdb.asia-southeast1.firebasedatabase.app")
+            // 表示月の年と月を連結
+            let yyyyMm = showYear * 100 + showMonth
+            print("yyyyMn: \(yyyyMm)")
+            
+            // Realtime Databaseから読み取り
+            Database.database(url: "https://firetododiary-default-rtdb.asia-southeast1.firebasedatabase.app")
                 .reference()
-                    
-            databaseReference
-                .child("achievedTodoCounts/helloMan/202201")
+                .child("achievedTodoCounts/helloMan/\(yyyyMm)")
                 .getData(completion:  { error, snapshot in
-                    if let error = error {
-                        print(error.localizedDescription)
+                    if error != nil {
+                        print("HELLO! Fail! Error reading /achievedTodoCounts/helloMan/\(yyyyMm)")
                         return
                     }
+                    print("HELLO! Success! Read /achievedTodoCounts/helloMan/\(yyyyMm)")
                     
-                    let counts = snapshot.value as? NSArray
-                    if let counts = counts {
-                        
-                        let countsArray = counts as! [Int?]
-                        print("now: \(self.showYear) - \(self.showMonth), counts: \(countsArray)")
-                    } else {
-                        print("counts: nil")
+                    // achievedTodoCountsを生成
+                    let countsNSArray = snapshot.value as? NSArray ?? []
+                    var achievedTodoCounts = countsNSArray as! [Int?]
+                    
+                    // 表示月の日数
+                    let dayCount = Day.dayCountAtTheMonth(year: showYear, month: showMonth)
+                    
+                    // 要素数を表示月の日数に合わせる
+                    while achievedTodoCounts.count < dayCount {
+                        achievedTodoCounts.append(nil)
                     }
+                    
+                    // 配列内のnilを0に置き換える
+                    for index in 0 ..< achievedTodoCounts.count {
+                        if achievedTodoCounts[index] == nil {
+                            achievedTodoCounts[index] = 0
+                        }
+                    }
+                    
+                    // プロパティに適用
+                    self.achievedTodoCounts = achievedTodoCounts as! [Int]
+                    print("now: \(yyyyMm) counts: \(self.achievedTodoCounts)")
                 })
         }
         
