@@ -20,7 +20,7 @@ struct ThirdView: View {
                         .tag(index)
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             
             .navigationTitle("charts")
         }
