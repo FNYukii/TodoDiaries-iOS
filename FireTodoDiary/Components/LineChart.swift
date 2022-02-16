@@ -11,8 +11,7 @@ import Charts
 
 struct LineChart : UIViewRepresentable {
     
-    let showYear: Int
-    let showMonth: Int
+    let achievedTodoCounts: [Int]
     
     func makeUIView(context: Context) -> LineChartView {
         // LineChartViewを生成
@@ -31,12 +30,6 @@ struct LineChart : UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: LineChartView, context: Context) {
-        // 月の日数を取得
-//        let dayCountAtTheMonth = Day.dayCountAtTheMonth(year: showYear, month: showMonth)
-        
-        // TODO: 当月のTodo日別達成数の配列を生成
-        let achievedTodoCounts: [Int] = [2, 5, 1, 7]
-        
         // ChartDataEntryを生成
         var chartDataEntries : [ChartDataEntry] = []
         for index in (0 ..< achievedTodoCounts.count) {

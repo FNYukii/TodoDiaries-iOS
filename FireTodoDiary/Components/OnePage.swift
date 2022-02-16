@@ -26,7 +26,7 @@ struct OnePage: View {
         
         VStack {
             Text("\(showYear)年 \(showMonth)月")
-//            LineChart(showYear: showYear, showMonth: showMonth)
+            LineChart(achievedTodoCounts: achievedTodoCounts)
         }
         
         .onAppear {
