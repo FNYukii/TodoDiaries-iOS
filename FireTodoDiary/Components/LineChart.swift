@@ -33,24 +33,28 @@ struct LineChart : UIViewRepresentable {
     func updateUIView(_ uiView: LineChartView, context: Context) {
         // 月の日数を取得
         let dayCountAtTheMonth = Day.dayCountAtTheMonth(year: showYear, month: showMonth)
+        print(dayCountAtTheMonth)
         
         // TODO: 当月のTodo日別達成数の配列を生成
         let achievedTodoCounts: [Int] = [2, 5, 1, 7]
         
         // ChartDataEntryを生成
-        var chartDataEntry : [ChartDataEntry] = []
+        var chartDataEntries : [ChartDataEntry] = []
         for index in (0 ..< achievedTodoCounts.count) {
-            chartDataEntry.append(ChartDataEntry(x: Double(index + 1), y: Double(achievedTodoCounts[index])))
+            let day = Double(index + 1)
+            let achievedTodoCount = Double(achievedTodoCounts[index])
+            let chartDataEntry = ChartDataEntry(x: day, y: achievedTodoCount)
+            chartDataEntries.append(chartDataEntry)
         }
         
         // LineChartDataSetを生成
-        let lineChartDataSet = LineChartDataSet(entries: chartDataEntry)
+        let lineChartDataSet = LineChartDataSet(entries: chartDataEntries)
         lineChartDataSet.drawCirclesEnabled = false // 折れ線グラフのデータ値の丸を非表示
         lineChartDataSet.setColor(UIColor.systemBlue) // 折れ線グラフの色
         
         // LineChartDataを生成
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
-        lineChartData.setDrawValues(false) // 折れ線グラフのデータ値非表示
+        lineChartData.setDrawValues(false) // 折れ線グラフたちのデータ値非表示
         
         // LineChartViewが表示するデータを更新
         uiView.data = lineChartData
