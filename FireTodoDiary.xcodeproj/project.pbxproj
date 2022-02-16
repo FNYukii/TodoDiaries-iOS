@@ -43,7 +43,6 @@
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
 		547F373327BD0C5B00B18176 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373227BD0C5B00B18176 /* FirebaseDatabase */; };
 		547F373527BD0C5B00B18176 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373427BD0C5B00B18176 /* FirebaseFirestore */; };
-		547F373727BD34C100B18176 /* RealtimeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373627BD34C100B18176 /* RealtimeDB.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,7 +76,6 @@
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		547F370427BC06D100B18176 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
 		547F370927BCB24600B18176 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		547F373627BD34C100B18176 /* RealtimeDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				54491F7727BAB33D00E784D4 /* FirestoreTodo.swift */,
-				547F373627BD34C100B18176 /* RealtimeDB.swift */,
 				54491F6327B9885900E784D4 /* Day.swift */,
 				547F370227BBE61800B18176 /* CurrentUser.swift */,
 			);
@@ -310,7 +307,6 @@
 				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,
 				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
-				547F373727BD34C100B18176 /* RealtimeDB.swift in Sources */,
 				547F370527BC06D100B18176 /* OnePage.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
