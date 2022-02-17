@@ -37,13 +37,14 @@
 		547F370327BBE61800B18176 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* CurrentUser.swift */; };
 		547F370527BC06D100B18176 /* OnePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370427BC06D100B18176 /* OnePage.swift */; };
 		547F370827BC8A5B00B18176 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547F370727BC8A5B00B18176 /* Charts */; };
-		547F370A27BCB24600B18176 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370927BCB24600B18176 /* LineChart.swift */; };
 		547F372F27BD0C5B00B18176 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 547F372E27BD0C5B00B18176 /* FirebaseAnalytics */; };
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
 		547F373327BD0C5B00B18176 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373227BD0C5B00B18176 /* FirebaseDatabase */; };
 		547F373527BD0C5B00B18176 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373427BD0C5B00B18176 /* FirebaseFirestore */; };
 		547F373927BD6C2C00B18176 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* BarChart.swift */; };
 		547F373B27BD815E00B18176 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373A27BD815E00B18176 /* AccountView.swift */; };
+		547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* ChartsSection.swift */; };
+		547F373F27BDF1AC00B18176 /* HighLightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373E27BDF1AC00B18176 /* HighLightsSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,9 +76,10 @@
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		547F370427BC06D100B18176 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
-		547F370927BCB24600B18176 /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		547F373A27BD815E00B18176 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
+		547F373E27BDF1AC00B18176 /* HighLightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLightsSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,9 +175,10 @@
 				54491F7927BACEB700E784D4 /* TodoSection.swift */,
 				54491F6727B99A1500E784D4 /* AchievementSection.swift */,
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
+				547F373C27BDF13800B18176 /* ChartsSection.swift */,
 				547F370427BC06D100B18176 /* OnePage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
-				547F370927BCB24600B18176 /* LineChart.swift */,
+				547F373E27BDF1AC00B18176 /* HighLightsSection.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -290,10 +293,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				547F373F27BDF1AC00B18176 /* HighLightsSection.swift in Sources */,
 				5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */,
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
-				547F370A27BCB24600B18176 /* LineChart.swift in Sources */,
 				54491F7827BAB33D00E784D4 /* FirestoreTodo.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* TodosViewModel.swift in Sources */,
@@ -314,6 +317,7 @@
 				547F370527BC06D100B18176 /* OnePage.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
+				547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
