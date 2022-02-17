@@ -16,22 +16,19 @@ class FirestoreTodo {
     }
     
     // 特定の月内の、日別達成数を配列
-    static func countsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {
-        let year = readYear
-        let month = readMonth
-        
+    static func countsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
         // startTimestampを生成
         var startDateComponents = DateComponents()
-        startDateComponents.year = year
-        startDateComponents.month = month
+        startDateComponents.year = readYear
+        startDateComponents.month = readMonth
         startDateComponents.day = 1
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
         
         // endTimestampを生成
         var endDateComponents = DateComponents()
-        endDateComponents.year = year
-        endDateComponents.month = month + 1
+        endDateComponents.year = readYear
+        endDateComponents.month = readMonth + 1
         endDateComponents.day = 1
         let endDate = Calendar.current.date(from: endDateComponents)!
         let endTimestamp = Timestamp(date: endDate)
@@ -48,7 +45,7 @@ class FirestoreTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents. At year:\(year), month:\(month)")
+                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth)")
                 if let querySnapshot = querySnapshot {
                     // achievedDaysを生成 [1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
                     var achievedDays: [Int] = []
@@ -63,7 +60,7 @@ class FirestoreTodo {
                     
                     // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
                     var countsOfTodoAchieved: [Int] = []
-                    let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
+                    let dayCount = Day.dayCountAtTheMonth(year: readYear, month: readMonth)
                     for index in 0 ..< dayCount {
                         let day = index + 1
                         let countOfTodoAchieved = achievedDays.filter({$0 == day}).count
