@@ -68,7 +68,6 @@ class FirestoreTodo {
                     var achievedTodoCounts: [Int] = []
                     for index in 0 ..< achievedTodoCountsDic.count {
                         achievedTodoCounts.append(achievedTodoCountsDic[index]!)
-                        
                     }
                     // 大成功!
                     completion?(achievedTodoCounts)
