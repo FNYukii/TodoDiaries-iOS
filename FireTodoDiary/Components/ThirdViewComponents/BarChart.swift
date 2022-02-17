@@ -28,7 +28,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示
         barChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
         // X軸にラベルとして表示する文字列を指定
-        let dayStrings = ["1日", "2日", "3日", "4日", "5日", "6日", "7日", "８日", "9日", "10日", "11日", "12日", "13日", "14日"]
+        let dayStrings = Day.localizedDayStrings()
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dayStrings)
         barChartView.xAxis.granularity = 1
         

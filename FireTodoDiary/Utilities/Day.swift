@@ -53,6 +53,26 @@ class Day {
         return dateFormatter.string(from: from)
     }
     
+    // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
+    static func localizedDayStrings() -> [String] {
+        var dayStrings: [String] = []
+        
+        for index in 0 ..< 31 {
+            // DateCompontentsを生成
+            var dateComponents = DateComponents()
+            dateComponents.day = index + 1
+            let date = Calendar.current.date(from: dateComponents)!
+            // dayStringを生成
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("d")
+            let dayString = dateFormatter.string(from: date)
+            // 配列に追加
+            dayStrings.append(dayString)
+        }
+        
+        return dayStrings
+    }
+    
     // Date -> "7:31 PM", "19:31"
     static func toLocalizedTimeString(from: Date) -> String {
         let dateFormatter = DateFormatter()
