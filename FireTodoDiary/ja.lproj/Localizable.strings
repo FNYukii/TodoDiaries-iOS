@@ -19,11 +19,14 @@
 "others" = "その他";
 "email" = "メールアドレス";
 "stats" = "統計";
-"highlights" = "ハイライト";
+
+"theNumberOfTodos" = "Todoの数";
+"total" = "合計";
 
 // Adjective
 "pinned" = "固定済み";
 "achieved" = "達成済み";
+"unachieved" = "未達成";
 
 // Verb
 "cancel" = "キャンセル";

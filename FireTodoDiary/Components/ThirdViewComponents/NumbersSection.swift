@@ -7,20 +7,26 @@
 
 import SwiftUI
 
-struct HighLightsSection: View {
-    
+struct NumbersSection: View {
+        
     var body: some View {
-        Section(header: Text("highlights")) {
+        Section(header: Text("theNumberOfTodos")) {
             HStack {
-                Text("todos")
+                Text("unachieved")
                 Spacer()
                 Text("4")
                     .foregroundColor(.secondary)
             }
             HStack {
-                Text("achievements")
+                Text("achieved")
                 Spacer()
-                Text("2")
+                Text("41")
+                    .foregroundColor(.secondary)
+            }
+            HStack {
+                Text("total")
+                Spacer()
+                Text("45")
                     .foregroundColor(.secondary)
             }
         }

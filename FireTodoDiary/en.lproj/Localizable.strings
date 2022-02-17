@@ -19,11 +19,14 @@
 "others" = "Others";
 "email" = "Email";
 "stats" = "Stats";
-"highlights" = "Highlights";
+
+"theNumberOfTodos" = "The number of Todos";
+"total" = "Total";
 
 // Adjective
 "pinned" = "Pinned";
 "achieved" = "Achieved";
+"unachieved" = "Unachieved";
 
 // Verb
 "cancel" = "Cancel";
