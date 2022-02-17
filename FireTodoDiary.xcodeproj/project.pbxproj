@@ -28,8 +28,7 @@
 		54491F7827BAB33D00E784D4 /* FirestoreTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* FirestoreTodo.swift */; };
 		54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7927BACEB700E784D4 /* TodoSection.swift */; };
 		54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7D27BAE46000E784D4 /* DaysViewModel.swift */; };
-		547B175727BEB14A00F0C7F9 /* DayChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* DayChartPage.swift */; };
-		547B175927BEB15700F0C7F9 /* YearChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175827BEB15700F0C7F9 /* YearChartPage.swift */; };
+		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
 		547F36F527BB9BBC00B18176 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F427BB9BBC00B18176 /* FirebaseAuthUI */; };
 		547F36F727BB9BBC00B18176 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F627BB9BBC00B18176 /* FirebaseGoogleAuthUI */; };
 		547F36F927BB9BBC00B18176 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F827BB9BBC00B18176 /* FirebaseOAuthUI */; };
@@ -37,7 +36,6 @@
 		547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */; };
 		547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FE27BBA05A00B18176 /* WelcomeView.swift */; };
 		547F370327BBE61800B18176 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* CurrentUser.swift */; };
-		547F370527BC06D100B18176 /* MonthChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370427BC06D100B18176 /* MonthChartPage.swift */; };
 		547F370827BC8A5B00B18176 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547F370727BC8A5B00B18176 /* Charts */; };
 		547F372F27BD0C5B00B18176 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 547F372E27BD0C5B00B18176 /* FirebaseAnalytics */; };
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
@@ -74,13 +72,11 @@
 		54491F7727BAB33D00E784D4 /* FirestoreTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTodo.swift; sourceTree = "<group>"; };
 		54491F7927BACEB700E784D4 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
 		54491F7D27BAE46000E784D4 /* DaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewModel.swift; sourceTree = "<group>"; };
-		547B175627BEB14A00F0C7F9 /* DayChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayChartPage.swift; sourceTree = "<group>"; };
-		547B175827BEB15700F0C7F9 /* YearChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearChartPage.swift; sourceTree = "<group>"; };
+		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
-		547F370427BC06D100B18176 /* MonthChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthChartPage.swift; sourceTree = "<group>"; };
 		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		547F373A27BD815E00B18176 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
@@ -243,9 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				547F373C27BDF13800B18176 /* ChartsSection.swift */,
-				547B175827BEB15700F0C7F9 /* YearChartPage.swift */,
-				547F370427BC06D100B18176 /* MonthChartPage.swift */,
-				547B175627BEB14A00F0C7F9 /* DayChartPage.swift */,
+				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
 				547F373E27BDF1AC00B18176 /* NumbersSection.swift */,
 			);
@@ -344,7 +338,6 @@
 			files = (
 				547F373F27BDF1AC00B18176 /* NumbersSection.swift in Sources */,
 				5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */,
-				547B175927BEB15700F0C7F9 /* YearChartPage.swift in Sources */,
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
 				54491F7827BAB33D00E784D4 /* FirestoreTodo.swift in Sources */,
@@ -364,9 +357,8 @@
 				547F373B27BD815E00B18176 /* AccountView.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,
 				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
-				547F370527BC06D100B18176 /* MonthChartPage.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
-				547B175727BEB14A00F0C7F9 /* DayChartPage.swift in Sources */,
+				547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */,
 				547F374427BE05C600B18176 /* ShowAccountViewButton.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
 				547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */,
