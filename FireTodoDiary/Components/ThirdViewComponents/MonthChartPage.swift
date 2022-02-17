@@ -22,7 +22,7 @@ struct MonthChartPage: View {
         let shiftedDateComponents = Day.shiftedDateComponents(monthOffset: pageOffset)
         self.showYear = shiftedDateComponents.year!
         self.showMonth = shiftedDateComponents.month!
-        self.pageTitle = Day.toLocalizedYearAndMonthString(from: shiftedDateComponents)
+        self.pageTitle = Day.toLocalizedMonthString(from: shiftedDateComponents)
     }
     
     var body: some View {

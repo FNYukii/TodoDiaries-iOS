@@ -47,7 +47,7 @@ class Day {
     }
     
     // Date -> "February 2022", "2022年 2月"
-    static func toLocalizedYearAndMonthString(from: DateComponents) -> String {
+    static func toLocalizedMonthString(from: DateComponents) -> String {
         let date = Calendar.current.date(from: from)!
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
