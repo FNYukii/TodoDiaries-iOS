@@ -44,6 +44,7 @@ class Day {
         return toLocalizedString(from: date)
     }
     
+    // Date -> "February 2022", "2022年 2月"
     static func toLocalizedYearAndMonthString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
