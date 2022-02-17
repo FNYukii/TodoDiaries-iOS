@@ -108,49 +108,25 @@ class Day {
     
     // 年単位でシフトされた、年が入ったDateComponents
     static func dateComponentsShiftedByYear(yearOffset: Int) -> DateComponents {
-        let now = Date()
-        var year = Calendar.current.component(.year, from: now)
-        year += yearOffset
-        return DateComponents(calendar: Calendar.current, year: year)
+        let date = Date()
+        let shiftedDate = Calendar.current.date(byAdding: .year, value: yearOffset, to: date)!
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
+        return dateComponents
     }
     
     // 月単位でシフトされた、年・月が入ったDateComponents
     static func dateComponentsShiftedByMonth(monthOffset: Int) -> DateComponents {
-        // 現在の年と月を取得
-        let now = Date()
-        var year = Calendar.current.component(.year, from: now)
-        var month = Calendar.current.component(.month, from: now)
-        // monthOffsetの数だけ次の月へシフト
-        if monthOffset > 0 {
-            for _ in 0 ..< monthOffset {
-                if month == 12 {
-                    month = 1
-                    year += 1
-                } else {
-                    month += 1
-                }
-            }
-        }
-        // monthOffsetの数だけ前の月へシフト
-        if monthOffset < 0 {
-            let absoluteMonthOffset = -monthOffset
-            for _ in 0 ..< absoluteMonthOffset {
-                if month == 1 {
-                    month = 12
-                    year -= 1
-                } else {
-                    month -= 1
-                }
-            }
-        }
-        // シフトされたyearとmonthをDateComponentsに格納
-        return DateComponents(calendar: Calendar.current, year: year, month: month)
+        let date = Date()
+        let shiftedDate = Calendar.current.date(byAdding: .month, value: monthOffset, to: date)!
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
+        return dateComponents
     }
     
     //　日単位でシフトされた、年・月・日が入ったDateComponents
     static func dateComponentsShiftedByDay(dayOffset: Int) -> DateComponents {
-        // TODO: Make
-        let dateComponents = DateComponents()
+        let date = Date()
+        let shiftedDate = Calendar.current.date(byAdding: .day, value: dayOffset, to: date)!
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
         return dateComponents
     }
 }
