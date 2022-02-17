@@ -13,7 +13,7 @@ struct OnePage: View {
     
     private let showYear: Int
     private let showMonth: Int
-    @State private var achievedTodoCounts: [Int] = []
+    @State private var countsOfTodoAchieved: [Int] = []
     
     private let localizedYearAndMonth: String
     @State private var isFirstLoading = true
@@ -35,7 +35,7 @@ struct OnePage: View {
             if !isFirstLoading {
                 Text(localizedYearAndMonth)
                     .font(.title)
-                BarChart(achievedTodoCounts: achievedTodoCounts)
+                BarChart(countsOfTodoAchieved: countsOfTodoAchieved)
                 Spacer()
             }
         }
@@ -44,7 +44,7 @@ struct OnePage: View {
         .onAppear {
             // Read achievedTodoCounts
             FirestoreTodo.countsOfTodoAchievedAtTheMonth(year: showYear, month: showMonth) { achievedTodoCounts in
-                self.achievedTodoCounts = achievedTodoCounts
+                self.countsOfTodoAchieved = achievedTodoCounts
                 isFirstLoading = false
             }
         }

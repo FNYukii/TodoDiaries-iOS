@@ -8,27 +8,7 @@
 import Firebase
 
 class FirestoreTodo {
-    
-    // TODO: Unused
-    static func todoCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
-        let userId = CurrentUser.userId()
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("isAchieved", isEqualTo: isAchieved)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
-                    return
-                }
-                print("HELLO! Success! Read documents. isAchieved == \(isAchieved)")
-                if let querySnapshot = querySnapshot {
-                    let todoCount = querySnapshot.documents.count
-                    completion?(todoCount)
-                }
-            }
-    }
-        
+            
     static func countsOfTodoAchievedAtTheMonth(year: Int, month: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -71,15 +51,15 @@ class FirestoreTodo {
                         achievedDays.append(achievedDay)
                     }
                     
-                    // achievedTodoCountsを生成 [3, 2, 1, 3, ...]
-                    var achievedTodoCounts: [Int] = []
+                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
+                    var countsOfTodoAchieved: [Int] = []
                     let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
                     for index in 0 ..< dayCount {
                         let day = index + 1
-                        let achievedTodoCount = achievedDays.filter({$0 == day}).count
-                        achievedTodoCounts.append(achievedTodoCount)
+                        let countOfTodoAchieved = achievedDays.filter({$0 == day}).count
+                        countsOfTodoAchieved.append(countOfTodoAchieved)
                     }
-                    completion?(achievedTodoCounts)
+                    completion?(countsOfTodoAchieved)
                 }
             }
     }

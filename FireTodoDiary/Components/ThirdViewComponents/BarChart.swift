@@ -10,7 +10,7 @@ import Charts
 
 struct BarChart: UIViewRepresentable {
     
-    let achievedTodoCounts: [Int]
+    let countsOfTodoAchieved: [Int]
     
     func makeUIView(context: Context) -> BarChartView {
         // BarChartViewを生成
@@ -52,9 +52,9 @@ struct BarChart: UIViewRepresentable {
     func barChartData() -> BarChartData {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
-        for index in (0 ..< achievedTodoCounts.count) {
+        for index in (0 ..< countsOfTodoAchieved.count) {
             let day = Double(index + 1)
-            let achievedTodoCount = Double(achievedTodoCounts[index])
+            let achievedTodoCount = Double(countsOfTodoAchieved[index])
             let barChartDataEntry = BarChartDataEntry(x: day, y: achievedTodoCount)
             barChartDataEntries.append(barChartDataEntry)
         }
@@ -69,9 +69,9 @@ struct BarChart: UIViewRepresentable {
     }
     
     func leftAxisMaximum() -> Double {
-        let maxAchievedTodoCount = achievedTodoCounts.max() ?? 0
-        if maxAchievedTodoCount > 5 {
-            return Double(maxAchievedTodoCount)
+        let maxCountOfTodoAchieved = countsOfTodoAchieved.max() ?? 0
+        if maxCountOfTodoAchieved > 5 {
+            return Double(maxCountOfTodoAchieved)
         } else {
             return 5.0
         }
