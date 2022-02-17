@@ -27,6 +27,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.scaleYEnabled = false //Y軸ピンチアウト
         barChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示
         barChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
+        barChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         // X軸にラベルとして表示する文字列を指定
         let dayStrings = Day.localizedDayStrings()
@@ -74,5 +75,4 @@ struct BarChart: UIViewRepresentable {
             return 5.0
         }
     }
-    
 }
