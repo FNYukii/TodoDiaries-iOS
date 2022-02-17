@@ -45,6 +45,7 @@ struct BarChart: UIViewRepresentable {
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.data = barChartData()
+        uiView.animate(yAxisDuration: 0.5)
         uiView.leftAxis.axisMaximum = leftAxisMaximum()
     }
     
