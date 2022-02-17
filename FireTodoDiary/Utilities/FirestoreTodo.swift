@@ -29,6 +29,25 @@ class FirestoreTodo {
             }
     }
     
+    static func readCount(achievedDay: Int, completion: ((Int) -> Void)?) {
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("achievedDay", isEqualTo: achievedDay)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read documents. achievedDay == \(achievedDay)")
+                if let querySnapshot = querySnapshot {
+                    let todoCount = querySnapshot.documents.count
+                    completion?(todoCount)
+                }
+            }
+    }
+    
     static func readAchievedTodoCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -78,27 +97,8 @@ class FirestoreTodo {
                         let day = index + 1
                         let achievedTodoCount = achievedDays.filter({$0 == day}).count
                         achievedTodoCounts.append(achievedTodoCount)
-                    }                    
+                    }
                     completion?(achievedTodoCounts)
-                }
-            }
-    }
-    
-    static func readCount(achievedDay: Int, completion: ((Int) -> Void)?) {
-        let userId = CurrentUser.userId()
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("achievedDay", isEqualTo: achievedDay)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
-                    return
-                }
-                print("HELLO! Success! Read documents. achievedDay == \(achievedDay)")
-                if let querySnapshot = querySnapshot {
-                    let todoCount = querySnapshot.documents.count
-                    completion?(todoCount)
                 }
             }
     }
