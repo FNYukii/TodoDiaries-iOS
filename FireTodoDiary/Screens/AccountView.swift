@@ -36,6 +36,7 @@ struct AccountView: View {
             .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("signOut", role: .destructive) {
                     CurrentUser.signOut()
+                    dismiss()
                 }
             }
             
