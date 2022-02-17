@@ -30,7 +30,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         // X軸にラベルとして表示する文字列を指定
-        let dayStrings = Day.localizedDayStrings()
+        let dayStrings = Day.dayStrings()
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dayStrings)
         barChartView.xAxis.granularity = 1
         

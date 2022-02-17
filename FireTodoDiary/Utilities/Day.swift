@@ -34,28 +34,38 @@ class Day {
     }
     
     // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toLocalizedString(from: Date) -> String {
+    static func toString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: from)
     }
     
     // 20210923 -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toLocalizedString(from: Int) -> String {
+    static func toString(from: Int) -> String {
         let date = toDate(from: from)
-        return toLocalizedString(from: date)
+        return toString(from: date)
+    }
+    
+    // Date -> "2022", "2022年"
+    static func toStringUpToYear(from: DateComponents) -> String {
+        return ""
     }
     
     // Date -> "February 2022", "2022年 2月"
-    static func toLocalizedMonthString(from: DateComponents) -> String {
+    static func toStringUpToMonth(from: DateComponents) -> String {
         let date = Calendar.current.date(from: from)!
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
         return dateFormatter.string(from: date)
     }
     
+    // Date -> "February 14 2022", "2022年 2月 14日"
+    static func toStringUpToDay(from: DateComponents) -> String {
+        return ""
+    }
+    
     // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
-    static func localizedDayStrings() -> [String] {
+    static func dayStrings() -> [String] {
         var dayStrings: [String] = []
         
         for index in 0 ..< 31 {
@@ -75,7 +85,7 @@ class Day {
     }
     
     // Date -> "7:31 PM", "19:31"
-    static func toLocalizedTimeString(from: Date) -> String {
+    static func toTimeString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: from)
