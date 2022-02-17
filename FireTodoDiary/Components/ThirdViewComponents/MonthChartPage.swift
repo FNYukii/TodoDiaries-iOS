@@ -19,7 +19,7 @@ struct MonthChartPage: View {
     @State private var isFirstLoading = true
     
     init(pageOffset: Int){
-        let shiftedDateComponents = Day.shiftedDateComponents(monthOffset: pageOffset)
+        let shiftedDateComponents = Day.dateComponentsShiftedByMonth(monthOffset: pageOffset)
         self.showYear = shiftedDateComponents.year!
         self.showMonth = shiftedDateComponents.month!
         self.pageTitle = Day.toStringUpToMonth(from: shiftedDateComponents)

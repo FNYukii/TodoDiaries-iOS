@@ -106,8 +106,15 @@ class Day {
         return date
     }
     
-    // 月が前後にシフトされた年月
-    static func shiftedDateComponents(monthOffset: Int) -> DateComponents {
+    // 年単位でシフトされた、年が入ったDateComponents
+    static func dateComponentsShiftedByYear(yearOffset: Int) -> DateComponents {
+        // TODO: Make
+        let dateComponents = DateComponents()
+        return dateComponents
+    }
+    
+    // 月単位でシフトされた、年・月が入ったDateComponents
+    static func dateComponentsShiftedByMonth(monthOffset: Int) -> DateComponents {
         // 現在の年と月を取得
         let now = Date()
         var year = Calendar.current.component(.year, from: now)
@@ -137,5 +144,12 @@ class Day {
         }
         // シフトされたyearとmonthをDateComponentsに格納
         return DateComponents(calendar: Calendar.current, year: year, month: month)
+    }
+    
+    //　日単位でシフトされた、年・月・日が入ったDateComponents
+    static func dateComponentsShiftedByDay(dayOffset: Int) -> DateComponents {
+        // TODO: Make
+        let dateComponents = DateComponents()
+        return dateComponents
     }
 }
