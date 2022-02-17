@@ -27,15 +27,27 @@ struct BarChart: UIViewRepresentable {
         barChartView.scaleYEnabled = false //Y軸ピンチアウト
         barChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示
         barChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
+        
         // X軸にラベルとして表示する文字列を指定
         let dayStrings = Day.localizedDayStrings()
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dayStrings)
         barChartView.xAxis.granularity = 1
         
+        // BarChartViewにデータをセット
+        barChartView.data = barChartData()
+        
+        // BarChartViewのY軸ラベルの表示範囲上限を設定
+        barChartView.leftAxis.axisMaximum = leftAxisMaximum()
+        
         return barChartView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        uiView.data = barChartData()
+        uiView.leftAxis.axisMaximum = leftAxisMaximum()
+    }
+    
+    func barChartData() -> BarChartData {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
         for index in (0 ..< achievedTodoCounts.count) {
@@ -44,25 +56,23 @@ struct BarChart: UIViewRepresentable {
             let barChartDataEntry = BarChartDataEntry(x: day, y: achievedTodoCount)
             barChartDataEntries.append(barChartDataEntry)
         }
-
         // BarChartDataSetを生成
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
         barChartDataSet.setColor(UIColor.systemBlue)
-
         // BarChartDataを生成
         let barChartData = BarChartData()
         barChartData.addDataSet(barChartDataSet)
         barChartData.setDrawValues(false)
-
-        // BarChartViewにデータをセット
-        uiView.data = barChartData
-        
-        // BarChartViewのY軸ラベルの表示範囲上限を設定
+        return barChartData
+    }
+    
+    func leftAxisMaximum() -> Double {
         let maxAchievedTodoCount = achievedTodoCounts.max() ?? 0
-        if(maxAchievedTodoCount > 5){
-            uiView.leftAxis.axisMaximum = Double(maxAchievedTodoCount)
+        if maxAchievedTodoCount > 5 {
+            return Double(maxAchievedTodoCount)
         } else {
-            uiView.leftAxis.axisMaximum = 5.0
+            return 5.0
         }
     }
+    
 }
