@@ -10,7 +10,7 @@ import Firebase
 class FirestoreTodo {
     
     // TODO: Unused
-    static func readCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
+    static func todoCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
@@ -28,27 +28,8 @@ class FirestoreTodo {
                 }
             }
     }
-    
-    static func readCount(achievedDay: Int, completion: ((Int) -> Void)?) {
-        let userId = CurrentUser.userId()
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("achievedDay", isEqualTo: achievedDay)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
-                    return
-                }
-                print("HELLO! Success! Read documents. achievedDay == \(achievedDay)")
-                if let querySnapshot = querySnapshot {
-                    let todoCount = querySnapshot.documents.count
-                    completion?(todoCount)
-                }
-            }
-    }
-    
-    static func readAchievedTodoCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+        
+    static func countsOfTodoAchievedAtTheMonth(year: Int, month: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = year
