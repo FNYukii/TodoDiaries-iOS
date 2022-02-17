@@ -7,22 +7,18 @@
 
 import SwiftUI
 import Firebase
-import FirebaseDatabase
 
-struct MonthChartPage: View {
+struct ChartPage: View {
     
-    private let showYear: Int
-    private let showMonth: Int
-    @State private var countsOfTodoAchieved: [Int] = []
-    
+    private let showMonth: DateComponents
     private let pageTitle: String
+    
+    @State private var countsOfTodoAchieved: [Int] = []
     @State private var isFirstLoading = true
     
     init(pageOffset: Int){
-        let shiftedDateComponents = Day.dateComponentsShiftedByMonth(monthOffset: pageOffset)
-        self.showYear = shiftedDateComponents.year!
-        self.showMonth = shiftedDateComponents.month!
-        self.pageTitle = Day.toStringUpToMonth(from: shiftedDateComponents)
+        self.showMonth = Day.dateComponentsShiftedByMonth(monthOffset: pageOffset)
+        self.pageTitle = Day.toStringUpToMonth(from: showMonth)
     }
     
     var body: some View {
@@ -36,14 +32,13 @@ struct MonthChartPage: View {
                 Text(pageTitle)
                     .font(.title)
                 BarChart(countsOfTodoAchieved: countsOfTodoAchieved)
-                Spacer()
+                    .padding(.bottom)
             }
         }
         .frame(height: 300)
         
         .onAppear {
-            // Read achievedTodoCounts
-            FirestoreTodo.countsOfTodoAchievedAtTheDay(year: showYear, month: showMonth) { value in
+            FirestoreTodo.countsOfTodoAchievedAtTheDay(inThe: showMonth) { value in
                 self.countsOfTodoAchieved = value
                 isFirstLoading = false
             }

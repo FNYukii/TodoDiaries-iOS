@@ -8,8 +8,12 @@
 import Firebase
 
 class FirestoreTodo {
-            
-    static func countsOfTodoAchievedAtTheDay(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+    
+    // 特定の月内の、日別達成数を配列で返す
+    static func countsOfTodoAchievedAtTheDay(inThe: DateComponents, completion: (([Int]) -> Void)?) {
+        let year = inThe.year!
+        let month = inThe.month!
+        
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = year
