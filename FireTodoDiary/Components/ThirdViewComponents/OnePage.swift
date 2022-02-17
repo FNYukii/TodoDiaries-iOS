@@ -23,7 +23,7 @@ struct OnePage: View {
         let shiftedDate = Day.shiftedDate(monthOffset: monthOffset)
         self.showYear = Calendar.current.component(.year, from: shiftedDate)
         self.showMonth = Calendar.current.component(.month, from: shiftedDate)
-        self.localizedYearAndMonth = Day.toYearAndMonthString(from: shiftedDate)
+        self.localizedYearAndMonth = Day.toLocalizedYearAndMonthString(from: shiftedDate)
     }
     
     var body: some View {

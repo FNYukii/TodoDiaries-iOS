@@ -32,26 +32,26 @@ class Day {
     }
     
     // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toDateString(from: Date) -> String {
+    static func toLocalizedString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: from)
     }
     
     // 20210923 -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toDateString(from: Int) -> String {
+    static func toLocalizedString(from: Int) -> String {
         let date = toDate(from: from)
-        return toDateString(from: date)
+        return toLocalizedString(from: date)
     }
     
-    static func toYearAndMonthString(from: Date) -> String {
+    static func toLocalizedYearAndMonthString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
         return dateFormatter.string(from: from)
     }
     
     // Date -> "7:31 PM", "19:31"
-    static func toTimeString(from: Date) -> String {
+    static func toLocalizedTimeString(from: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: from)
