@@ -28,7 +28,7 @@ struct ChartsSection: View {
             
             TabView(selection: $pageSelection) {
                 ForEach(-2 ..< 3){ index in
-                    MonthChartPage(monthOffset: index)
+                    MonthChartPage(pageOffset: index)
                         .tag(index)
                 }
             }
