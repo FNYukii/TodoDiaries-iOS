@@ -13,10 +13,9 @@ struct OnePage: View {
     
     private let showYear: Int
     private let showMonth: Int
-    private let localizedYearAndMonth: String
-    
-    // 表示月の日別Todo達成数 例:[2, 4, 6, 1, 8, 12, 4, 2, ...] 要素数は表示月の日数
     @State private var achievedTodoCounts: [Int] = []
+    
+    private let localizedYearAndMonth: String
     @State private var isFirstLoading = true
     
     init(monthOffset: Int){
