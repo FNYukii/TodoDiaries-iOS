@@ -27,7 +27,7 @@ struct ChartPage: View {
             if !isProgressing {
                 Text(pageTitle)
                     .font(.title)
-                BarChart(countsOfTodoAchieved: countsOfTodoAchieved)
+                BarChart(unitSelection: unitSelection, countsOfTodoAchieved: countsOfTodoAchieved)
                     .padding(.bottom)
             }
         }

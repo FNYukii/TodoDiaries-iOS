@@ -70,10 +70,27 @@ class Day {
         return dateFormatter.string(from: date)
     }
     
+    //  ["1", "2", "3", ...] , ["1時", "2時", "3時", ...]
+    static func hourStrings() -> [String] {
+        var hourStrings: [String] = []
+        for index in 0 ..< 24 {
+            // DateCompontentsを生成
+            var dateComponents = DateComponents()
+            dateComponents.hour = index + 1
+            let date = Calendar.current.date(from: dateComponents)!
+            // dayStringを生成
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("H")
+            let hourString = dateFormatter.string(from: date)
+            // 配列に追加
+            hourStrings.append(hourString)
+        }
+        return hourStrings
+    }
+    
     // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
     static func dayStrings() -> [String] {
         var dayStrings: [String] = []
-        
         for index in 0 ..< 31 {
             // DateCompontentsを生成
             var dateComponents = DateComponents()
@@ -86,8 +103,25 @@ class Day {
             // 配列に追加
             dayStrings.append(dayString)
         }
-        
         return dayStrings
+    }
+    
+    //  ["1", "2", "3", ...] , ["1月", "2月", "3月", ...]
+    static func monthStrings() -> [String] {
+        var monthStrings: [String] = []
+        for index in 0 ..< 12 {
+            // DateCompontentsを生成
+            var dateComponents = DateComponents()
+            dateComponents.month = index + 1
+            let date = Calendar.current.date(from: dateComponents)!
+            // dayStringを生成
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("MMM")
+            let monthString = dateFormatter.string(from: date)
+            // 配列に追加
+            monthStrings.append(monthString)
+        }
+        return monthStrings
     }
     
     // Date -> "7:31 PM", "19:31"

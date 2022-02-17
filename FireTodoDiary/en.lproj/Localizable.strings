@@ -23,6 +23,10 @@
 "theNumberOfTodos" = "The number of Todos";
 "total" = "Total";
 
+"d" = "D";
+"m" = "M";
+"y" = "Y";
+
 // Adjective
 "pinned" = "Pinned";
 "achieved" = "Achieved";

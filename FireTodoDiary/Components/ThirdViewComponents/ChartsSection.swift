@@ -16,11 +16,11 @@ struct ChartsSection: View {
         Section(header: Text("charts")) {
             
             Picker(selection: $unitSelection, label: Text("picker")) {
-                Text("日")
+                Text("d")
                     .tag(0)
-                Text("月")
+                Text("m")
                     .tag(1)
-                Text("年")
+                Text("y")
                     .tag(2)
             }
             .pickerStyle(SegmentedPickerStyle())

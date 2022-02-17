@@ -10,6 +10,7 @@ import Charts
 
 struct BarChart: UIViewRepresentable {
     
+    let unitSelection: Int
     let countsOfTodoAchieved: [Int]
     
     func makeUIView(context: Context) -> BarChartView {
@@ -30,8 +31,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         // X軸にラベルとして表示する文字列を指定
-        let dayStrings = Day.dayStrings()
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dayStrings)
+        barChartView.xAxis.valueFormatter = xAxisValueFormatter()
         barChartView.xAxis.granularity = 1
         
         // BarChartViewにデータをセット
@@ -46,6 +46,7 @@ struct BarChart: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.data = barChartData()
         uiView.animate(yAxisDuration: 0.5)
+        uiView.xAxis.valueFormatter = xAxisValueFormatter()
         uiView.leftAxis.axisMaximum = leftAxisMaximum()
     }
     
@@ -74,6 +75,19 @@ struct BarChart: UIViewRepresentable {
             return Double(maxCountOfTodoAchieved)
         } else {
             return 5.0
+        }
+    }
+    
+    func xAxisValueFormatter() -> IndexAxisValueFormatter {
+        if unitSelection == 0 {
+            let strings = Day.hourStrings()
+            return IndexAxisValueFormatter(values:strings)
+        } else if unitSelection == 1 {
+            let strings = Day.dayStrings()
+            return IndexAxisValueFormatter(values:strings)
+        } else {
+            let strings = Day.monthStrings()
+            return IndexAxisValueFormatter(values:strings)
         }
     }
 }
