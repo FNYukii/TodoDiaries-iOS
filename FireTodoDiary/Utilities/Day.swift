@@ -48,7 +48,10 @@ class Day {
     
     // Date -> "2022", "2022年"
     static func toStringUpToYear(from: DateComponents) -> String {
-        return ""
+        let date = Calendar.current.date(from: from)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY")
+        return dateFormatter.string(from: date)
     }
     
     // Date -> "February 2022", "2022年 2月"
@@ -61,7 +64,10 @@ class Day {
     
     // Date -> "February 14 2022", "2022年 2月 14日"
     static func toStringUpToDay(from: DateComponents) -> String {
-        return ""
+        let date = Calendar.current.date(from: from)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM d")
+        return dateFormatter.string(from: date)
     }
     
     // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
