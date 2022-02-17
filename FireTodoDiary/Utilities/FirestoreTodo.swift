@@ -9,7 +9,7 @@ import Firebase
 
 class FirestoreTodo {
             
-    static func countsOfTodoAchievedAtTheMonth(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+    static func countsOfTodoAchievedAtTheDay(year: Int, month: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = year

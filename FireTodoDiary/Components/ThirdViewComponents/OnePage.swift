@@ -43,7 +43,7 @@ struct OnePage: View {
         
         .onAppear {
             // Read achievedTodoCounts
-            FirestoreTodo.countsOfTodoAchievedAtTheMonth(year: showYear, month: showMonth) { achievedTodoCounts in
+            FirestoreTodo.countsOfTodoAchievedAtTheDay(year: showYear, month: showMonth) { achievedTodoCounts in
                 self.countsOfTodoAchieved = achievedTodoCounts
                 isFirstLoading = false
             }
