@@ -22,6 +22,64 @@ class Day {
         return year * 10000 + month * 100 + day
     }
     
+    // その月の日数
+    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month + 1
+        dateComponents.day = 0
+        let date = Calendar.current.date(from: dateComponents)!
+        let dayCount = Calendar.current.component(.day, from: date)
+        return dayCount
+    }
+    
+    // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
+    static func toLocalizedString(from: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        return dateFormatter.string(from: from)
+    }
+    
+    // 20210923 -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
+    static func toLocalizedString(from: Int) -> String {
+        let date = toDate(from: from)
+        return toLocalizedString(from: date)
+    }
+    
+    // Date -> "February 2022", "2022年 2月"
+    static func toLocalizedYearAndMonthString(from: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
+        return dateFormatter.string(from: from)
+    }
+    
+    // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
+    static func localizedDayStrings() -> [String] {
+        var dayStrings: [String] = []
+        
+        for index in 0 ..< 31 {
+            // DateCompontentsを生成
+            var dateComponents = DateComponents()
+            dateComponents.day = index + 1
+            let date = Calendar.current.date(from: dateComponents)!
+            // dayStringを生成
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("d")
+            let dayString = dateFormatter.string(from: date)
+            // 配列に追加
+            dayStrings.append(dayString)
+        }
+        
+        return dayStrings
+    }
+    
+    // Date -> "7:31 PM", "19:31"
+    static func toLocalizedTimeString(from: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: from)
+    }
+    
     // 20210923 -> Date
     static func toDate(from: Int) -> Date {
         let year = from / 10000
@@ -29,26 +87,6 @@ class Day {
         let day = (from % 100)
         let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
         return date
-    }
-    
-    // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toDateString(from: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .full
-        return dateFormatter.string(from: from)
-    }
-    
-    // 20210923 -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toDateString(from: Int) -> String {
-        let date = toDate(from: from)
-        return toDateString(from: date)
-    }
-    
-    // Date -> "7:31 PM", "19:31"
-    static func toTimeString(from: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: from)
     }
     
     // 月が前後にシフトされた年月
@@ -83,16 +121,5 @@ class Day {
         // シフトされたyearとmonthをDate型変数に格納
         let date = DateComponents(calendar: Calendar.current, year: year, month: month).date!
         return date
-    }
-    
-    // その月の日数
-    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month + 1
-        dateComponents.day = 0
-        let date = Calendar.current.date(from: dateComponents)!
-        let dayCount = Calendar.current.component(.day, from: date)
-        return dayCount
     }
 }

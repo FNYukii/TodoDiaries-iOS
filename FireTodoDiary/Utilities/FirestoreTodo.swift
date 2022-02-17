@@ -9,6 +9,7 @@ import Firebase
 
 class FirestoreTodo {
     
+    // TODO: Unused
     static func readCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
@@ -20,7 +21,7 @@ class FirestoreTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents in todos")
+                print("HELLO! Success! Read documents. isAchieved == \(isAchieved)")
                 if let querySnapshot = querySnapshot {
                     let todoCount = querySnapshot.documents.count
                     completion?(todoCount)
@@ -39,7 +40,7 @@ class FirestoreTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents in todos")
+                print("HELLO! Success! Read documents. achievedDay == \(achievedDay)")
                 if let querySnapshot = querySnapshot {
                     let todoCount = querySnapshot.documents.count
                     completion?(todoCount)

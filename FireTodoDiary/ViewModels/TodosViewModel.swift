@@ -43,7 +43,7 @@ class TodosViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read documents from todos")
+                print("HELLO! Success! Read documents.")
                 
                 snapshot.documentChanges.forEach { diff in
                     if diff.type == .added {

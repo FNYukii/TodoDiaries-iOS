@@ -64,7 +64,8 @@ struct EditTodoView: View {
                 }
             }
             
-            .navigationBarTitle("editTodo", displayMode: .inline)
+            .navigationTitle("editTodo")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("cancel"){

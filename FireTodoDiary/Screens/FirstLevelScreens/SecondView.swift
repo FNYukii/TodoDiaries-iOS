@@ -23,6 +23,11 @@ struct SecondView: View {
             }
             
             .navigationTitle("achievements")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    ShowAccountViewButton()
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
