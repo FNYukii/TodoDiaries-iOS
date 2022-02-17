@@ -35,7 +35,7 @@
 		547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */; };
 		547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FE27BBA05A00B18176 /* WelcomeView.swift */; };
 		547F370327BBE61800B18176 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* CurrentUser.swift */; };
-		547F370527BC06D100B18176 /* OnePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370427BC06D100B18176 /* OnePage.swift */; };
+		547F370527BC06D100B18176 /* MonthChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370427BC06D100B18176 /* MonthChartPage.swift */; };
 		547F370827BC8A5B00B18176 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547F370727BC8A5B00B18176 /* Charts */; };
 		547F372F27BD0C5B00B18176 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 547F372E27BD0C5B00B18176 /* FirebaseAnalytics */; };
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
@@ -76,7 +76,7 @@
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
-		547F370427BC06D100B18176 /* OnePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePage.swift; sourceTree = "<group>"; };
+		547F370427BC06D100B18176 /* MonthChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthChartPage.swift; sourceTree = "<group>"; };
 		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		547F373A27BD815E00B18176 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				547F373C27BDF13800B18176 /* ChartsSection.swift */,
-				547F370427BC06D100B18176 /* OnePage.swift */,
+				547F370427BC06D100B18176 /* MonthChartPage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
 				547F373E27BDF1AC00B18176 /* NumbersSection.swift */,
 			);
@@ -357,7 +357,7 @@
 				547F373B27BD815E00B18176 /* AccountView.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,
 				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
-				547F370527BC06D100B18176 /* OnePage.swift in Sources */,
+				547F370527BC06D100B18176 /* MonthChartPage.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
 				547F374427BE05C600B18176 /* ShowAccountViewButton.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,

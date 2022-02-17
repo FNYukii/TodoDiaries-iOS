@@ -10,12 +10,12 @@ import SwiftUI
 struct ChartsSection: View {
     
     @State private var pageSelection = 0
-    @State private var rangeSelection = 0
+    @State private var chartTypeSelection = 0
     
     var body: some View {
         Section(header: Text("charts")) {
             
-            Picker(selection: $rangeSelection, label: Text("picker")) {
+            Picker(selection: $chartTypeSelection, label: Text("picker")) {
                 Text("日")
                     .tag(0)
                 Text("月")
@@ -28,7 +28,7 @@ struct ChartsSection: View {
             
             TabView(selection: $pageSelection) {
                 ForEach(-2 ..< 3){ index in
-                    OnePage(monthOffset: index)
+                    MonthChartPage(monthOffset: index)
                         .tag(index)
                 }
             }

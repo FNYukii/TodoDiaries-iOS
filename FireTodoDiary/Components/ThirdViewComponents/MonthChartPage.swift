@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 import FirebaseDatabase
 
-struct OnePage: View {
+struct MonthChartPage: View {
     
     private let showYear: Int
     private let showMonth: Int
