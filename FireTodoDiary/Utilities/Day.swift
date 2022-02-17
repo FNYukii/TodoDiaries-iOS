@@ -44,6 +44,12 @@ class Day {
         return toDateString(from: date)
     }
     
+    static func toYearAndMonthString(from: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
+        return dateFormatter.string(from: from)
+    }
+    
     // Date -> "7:31 PM", "19:31"
     static func toTimeString(from: Date) -> String {
         let dateFormatter = DateFormatter()

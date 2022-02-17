@@ -13,15 +13,17 @@ struct OnePage: View {
     
     private let showYear: Int
     private let showMonth: Int
+    private let localizedYearAndMonth: String
     
     // 表示月の日別Todo達成数 例:[2, 4, 6, 1, 8, 12, 4, 2, ...] 要素数は表示月の日数
     @State private var achievedTodoCounts: [Int] = []
     @State private var isFirstLoading = true
     
     init(monthOffset: Int){
-        let date = Day.shiftedDate(monthOffset: monthOffset)
-        self.showYear = Calendar.current.component(.year, from: date)
-        self.showMonth = Calendar.current.component(.month, from: date)
+        let shiftedDate = Day.shiftedDate(monthOffset: monthOffset)
+        self.showYear = Calendar.current.component(.year, from: shiftedDate)
+        self.showMonth = Calendar.current.component(.month, from: shiftedDate)
+        self.localizedYearAndMonth = Day.toYearAndMonthString(from: shiftedDate)
     }
     
     var body: some View {
@@ -32,7 +34,7 @@ struct OnePage: View {
                     .progressViewStyle(CircularProgressViewStyle())
             }
             if !isFirstLoading {
-                Text("\(showYear)年 \(showMonth)月")
+                Text(localizedYearAndMonth)
                     .font(.title)
                 BarChart(achievedTodoCounts: achievedTodoCounts)
                 Spacer()
