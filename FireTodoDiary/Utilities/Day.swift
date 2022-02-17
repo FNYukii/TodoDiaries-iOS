@@ -22,13 +22,15 @@ class Day {
         return year * 10000 + month * 100 + day
     }
     
-    // 20210923 -> Date
-    static func toDate(from: Int) -> Date {
-        let year = from / 10000
-        let month = (from % 10000) / 100
-        let day = (from % 100)
-        let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
-        return date
+    // その月の日数
+    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
+        var dateComponents = DateComponents()
+        dateComponents.year = year
+        dateComponents.month = month + 1
+        dateComponents.day = 0
+        let date = Calendar.current.date(from: dateComponents)!
+        let dayCount = Calendar.current.component(.day, from: date)
+        return dayCount
     }
     
     // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
@@ -56,6 +58,15 @@ class Day {
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = .short
         return dateFormatter.string(from: from)
+    }
+    
+    // 20210923 -> Date
+    static func toDate(from: Int) -> Date {
+        let year = from / 10000
+        let month = (from % 10000) / 100
+        let day = (from % 100)
+        let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
+        return date
     }
     
     // 月が前後にシフトされた年月
@@ -90,16 +101,5 @@ class Day {
         // シフトされたyearとmonthをDate型変数に格納
         let date = DateComponents(calendar: Calendar.current, year: year, month: month).date!
         return date
-    }
-    
-    // その月の日数
-    static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
-        var dateComponents = DateComponents()
-        dateComponents.year = year
-        dateComponents.month = month + 1
-        dateComponents.day = 0
-        let date = Calendar.current.date(from: dateComponents)!
-        let dayCount = Calendar.current.component(.day, from: date)
-        return dayCount
     }
 }
