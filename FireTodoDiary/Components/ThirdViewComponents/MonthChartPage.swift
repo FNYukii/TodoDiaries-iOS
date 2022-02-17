@@ -43,8 +43,8 @@ struct MonthChartPage: View {
         
         .onAppear {
             // Read achievedTodoCounts
-            FirestoreTodo.countsOfTodoAchievedAtTheDay(year: showYear, month: showMonth) { achievedTodoCounts in
-                self.countsOfTodoAchieved = achievedTodoCounts
+            FirestoreTodo.countsOfTodoAchievedAtTheDay(year: showYear, month: showMonth) { value in
+                self.countsOfTodoAchieved = value
                 isFirstLoading = false
             }
         }
