@@ -47,10 +47,11 @@ class Day {
     }
     
     // Date -> "February 2022", "2022年 2月"
-    static func toLocalizedYearAndMonthString(from: Date) -> String {
+    static func toLocalizedYearAndMonthString(from: DateComponents) -> String {
+        let date = Calendar.current.date(from: from)!
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
-        return dateFormatter.string(from: from)
+        return dateFormatter.string(from: date)
     }
     
     // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
@@ -90,7 +91,7 @@ class Day {
     }
     
     // 月が前後にシフトされた年月
-    static func shiftedDate(monthOffset: Int) -> Date {
+    static func shiftedDateComponents(monthOffset: Int) -> DateComponents {
         // 現在の年と月を取得
         let now = Date()
         var year = Calendar.current.component(.year, from: now)
@@ -118,8 +119,7 @@ class Day {
                 }
             }
         }
-        // シフトされたyearとmonthをDate型変数に格納
-        let date = DateComponents(calendar: Calendar.current, year: year, month: month).date!
-        return date
+        // シフトされたyearとmonthをDateComponentsに格納
+        return DateComponents(calendar: Calendar.current, year: year, month: month)
     }
 }

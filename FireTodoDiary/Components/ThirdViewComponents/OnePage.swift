@@ -19,10 +19,10 @@ struct OnePage: View {
     @State private var isFirstLoading = true
     
     init(monthOffset: Int){
-        let shiftedDate = Day.shiftedDate(monthOffset: monthOffset)
-        self.showYear = Calendar.current.component(.year, from: shiftedDate)
-        self.showMonth = Calendar.current.component(.month, from: shiftedDate)
-        self.localizedYearAndMonth = Day.toLocalizedYearAndMonthString(from: shiftedDate)
+        let shiftedDateComponents = Day.shiftedDateComponents(monthOffset: monthOffset)
+        self.showYear = shiftedDateComponents.year!
+        self.showMonth = shiftedDateComponents.month!
+        self.localizedYearAndMonth = Day.toLocalizedYearAndMonthString(from: shiftedDateComponents)
     }
     
     var body: some View {
