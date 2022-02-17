@@ -150,14 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
-				547F36FE27BBA05A00B18176 /* WelcomeView.swift */,
-				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
-				5418DC6227B673DB007D98B0 /* FirstView.swift */,
-				5418DC6427B674CF007D98B0 /* SecondView.swift */,
-				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
-				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
-				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
-				547F373A27BD815E00B18176 /* AccountView.swift */,
+				547B175027BE11FD00F0C7F9 /* FirstLevelScreens */,
+				547B175127BE122800F0C7F9 /* SheetScreens */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -198,6 +192,28 @@
 				547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		547B175027BE11FD00F0C7F9 /* FirstLevelScreens */ = {
+			isa = PBXGroup;
+			children = (
+				547F36FE27BBA05A00B18176 /* WelcomeView.swift */,
+				5418DC6227B673DB007D98B0 /* FirstView.swift */,
+				5418DC6427B674CF007D98B0 /* SecondView.swift */,
+				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
+			);
+			path = FirstLevelScreens;
+			sourceTree = "<group>";
+		};
+		547B175127BE122800F0C7F9 /* SheetScreens */ = {
+			isa = PBXGroup;
+			children = (
+				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
+				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
+				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
+				547F373A27BD815E00B18176 /* AccountView.swift */,
+			);
+			path = SheetScreens;
 			sourceTree = "<group>";
 		};
 		547F374027BDF2A700B18176 /* FirstViewComponents */ = {
