@@ -15,14 +15,14 @@ struct OnePage: View {
     private let showMonth: Int
     @State private var countsOfTodoAchieved: [Int] = []
     
-    private let localizedYearAndMonth: String
+    private let pageTitle: String
     @State private var isFirstLoading = true
     
     init(monthOffset: Int){
         let shiftedDateComponents = Day.shiftedDateComponents(monthOffset: monthOffset)
         self.showYear = shiftedDateComponents.year!
         self.showMonth = shiftedDateComponents.month!
-        self.localizedYearAndMonth = Day.toLocalizedYearAndMonthString(from: shiftedDateComponents)
+        self.pageTitle = Day.toLocalizedYearAndMonthString(from: shiftedDateComponents)
     }
     
     var body: some View {
@@ -33,7 +33,7 @@ struct OnePage: View {
                     .progressViewStyle(CircularProgressViewStyle())
             }
             if !isFirstLoading {
-                Text(localizedYearAndMonth)
+                Text(pageTitle)
                     .font(.title)
                 BarChart(countsOfTodoAchieved: countsOfTodoAchieved)
                 Spacer()
