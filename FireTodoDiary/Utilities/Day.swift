@@ -108,7 +108,6 @@ class Day {
     
     // 年単位でシフトされた、年が入ったDateComponents
     static func dateComponentsShiftedByYear(yearOffset: Int) -> DateComponents {
-        // TODO: Make
         let now = Date()
         var year = Calendar.current.component(.year, from: now)
         year += yearOffset
