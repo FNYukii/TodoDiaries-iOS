@@ -9,6 +9,7 @@ import Firebase
 
 class FirestoreTodo {
     
+    // TODO: Unused
     static func readCount(isAchieved: Bool, completion: ((Int) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
