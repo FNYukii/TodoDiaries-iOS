@@ -16,7 +16,7 @@ struct OnePage: View {
     
     // 表示月の日別Todo達成数 例:[2, 4, 6, 1, 8, 12, 4, 2, ...] 要素数は表示月の日数
     @State private var achievedTodoCounts: [Int] = []
-    @State private var isLoading = false
+    @State private var isFirstLoading = true
     
     init(monthOffset: Int){
         let date = Day.shiftedDate(monthOffset: monthOffset)
@@ -26,28 +26,25 @@ struct OnePage: View {
     
     var body: some View {
         
-        ZStack {
-            
-            VStack(alignment: .leading) {
+        VStack(alignment: .leading) {
+            if isFirstLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+            }
+            if !isFirstLoading {
                 Text("\(showYear)年 \(showMonth)月")
                     .font(.title)
                 BarChart(achievedTodoCounts: achievedTodoCounts)
                 Spacer()
             }
-            .frame(height: 300)
-            
-            if isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle())
-            }
         }
+        .frame(height: 300)
         
         .onAppear {
             // Read achievedTodoCounts
-            isLoading = true
             FirestoreTodo.readAchievedTodoCounts(year: showYear, month: showMonth) { achievedTodoCounts in
                 self.achievedTodoCounts = achievedTodoCounts
-                isLoading = false
+                isFirstLoading = false
             }
         }
         
