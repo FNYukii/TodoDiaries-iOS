@@ -29,6 +29,7 @@
 		54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7927BACEB700E784D4 /* TodoSection.swift */; };
 		54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7D27BAE46000E784D4 /* DaysViewModel.swift */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
+		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
 		547F36F527BB9BBC00B18176 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F427BB9BBC00B18176 /* FirebaseAuthUI */; };
 		547F36F727BB9BBC00B18176 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F627BB9BBC00B18176 /* FirebaseGoogleAuthUI */; };
 		547F36F927BB9BBC00B18176 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F827BB9BBC00B18176 /* FirebaseOAuthUI */; };
@@ -72,6 +73,7 @@
 		54491F7927BACEB700E784D4 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
 		54491F7D27BAE46000E784D4 /* DaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewModel.swift; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
+		547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -165,9 +167,9 @@
 		5418DC5727B65285007D98B0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				547F374027BDF2A700B18176 /* FirstViewComponents */,
-				547F374127BDF2CE00B18176 /* SecondViewComponents */,
-				547F374227BDF2E700B18176 /* ThirdViewComponents */,
+				547F374027BDF2A700B18176 /* FirstView */,
+				547F374127BDF2CE00B18176 /* SecondView */,
+				547F374227BDF2E700B18176 /* ThirdView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -214,7 +216,7 @@
 			path = SheetScreens;
 			sourceTree = "<group>";
 		};
-		547F374027BDF2A700B18176 /* FirstViewComponents */ = {
+		547F374027BDF2A700B18176 /* FirstView */ = {
 			isa = PBXGroup;
 			children = (
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
@@ -222,25 +224,26 @@
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
 				547F374327BE05C600B18176 /* ShowAccountViewButton.swift */,
 			);
-			path = FirstViewComponents;
+			path = FirstView;
 			sourceTree = "<group>";
 		};
-		547F374127BDF2CE00B18176 /* SecondViewComponents */ = {
+		547F374127BDF2CE00B18176 /* SecondView */ = {
 			isa = PBXGroup;
 			children = (
 				54491F6727B99A1500E784D4 /* AchievementSection.swift */,
 			);
-			path = SecondViewComponents;
+			path = SecondView;
 			sourceTree = "<group>";
 		};
-		547F374227BDF2E700B18176 /* ThirdViewComponents */ = {
+		547F374227BDF2E700B18176 /* ThirdView */ = {
 			isa = PBXGroup;
 			children = (
 				547F373C27BDF13800B18176 /* ChartsSection.swift */,
 				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
+				547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */,
 			);
-			path = ThirdViewComponents;
+			path = ThirdView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -339,6 +342,7 @@
 				54491F7827BAB33D00E784D4 /* FirestoreTodo.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* TodosViewModel.swift in Sources */,
+				547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */,
 				54491F6427B9885900E784D4 /* Day.swift in Sources */,
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
