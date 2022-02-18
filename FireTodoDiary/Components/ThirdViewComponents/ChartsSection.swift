@@ -10,11 +10,10 @@ import SwiftUI
 struct ChartsSection: View {
     
     @State private var pageSelection = 0
-    @State private var unitSelection = 0
+    @State private var unitSelection = UserDefaults.standard.integer(forKey: "unitSelection")
     
     var body: some View {
         Section(header: Text("achievedTodos")) {
-            
             Picker(selection: $unitSelection, label: Text("picker")) {
                 Text("d")
                     .tag(0)
@@ -34,6 +33,10 @@ struct ChartsSection: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .frame(height: 300)
+        }
+        
+        .onChange(of: unitSelection) { value in
+            UserDefaults.standard.set(value, forKey: "unitSelection")
         }
     }
 }
