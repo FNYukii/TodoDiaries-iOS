@@ -10,12 +10,14 @@ import Charts
 
 struct HorizontalBarChart: UIViewRepresentable {
     
-    let countsOfTodoAchieved: [Int]
+    let value0: Double
+    let value1: Double
     let xAxixLabels: [String]
     
     func makeUIView(context: Context) -> HorizontalBarChartView  {
         // HorizontalBarChartViewを生成
         let horizontalBarChartView = HorizontalBarChartView()
+        
         // HorizontalBarChartViewをスタイリング
         horizontalBarChartView.legend.enabled = false //チャートの概要の表示可否
         horizontalBarChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 縦グリッドの色
@@ -47,18 +49,18 @@ struct HorizontalBarChart: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: HorizontalBarChartView, context: Context) {
-        
+        uiView.data = barChartData()
+        uiView.animate(yAxisDuration: 0.5)
+        uiView.rightAxis.axisMaximum = rightAxisMaximum()
     }
     
     private func barChartData() -> BarChartData {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
-        for index in (0 ..< countsOfTodoAchieved.count) {
-            let day = Double(index)
-            let achievedTodoCount = Double(countsOfTodoAchieved[index])
-            let barChartDataEntry = BarChartDataEntry(x: day, y: achievedTodoCount)
-            barChartDataEntries.append(barChartDataEntry)
-        }
+        barChartDataEntries.append(BarChartDataEntry(x: 0.0, y: value0))
+        barChartDataEntries.append(BarChartDataEntry(x: 1.0, y: value1))
+        print("enties: \(barChartDataEntries)")
+        
         // BarChartDataSetを生成
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
         barChartDataSet.colors = [UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5) , UIColor.systemBlue] // 棒の色
@@ -71,7 +73,7 @@ struct HorizontalBarChart: UIViewRepresentable {
     }
     
     private func rightAxisMaximum() -> Double {
-        let maxCountOfTodoAchieved = countsOfTodoAchieved.max() ?? 0
+        let maxCountOfTodoAchieved = [value0, value1].max() ?? 0
         if maxCountOfTodoAchieved > 5 {
             return Double(maxCountOfTodoAchieved)
         } else {
