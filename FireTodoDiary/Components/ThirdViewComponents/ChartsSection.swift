@@ -13,7 +13,7 @@ struct ChartsSection: View {
     @State private var unitSelection = 0
     
     var body: some View {
-        Section(header: Text("charts")) {
+        Section(header: Text("achievedTodos")) {
             
             Picker(selection: $unitSelection, label: Text("picker")) {
                 Text("d")

@@ -12,7 +12,7 @@
 "newTodo" = "新規Todo";
 
 "achievements" = "実績";
-"charts" = "チャート";
+"achievedTodos" = "達成したTodo";
 "account" = "アカウント";
 
 "achievedAt" = "達成日時";
