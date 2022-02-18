@@ -10,6 +10,9 @@ import Charts
 
 struct HorizontalBarChart: UIViewRepresentable {
     
+    let countsOfTodoAchieved: [Int]
+    let xAxixLabels: [String]
+    
     func makeUIView(context: Context) -> HorizontalBarChartView  {
         // HorizontalBarChartViewを生成
         let horizontalBarChartView = HorizontalBarChartView()
@@ -31,8 +34,11 @@ struct HorizontalBarChart: UIViewRepresentable {
         horizontalBarChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         // X軸にラベルとして表示する文字列を指定
-        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: ["一昨日", "昨日"])
+        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxixLabels)
         horizontalBarChartView.xAxis.granularity = 1 // X軸の目盛りの粒度
+        
+        // Y軸の最大値を設定
+        horizontalBarChartView.rightAxis.axisMaximum = rightAxisMaximum()
         
         // HorizontalBarChartViewにデータをセット
         horizontalBarChartView.data = barChartData()
@@ -45,9 +51,6 @@ struct HorizontalBarChart: UIViewRepresentable {
     }
     
     private func barChartData() -> BarChartData {
-        
-        let countsOfTodoAchieved = [2, 5]
-        
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
         for index in (0 ..< countsOfTodoAchieved.count) {
@@ -56,17 +59,23 @@ struct HorizontalBarChart: UIViewRepresentable {
             let barChartDataEntry = BarChartDataEntry(x: day, y: achievedTodoCount)
             barChartDataEntries.append(barChartDataEntry)
         }
-        
         // BarChartDataSetを生成
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
         barChartDataSet.colors = [UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5) , UIColor.systemBlue] // 棒の色
-        
         // BarChartDataを生成
         let barChartData = BarChartData()
         barChartData.addDataSet(barChartDataSet)
         barChartData.setDrawValues(false) // 棒の右の値
         barChartData.barWidth = 0.5 // 棒の幅
-        
         return barChartData
+    }
+    
+    private func rightAxisMaximum() -> Double {
+        let maxCountOfTodoAchieved = countsOfTodoAchieved.max() ?? 0
+        if maxCountOfTodoAchieved > 5 {
+            return Double(maxCountOfTodoAchieved)
+        } else {
+            return 5.0
+        }
     }
 }

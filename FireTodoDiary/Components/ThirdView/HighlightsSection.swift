@@ -13,7 +13,7 @@ struct HighlightsSection: View {
             VStack(alignment: .leading) {
                 Text("昨日は一昨日よりも多くのTodoを達成しました")
                     .fixedSize(horizontal: false, vertical: true)
-                HorizontalBarChart()
+                HorizontalBarChart(countsOfTodoAchieved: [0, 0], xAxixLabels: ["一昨日", "昨日"])
                     .frame(height: 100)
             }
         }
