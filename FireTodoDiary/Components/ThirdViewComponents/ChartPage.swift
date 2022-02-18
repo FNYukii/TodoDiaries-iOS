@@ -35,7 +35,7 @@ struct ChartPage: View {
             }
         }
         .frame(height: 300)
-        .animation(.default, value: unitSelection)
+        .animation(.linear, value: unitSelection)
         
         .onAppear {
             isAppeared = true
@@ -61,24 +61,22 @@ struct ChartPage: View {
             self.pageTitle = Day.toStringUpToDay(from: shiftedNow)
             FirestoreTodo.countsOfTodoAchievedAtTheHour(readYear: shiftedNow.year!, readMonth: shiftedNow.month!, readDay: shiftedNow.day!) { value in
                 self.countsOfTodoAchieved = value
-                isProgressing = false
             }
-        }
-        if unitSelection == 1 {
+        } else if unitSelection == 1 {
             let shifetNow = Day.nowShiftedByMonth(offset: pageOffset)
             self.pageTitle = Day.toStringUpToMonth(from: shifetNow)
             FirestoreTodo.countsOfTodoAchievedAtTheDay(readYear: shifetNow.year!, readMonth: shifetNow.month!) { value in
                 self.countsOfTodoAchieved = value
-                isProgressing = false
             }
-        }
-        if unitSelection == 2 {
+        } else {
             let shifetNow = Day.nowShiftedByYear(offset: pageOffset)
             self.pageTitle = Day.toStringUpToYear(from: shifetNow)
             FirestoreTodo.countsOfTodoAchievedAtTheMonth(readYear: shifetNow.year!) { value in
                 self.countsOfTodoAchieved = value
-                isProgressing = false
             }
+        }
+        withAnimation {
+            isProgressing = false
         }
     }
 }
