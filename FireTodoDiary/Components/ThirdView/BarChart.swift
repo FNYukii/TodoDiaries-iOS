@@ -56,9 +56,9 @@ struct BarChart: UIViewRepresentable {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
         for index in (0 ..< countsOfTodoAchieved.count) {
-            let day = Double(index + 1)
-            let achievedTodoCount = Double(countsOfTodoAchieved[index])
-            let barChartDataEntry = BarChartDataEntry(x: day, y: achievedTodoCount)
+            let xValue = Double(index)
+            let yValue = Double(countsOfTodoAchieved[index])
+            let barChartDataEntry = BarChartDataEntry(x: xValue, y: yValue)
             barChartDataEntries.append(barChartDataEntry)
         }
         // BarChartDataSetを生成
