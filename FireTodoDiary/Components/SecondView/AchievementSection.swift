@@ -19,7 +19,7 @@ struct AchievementSection: View {
     
     init(achievedDay: DateComponents) {
         self.title = Day.toStringUpToWeekday(from: achievedDay)
-        self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
+        self.todosViewModel = TodosViewModel(isAchieved: true, achievedDay: achievedDay)
     }
     
     var body: some View {

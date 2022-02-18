@@ -29,11 +29,10 @@ class TodosViewModel: ObservableObject {
             if isAchieved {
                 query = query
                     .whereField("isAchieved", isEqualTo: true)
-                    .order(by: "achievedAt")
             } else {
                 query = query
                     .whereField("isAchieved", isEqualTo: false)
-                    .order(by: "createdAt")
+                    .order(by: "order")
             }
         }
         
