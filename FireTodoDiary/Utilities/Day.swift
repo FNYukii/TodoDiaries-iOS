@@ -52,7 +52,7 @@ class Day {
         return dateFormatter.string(from: date)
     }
     
-    //  ["1", "2", "3", ...] , ["1時", "2時", "3時", ...]
+    //  ["0", "1", "2", "3", ...] , ["0時", "1時", "2時", "3時", ...]
     static func hourStrings() -> [String] {
         var hourStrings: [String] = []
         for index in 0 ..< 24 {
