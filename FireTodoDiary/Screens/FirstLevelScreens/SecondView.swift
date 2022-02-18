@@ -10,10 +10,7 @@ import SwiftUI
 struct SecondView: View {
     
     @ObservedObject private var daysViewModel = DaysViewModel()
-    
-    @State private var achievedDays: [Int] = []
-    @State private var isShowEditSheet = false
-    
+        
     var body: some View {
         NavigationView {
             List {

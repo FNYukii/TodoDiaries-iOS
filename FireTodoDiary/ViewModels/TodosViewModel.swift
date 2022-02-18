@@ -12,7 +12,7 @@ class TodosViewModel: ObservableObject {
     
     @Published var todos: [Todo] = []
     
-    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: Int? = nil) {
+    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: DateComponents? = nil) {
         // User id
         let userId = CurrentUser.userId()
         
@@ -32,9 +32,19 @@ class TodosViewModel: ObservableObject {
         }
         
         if let achievedDay = achievedDay {
+            // startTimestamp
+            let startDate = Calendar.current.date(from: achievedDay)!
+            let startTimestamp = Timestamp(date: startDate)
+            // endTimestamp
+            var endDateComponents = achievedDay
+            endDateComponents.day! += 1
+            let endDate = Calendar.current.date(from: endDateComponents)!
+            let endTimestamp = Timestamp(date: endDate)
+            
             query = query
-                .whereField("achievedDay", isEqualTo: achievedDay)
                 .order(by: "achievedAt")
+                .start(at: [startTimestamp])
+                .end(before: [endTimestamp])
         }
         
         query

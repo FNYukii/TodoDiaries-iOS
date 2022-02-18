@@ -17,7 +17,7 @@ struct AchievementSection: View {
     @State private var isConfirming = false
     @State private var todoUnderConfirm: Todo? = nil
     
-    init(achievedDay: Int) {
+    init(achievedDay: DateComponents) {
         self.title = Day.toString(from: achievedDay)
         self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
     }

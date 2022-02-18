@@ -40,6 +40,14 @@ class Day {
         return dateFormatter.string(from: from)
     }
     
+    // DateComponents -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
+    static func toString(from: DateComponents) -> String {
+        let date = Calendar.current.date(from: from)!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        return dateFormatter.string(from: date)
+    }
+    
     // 20210923 -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
     static func toString(from: Int) -> String {
         let date = toDate(from: from)
