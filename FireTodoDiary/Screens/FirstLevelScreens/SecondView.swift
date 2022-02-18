@@ -19,7 +19,7 @@ struct SecondView: View {
                 }
             }
             
-            .navigationTitle("achievements")
+            .navigationTitle("history")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ShowAccountViewButton()
