@@ -237,8 +237,7 @@ class FirestoreTodo {
             .updateData([
                 "isPinned": false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? now : nil) as Any,
-                "achievedDay": (isAchieved ? Day.toInt(from: now) : nil) as Any
+                "achievedAt": (isAchieved ? now : nil) as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")
