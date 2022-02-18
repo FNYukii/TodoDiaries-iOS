@@ -211,10 +211,7 @@ class FirestoreTodo {
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        // user id
         let userId = CurrentUser.userId()
-        
-        // Add new document
         let db = Firestore.firestore()
         db.collection("todos")
             .addDocument(data: [
