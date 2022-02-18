@@ -186,8 +186,7 @@ class FirestoreTodo {
                 "createdAt": Date(),
                 "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                "achievedDay": (isAchieved ? Day.toInt(from: achievedAt) : nil) as Any
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any
             ]) { error in
                 if let error = error {
                     print("HELLO! Fail! Error adding new document: \(error)")
@@ -205,8 +204,7 @@ class FirestoreTodo {
                 "content": content,
                 "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                "achievedDay": (isAchieved ? Day.toInt(from: achievedAt) : nil) as Any
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")

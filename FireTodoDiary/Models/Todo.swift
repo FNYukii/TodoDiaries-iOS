@@ -15,7 +15,6 @@ struct Todo: Identifiable, Equatable {
     let isPinned: Bool
     let isAchieved: Bool
     let achievedAt: Date?
-    let achievedDay: Int?
     
     init(document: QueryDocumentSnapshot) {
         self.id = document.documentID
@@ -26,6 +25,5 @@ struct Todo: Identifiable, Equatable {
         self.isAchieved = document.get("isAchieved") as! Bool
         let achievedTimestamp = document.get("achievedAt") as? Timestamp
         self.achievedAt = achievedTimestamp?.dateValue()
-        self.achievedDay = document.get("achievedDay") as? Int
     }
 }
