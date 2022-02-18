@@ -27,6 +27,9 @@
 "m" = "月";
 "y" = "年";
 
+"today" = "今日";
+"yesterday" = "昨日";
+
 // Adjective
 "pinned" = "固定済み";
 "achieved" = "達成済み";

@@ -27,6 +27,9 @@
 "m" = "M";
 "y" = "Y";
 
+"today" = "Today";
+"yesterday" = "Yesterday";
+
 // Adjective
 "pinned" = "Pinned";
 "achieved" = "Achieved";

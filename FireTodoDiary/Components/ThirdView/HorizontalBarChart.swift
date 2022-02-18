@@ -12,7 +12,7 @@ struct HorizontalBarChart: UIViewRepresentable {
     
     let value0: Double
     let value1: Double
-    let xAxixLabels: [String]
+    let xAxisLabels: [String]
     
     func makeUIView(context: Context) -> HorizontalBarChartView  {
         // HorizontalBarChartViewを生成
@@ -31,7 +31,7 @@ struct HorizontalBarChart: UIViewRepresentable {
         horizontalBarChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
         
         horizontalBarChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置を右から左へ
-        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxixLabels) // X軸にラベルの文字列
+        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisLabels) // X軸にラベルの文字列
         horizontalBarChartView.xAxis.granularity = 1 // X軸の目盛りの粒度
         
         horizontalBarChartView.rightAxis.enabled = false // Y軸下ラベル
