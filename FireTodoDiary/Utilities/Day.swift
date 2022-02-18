@@ -58,7 +58,7 @@ class Day {
         for index in 0 ..< 24 {
             // DateCompontentsを生成
             var dateComponents = DateComponents()
-            dateComponents.hour = index + 1
+            dateComponents.hour = index
             let date = Calendar.current.date(from: dateComponents)!
             // dayStringを生成
             let dateFormatter = DateFormatter()
