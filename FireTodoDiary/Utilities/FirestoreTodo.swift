@@ -148,7 +148,7 @@ class FirestoreTodo {
                 }
                 print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
                 if let querySnapshot = querySnapshot {
-                    // achievedHoursを生成 [1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
+                    // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
                     var achievedHours: [Int] = []
                     querySnapshot.documents.forEach { document in
                         let timestamp = document.get("achievedAt") as! Timestamp
@@ -161,8 +161,7 @@ class FirestoreTodo {
                     // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
                     var countsOfTodoAchieved: [Int] = []
                     for index in 0 ..< 24 {
-                        let hour = index + 1
-                        let countOfTodoAchieved = achievedHours.filter({$0 == hour}).count
+                        let countOfTodoAchieved = achievedHours.filter({$0 == index}).count
                         countsOfTodoAchieved.append(countOfTodoAchieved)
                     }
                     completion?(countsOfTodoAchieved)
