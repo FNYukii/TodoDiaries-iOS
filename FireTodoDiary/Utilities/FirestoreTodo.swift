@@ -10,7 +10,7 @@ import Foundation
 
 class FirestoreTodo {
     
-    // 特定の年内の、月別達成数の配列
+    // 特定の年内の全ての月の、月別達成数の配列
     static func countsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -19,7 +19,6 @@ class FirestoreTodo {
         startDateComponents.day = 1
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
-        
         // endTimestampを生成
         var endDateComponents = DateComponents()
         endDateComponents.year = readYear + 1
@@ -64,7 +63,7 @@ class FirestoreTodo {
             }
     }
     
-    // 特定の月内の、日別達成数を配列
+    // 特定の月内の全ての日の、日別達成数を配列
     static func countsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -73,7 +72,6 @@ class FirestoreTodo {
         startDateComponents.day = 1
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
-        
         // endTimestampを生成
         var endDateComponents = DateComponents()
         endDateComponents.year = readYear
@@ -119,7 +117,7 @@ class FirestoreTodo {
             }
     }
     
-    // 特定の日内の、時間別達成数の配列
+    // 特定の日内の全ての時間の、時間別達成数の配列
     static func countsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -128,7 +126,6 @@ class FirestoreTodo {
         startDateComponents.day = readDay
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
-        
         // endTimestampを生成
         var endDateComponents = DateComponents()
         endDateComponents.year = readYear
@@ -172,7 +169,44 @@ class FirestoreTodo {
                 }
             }
     }
+    
+    // 特定の日の達成済みTodoの数
+    static func countOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
+        // startTimestampを生成
+        var startDateComponents = DateComponents()
+        startDateComponents.year = readYear
+        startDateComponents.month = readMonth
+        startDateComponents.day = readDay
+        let startDate = Calendar.current.date(from: startDateComponents)!
+        let startTimestamp = Timestamp(date: startDate)
+        // endTimestampを生成
+        var endDateComponents = DateComponents()
+        endDateComponents.year = readYear
+        endDateComponents.month = readMonth
+        endDateComponents.day = readDay + 1
+        let endDate = Calendar.current.date(from: endDateComponents)!
+        let endTimestamp = Timestamp(date: endDate)
         
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .order(by: "achievedAt")
+            .start(at: [startTimestamp])
+            .end(before: [endTimestamp])
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
+                if let querySnapshot = querySnapshot {
+                    let countOfTodoAchieved = querySnapshot.documents.count
+                    completion?(countOfTodoAchieved)
+                }
+            }
+    }
+    
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // user id
         let userId = CurrentUser.userId()

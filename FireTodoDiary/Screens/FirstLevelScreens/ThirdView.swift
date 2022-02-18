@@ -13,6 +13,7 @@ struct ThirdView: View {
         NavigationView {
             List {
                 ChartsSection()
+                HighlightsSection()
             }
             
             .navigationTitle("stats")

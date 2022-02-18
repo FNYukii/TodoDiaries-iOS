@@ -28,8 +28,11 @@ struct ChartPage: View {
             if !isProgressing {
                 Text(pageTitle)
                     .font(.title)
-                Text("total \(countsOfTodoAchieved.reduce(0) { $0 + $1 })")
-                    .foregroundColor(.secondary)
+                HStack {
+                    Text("total")
+                    Text("\(countsOfTodoAchieved.reduce(0) { $0 + $1 })")
+                }
+                .foregroundColor(.secondary)                    
                 BarChart(unitSelection: unitSelection, countsOfTodoAchieved: countsOfTodoAchieved)
                     .padding(.bottom)
             }
