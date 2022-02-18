@@ -30,6 +30,7 @@
 		54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7D27BAE46000E784D4 /* DaysViewModel.swift */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
 		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
+		547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */; };
 		547F36F527BB9BBC00B18176 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F427BB9BBC00B18176 /* FirebaseAuthUI */; };
 		547F36F727BB9BBC00B18176 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F627BB9BBC00B18176 /* FirebaseGoogleAuthUI */; };
 		547F36F927BB9BBC00B18176 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F827BB9BBC00B18176 /* FirebaseOAuthUI */; };
@@ -74,6 +75,7 @@
 		54491F7D27BAE46000E784D4 /* DaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysViewModel.swift; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
 		547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
+		547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
 				547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */,
+				547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */,
 			);
 			path = ThirdView;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */,
+				547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */,
 				547F373927BD6C2C00B18176 /* BarChart.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
 				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,

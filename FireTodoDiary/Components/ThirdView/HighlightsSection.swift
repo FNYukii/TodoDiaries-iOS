@@ -12,6 +12,9 @@ struct HighlightsSection: View {
         Section(header: Text("highlights")) {
             VStack(alignment: .leading) {
                 Text("昨日は一昨日よりも多くのTodoを達成しました")
+                    .fixedSize(horizontal: false, vertical: true)
+                HorizontalBarChart()
+                    .frame(height: 100)
             }
         }
     }
