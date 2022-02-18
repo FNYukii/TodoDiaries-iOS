@@ -19,7 +19,6 @@ class FirestoreTodo {
         startDateComponents.day = 1
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
-        
         // endTimestampを生成
         var endDateComponents = DateComponents()
         endDateComponents.year = readYear + 1
@@ -73,7 +72,6 @@ class FirestoreTodo {
         startDateComponents.day = 1
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
-        
         // endTimestampを生成
         var endDateComponents = DateComponents()
         endDateComponents.year = readYear
@@ -128,7 +126,6 @@ class FirestoreTodo {
         startDateComponents.day = readDay
         let startDate = Calendar.current.date(from: startDateComponents)!
         let startTimestamp = Timestamp(date: startDate)
-        
         // endTimestampを生成
         var endDateComponents = DateComponents()
         endDateComponents.year = readYear
@@ -172,7 +169,43 @@ class FirestoreTodo {
                 }
             }
     }
+    
+    static func countOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
+        // startTimestampを生成
+        var startDateComponents = DateComponents()
+        startDateComponents.year = readYear
+        startDateComponents.month = readMonth
+        startDateComponents.day = readDay
+        let startDate = Calendar.current.date(from: startDateComponents)!
+        let startTimestamp = Timestamp(date: startDate)
+        // endTimestampを生成
+        var endDateComponents = DateComponents()
+        endDateComponents.year = readYear
+        endDateComponents.month = readMonth
+        endDateComponents.day = readDay + 1
+        let endDate = Calendar.current.date(from: endDateComponents)!
+        let endTimestamp = Timestamp(date: endDate)
         
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .order(by: "achievedAt")
+            .start(at: [startTimestamp])
+            .end(before: [endTimestamp])
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
+                if let querySnapshot = querySnapshot {
+                    let countOfTodoAchieved = querySnapshot.documents.count
+                    completion?(countOfTodoAchieved)
+                }
+            }
+    }
+    
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // user id
         let userId = CurrentUser.userId()
