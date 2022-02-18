@@ -15,6 +15,7 @@ struct ChartPage: View {
     @State private var countsOfTodoAchieved: [Int] = []
     @State private var pageTitle = ""
 
+    @State private var isAppeared = false
     @State private var isProgressing = true
         
     var body: some View {
@@ -34,15 +35,27 @@ struct ChartPage: View {
             }
         }
         .frame(height: 300)
-        .onAppear(perform: load)
         .animation(.default, value: unitSelection)
+        
+        .onAppear {
+            isAppeared = true
+            loadCountsOfTodoAchieved()
+        }
+        
+        .onDisappear {
+            isAppeared = false
+        }
+        
+        // 親ViewでunitSelectionが変更され、かつAppear済みならデータ読み込み
         .onChange(of: unitSelection) { _ in
             isProgressing = true
-            load()
+            if isAppeared {
+                loadCountsOfTodoAchieved()
+            }
         }
     }
     
-    func load() {
+    func loadCountsOfTodoAchieved() {
         if unitSelection == 0 {
             let shiftedNow = Day.nowShiftedByDay(offset: pageOffset)
             self.pageTitle = Day.toStringUpToDay(from: shiftedNow)
