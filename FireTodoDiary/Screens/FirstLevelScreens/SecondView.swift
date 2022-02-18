@@ -10,10 +10,7 @@ import SwiftUI
 struct SecondView: View {
     
     @ObservedObject private var daysViewModel = DaysViewModel()
-    
-    @State private var achievedDays: [Int] = []
-    @State private var isShowEditSheet = false
-    
+        
     var body: some View {
         NavigationView {
             List {
@@ -22,10 +19,17 @@ struct SecondView: View {
                 }
             }
             
-            .navigationTitle("achievements")
+            .navigationTitle("history")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ShowAccountViewButton()
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        // TODO: Open datePicker
+                    }) {
+                        Image(systemName: "calendar")
+                    }
                 }
             }
         }

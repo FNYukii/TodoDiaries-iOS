@@ -21,11 +21,11 @@ struct ContentView: View {
             TabView {
                 FirstView()
                     .tabItem{
-                        Label("todos", systemImage: "list.bullet")
+                        Label("todos", systemImage: "checkmark")
                     }
                 SecondView()
                     .tabItem {
-                        Label("achievements", systemImage: "checkmark")
+                        Label("history", systemImage: "calendar")
                     }
                 ThirdView()
                     .tabItem {

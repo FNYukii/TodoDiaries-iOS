@@ -8,20 +8,7 @@
 import Foundation
 
 class Day {
-    
-    // Date -> 20220214
-    static func toInt(from: Date) -> Int {
-        let year = Calendar.current.component(.year, from: from)
-        let month = Calendar.current.component(.month, from: from)
-        let day = Calendar.current.component(.day, from: from)
-        return year * 10000 + month * 100 + day
-    }
-    
-    // 2022, 2, 14 -> 20220214
-    static func toInt(year: Int, month: Int, day: Int) -> Int {
-        return year * 10000 + month * 100 + day
-    }
-    
+        
     // その月の日数
     static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
         var dateComponents = DateComponents()
@@ -33,19 +20,14 @@ class Day {
         return dayCount
     }
     
-    // Date -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toString(from: Date) -> String {
+    // DateComponents -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
+    static func toStringUpToWeekday(from: DateComponents) -> String {
+        let date = Calendar.current.date(from: from)!
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
-        return dateFormatter.string(from: from)
+        return dateFormatter.string(from: date)
     }
-    
-    // 20210923 -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toString(from: Int) -> String {
-        let date = toDate(from: from)
-        return toString(from: date)
-    }
-    
+        
     // Date -> "2022", "2022年"
     static func toStringUpToYear(from: DateComponents) -> String {
         let date = Calendar.current.date(from: from)!
