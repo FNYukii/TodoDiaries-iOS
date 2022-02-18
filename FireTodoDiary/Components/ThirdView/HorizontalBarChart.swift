@@ -21,12 +21,7 @@ struct HorizontalBarChart: UIViewRepresentable {
         // HorizontalBarChartViewをスタイリング
         horizontalBarChartView.legend.enabled = false //チャートの概要の表示可否
         horizontalBarChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 縦グリッドの色
-        horizontalBarChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
-        
-        horizontalBarChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置を右から左へ
-        horizontalBarChartView.leftAxis.enabled = false // 上側Y軸のラベル
-        horizontalBarChartView.rightAxis.axisMinimum = 0.0 // 下側Y軸の目盛り最小値
-        horizontalBarChartView.rightAxis.granularity = 1.0 // 下側Y軸の目盛りの粒度
+        horizontalBarChartView.leftAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
         
         horizontalBarChartView.doubleTapToZoomEnabled = false //ダブルタップによるズーム
         horizontalBarChartView.scaleXEnabled = false //X軸ピンチアウト
@@ -35,12 +30,14 @@ struct HorizontalBarChart: UIViewRepresentable {
         horizontalBarChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
         horizontalBarChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
-        // X軸にラベルとして表示する文字列を指定
-        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxixLabels)
+        horizontalBarChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置を右から左へ
+        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxixLabels) // X軸にラベルの文字列
         horizontalBarChartView.xAxis.granularity = 1 // X軸の目盛りの粒度
         
-        // Y軸の最大値を設定
-        horizontalBarChartView.rightAxis.axisMaximum = rightAxisMaximum()
+        horizontalBarChartView.rightAxis.enabled = false // Y軸下ラベル
+        horizontalBarChartView.leftAxis.axisMinimum = 0.0 // Y軸上ラベルの最小値
+        horizontalBarChartView.leftAxis.axisMaximum = yAxisMaximum() // Y軸上ラベルの最大値
+        horizontalBarChartView.leftAxis.granularity = 1.0 //Y軸上ラベルの粒度
         
         // HorizontalBarChartViewにデータをセット
         horizontalBarChartView.data = barChartData()
@@ -51,7 +48,7 @@ struct HorizontalBarChart: UIViewRepresentable {
     func updateUIView(_ uiView: HorizontalBarChartView, context: Context) {
         uiView.data = barChartData()
         uiView.animate(yAxisDuration: 0.5)
-        uiView.rightAxis.axisMaximum = rightAxisMaximum()
+        uiView.rightAxis.axisMaximum = yAxisMaximum()
     }
     
     private func barChartData() -> BarChartData {
@@ -72,7 +69,7 @@ struct HorizontalBarChart: UIViewRepresentable {
         return barChartData
     }
     
-    private func rightAxisMaximum() -> Double {
+    private func yAxisMaximum() -> Double {
         let maxCountOfTodoAchieved = [value0, value1].max() ?? 0
         if maxCountOfTodoAchieved > 5 {
             return Double(maxCountOfTodoAchieved)
