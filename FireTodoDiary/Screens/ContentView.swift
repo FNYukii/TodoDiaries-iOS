@@ -21,7 +21,7 @@ struct ContentView: View {
             TabView {
                 FirstView()
                     .tabItem{
-                        Label("todos", systemImage: "list.bullet")
+                        Label("todos", systemImage: "checkmark")
                     }
                 SecondView()
                     .tabItem {
