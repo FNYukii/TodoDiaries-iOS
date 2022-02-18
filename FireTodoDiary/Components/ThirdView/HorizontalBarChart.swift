@@ -22,13 +22,13 @@ struct HorizontalBarChart: UIViewRepresentable {
         horizontalBarChartView.legend.enabled = false //チャートの概要の表示可否
         horizontalBarChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 縦グリッドの色
         horizontalBarChartView.leftAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
+        horizontalBarChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         horizontalBarChartView.doubleTapToZoomEnabled = false //ダブルタップによるズーム
         horizontalBarChartView.scaleXEnabled = false //X軸ピンチアウト
         horizontalBarChartView.scaleYEnabled = false //Y軸ピンチアウト
         horizontalBarChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示
         horizontalBarChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
-        horizontalBarChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         horizontalBarChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置を右から左へ
         horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxixLabels) // X軸にラベルの文字列
@@ -56,7 +56,6 @@ struct HorizontalBarChart: UIViewRepresentable {
         var barChartDataEntries : [BarChartDataEntry] = []
         barChartDataEntries.append(BarChartDataEntry(x: 0.0, y: value0))
         barChartDataEntries.append(BarChartDataEntry(x: 1.0, y: value1))
-        print("enties: \(barChartDataEntries)")
         
         // BarChartDataSetを生成
         let barChartDataSet = BarChartDataSet(barChartDataEntries)

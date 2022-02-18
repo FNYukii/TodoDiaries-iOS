@@ -16,23 +16,25 @@ struct BarChart: UIViewRepresentable {
     func makeUIView(context: Context) -> BarChartView {
         // BarChartViewを生成
         let barChartView = BarChartView()
+        
         barChartView.legend.enabled = false //チャートの概要の表示可否
         barChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 縦グリッドの色
         barChartView.leftAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
-        barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置
-        barChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
-        barChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
-        barChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの粒度
+        barChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
+        
         barChartView.doubleTapToZoomEnabled = false //ダブルタップによるズーム
         barChartView.scaleXEnabled = false //X軸ピンチアウト
         barChartView.scaleYEnabled = false //Y軸ピンチアウト
         barChartView.highlightPerDragEnabled = false //ドラッグによるハイライト線表示
         barChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
-        barChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
-        
+        barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置
         barChartView.xAxis.valueFormatter = xAxisValueFormatter() // X軸ラベルの文字列
         barChartView.xAxis.granularity = 1 // X軸ラベルの粒度
+        
+        barChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
+        barChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
+        barChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの粒度
         
         // BarChartViewにデータをセット
         barChartView.data = barChartData()
