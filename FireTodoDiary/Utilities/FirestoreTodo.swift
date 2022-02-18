@@ -10,7 +10,7 @@ import Foundation
 
 class FirestoreTodo {
     
-    // 特定の年内の、月別達成数の配列
+    // 特定の年内の全ての月の、月別達成数の配列
     static func countsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -63,7 +63,7 @@ class FirestoreTodo {
             }
     }
     
-    // 特定の月内の、日別達成数を配列
+    // 特定の月内の全ての日の、日別達成数を配列
     static func countsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -117,7 +117,7 @@ class FirestoreTodo {
             }
     }
     
-    // 特定の日内の、時間別達成数の配列
+    // 特定の日内の全ての時間の、時間別達成数の配列
     static func countsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
@@ -170,6 +170,7 @@ class FirestoreTodo {
             }
     }
     
+    // 特定の日の達成済みTodoの数
     static func countOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
