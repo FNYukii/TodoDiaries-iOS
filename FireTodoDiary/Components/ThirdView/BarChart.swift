@@ -50,7 +50,7 @@ struct BarChart: UIViewRepresentable {
         uiView.leftAxis.axisMaximum = leftAxisMaximum()
     }
     
-    func barChartData() -> BarChartData {
+    private func barChartData() -> BarChartData {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
         for index in (0 ..< countsOfTodoAchieved.count) {
@@ -69,7 +69,7 @@ struct BarChart: UIViewRepresentable {
         return barChartData
     }
     
-    func leftAxisMaximum() -> Double {
+    private func leftAxisMaximum() -> Double {
         let maxCountOfTodoAchieved = countsOfTodoAchieved.max() ?? 0
         if maxCountOfTodoAchieved > 5 {
             return Double(maxCountOfTodoAchieved)
@@ -78,7 +78,7 @@ struct BarChart: UIViewRepresentable {
         }
     }
     
-    func xAxisValueFormatter() -> IndexAxisValueFormatter {
+    private func xAxisValueFormatter() -> IndexAxisValueFormatter {
         if unitSelection == 0 {
             let strings = Day.hourStrings()
             return IndexAxisValueFormatter(values:strings)
