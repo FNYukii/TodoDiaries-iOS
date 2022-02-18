@@ -34,9 +34,9 @@ struct HighlightsSection: View {
                     Text(message)
                         .fixedSize(horizontal: false, vertical: true)
                     HorizontalBarChart(value0: value0, value1: value1, xAxisLabels: xAxisLabels)
+                        .frame(height: 150)
                 }
             }
-            .frame(height: 200)
             .animation(.default, value: message)
         }
         
