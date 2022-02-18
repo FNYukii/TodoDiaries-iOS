@@ -22,7 +22,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置
         barChartView.rightAxis.enabled = false //右側のY軸目盛り非表示
         barChartView.leftAxis.axisMinimum = 0.0 //左側のY軸目盛り最小値
-        barChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの区切り地
+        barChartView.leftAxis.granularity = 1.0 //左側のY軸目盛りの粒度
         barChartView.doubleTapToZoomEnabled = false //ダブルタップによるズーム
         barChartView.scaleXEnabled = false //X軸ピンチアウト
         barChartView.scaleYEnabled = false //Y軸ピンチアウト
