@@ -10,7 +10,8 @@ import Charts
 
 struct BarChart: UIViewRepresentable {
     
-    let achievedTodoCounts: [Int]
+    let unitSelection: Int
+    let countsOfTodoAchieved: [Int]
     
     func makeUIView(context: Context) -> BarChartView {
         // BarChartViewを生成
@@ -30,8 +31,7 @@ struct BarChart: UIViewRepresentable {
         barChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         // X軸にラベルとして表示する文字列を指定
-        let dayStrings = Day.localizedDayStrings()
-        barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values:dayStrings)
+        barChartView.xAxis.valueFormatter = xAxisValueFormatter()
         barChartView.xAxis.granularity = 1
         
         // BarChartViewにデータをセット
@@ -46,15 +46,16 @@ struct BarChart: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {
         uiView.data = barChartData()
         uiView.animate(yAxisDuration: 0.5)
+        uiView.xAxis.valueFormatter = xAxisValueFormatter()
         uiView.leftAxis.axisMaximum = leftAxisMaximum()
     }
     
     func barChartData() -> BarChartData {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
-        for index in (0 ..< achievedTodoCounts.count) {
+        for index in (0 ..< countsOfTodoAchieved.count) {
             let day = Double(index + 1)
-            let achievedTodoCount = Double(achievedTodoCounts[index])
+            let achievedTodoCount = Double(countsOfTodoAchieved[index])
             let barChartDataEntry = BarChartDataEntry(x: day, y: achievedTodoCount)
             barChartDataEntries.append(barChartDataEntry)
         }
@@ -69,11 +70,24 @@ struct BarChart: UIViewRepresentable {
     }
     
     func leftAxisMaximum() -> Double {
-        let maxAchievedTodoCount = achievedTodoCounts.max() ?? 0
-        if maxAchievedTodoCount > 5 {
-            return Double(maxAchievedTodoCount)
+        let maxCountOfTodoAchieved = countsOfTodoAchieved.max() ?? 0
+        if maxCountOfTodoAchieved > 5 {
+            return Double(maxCountOfTodoAchieved)
         } else {
             return 5.0
+        }
+    }
+    
+    func xAxisValueFormatter() -> IndexAxisValueFormatter {
+        if unitSelection == 0 {
+            let strings = Day.hourStrings()
+            return IndexAxisValueFormatter(values:strings)
+        } else if unitSelection == 1 {
+            let strings = Day.dayStrings()
+            return IndexAxisValueFormatter(values:strings)
+        } else {
+            let strings = Day.monthStrings()
+            return IndexAxisValueFormatter(values:strings)
         }
     }
 }

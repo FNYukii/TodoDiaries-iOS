@@ -18,7 +18,7 @@ struct AchievementSection: View {
     @State private var todoUnderConfirm: Todo? = nil
     
     init(achievedDay: Int) {
-        self.title = Day.toLocalizedString(from: achievedDay)
+        self.title = Day.toString(from: achievedDay)
         self.todosViewModel = TodosViewModel(achievedDay: achievedDay)
     }
     
@@ -29,7 +29,7 @@ struct AchievementSection: View {
                     isShowEditSheet.toggle()
                 }) {
                     HStack {
-                        Text(Day.toLocalizedTimeString(from: todo.achievedAt!))
+                        Text(Day.toTimeString(from: todo.achievedAt!))
                             .foregroundColor(.secondary)
                         Text(todo.content)
                             .foregroundColor(.primary)
