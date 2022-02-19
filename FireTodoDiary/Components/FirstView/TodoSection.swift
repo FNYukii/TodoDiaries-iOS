@@ -20,7 +20,7 @@ struct TodoSection: View {
         
         Section(header: header) {
             ForEach(todos){todo in
-                Button("\(todo.content), \(todo.order)") {
+                Button(todo.content) {
                     isShowEditSheet.toggle()
                 }
                 .foregroundColor(.primary)

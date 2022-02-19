@@ -9,8 +9,8 @@ import Firebase
 
 class DaysViewModel: ObservableObject {
     
-//    @Published var achievedDays: [Int] = []
     @Published var achievedDays: [DateComponents] = []
+    @Published var isLoaded = false
     
     init() {
         // User id
@@ -20,7 +20,7 @@ class DaysViewModel: ObservableObject {
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
+            .order(by: "achievedAt", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("HELLO! Fail! Error fetching documents: \(error!)")
@@ -60,6 +60,9 @@ class DaysViewModel: ObservableObject {
                         self.achievedDays.insert(newElement, at: offset)
                     }
                 }
+                
+                // ロード完了
+                self.isLoaded = true
             }
     }
 }

@@ -13,9 +13,20 @@ struct SecondView: View {
         
     var body: some View {
         NavigationView {
-            List {
-                ForEach(daysViewModel.achievedDays, id: \.self){ achievedDay in
-                    AchievementSection(achievedDay: achievedDay)
+            
+            ZStack {
+                List {
+                    ForEach(daysViewModel.achievedDays, id: \.self){ achievedDay in
+                        AchievementSection(achievedDay: achievedDay)
+                    }
+                }
+                
+                if daysViewModel.achievedDays.count == 0 && daysViewModel.isLoaded {
+                    VStack {
+                        Text("まだ達成済みのTodoはありません")
+                        Text("Todoを達成するとここに表示されます")
+                    }
+                    .foregroundColor(.secondary)
                 }
             }
             

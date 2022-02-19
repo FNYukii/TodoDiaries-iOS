@@ -22,8 +22,12 @@ struct AccountView: View {
         NavigationView {
             Form {
                 
-                Section(header: Text("email")){
-                    Text(userEmail)
+                Section {
+                    HStack {
+                        Text("email")
+                        Text(userEmail)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 
                 Button("signOut") {
