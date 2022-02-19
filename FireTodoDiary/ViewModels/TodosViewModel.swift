@@ -26,9 +26,14 @@ class TodosViewModel: ObservableObject {
         }
         
         if let isAchieved = isAchieved {
-            query = query
-                .whereField("isAchieved", isEqualTo: isAchieved)
-                .order(by: "achievedAt")
+            if isAchieved {
+                query = query
+                    .whereField("isAchieved", isEqualTo: true)
+            } else {
+                query = query
+                    .whereField("isAchieved", isEqualTo: false)
+                    .order(by: "order")
+            }
         }
         
         if let achievedDay = achievedDay {

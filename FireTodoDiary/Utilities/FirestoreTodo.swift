@@ -31,6 +31,7 @@ class FirestoreTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .start(at: [startTimestamp])
             .end(before: [endTimestamp])
@@ -84,6 +85,7 @@ class FirestoreTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .start(at: [startTimestamp])
             .end(before: [endTimestamp])
@@ -138,6 +140,7 @@ class FirestoreTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .start(at: [startTimestamp])
             .end(before: [endTimestamp])
@@ -190,6 +193,7 @@ class FirestoreTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .start(at: [startTimestamp])
             .end(before: [endTimestamp])
@@ -207,10 +211,7 @@ class FirestoreTodo {
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        // user id
         let userId = CurrentUser.userId()
-        
-        // Add new document
         let db = Firestore.firestore()
         db.collection("todos")
             .addDocument(data: [
@@ -219,7 +220,8 @@ class FirestoreTodo {
                 "createdAt": Date(),
                 "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any
+                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
+                "order": 0
             ]) { error in
                 if let error = error {
                     print("HELLO! Fail! Error adding new document: \(error)")
