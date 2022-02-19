@@ -265,14 +265,28 @@ class FirestoreTodo {
     }
     
     static func update(id: String, isAchieved: Bool) {
-        let now = Date()
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
                 "isPinned": false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? now : nil) as Any
+                "achievedAt": (isAchieved ? Date() : nil) as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating document: \(err)")
+                } else {
+                    print("HELLO! Success! Updated document")
+                }
+            }
+    }
+    
+    static func update(id: String, order: Double) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "order": order
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")
