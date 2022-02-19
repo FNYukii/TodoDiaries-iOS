@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  FireTodoDiary
+
+  Created by Yu on 2022/02/20.
+  
+*/
+
+CFBundleDisplayName = "Fire Todo Diary";
