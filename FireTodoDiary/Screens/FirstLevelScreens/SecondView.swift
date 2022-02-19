@@ -35,13 +35,6 @@ struct SecondView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     ShowAccountViewButton()
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // TODO: Open datePicker
-                    }) {
-                        Image(systemName: "calendar")
-                    }
-                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
