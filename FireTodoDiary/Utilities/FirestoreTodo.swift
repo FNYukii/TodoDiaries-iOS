@@ -11,7 +11,7 @@ import Foundation
 class FirestoreTodo {
     
     // 特定の年内の全ての月の、月別達成数の配列
-    static func countsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
+    static func readCountsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -65,7 +65,7 @@ class FirestoreTodo {
     }
     
     // 特定の月内の全ての日の、日別達成数を配列
-    static func countsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
+    static func readCountsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -120,7 +120,7 @@ class FirestoreTodo {
     }
     
     // 特定の日内の全ての時間の、時間別達成数の配列
-    static func countsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
+    static func readCountsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -173,7 +173,7 @@ class FirestoreTodo {
     }
     
     // 特定の日の達成済みTodoの数
-    static func countOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
+    static func readCountOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -210,36 +210,82 @@ class FirestoreTodo {
             }
     }
     
-    static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
-            .addDocument(data: [
-                "userId": userId,
-                "content": content,
-                "createdAt": Date(),
-                "isPinned": !isAchieved ? isPinned : false,
-                "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                "order": 0
-            ]) { error in
-                if let error = error {
-                    print("HELLO! Fail! Error adding new document: \(error)")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: false)
+            .whereField("isPinned", isEqualTo: isPinned)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    print("HELLO! Success! Added new document to todos")
+                    var orders: [Double] = []
+                    for document in querySnapshot!.documents {
+                        let order = document.get("order") as! Double
+                        orders.append(order)
+                    }
+                    let maxOrder = orders.max() ?? 0.0
+                    completion?(maxOrder)
                 }
-            }
+        }
     }
     
-    static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func readMinOrder(isPinned: Bool, completion: ((Double) -> Void)?){
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: false)
+            .whereField("isPinned", isEqualTo: isPinned)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                } else {
+                    var orders: [Double] = []
+                    for document in querySnapshot!.documents {
+                        let order = document.get("order") as! Double
+                        orders.append(order)
+                    }
+                    let maxOrder = orders.min() ?? 0.0
+                    completion?(maxOrder)
+                }
+        }
+    }
+    
+    static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+        // order最大値を取得
+        readMaxOrder(isPinned: isPinned) { maxOrder in
+            // ドキュメント追加
+            let userId = CurrentUser.userId()
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .addDocument(data: [
+                    "userId": userId,
+                    "content": content,
+                    "createdAt": Date(),
+                    "isPinned": !isAchieved ? isPinned : false,
+                    "isAchieved": isAchieved,
+                    "achievedAt": (isAchieved ? achievedAt : nil) as Any,
+                    "order": !isAchieved ? maxOrder + 100 : -1.0
+                ]) { error in
+                    if let error = error {
+                        print("HELLO! Fail! Error adding new document: \(error)")
+                    } else {
+                        print("HELLO! Success! Added new document to todos")
+                    }
+                }
+        }
+    }
+    
+    static func update(id: String, content: String, achievedAt: Date) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
                 "content": content,
-                "isPinned": !isAchieved ? isPinned : false,
-                "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any
+                "achievedAt": achievedAt
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")
@@ -265,14 +311,13 @@ class FirestoreTodo {
     }
     
     static func update(id: String, isAchieved: Bool) {
-        let now = Date()
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
                 "isPinned": false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? now : nil) as Any
+                "achievedAt": (isAchieved ? Date() : nil) as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")
@@ -280,6 +325,50 @@ class FirestoreTodo {
                     print("HELLO! Success! Updated document")
                 }
             }
+    }
+    
+    static func update(id: String, order: Double) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "order": order
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating document: \(err)")
+                } else {
+                    print("HELLO! Success! Updated document")
+                }
+            }
+    }
+    
+    static func pin(id: String) {
+        // pinnedTodosの一番下へ
+        readMaxOrder(isPinned: true) { value in
+            update(id: id, order: value + 100.0)
+            update(id: id, isPinned: true)
+        }
+    }
+    
+    static func unpin(id: String) {
+        // unpinnedTodosの一番上へ
+        readMinOrder(isPinned: false) { value in
+            update(id: id, order: value - 100.0)
+            update(id: id, isPinned: false)
+        }
+    }
+    
+    static func achieve(id: String) {
+        update(id: id, order: -1.0)
+        update(id: id, isAchieved: true)
+    }
+    
+    static func unachieve(id: String) {
+        // unpinnedTodosの一番下へ
+        readMaxOrder(isPinned: false) { value in
+            update(id: id, order: value + 100.0)
+            update(id: id, isAchieved: false)
+        }
     }
     
     static func delete(id: String) {

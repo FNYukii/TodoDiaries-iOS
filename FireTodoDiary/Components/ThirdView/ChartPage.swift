@@ -62,19 +62,19 @@ struct ChartPage: View {
         if unitSelection == 0 {
             let shiftedNow = Day.nowShiftedByDay(offset: pageOffset)
             self.pageTitle = Day.toStringUpToDay(from: shiftedNow)
-            FirestoreTodo.countsOfTodoAchievedAtTheHour(readYear: shiftedNow.year!, readMonth: shiftedNow.month!, readDay: shiftedNow.day!) { value in
+            FirestoreTodo.readCountsOfTodoAchievedAtTheHour(readYear: shiftedNow.year!, readMonth: shiftedNow.month!, readDay: shiftedNow.day!) { value in
                 self.countsOfTodoAchieved = value
             }
         } else if unitSelection == 1 {
             let shifetNow = Day.nowShiftedByMonth(offset: pageOffset)
             self.pageTitle = Day.toStringUpToMonth(from: shifetNow)
-            FirestoreTodo.countsOfTodoAchievedAtTheDay(readYear: shifetNow.year!, readMonth: shifetNow.month!) { value in
+            FirestoreTodo.readCountsOfTodoAchievedAtTheDay(readYear: shifetNow.year!, readMonth: shifetNow.month!) { value in
                 self.countsOfTodoAchieved = value
             }
         } else {
             let shifetNow = Day.nowShiftedByYear(offset: pageOffset)
             self.pageTitle = Day.toStringUpToYear(from: shifetNow)
-            FirestoreTodo.countsOfTodoAchievedAtTheMonth(readYear: shifetNow.year!) { value in
+            FirestoreTodo.readCountsOfTodoAchievedAtTheMonth(readYear: shifetNow.year!) { value in
                 self.countsOfTodoAchieved = value
             }
         }

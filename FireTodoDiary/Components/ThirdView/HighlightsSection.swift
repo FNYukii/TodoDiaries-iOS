@@ -45,12 +45,12 @@ struct HighlightsSection: View {
             let now = Date()
             let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: now)!
             let yesterdayComponents = Calendar.current.dateComponents(in: TimeZone.current, from: yesterday)
-            FirestoreTodo.countOfTodoAchievedAtTheDay(readYear: yesterdayComponents.year!, readMonth: yesterdayComponents.month!, readDay: yesterdayComponents.day!) { countOfTodoAchievedAtToday in
+            FirestoreTodo.readCountOfTodoAchievedAtTheDay(readYear: yesterdayComponents.year!, readMonth: yesterdayComponents.month!, readDay: yesterdayComponents.day!) { countOfTodoAchievedAtToday in
                 value0 = Double(countOfTodoAchievedAtToday)
                 
                 // 今日のTodo達成数
                 let todayComponents = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-                FirestoreTodo.countOfTodoAchievedAtTheDay(readYear: todayComponents.year!, readMonth: todayComponents.month!, readDay: todayComponents.day!) { countOfTodoAchievedAtYesterday in
+                FirestoreTodo.readCountOfTodoAchievedAtTheDay(readYear: todayComponents.year!, readMonth: todayComponents.month!, readDay: todayComponents.day!) { countOfTodoAchievedAtYesterday in
                     value1 = Double(countOfTodoAchievedAtYesterday)
                     
                     // message
