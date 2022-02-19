@@ -221,10 +221,10 @@
 		547F374027BDF2A700B18176 /* FirstView */ = {
 			isa = PBXGroup;
 			children = (
+				547F374327BE05C600B18176 /* ShowAccountViewButton.swift */,
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
 				54491F7927BACEB700E784D4 /* TodoSection.swift */,
 				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
-				547F374327BE05C600B18176 /* ShowAccountViewButton.swift */,
 			);
 			path = FirstView;
 			sourceTree = "<group>";

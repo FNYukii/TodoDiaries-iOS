@@ -11,7 +11,7 @@ import Foundation
 class FirestoreTodo {
     
     // 特定の年内の全ての月の、月別達成数の配列
-    static func countsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
+    static func readCountsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -65,7 +65,7 @@ class FirestoreTodo {
     }
     
     // 特定の月内の全ての日の、日別達成数を配列
-    static func countsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
+    static func readCountsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -120,7 +120,7 @@ class FirestoreTodo {
     }
     
     // 特定の日内の全ての時間の、時間別達成数の配列
-    static func countsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
+    static func readCountsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -173,7 +173,7 @@ class FirestoreTodo {
     }
     
     // 特定の日の達成済みTodoの数
-    static func countOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
+    static func readCountOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
         // startTimestampを生成
         var startDateComponents = DateComponents()
         startDateComponents.year = readYear
@@ -210,7 +210,7 @@ class FirestoreTodo {
             }
     }
     
-    static func maxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
+    static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
@@ -232,9 +232,31 @@ class FirestoreTodo {
         }
     }
     
+    static func readMinOrder(isPinned: Bool, completion: ((Double) -> Void)?){
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: false)
+            .whereField("isPinned", isEqualTo: isPinned)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                } else {
+                    var orders: [Double] = []
+                    for document in querySnapshot!.documents {
+                        let order = document.get("order") as! Double
+                        orders.append(order)
+                    }
+                    let maxOrder = orders.min() ?? 0.0
+                    completion?(maxOrder)
+                }
+        }
+    }
+    
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // order最大値を取得
-        maxOrder(isPinned: false) { maxOrder in
+        readMaxOrder(isPinned: false) { maxOrder in
             // ドキュメント追加
             let userId = CurrentUser.userId()
             let db = Firestore.firestore()
@@ -273,12 +295,6 @@ class FirestoreTodo {
                     print("HELLO! Success! Updated document")
                 }
             }
-    }
-    
-    static func pin(id: String) {
-        
-        
-        update(id: id, isPinned: true)
     }
     
     static func update(id: String, isPinned: Bool) {
@@ -326,6 +342,28 @@ class FirestoreTodo {
                     print("HELLO! Success! Updated document")
                 }
             }
+    }
+    
+    static func pin(id: String) {
+        readMaxOrder(isPinned: true) { value in
+            update(id: id, order: value + 100.0)
+            update(id: id, isPinned: true)
+        }
+    }
+    
+    static func unpin(id: String) {
+        readMinOrder(isPinned: false) { value in
+            update(id: id, order: value - 100.0)
+            update(id: id, isPinned: false)
+        }
+    }
+    
+    static func achieve(id: String) {
+        
+    }
+    
+    static func unachieve(id: String) {
+        
     }
     
     static func delete(id: String) {

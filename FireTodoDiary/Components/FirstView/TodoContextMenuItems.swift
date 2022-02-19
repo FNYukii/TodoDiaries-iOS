@@ -18,7 +18,7 @@ struct TodoContextMenuItems: View {
             
             if !todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    FirestoreTodo.update(id: todo.id, isPinned: true)
+                    FirestoreTodo.pin(id: todo.id)
                 }) {
                     Label("pin", systemImage: "pin")
                 }
@@ -26,7 +26,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isPinned && !todo.isAchieved {
                 Button(action: {
-                    FirestoreTodo.update(id: todo.id, isPinned: false)
+                    FirestoreTodo.unpin(id: todo.id)
                 }) {
                     Label("unpin", systemImage: "pin.slash")
                 }
