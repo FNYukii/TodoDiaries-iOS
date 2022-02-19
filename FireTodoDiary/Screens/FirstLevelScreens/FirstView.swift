@@ -40,8 +40,9 @@ struct FirstView: View {
                         Text("newTodo")
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
                     ShowAccountViewButton()
+                    CustomEditButton()
                 }
             }
         }
