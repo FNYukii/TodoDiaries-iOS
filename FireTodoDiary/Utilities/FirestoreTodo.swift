@@ -221,7 +221,7 @@ class FirestoreTodo {
                 "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
                 "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                "order": 0
+                "order": Day.nowDouble()
             ]) { error in
                 if let error = error {
                     print("HELLO! Fail! Error adding new document: \(error)")
