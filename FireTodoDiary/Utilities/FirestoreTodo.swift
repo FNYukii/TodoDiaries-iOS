@@ -279,6 +279,7 @@ class FirestoreTodo {
         }
     }
     
+    // TODO: Waste
     static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         let db = Firestore.firestore()
         db.collection("todos")
@@ -288,6 +289,22 @@ class FirestoreTodo {
                 "isPinned": !isAchieved ? isPinned : false,
                 "isAchieved": isAchieved,
                 "achievedAt": (isAchieved ? achievedAt : nil) as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating document: \(err)")
+                } else {
+                    print("HELLO! Success! Updated document")
+                }
+            }
+    }
+    
+    static func update(id: String, content: String, achievedAt: Date) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "content": content,
+                "achievedAt": achievedAt
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating document: \(err)")
@@ -345,6 +362,7 @@ class FirestoreTodo {
     }
     
     static func pin(id: String) {
+        // pinnedTodosの一番下へ
         readMaxOrder(isPinned: true) { value in
             update(id: id, order: value + 100.0)
             update(id: id, isPinned: true)
@@ -352,6 +370,7 @@ class FirestoreTodo {
     }
     
     static func unpin(id: String) {
+        // unpinnedTodosの一番上へ
         readMinOrder(isPinned: false) { value in
             update(id: id, order: value - 100.0)
             update(id: id, isPinned: false)
@@ -359,11 +378,16 @@ class FirestoreTodo {
     }
     
     static func achieve(id: String) {
-        
+        update(id: id, order: -1.0)
+        update(id: id, isAchieved: true)
     }
     
     static func unachieve(id: String) {
-        
+        // unpinnedTodosの一番下へ
+        readMaxOrder(isPinned: false) { value in
+            update(id: id, order: value + 100.0)
+            update(id: id, isAchieved: false)
+        }
     }
     
     static func delete(id: String) {

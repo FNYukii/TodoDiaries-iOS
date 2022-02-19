@@ -34,7 +34,7 @@ struct TodoContextMenuItems: View {
             
             if !todo.isAchieved {
                 Button(action: {
-                    FirestoreTodo.update(id: todo.id, isAchieved: true)
+                    FirestoreTodo.achieve(id: todo.id)
                 }) {
                     Label("makeAchieved", systemImage: "checkmark")
                 }
@@ -42,7 +42,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isAchieved {
                 Button(action: {
-                    FirestoreTodo.update(id: todo.id, isAchieved: false)
+                    FirestoreTodo.unachieve(id: todo.id)
                 }) {
                     Label("makeUnachieved", systemImage: "xmark")
                 }
