@@ -279,25 +279,6 @@ class FirestoreTodo {
         }
     }
     
-    // TODO: Waste
-    static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "content": content,
-                "isPinned": !isAchieved ? isPinned : false,
-                "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
-                } else {
-                    print("HELLO! Success! Updated document")
-                }
-            }
-    }
-    
     static func update(id: String, content: String, achievedAt: Date) {
         let db = Firestore.firestore()
         db.collection("todos")

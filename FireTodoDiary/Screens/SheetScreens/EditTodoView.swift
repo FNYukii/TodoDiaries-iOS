@@ -12,10 +12,12 @@ struct EditTodoView: View {
     @Environment(\.dismiss) private var dismiss
     
     let id: String
-    @State private var content = ""
-    @State private var isPinned = false
-    @State private var isAchieved = false
-    @State private var achievedAt: Date = Date()
+    @State private var content: String
+    @State private var isPinned: Bool
+    @State private var isAchieved: Bool
+    @State private var achievedAt: Date
+    private let oldIsPinned: Bool
+    private let oldIsAchieved: Bool
     
     @State private var isConfirming = false
     
@@ -25,6 +27,8 @@ struct EditTodoView: View {
         _isPinned = State(initialValue: todo.isPinned)
         _isAchieved = State(initialValue: todo.isAchieved)
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
+        self.oldIsPinned = todo.isPinned
+        self.oldIsAchieved = todo.isAchieved
     }
     
     var body: some View {
@@ -74,7 +78,22 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        FirestoreTodo.update(id: id, content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        // contentとachievedAtを更新
+                        FirestoreTodo.update(id: id, content: content, achievedAt: achievedAt)
+                        // isPinnedに変化があれば更新
+                        if !oldIsPinned && isPinned {
+                            FirestoreTodo.pin(id: id)
+                        }
+                        if oldIsPinned && !isPinned {
+                            FirestoreTodo.unpin(id: id)
+                        }
+                        // isAchievedに変化があれば更新
+                        if !oldIsAchieved && isAchieved {
+                            FirestoreTodo.achieve(id: id)
+                        }
+                        if oldIsAchieved && !isAchieved {
+                            FirestoreTodo.unachieve(id: id)
+                        }
                         dismiss()
                     }){
                         Text("done")
