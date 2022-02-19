@@ -34,8 +34,17 @@ struct CreateTodoView: View {
                 }
                 
                 Section {
+                    // ピン留め切り替え
                     Toggle("pin", isOn: $isPinned)
+                        .disabled(isAchieved)
+                    // 達成切り替え
                     Toggle("makeAchieved", isOn: $isAchieved.animation())
+                        .onChange(of: isAchieved) { value in
+                            if isAchieved {
+                                isPinned = false
+                            }
+                        }
+                    // DatePicker
                     if isAchieved {
                         DatePicker("achievedAt", selection: $achievedAt)
                     }
