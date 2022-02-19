@@ -210,25 +210,52 @@ class FirestoreTodo {
             }
     }
     
-    static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func maxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
-            .addDocument(data: [
-                "userId": userId,
-                "content": content,
-                "createdAt": Date(),
-                "isPinned": !isAchieved ? isPinned : false,
-                "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                "order": Day.nowDouble()
-            ]) { error in
-                if let error = error {
-                    print("HELLO! Fail! Error adding new document: \(error)")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: false)
+            .whereField("isPinned", isEqualTo: isPinned)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    print("HELLO! Success! Added new document to todos")
+                    var maxOrder = 0.0
+                    for document in querySnapshot!.documents {
+                        let order = document.get("order") as! Double
+                        if order > maxOrder {
+                            maxOrder = order
+                        }
+                    }
+                    completion?(maxOrder)
                 }
-            }
+        }
+    }
+    
+    static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+        // order最大値を取得
+        maxOrder(isPinned: false) { maxOrder in
+            // ドキュメント追加
+            let userId = CurrentUser.userId()
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .addDocument(data: [
+                    "userId": userId,
+                    "content": content,
+                    "createdAt": Date(),
+                    "isPinned": !isAchieved ? isPinned : false,
+                    "isAchieved": isAchieved,
+                    "achievedAt": (isAchieved ? achievedAt : nil) as Any,
+                    "order": maxOrder + 100
+                ]) { error in
+                    if let error = error {
+                        print("HELLO! Fail! Error adding new document: \(error)")
+                    } else {
+                        print("HELLO! Success! Added new document to todos")
+                    }
+                }
+        }
     }
     
     static func update(id: String, content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {

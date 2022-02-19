@@ -44,7 +44,8 @@ struct TodoSection: View {
                     let movedTodo = todos[from]
                     var newOrder = 0.0
                     if destination == 0 {
-                        newOrder = (movedTodo.order + 0) / 2
+                        let minOrder = todos.first!.order
+                        newOrder = minOrder - 100
                     } else {
                         let prevOrder = todos[destination - 1].order
                         let nextOrder = todos[destination].order
@@ -58,7 +59,8 @@ struct TodoSection: View {
                     let movedTodo = todos[from]
                     var newOrder = 0.0
                     if destination == todos.count - 1 {
-                        newOrder = (movedTodo.order + Double.greatestFiniteMagnitude) / 2
+                        let maxOrder = todos.last!.order
+                        newOrder = maxOrder + 100
                     } else {
                         let prevOrder = todos[destination].order
                         let nextOrder = todos[destination + 1].order
