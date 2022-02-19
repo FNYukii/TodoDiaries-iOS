@@ -20,7 +20,7 @@ struct TodoSection: View {
         
         Section(header: header) {
             ForEach(todos){todo in
-                Button(todo.content) {
+                Button("\(todo.content), \(todo.order)") {
                     isShowEditSheet.toggle()
                 }
                 .foregroundColor(.primary)
@@ -32,7 +32,40 @@ struct TodoSection: View {
                 }
             }
             .onMove {sourceIndexSet, destination in
-                //TODO: Update order
+                // 移動元と移動先のindexを取得
+                let from = Int(sourceIndexSet.first!)
+                var destination = destination
+                if from < destination {
+                    destination -= 1
+                }
+                                
+                if from > destination {
+                    // Todoを上に移動
+                    let movedTodo = todos[from]
+                    var newOrder = 0.0
+                    if destination == 0 {
+                        newOrder = (movedTodo.order + 0) / 2
+                    } else {
+                        let prevOrder = todos[destination - 1].order
+                        let nextOrder = todos[destination].order
+                        newOrder = (prevOrder + nextOrder) / 2
+                    }
+                    FirestoreTodo.update(id: movedTodo.id, order: newOrder)
+                }
+                
+                if from < destination {
+                    // Todoを下に移動
+                    let movedTodo = todos[from]
+                    var newOrder = 0.0
+                    if destination == todos.count - 1 {
+                        newOrder = (movedTodo.order + Double.greatestFiniteMagnitude) / 2
+                    } else {
+                        let prevOrder = todos[destination].order
+                        let nextOrder = todos[destination + 1].order
+                        newOrder = (prevOrder + nextOrder) / 2
+                    }
+                    FirestoreTodo.update(id: movedTodo.id, order: newOrder)
+                }
             }
         }
         

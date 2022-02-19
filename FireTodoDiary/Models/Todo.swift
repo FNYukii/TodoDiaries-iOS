@@ -15,7 +15,7 @@ struct Todo: Identifiable, Equatable {
     let isPinned: Bool
     let isAchieved: Bool
     let achievedAt: Date?
-    let order: Int
+    let order: Double
     
     init(document: QueryDocumentSnapshot) {
         self.id = document.documentID
@@ -26,6 +26,6 @@ struct Todo: Identifiable, Equatable {
         self.isAchieved = document.get("isAchieved") as! Bool
         let achievedTimestamp = document.get("achievedAt") as? Timestamp
         self.achievedAt = achievedTimestamp?.dateValue()
-        self.order = document.get("order") as! Int
+        self.order = document.get("order") as! Double
     }
 }
