@@ -60,31 +60,6 @@ class DaysViewModel: ObservableObject {
                         self.achievedDays.insert(newElement, at: offset)
                     }
                 }
-                
-                
-                
-                
-                
-//                // Todo達成日の配列
-//                var newAchievedDays: [Int] = []
-//                for todo in newAchievedTodos {
-//                    let achievedDay = todo.achievedDay!
-//                    newAchievedDays.append(achievedDay)
-//                }
-                // 配列から重複した要素を削除
-//                newAchievedDays = NSOrderedSet(array: newAchievedDays).array as! [Int]
-//
-//                // Todo達成日に変化があった際、achievedDaysプロパティに適用
-//                let difference = newAchievedDays.difference(from: self.achievedDays)
-//                for change in difference {
-//                    switch change {
-//                    case let .remove(offset, _, _):
-//                        self.achievedDays.remove(at: offset)
-//                    case let .insert(offset, newElement, _):
-//                        self.achievedDays.insert(newElement, at: offset)
-//                    }
-//                }
-                
             }
     }
 }
