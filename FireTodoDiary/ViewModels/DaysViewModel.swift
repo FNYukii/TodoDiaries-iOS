@@ -20,7 +20,7 @@ class DaysViewModel: ObservableObject {
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
+            .order(by: "achievedAt", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
                     print("HELLO! Fail! Error fetching documents: \(error!)")
