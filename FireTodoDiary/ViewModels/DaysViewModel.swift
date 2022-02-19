@@ -9,8 +9,8 @@ import Firebase
 
 class DaysViewModel: ObservableObject {
     
-//    @Published var achievedDays: [Int] = []
     @Published var achievedDays: [DateComponents] = []
+    @Published var isLoaded = false
     
     init() {
         // User id
@@ -60,6 +60,9 @@ class DaysViewModel: ObservableObject {
                         self.achievedDays.insert(newElement, at: offset)
                     }
                 }
+                
+                // ロード完了
+                self.isLoaded = true
             }
     }
 }

@@ -27,7 +27,7 @@ struct FirstView: View {
                     }
                 }
                 
-                if pinnedTodosViewModel.todos.count == 0 && unpinnedTodosViewModel.todos.count == 0 {
+                if pinnedTodosViewModel.todos.count == 0 && unpinnedTodosViewModel.todos.count == 0 && pinnedTodosViewModel.isLoaded && unpinnedTodosViewModel.isLoaded {
                     VStack {
                         Text("まだTodoはありません")
                         Text("Todoを追加するとここに表示されます")

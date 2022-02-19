@@ -21,7 +21,7 @@ struct SecondView: View {
                     }
                 }
                 
-                if daysViewModel.achievedDays.count == 0 {
+                if daysViewModel.achievedDays.count == 0 && daysViewModel.isLoaded {
                     VStack {
                         Text("まだ達成済みのTodoはありません")
                         Text("Todoを達成するとここに表示されます")

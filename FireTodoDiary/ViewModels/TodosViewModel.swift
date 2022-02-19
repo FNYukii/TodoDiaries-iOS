@@ -11,6 +11,7 @@ import SwiftUI
 class TodosViewModel: ObservableObject {
     
     @Published var todos: [Todo] = []
+    @Published var isLoaded = false
     
     init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: DateComponents? = nil) {
         // User id
@@ -69,6 +70,7 @@ class TodosViewModel: ObservableObject {
                 }
                 withAnimation {
                     self.todos = todos
+                    self.isLoaded = true
                 }
 //                snapshot.documentChanges.forEach { diff in
 //                    if diff.type == .added {
