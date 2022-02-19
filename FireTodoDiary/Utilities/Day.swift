@@ -8,6 +8,20 @@
 import Foundation
 
 class Day {
+    
+    // orderに使うための、現在の日付のDouble型
+    static func nowDouble() -> Double {
+        let now = Date()
+        let year = Calendar.current.component(.year, from: now)
+        let month = Calendar.current.component(.month, from: now)
+        let day = Calendar.current.component(.day, from: now)
+        let hour = Calendar.current.component(.hour, from: now)
+        let minute = Calendar.current.component(.minute, from: now)
+        let second = Calendar.current.component(.second, from: now)
+        let nowStr: String = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day) + String(format: "%02d", hour) + String(format: "%02d", minute) + String(format: "%02d", second)
+        let nowDouble: Double = Double(nowStr)!
+        return nowDouble
+    }
         
     // その月の日数
     static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
