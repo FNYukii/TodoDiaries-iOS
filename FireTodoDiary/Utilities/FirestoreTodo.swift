@@ -221,13 +221,12 @@ class FirestoreTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    var maxOrder = 0.0
+                    var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
-                        if order > maxOrder {
-                            maxOrder = order
-                        }
+                        orders.append(order)
                     }
+                    let maxOrder = orders.max() ?? 0.0
                     completion?(maxOrder)
                 }
         }
@@ -274,6 +273,12 @@ class FirestoreTodo {
                     print("HELLO! Success! Updated document")
                 }
             }
+    }
+    
+    static func pin(id: String) {
+        
+        
+        update(id: id, isPinned: true)
     }
     
     static func update(id: String, isPinned: Bool) {
