@@ -57,7 +57,7 @@
 
 // Question
 "areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
-"areYouSureYouWantToSignOut" = "ログアウトしてもよろしいですか?";
+"areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";
 
 // Sentence
 "the_count_of_todos_achieved_today_is_the_same_as_yesterday" = "今日のTodo達成数は昨日と同じです。";
