@@ -256,7 +256,7 @@ class FirestoreTodo {
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // order最大値を取得
-        readMaxOrder(isPinned: false) { maxOrder in
+        readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
             let userId = CurrentUser.userId()
             let db = Firestore.firestore()
@@ -268,7 +268,7 @@ class FirestoreTodo {
                     "isPinned": !isAchieved ? isPinned : false,
                     "isAchieved": isAchieved,
                     "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                    "order": maxOrder + 100
+                    "order": !isAchieved ? maxOrder + 100 : -1.0
                 ]) { error in
                     if let error = error {
                         print("HELLO! Fail! Error adding new document: \(error)")
