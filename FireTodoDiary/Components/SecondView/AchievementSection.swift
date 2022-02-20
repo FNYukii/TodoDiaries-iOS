@@ -46,7 +46,7 @@ struct AchievementSection: View {
         
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
-                FirestoreTodo.delete(id: todoUnderConfirm!.id)
+                FireTodo.delete(id: todoUnderConfirm!.id)
             }
         } message: {
             Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")

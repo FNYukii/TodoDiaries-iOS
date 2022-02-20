@@ -8,7 +8,7 @@
 import Firebase
 import Foundation
 
-class FirestoreTodo {
+class FireTodo {
     
     // 特定の年内の全ての月の、月別達成数の配列
     static func readCountsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
