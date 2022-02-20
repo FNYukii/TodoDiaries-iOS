@@ -149,8 +149,8 @@ class FireTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
                 if let querySnapshot = querySnapshot {
+                    print("HELLO! Success! Read documents. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
                     var achievedHours: [Int] = []
                     querySnapshot.documents.forEach { document in
@@ -202,8 +202,8 @@ class FireTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
                 if let querySnapshot = querySnapshot {
+                    print("HELLO! Success! Read documents. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     let countOfTodoAchieved = querySnapshot.documents.count
                     completion?(countOfTodoAchieved)
                 }
@@ -221,6 +221,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
+                    print("HELLO! Success! Read to get MaxOrder. size: \(querySnapshot!.documents.count)")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -243,6 +244,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
+                    print("HELLO! Success! Read to get minOrder. size: \(querySnapshot!.documents.count)")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double

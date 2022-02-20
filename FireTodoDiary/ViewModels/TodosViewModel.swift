@@ -62,7 +62,7 @@ class TodosViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read documents.")
+                print("HELLO! Success! Read documents. size: \(snapshot.documents.count)")
                 var todos: [Todo] = []
                 snapshot.documents.forEach { document in
                     let todo = Todo(document: document)

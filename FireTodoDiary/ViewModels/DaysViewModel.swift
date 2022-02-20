@@ -26,7 +26,7 @@ class DaysViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching documents: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read documents. isAchieved == true")
+                print("HELLO! Success! Read achieved Todos. size: \(documents.count)")
                 
                 // 達成済みTodoの配列
                 var newAchievedTodos: [Todo] = []
