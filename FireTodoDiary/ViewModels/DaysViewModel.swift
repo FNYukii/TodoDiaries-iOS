@@ -23,10 +23,10 @@ class DaysViewModel: ObservableObject {
             .order(by: "achievedAt", descending: true)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
-                    print("HELLO! Fail! Error fetching documents: \(error!)")
+                    print("HELLO! Fail! Error fetching Todos: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read achieved Todos. size: \(documents.count)")
+                print("HELLO! Success! Read achieved Todos to achievedDays. size: \(documents.count)")
                 
                 // 達成済みTodoの配列
                 var newAchievedTodos: [Todo] = []

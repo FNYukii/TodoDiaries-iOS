@@ -146,11 +146,11 @@ class FireTodo {
             .end(before: [endTimestamp])
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error getting Todos: \(err)")
                     return
                 }
                 if let querySnapshot = querySnapshot {
-                    print("HELLO! Success! Read documents. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
+                    print("HELLO! Success! Read Todos. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
                     var achievedHours: [Int] = []
                     querySnapshot.documents.forEach { document in
@@ -199,11 +199,11 @@ class FireTodo {
             .end(before: [endTimestamp])
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error getting Todo: \(err)")
                     return
                 }
                 if let querySnapshot = querySnapshot {
-                    print("HELLO! Success! Read documents. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
+                    print("HELLO! Success! Read Todos. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     let countOfTodoAchieved = querySnapshot.documents.count
                     completion?(countOfTodoAchieved)
                 }
@@ -219,9 +219,9 @@ class FireTodo {
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error getting Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Read to get MaxOrder. size: \(querySnapshot!.documents.count)")
+                    print("HELLO! Success! Read Todos to get MaxOrder. size: \(querySnapshot!.documents.count)")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -244,7 +244,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    print("HELLO! Success! Read to get minOrder. size: \(querySnapshot!.documents.count)")
+                    print("HELLO! Success! Read Todos to get minOrder. size: \(querySnapshot!.documents.count)")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -273,9 +273,9 @@ class FireTodo {
                     "order": !isAchieved ? maxOrder + 100 : -1.0
                 ]) { error in
                     if let error = error {
-                        print("HELLO! Fail! Error adding new document: \(error)")
+                        print("HELLO! Fail! Error adding new Todo: \(error)")
                     } else {
-                        print("HELLO! Success! Added new document to todos")
+                        print("HELLO! Success! Added Todo")
                     }
                 }
         }
@@ -290,9 +290,9 @@ class FireTodo {
                 "achievedAt": achievedAt
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -305,9 +305,9 @@ class FireTodo {
                 "isPinned": isPinned
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -322,9 +322,9 @@ class FireTodo {
                 "achievedAt": (isAchieved ? Date() : nil) as Any
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -337,9 +337,9 @@ class FireTodo {
                 "order": order
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -379,9 +379,9 @@ class FireTodo {
             .document(id)
             .delete() { err in
                 if let err = err {
-                    print("HELLO! Fail! Error removing document: \(err)")
+                    print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Removed document")
+                    print("HELLO! Success! Removed Todo")
                 }
             }
     }

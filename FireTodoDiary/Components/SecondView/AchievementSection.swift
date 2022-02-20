@@ -11,7 +11,7 @@ struct AchievementSection: View {
     
     private let title: String
     
-    @ObservedObject private var todosViewModel: TodosViewModel
+    @ObservedObject private var todosViewModel: AchievedTodosViewModel
     
     @State private var isShowEditSheet = false
     @State private var isConfirming = false
@@ -19,7 +19,7 @@ struct AchievementSection: View {
     
     init(achievedDay: DateComponents) {
         self.title = Day.toStringUpToWeekday(from: achievedDay)
-        self.todosViewModel = TodosViewModel(isAchieved: true, achievedDay: achievedDay)
+        self.todosViewModel = AchievedTodosViewModel(achievedDay: achievedDay)
     }
     
     var body: some View {
