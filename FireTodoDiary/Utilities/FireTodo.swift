@@ -150,7 +150,7 @@ class FireTodo {
                     return
                 }
                 if let querySnapshot = querySnapshot {
-                    print("HELLO! Success! Read Todos. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
+                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
                     var achievedHours: [Int] = []
                     querySnapshot.documents.forEach { document in
@@ -203,7 +203,7 @@ class FireTodo {
                     return
                 }
                 if let querySnapshot = querySnapshot {
-                    print("HELLO! Success! Read Todos. At: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
+                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     let countOfTodoAchieved = querySnapshot.documents.count
                     completion?(countOfTodoAchieved)
                 }
