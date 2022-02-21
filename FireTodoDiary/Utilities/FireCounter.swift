@@ -10,10 +10,12 @@ import Firebase
 class FireCounter {
     
     static func create(id: String, field: String) {
+        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("counters")
             .document(id)
             .setData([
+                "userId": userId,
                 field: 1
             ]) { err in
                 if let err = err {
