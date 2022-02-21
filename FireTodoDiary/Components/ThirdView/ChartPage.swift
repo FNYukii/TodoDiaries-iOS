@@ -62,7 +62,7 @@ struct ChartPage: View {
         if unitSelection == 0 {
             let shiftedNow = Day.nowShiftedByDay(offset: pageOffset)
             self.pageTitle = Day.toStringUpToDay(from: shiftedNow)
-            FireTodo.readCountsInDay(year: shiftedNow.year!, month: shiftedNow.month!, day: shiftedNow.day!) { value in
+            FireCounter.readCountsInDay(year: shiftedNow.year!, month: shiftedNow.month!, day: shiftedNow.day!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
             }

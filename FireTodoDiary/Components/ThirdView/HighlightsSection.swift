@@ -47,12 +47,12 @@ struct HighlightsSection: View {
             
             // 昨日のTodo達成数
             let yesterdayComponents = Calendar.current.dateComponents(in: TimeZone.current, from: yesterday)
-            FireTodo.readCountsInDay(year: yesterdayComponents.year!, month: yesterdayComponents.month!, day: yesterdayComponents.day!) { countsInYesterday in
+            FireCounter.readCountsInDay(year: yesterdayComponents.year!, month: yesterdayComponents.month!, day: yesterdayComponents.day!) { countsInYesterday in
                 value0 = Double(countsInYesterday.reduce(0, +))
                 
                 // 今日のTodo達成数
                 let todayComponents = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-                FireTodo.readCountsInDay(year: todayComponents.year!, month: todayComponents.month!, day: todayComponents.day!) { countsInToday in
+                FireCounter.readCountsInDay(year: todayComponents.year!, month: todayComponents.month!, day: todayComponents.day!) { countsInToday in
                     value1 = Double(countsInToday.reduce(0, +))
                     
                     // message

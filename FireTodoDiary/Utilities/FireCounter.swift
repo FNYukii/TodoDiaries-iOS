@@ -9,6 +9,34 @@ import Firebase
 
 class FireCounter {
     
+    // 特定の日の各時間に達成された、Todoの数
+    static func readCountsInDay(year: Int, month: Int, day: Int, completion: (([Int]) -> Void)?) {
+        // Document ID
+        let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
+        let userId = CurrentUser.userId()
+        let documentId = achievedYmd + userId
+
+        let db = Firestore.firestore()
+        db.collection("counters")
+            .document(documentId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! Read \(documentId). size: 1")
+                    // TODO: Create countsInDay array.
+                    var countsInDay: [Int] = []
+                    for index in 0 ..< 23 {
+                        let count = document.get(String(index)) as? Int ?? 0
+                        countsInDay.append(count)
+                    }
+                    completion?(countsInDay)
+                } else {
+                    print("HELLO! Success! \(documentId) does not exists. size: 0")
+                    let countsInDay: [Int] = []
+                    completion?(countsInDay)
+                }
+            }
+    }
+    
     static func create(id: String, field: String) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
