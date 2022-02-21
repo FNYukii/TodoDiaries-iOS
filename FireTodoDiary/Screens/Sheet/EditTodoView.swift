@@ -108,8 +108,8 @@ struct EditTodoView: View {
                         // 達成済みのままで、achievedAtに変化があれば対応
                         if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
                             FireTodo.update(id: id, achievedAt: achievedAt)
-                            FireCounter.decrementInDay(achievedAt: oldAchievedAt!)
-                            FireCounter.incrementInDay(achievedAt: achievedAt)
+                            FireCounter.decrement(achievedAt: oldAchievedAt!)
+                            FireCounter.increment(achievedAt: achievedAt)
                         }
                         dismiss()
                     }){

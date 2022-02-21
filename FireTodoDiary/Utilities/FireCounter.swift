@@ -84,6 +84,12 @@ class FireCounter {
             }
     }
     
+    static func increment(achievedAt: Date) {
+        incrementInDay(achievedAt: achievedAt)
+        incrementInMonth(achievedAt: achievedAt)
+        incrementInYear(achievedAt: achievedAt)
+    }
+    
     static func incrementInDay(achievedAt: Date) {
         // Document ID
         let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
@@ -110,6 +116,61 @@ class FireCounter {
             }
     }
     
+    static func incrementInMonth(achievedAt: Date) {
+        // Document ID
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
+        let year = dateComponents.year!
+        let month = dateComponents.month!
+        let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
+        let userId = CurrentUser.userId()
+        let documentId = achievedYm + userId
+        // Field name
+        let field = String(dateComponents.day!)
+        // Check document exists
+        let db = Firestore.firestore()
+        db.collection("counters")
+            .document(documentId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! \(documentId) existeds. size: 1")
+                    update(id: documentId, fieldToIncrement: field)
+                } else {
+                    print("HELLO! Success! \(documentId) does not exist. size: 0")
+                    create(id: documentId, field: field)
+                }
+            }
+    }
+    
+    static func incrementInYear(achievedAt: Date) {
+        // Document ID
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
+        let year = dateComponents.year!
+        let achievedY = String(format: "%04d", year)
+        let userId = CurrentUser.userId()
+        let documentId = achievedY + userId
+        // Field name
+        let field = String(dateComponents.month!)
+        // Check document exists
+        let db = Firestore.firestore()
+        db.collection("counters")
+            .document(documentId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! \(documentId) existeds. size: 1")
+                    update(id: documentId, fieldToIncrement: field)
+                } else {
+                    print("HELLO! Success! \(documentId) does not exist. size: 0")
+                    create(id: documentId, field: field)
+                }
+            }
+    }
+    
+    static func decrement(achievedAt: Date) {
+        decrementInDay(achievedAt: achievedAt)
+        decrementInMonth(achievedAt: achievedAt)
+        decrementInYear(achievedAt: achievedAt)
+    }
+    
     static func decrementInDay(achievedAt: Date) {
         // Document ID
         let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
@@ -121,6 +182,31 @@ class FireCounter {
         let documentId = achievedYmd + userId
         // Field name
         let field = String(dateComponents.hour!)
+        update(id: documentId, fieldToDecrement: field)
+    }
+    
+    static func decrementInMonth(achievedAt: Date) {
+        // Document ID
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
+        let year = dateComponents.year!
+        let month = dateComponents.month!
+        let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
+        let userId = CurrentUser.userId()
+        let documentId = achievedYm + userId
+        // Field name
+        let field = String(dateComponents.day!)
+        update(id: documentId, fieldToDecrement: field)
+    }
+    
+    static func decrementInYear(achievedAt: Date) {
+        // Document ID
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
+        let year = dateComponents.year!
+        let achievedY = String(format: "%04d", year)
+        let userId = CurrentUser.userId()
+        let documentId = achievedY + userId
+        // Field name
+        let field = String(dateComponents.month!)
         update(id: documentId, fieldToDecrement: field)
     }
 }

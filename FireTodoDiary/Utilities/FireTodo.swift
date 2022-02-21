@@ -177,7 +177,7 @@ class FireTodo {
     static func achieve(id: String) {
         update(id: id, order: -1.0)
         update(id: id, isAchieved: true)
-        FireCounter.incrementInDay(achievedAt: Date())
+        FireCounter.increment(achievedAt: Date())
     }
     
     static func unachieve(id: String, achievedAt: Date) {
@@ -185,7 +185,7 @@ class FireTodo {
         readMaxOrder(isPinned: false) { value in
             update(id: id, order: value + 100.0)
             update(id: id, isAchieved: false)
-            FireCounter.decrementInDay(achievedAt: achievedAt)
+            FireCounter.decrement(achievedAt: achievedAt)
         }
     }
     
@@ -200,7 +200,7 @@ class FireTodo {
                     print("HELLO! Success! Removed Todo")
                     // 達成済みTodoならCounterを更新
                     if let achievedAt = achievedAt {
-                        FireCounter.decrementInDay(achievedAt: achievedAt)
+                        FireCounter.decrement(achievedAt: achievedAt)
                     }
                 }
             }

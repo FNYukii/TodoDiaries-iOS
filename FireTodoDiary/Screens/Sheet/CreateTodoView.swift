@@ -63,7 +63,7 @@ struct CreateTodoView: View {
                     Button(action: {
                         FireTodo.create(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
                         if isAchieved {
-                            FireCounter.incrementInDay(achievedAt: achievedAt)
+                            FireCounter.increment(achievedAt: achievedAt)
                         }
                         dismiss()
                     }){
