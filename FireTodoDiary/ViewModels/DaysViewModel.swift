@@ -21,12 +21,13 @@ class DaysViewModel: ObservableObject {
             .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt", descending: true)
+            .limit(to: 50)
             .addSnapshotListener { querySnapshot, error in
                 guard let documents = querySnapshot?.documents else {
-                    print("HELLO! Fail! Error fetching documents: \(error!)")
+                    print("HELLO! Fail! Error fetching Todos: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read documents. isAchieved == true")
+                print("HELLO! Success! Read achieved Todos to achievedDays. size: \(documents.count)")
                 
                 // 達成済みTodoの配列
                 var newAchievedTodos: [Todo] = []

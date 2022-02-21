@@ -8,116 +8,116 @@
 import Firebase
 import Foundation
 
-class FirestoreTodo {
+class FireTodo {
     
     // 特定の年内の全ての月の、月別達成数の配列
-    static func readCountsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
-        // startTimestampを生成
-        var startDateComponents = DateComponents()
-        startDateComponents.year = readYear
-        startDateComponents.month = 1
-        startDateComponents.day = 1
-        let startDate = Calendar.current.date(from: startDateComponents)!
-        let startTimestamp = Timestamp(date: startDate)
-        // endTimestampを生成
-        var endDateComponents = DateComponents()
-        endDateComponents.year = readYear + 1
-        endDateComponents.month = 1
-        endDateComponents.day = 1
-        let endDate = Calendar.current.date(from: endDateComponents)!
-        let endTimestamp = Timestamp(date: endDate)
-        
-        let userId = CurrentUser.userId()
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
-            .start(at: [startTimestamp])
-            .end(before: [endTimestamp])
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
-                    return
-                }
-                print("HELLO! Success! Read documents. At year:\(readYear)")
-                if let querySnapshot = querySnapshot {
-                    // achievedMonthsを生成 [1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
-                    var achievedMonths: [Int] = []
-                    querySnapshot.documents.forEach { document in
-                        let timestamp = document.get("achievedAt") as! Timestamp
-                        let date = timestamp.dateValue()
-                        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
-                        let achievedMonth = dateComponents.month!
-                        achievedMonths.append(achievedMonth)
-                    }
-                    
-                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
-                    var countsOfTodoAchieved: [Int] = []
-                    for index in 0 ..< 12 {
-                        let month = index + 1
-                        let countOfTodoAchieved = achievedMonths.filter({$0 == month}).count
-                        countsOfTodoAchieved.append(countOfTodoAchieved)
-                    }
-                    completion?(countsOfTodoAchieved)
-                }
-            }
-    }
+//    static func readCountsOfTodoAchievedAtTheMonth(readYear: Int, completion: (([Int]) -> Void)?) {
+//        // startTimestampを生成
+//        var startDateComponents = DateComponents()
+//        startDateComponents.year = readYear
+//        startDateComponents.month = 1
+//        startDateComponents.day = 1
+//        let startDate = Calendar.current.date(from: startDateComponents)!
+//        let startTimestamp = Timestamp(date: startDate)
+//        // endTimestampを生成
+//        var endDateComponents = DateComponents()
+//        endDateComponents.year = readYear + 1
+//        endDateComponents.month = 1
+//        endDateComponents.day = 1
+//        let endDate = Calendar.current.date(from: endDateComponents)!
+//        let endTimestamp = Timestamp(date: endDate)
+//
+//        let userId = CurrentUser.userId()
+//        let db = Firestore.firestore()
+//        db.collection("todos")
+//            .whereField("userId", isEqualTo: userId)
+//            .whereField("isAchieved", isEqualTo: true)
+//            .order(by: "achievedAt")
+//            .start(at: [startTimestamp])
+//            .end(before: [endTimestamp])
+//            .getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("HELLO! Fail! Error getting documents: \(err)")
+//                    return
+//                }
+//                print("HELLO! Success! Read documents. At year:\(readYear)")
+//                if let querySnapshot = querySnapshot {
+//                    // achievedMonthsを生成 [1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
+//                    var achievedMonths: [Int] = []
+//                    querySnapshot.documents.forEach { document in
+//                        let timestamp = document.get("achievedAt") as! Timestamp
+//                        let date = timestamp.dateValue()
+//                        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
+//                        let achievedMonth = dateComponents.month!
+//                        achievedMonths.append(achievedMonth)
+//                    }
+//
+//                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
+//                    var countsOfTodoAchieved: [Int] = []
+//                    for index in 0 ..< 12 {
+//                        let month = index + 1
+//                        let countOfTodoAchieved = achievedMonths.filter({$0 == month}).count
+//                        countsOfTodoAchieved.append(countOfTodoAchieved)
+//                    }
+//                    completion?(countsOfTodoAchieved)
+//                }
+//            }
+//    }
     
     // 特定の月内の全ての日の、日別達成数を配列
-    static func readCountsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {        
-        // startTimestampを生成
-        var startDateComponents = DateComponents()
-        startDateComponents.year = readYear
-        startDateComponents.month = readMonth
-        startDateComponents.day = 1
-        let startDate = Calendar.current.date(from: startDateComponents)!
-        let startTimestamp = Timestamp(date: startDate)
-        // endTimestampを生成
-        var endDateComponents = DateComponents()
-        endDateComponents.year = readYear
-        endDateComponents.month = readMonth + 1
-        endDateComponents.day = 1
-        let endDate = Calendar.current.date(from: endDateComponents)!
-        let endTimestamp = Timestamp(date: endDate)
-        
-        let userId = CurrentUser.userId()
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
-            .start(at: [startTimestamp])
-            .end(before: [endTimestamp])
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
-                    return
-                }
-                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth)")
-                if let querySnapshot = querySnapshot {
-                    // achievedDaysを生成 [1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
-                    var achievedDays: [Int] = []
-                    querySnapshot.documents.forEach { document in
-                        let timestamp = document.get("achievedAt") as! Timestamp
-                        let date = timestamp.dateValue()
-                        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
-                        let achievedDay = dateComponents.day!
-                        achievedDays.append(achievedDay)
-                    }
-                    
-                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
-                    var countsOfTodoAchieved: [Int] = []
-                    let dayCount = Day.dayCountAtTheMonth(year: readYear, month: readMonth)
-                    for index in 0 ..< dayCount {
-                        let day = index + 1
-                        let countOfTodoAchieved = achievedDays.filter({$0 == day}).count
-                        countsOfTodoAchieved.append(countOfTodoAchieved)
-                    }
-                    completion?(countsOfTodoAchieved)
-                }
-            }
-    }
+//    static func readCountsOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, completion: (([Int]) -> Void)?) {
+//        // startTimestampを生成
+//        var startDateComponents = DateComponents()
+//        startDateComponents.year = readYear
+//        startDateComponents.month = readMonth
+//        startDateComponents.day = 1
+//        let startDate = Calendar.current.date(from: startDateComponents)!
+//        let startTimestamp = Timestamp(date: startDate)
+//        // endTimestampを生成
+//        var endDateComponents = DateComponents()
+//        endDateComponents.year = readYear
+//        endDateComponents.month = readMonth + 1
+//        endDateComponents.day = 1
+//        let endDate = Calendar.current.date(from: endDateComponents)!
+//        let endTimestamp = Timestamp(date: endDate)
+//
+//        let userId = CurrentUser.userId()
+//        let db = Firestore.firestore()
+//        db.collection("todos")
+//            .whereField("userId", isEqualTo: userId)
+//            .whereField("isAchieved", isEqualTo: true)
+//            .order(by: "achievedAt")
+//            .start(at: [startTimestamp])
+//            .end(before: [endTimestamp])
+//            .getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("HELLO! Fail! Error getting documents: \(err)")
+//                    return
+//                }
+//                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth)")
+//                if let querySnapshot = querySnapshot {
+//                    // achievedDaysを生成 [1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
+//                    var achievedDays: [Int] = []
+//                    querySnapshot.documents.forEach { document in
+//                        let timestamp = document.get("achievedAt") as! Timestamp
+//                        let date = timestamp.dateValue()
+//                        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
+//                        let achievedDay = dateComponents.day!
+//                        achievedDays.append(achievedDay)
+//                    }
+//
+//                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
+//                    var countsOfTodoAchieved: [Int] = []
+//                    let dayCount = Day.dayCountAtTheMonth(year: readYear, month: readMonth)
+//                    for index in 0 ..< dayCount {
+//                        let day = index + 1
+//                        let countOfTodoAchieved = achievedDays.filter({$0 == day}).count
+//                        countsOfTodoAchieved.append(countOfTodoAchieved)
+//                    }
+//                    completion?(countsOfTodoAchieved)
+//                }
+//            }
+//    }
     
     // 特定の日内の全ての時間の、時間別達成数の配列
     static func readCountsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
@@ -146,11 +146,11 @@ class FirestoreTodo {
             .end(before: [endTimestamp])
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error getting Todos: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
                 if let querySnapshot = querySnapshot {
+                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
                     var achievedHours: [Int] = []
                     querySnapshot.documents.forEach { document in
@@ -199,11 +199,11 @@ class FirestoreTodo {
             .end(before: [endTimestamp])
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error getting Todo: \(err)")
                     return
                 }
-                print("HELLO! Success! Read documents. At year:\(readYear), month:\(readMonth), day: \(readDay)")
                 if let querySnapshot = querySnapshot {
+                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
                     let countOfTodoAchieved = querySnapshot.documents.count
                     completion?(countOfTodoAchieved)
                 }
@@ -219,8 +219,9 @@ class FirestoreTodo {
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
-                    print("HELLO! Fail! Error getting documents: \(err)")
+                    print("HELLO! Fail! Error getting Todo: \(err)")
                 } else {
+                    print("HELLO! Success! Read Todos to get MaxOrder. size: \(querySnapshot!.documents.count)")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -243,6 +244,7 @@ class FirestoreTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
+                    print("HELLO! Success! Read Todos to get minOrder. size: \(querySnapshot!.documents.count)")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -271,9 +273,9 @@ class FirestoreTodo {
                     "order": !isAchieved ? maxOrder + 100 : -1.0
                 ]) { error in
                     if let error = error {
-                        print("HELLO! Fail! Error adding new document: \(error)")
+                        print("HELLO! Fail! Error adding new Todo: \(error)")
                     } else {
-                        print("HELLO! Success! Added new document to todos")
+                        print("HELLO! Success! Added Todo")
                     }
                 }
         }
@@ -288,9 +290,9 @@ class FirestoreTodo {
                 "achievedAt": achievedAt
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -303,9 +305,9 @@ class FirestoreTodo {
                 "isPinned": isPinned
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -320,9 +322,9 @@ class FirestoreTodo {
                 "achievedAt": (isAchieved ? Date() : nil) as Any
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -335,9 +337,9 @@ class FirestoreTodo {
                 "order": order
             ]) { err in
                 if let err = err {
-                    print("HELLO! Fail! Error updating document: \(err)")
+                    print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated document")
+                    print("HELLO! Success! Updated Todo")
                 }
             }
     }
@@ -377,9 +379,9 @@ class FirestoreTodo {
             .document(id)
             .delete() { err in
                 if let err = err {
-                    print("HELLO! Fail! Error removing document: \(err)")
+                    print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Removed document")
+                    print("HELLO! Success! Removed Todo")
                 }
             }
     }

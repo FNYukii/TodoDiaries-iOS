@@ -51,7 +51,7 @@ struct TodoSection: View {
                         let nextOrder = todos[destination].order
                         newOrder = (prevOrder + nextOrder) / 2
                     }
-                    FirestoreTodo.update(id: movedTodo.id, order: newOrder)
+                    FireTodo.update(id: movedTodo.id, order: newOrder)
                 }
                 
                 if from < destination {
@@ -66,14 +66,14 @@ struct TodoSection: View {
                         let nextOrder = todos[destination + 1].order
                         newOrder = (prevOrder + nextOrder) / 2
                     }
-                    FirestoreTodo.update(id: movedTodo.id, order: newOrder)
+                    FireTodo.update(id: movedTodo.id, order: newOrder)
                 }
             }
         }
         
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
-                FirestoreTodo.delete(id: todoUnderConfirm!.id)
+                FireTodo.delete(id: todoUnderConfirm!.id)
             }
         } message: {
             if todoUnderConfirm != nil {

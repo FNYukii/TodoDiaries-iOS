@@ -9,8 +9,8 @@ import SwiftUI
 
 struct FirstView: View {
     
-    @ObservedObject private var pinnedTodosViewModel = TodosViewModel(isPinned: true, isAchieved: false)
-    @ObservedObject private var unpinnedTodosViewModel = TodosViewModel(isPinned: false, isAchieved: false)
+    @ObservedObject private var pinnedTodosViewModel = UnachievedTodosViewModel(isPinned: true)
+    @ObservedObject private var unpinnedTodosViewModel = UnachievedTodosViewModel(isPinned: false)
     
     @State private var isShowCreateSheet = false
     

@@ -72,7 +72,7 @@ struct EditTodoView: View {
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
-                    FirestoreTodo.delete(id: id)
+                    FireTodo.delete(id: id)
                     dismiss()
                 }
             }
@@ -88,20 +88,20 @@ struct EditTodoView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         // contentとachievedAtを更新
-                        FirestoreTodo.update(id: id, content: content, achievedAt: achievedAt)
+                        FireTodo.update(id: id, content: content, achievedAt: achievedAt)
                         // isPinnedに変化があれば更新
                         if !oldIsPinned && isPinned {
-                            FirestoreTodo.pin(id: id)
+                            FireTodo.pin(id: id)
                         }
                         if oldIsPinned && !isPinned {
-                            FirestoreTodo.unpin(id: id)
+                            FireTodo.unpin(id: id)
                         }
                         // isAchievedに変化があれば更新
                         if !oldIsAchieved && isAchieved {
-                            FirestoreTodo.achieve(id: id)
+                            FireTodo.achieve(id: id)
                         }
                         if oldIsAchieved && !isAchieved {
-                            FirestoreTodo.unachieve(id: id)
+                            FireTodo.unachieve(id: id)
                         }
                         dismiss()
                     }){

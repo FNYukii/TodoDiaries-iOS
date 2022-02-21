@@ -8,61 +8,25 @@
 import Firebase
 import SwiftUI
 
-class TodosViewModel: ObservableObject {
+class UnachievedTodosViewModel: ObservableObject {
     
     @Published var todos: [Todo] = []
     @Published var isLoaded = false
     
-    init(isPinned: Bool? = nil, isAchieved: Bool? = nil, achievedDay: DateComponents? = nil) {
-        // User id
+    init(isPinned: Bool) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
-        var query = db.collection("todos")
+        db.collection("todos")
             .whereField("userId", isEqualTo: userId)
-        
-        // isPinnedが渡されているなら、そのためのクエリを追加
-        if let isPinned = isPinned {
-            query = query
-                .whereField("isPinned", isEqualTo: isPinned)
-        }
-        
-        // isAchievedが渡されているなら、そのためのクエリを追加
-        if let isAchieved = isAchieved {
-            if isAchieved {
-                query = query
-                    .whereField("isAchieved", isEqualTo: true)
-            } else {
-                query = query
-                    .whereField("isAchieved", isEqualTo: false)
-                    .order(by: "order")
-            }
-        }
-        
-        // achievedDayが渡されているなら、そのためのクエリを追加
-        if let achievedDay = achievedDay {
-            // startTimestamp
-            let startDate = Calendar.current.date(from: achievedDay)!
-            let startTimestamp = Timestamp(date: startDate)
-            // endTimestamp
-            var endDateComponents = achievedDay
-            endDateComponents.day! += 1
-            let endDate = Calendar.current.date(from: endDateComponents)!
-            let endTimestamp = Timestamp(date: endDate)
-            // Set query
-            query = query
-                .order(by: "achievedAt")
-                .start(at: [startTimestamp])
-                .end(before: [endTimestamp])
-        }
-        
-        // 読み込み開始
-        query
+            .whereField("isAchieved", isEqualTo: false)
+            .whereField("isPinned", isEqualTo: isPinned)
+            .order(by: "order")
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read documents.")
+                print("HELLO! Success! Read Todos pinned \(isPinned). size: \(snapshot.documents.count)")
                 var todos: [Todo] = []
                 snapshot.documents.forEach { document in
                     let todo = Todo(document: document)

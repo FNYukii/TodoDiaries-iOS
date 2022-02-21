@@ -26,7 +26,7 @@ struct ChartsSection: View {
             .listRowSeparator(.hidden)
             
             TabView(selection: $pageSelection) {
-                ForEach(-10 ..< 11){ index in
+                ForEach(-50 ..< 51){ index in
                     ChartPage(pageOffset: index, unitSelection: $unitSelection)
                         .tag(index)
                 }
