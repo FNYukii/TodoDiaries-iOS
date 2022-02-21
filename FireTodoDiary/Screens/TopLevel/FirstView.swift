@@ -35,8 +35,8 @@ struct FirstView: View {
                     
                     if pinnedTodosViewModel.todos.count == 0 && unpinnedTodosViewModel.todos.count == 0 {
                         VStack {
-                            Text("まだTodoはありません")
-                            Text("Todoを追加するとここに表示されます")
+                            Text("there_is_no_todo_yet")
+                            Text("when_you_create_a_todo_it_will_appear_here")
                         }
                         .foregroundColor(.secondary)
                     }

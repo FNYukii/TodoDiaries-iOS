@@ -29,8 +29,8 @@ struct SecondView: View {
                     
                     if daysViewModel.achievedDays.count == 0 {
                         VStack {
-                            Text("まだ達成済みのTodoはありません")
-                            Text("Todoを達成するとここに表示されます")
+                            Text("no_todo_achieved_yet")
+                            Text("when_you_complete_todo_you_will_see_it_here")
                         }
                         .foregroundColor(.secondary)
                     }
