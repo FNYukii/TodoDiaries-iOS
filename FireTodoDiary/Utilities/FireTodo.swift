@@ -201,42 +201,42 @@ class FireTodo {
     }
     
     // 特定の日の達成済みTodoの数
-    static func readCountOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
-        // startTimestampを生成
-        var startDateComponents = DateComponents()
-        startDateComponents.year = readYear
-        startDateComponents.month = readMonth
-        startDateComponents.day = readDay
-        let startDate = Calendar.current.date(from: startDateComponents)!
-        let startTimestamp = Timestamp(date: startDate)
-        // endTimestampを生成
-        var endDateComponents = DateComponents()
-        endDateComponents.year = readYear
-        endDateComponents.month = readMonth
-        endDateComponents.day = readDay + 1
-        let endDate = Calendar.current.date(from: endDateComponents)!
-        let endTimestamp = Timestamp(date: endDate)
-        
-        let userId = CurrentUser.userId()
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
-            .start(at: [startTimestamp])
-            .end(before: [endTimestamp])
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting Todo: \(err)")
-                    return
-                }
-                if let querySnapshot = querySnapshot {
-                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
-                    let countOfTodoAchieved = querySnapshot.documents.count
-                    completion?(countOfTodoAchieved)
-                }
-            }
-    }
+//    static func readCountOfTodoAchievedAtTheDay(readYear: Int, readMonth: Int, readDay: Int, completion: ((Int) -> Void)?) {
+//        // startTimestampを生成
+//        var startDateComponents = DateComponents()
+//        startDateComponents.year = readYear
+//        startDateComponents.month = readMonth
+//        startDateComponents.day = readDay
+//        let startDate = Calendar.current.date(from: startDateComponents)!
+//        let startTimestamp = Timestamp(date: startDate)
+//        // endTimestampを生成
+//        var endDateComponents = DateComponents()
+//        endDateComponents.year = readYear
+//        endDateComponents.month = readMonth
+//        endDateComponents.day = readDay + 1
+//        let endDate = Calendar.current.date(from: endDateComponents)!
+//        let endTimestamp = Timestamp(date: endDate)
+//
+//        let userId = CurrentUser.userId()
+//        let db = Firestore.firestore()
+//        db.collection("todos")
+//            .whereField("userId", isEqualTo: userId)
+//            .whereField("isAchieved", isEqualTo: true)
+//            .order(by: "achievedAt")
+//            .start(at: [startTimestamp])
+//            .end(before: [endTimestamp])
+//            .getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("HELLO! Fail! Error getting Todo: \(err)")
+//                    return
+//                }
+//                if let querySnapshot = querySnapshot {
+//                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
+//                    let countOfTodoAchieved = querySnapshot.documents.count
+//                    completion?(countOfTodoAchieved)
+//                }
+//            }
+//    }
     
     static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
         let userId = CurrentUser.userId()
