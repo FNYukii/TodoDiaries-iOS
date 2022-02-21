@@ -18,6 +18,7 @@ struct EditTodoView: View {
     @State private var achievedAt: Date
     private let oldIsPinned: Bool
     private let oldIsAchieved: Bool
+    private let oldAchievedAt: Date?
     
     @State private var isConfirming = false
     
@@ -29,6 +30,7 @@ struct EditTodoView: View {
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
         self.oldIsPinned = todo.isPinned
         self.oldIsAchieved = todo.isAchieved
+        self.oldAchievedAt = todo.achievedAt
     }
     
     var body: some View {
@@ -101,7 +103,7 @@ struct EditTodoView: View {
                             FireTodo.achieve(id: id)
                         }
                         if oldIsAchieved && !isAchieved {
-                            FireTodo.unachieve(id: id)
+                            FireTodo.unachieve(id: id, achievedAt: oldAchievedAt!)
                         }
                         dismiss()
                     }){
