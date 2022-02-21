@@ -66,6 +66,10 @@ struct ChartPage: View {
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
             }
+        } else if unitSelection == 1 {
+            // TODO: Get countsInMonth
+        } else {
+            // TODO: Get countsInYear
         }
     }
 }
