@@ -49,6 +49,7 @@
 		547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* ChartsSection.swift */; };
 		547F374427BE05C600B18176 /* ShowAccountViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F374327BE05C600B18176 /* ShowAccountViewButton.swift */; };
 		54CC51B627C28C1C0072A583 /* AchievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */; };
+		54CC51BC27C32F790072A583 /* FireCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51BB27C32F790072A583 /* FireCount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
 		547F374327BE05C600B18176 /* ShowAccountViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAccountViewButton.swift; sourceTree = "<group>"; };
 		54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedTodosViewModel.swift; sourceTree = "<group>"; };
+		54CC51BB27C32F790072A583 /* FireCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				54491F7727BAB33D00E784D4 /* FireTodo.swift */,
+				54CC51BB27C32F790072A583 /* FireCount.swift */,
 				54491F6327B9885900E784D4 /* Day.swift */,
 				547F370227BBE61800B18176 /* CurrentUser.swift */,
 			);
@@ -359,6 +362,7 @@
 				54CC51B627C28C1C0072A583 /* AchievedTodosViewModel.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
+				54CC51BC27C32F790072A583 /* FireCount.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */,
 				54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
