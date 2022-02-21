@@ -281,13 +281,12 @@ class FireTodo {
         }
     }
     
-    static func update(id: String, content: String, achievedAt: Date) {
+    static func update(id: String, content: String) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
                 "content": content,
-                "achievedAt": achievedAt
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
@@ -320,6 +319,21 @@ class FireTodo {
                 "isPinned": false,
                 "isAchieved": isAchieved,
                 "achievedAt": (isAchieved ? Date() : nil) as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Todo: \(err)")
+                } else {
+                    print("HELLO! Success! Updated Todo")
+                }
+            }
+    }
+    
+    static func update(id: String, achievedAt: Date?) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "achievedAt": achievedAt as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")

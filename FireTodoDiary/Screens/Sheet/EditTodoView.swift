@@ -89,8 +89,8 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        // contentとachievedAtを更新
-                        FireTodo.update(id: id, content: content, achievedAt: achievedAt)
+                        // contentを更新
+                        FireTodo.update(id: id, content: content)
                         // isPinnedに変化があれば更新
                         if !oldIsPinned && isPinned {
                             FireTodo.pin(id: id)
@@ -104,6 +104,12 @@ struct EditTodoView: View {
                         }
                         if oldIsAchieved && !isAchieved {
                             FireTodo.unachieve(id: id, achievedAt: oldAchievedAt!)
+                        }
+                        // 達成済みのままで、achievedAtに変化があれば対応
+                        if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
+                            FireTodo.update(id: id, achievedAt: achievedAt)
+                            FireCounter.decrementInDay(achievedAt: oldAchievedAt!)
+                            FireCounter.incrementInDay(achievedAt: achievedAt)
                         }
                         dismiss()
                     }){
