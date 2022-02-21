@@ -15,18 +15,25 @@ struct SecondView: View {
         NavigationView {
             
             ZStack {
-                List {
-                    ForEach(daysViewModel.achievedDays, id: \.self){ achievedDay in
-                        AchievementSection(achievedDay: achievedDay)
-                    }
-                }
                 
-                if daysViewModel.achievedDays.count == 0 && daysViewModel.isLoaded {
-                    VStack {
-                        Text("まだ達成済みのTodoはありません")
-                        Text("Todoを達成するとここに表示されます")
+                if !daysViewModel.isLoaded {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    
+                    List {
+                        ForEach(daysViewModel.achievedDays, id: \.self){ achievedDay in
+                            AchievementSection(achievedDay: achievedDay)
+                        }
                     }
-                    .foregroundColor(.secondary)
+                    
+                    if daysViewModel.achievedDays.count == 0 {
+                        VStack {
+                            Text("まだ達成済みのTodoはありません")
+                            Text("Todoを達成するとここに表示されます")
+                        }
+                        .foregroundColor(.secondary)
+                    }
                 }
             }
             
