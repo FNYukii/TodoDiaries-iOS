@@ -15,7 +15,7 @@ struct WelcomeView: View {
     var body: some View {
         
         VStack {
-            TabView(selection: $selection) {
+            TabView(selection: $selection.animation()) {
                 VStack {
                     Image(decorative: "image01")
                         .resizable()
