@@ -18,6 +18,7 @@ struct EditTodoView: View {
     @State private var achievedAt: Date
     private let oldIsPinned: Bool
     private let oldIsAchieved: Bool
+    private let oldAchievedAt: Date?
     
     @State private var isConfirming = false
     
@@ -29,6 +30,7 @@ struct EditTodoView: View {
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
         self.oldIsPinned = todo.isPinned
         self.oldIsAchieved = todo.isAchieved
+        self.oldAchievedAt = todo.achievedAt
     }
     
     var body: some View {
@@ -72,7 +74,7 @@ struct EditTodoView: View {
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
-                    FireTodo.delete(id: id)
+                    FireTodo.delete(id: id, achievedAt: oldAchievedAt)
                     dismiss()
                 }
             }
@@ -87,8 +89,8 @@ struct EditTodoView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        // contentとachievedAtを更新
-                        FireTodo.update(id: id, content: content, achievedAt: achievedAt)
+                        // contentを更新
+                        FireTodo.update(id: id, content: content)
                         // isPinnedに変化があれば更新
                         if !oldIsPinned && isPinned {
                             FireTodo.pin(id: id)
@@ -101,7 +103,13 @@ struct EditTodoView: View {
                             FireTodo.achieve(id: id)
                         }
                         if oldIsAchieved && !isAchieved {
-                            FireTodo.unachieve(id: id)
+                            FireTodo.unachieve(id: id, achievedAt: oldAchievedAt!)
+                        }
+                        // 達成済みのままで、achievedAtに変化があれば対応
+                        if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
+                            FireTodo.update(id: id, achievedAt: achievedAt)
+                            FireCounter.decrement(achievedAt: oldAchievedAt!)
+                            FireCounter.increment(achievedAt: achievedAt)
                         }
                         dismiss()
                     }){

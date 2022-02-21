@@ -62,24 +62,22 @@ struct ChartPage: View {
         if unitSelection == 0 {
             let shiftedNow = Day.nowShiftedByDay(offset: pageOffset)
             self.pageTitle = Day.toStringUpToDay(from: shiftedNow)
-            FireTodo.readCountsOfTodoAchievedAtTheHour(readYear: shiftedNow.year!, readMonth: shiftedNow.month!, readDay: shiftedNow.day!) { value in
+            FireCounter.readCountsInDay(year: shiftedNow.year!, month: shiftedNow.month!, day: shiftedNow.day!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
             }
         } else if unitSelection == 1 {
-//            let shifetNow = Day.nowShiftedByMonth(offset: pageOffset)
-//            self.pageTitle = Day.toStringUpToMonth(from: shifetNow)
-//            FireTodo.readCountsOfTodoAchievedAtTheDay(readYear: shifetNow.year!, readMonth: shifetNow.month!) { value in
-//                self.countsOfTodoAchieved = value
-//                self.isProgressing = false
-//            }
+            let shiftedNow = Day.nowShiftedByMonth(offset: pageOffset)
+            FireCounter.readCountsInMonth(year: shiftedNow.year!, month: shiftedNow.month!) { value in
+                self.countsOfTodoAchieved = value
+                self.isProgressing = false
+            }
         } else {
-//            let shifetNow = Day.nowShiftedByYear(offset: pageOffset)
-//            self.pageTitle = Day.toStringUpToYear(from: shifetNow)
-//            FireTodo.readCountsOfTodoAchievedAtTheMonth(readYear: shifetNow.year!) { value in
-//                self.countsOfTodoAchieved = value
-//                self.isProgressing = false
-//            }
+            let shiftedNow = Day.nowShiftedByYear(offset: pageOffset)
+            FireCounter.readCountsInYear(year: shiftedNow.year!) { value in
+                self.countsOfTodoAchieved = value
+                self.isProgressing = false
+            }
         }
     }
 }

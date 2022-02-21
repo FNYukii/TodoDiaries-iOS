@@ -73,7 +73,7 @@ struct TodoSection: View {
         
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
-                FireTodo.delete(id: todoUnderConfirm!.id)
+                FireTodo.delete(id: todoUnderConfirm!.id, achievedAt: nil)
             }
         } message: {
             if todoUnderConfirm != nil {

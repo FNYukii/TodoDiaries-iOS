@@ -42,7 +42,7 @@ struct TodoContextMenuItems: View {
             
             if todo.isAchieved {
                 Button(action: {
-                    FireTodo.unachieve(id: todo.id)
+                    FireTodo.unachieve(id: todo.id, achievedAt: todo.achievedAt!)
                 }) {
                     Label("makeUnachieved", systemImage: "xmark")
                 }
