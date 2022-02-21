@@ -9,16 +9,20 @@ import Firebase
 
 class FireCount {
     
-    static func incrementAtHourInDay(achievedAt: DateComponents) {
+    static func incrementAtHourInDay(achievedAt: Date) {
         // Document ID
-        let year = achievedAt.year!
-        let month = achievedAt.month!
-        let day = achievedAt.day!
-        let documentId = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
+        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: achievedAt)
+        let year = dateComponents.year!
+        let month = dateComponents.month!
+        let day = dateComponents.day!
+        let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
+        let userId = CurrentUser.userId()
+        let documentId = achievedYmd + userId
         
         // Field name
-        let field = String(achievedAt.hour!)
+        let field = String(dateComponents.hour!)
         
+        // Read
         let db = Firestore.firestore()
         db.collection("countsInDay")
             .document(documentId)
@@ -32,8 +36,4 @@ class FireCount {
                 }
             }
     }
-    
-    
-    
-    
 }
