@@ -7,7 +7,7 @@
 
 import Firebase
 
-class FireCount {
+class FireCounter {
     
     static func create(id: String, field: String) {
         let db = Firestore.firestore()

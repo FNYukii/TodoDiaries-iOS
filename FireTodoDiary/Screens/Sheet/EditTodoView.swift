@@ -74,7 +74,7 @@ struct EditTodoView: View {
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
-                    FireTodo.delete(id: id)
+                    FireTodo.delete(id: id, achievedAt: oldAchievedAt)
                     dismiss()
                 }
             }

@@ -363,7 +363,7 @@ class FireTodo {
     static func achieve(id: String) {
         update(id: id, order: -1.0)
         update(id: id, isAchieved: true)
-        FireCount.incrementInDay(achievedAt: Date())
+        FireCounter.incrementInDay(achievedAt: Date())
     }
     
     static func unachieve(id: String, achievedAt: Date) {
@@ -371,11 +371,11 @@ class FireTodo {
         readMaxOrder(isPinned: false) { value in
             update(id: id, order: value + 100.0)
             update(id: id, isAchieved: false)
-            FireCount.decrementInDay(achievedAt: achievedAt)
+            FireCounter.decrementInDay(achievedAt: achievedAt)
         }
     }
     
-    static func delete(id: String) {
+    static func delete(id: String, achievedAt: Date?) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -384,6 +384,10 @@ class FireTodo {
                     print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
                     print("HELLO! Success! Removed Todo")
+                    // 達成済みTodoならCounterを更新
+                    if let achievedAt = achievedAt {
+                        FireCounter.decrementInDay(achievedAt: achievedAt)
+                    }
                 }
             }
     }
