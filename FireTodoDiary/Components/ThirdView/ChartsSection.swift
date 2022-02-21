@@ -37,6 +37,7 @@ struct ChartsSection: View {
         
         .onChange(of: unitSelection) { value in
             UserDefaults.standard.set(value, forKey: "unitSelection")
+            pageSelection = 0
         }
     }
 }

@@ -68,12 +68,14 @@ struct ChartPage: View {
             }
         } else if unitSelection == 1 {
             let shiftedNow = Day.nowShiftedByMonth(offset: pageOffset)
+            self.pageTitle = Day.toStringUpToMonth(from: shiftedNow)
             FireCounter.readCountsInMonth(year: shiftedNow.year!, month: shiftedNow.month!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
             }
         } else {
             let shiftedNow = Day.nowShiftedByYear(offset: pageOffset)
+            self.pageTitle = Day.toStringUpToYear(from: shiftedNow)
             FireCounter.readCountsInYear(year: shiftedNow.year!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
