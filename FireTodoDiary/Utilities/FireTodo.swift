@@ -120,54 +120,82 @@ class FireTodo {
 //    }
     
     // 特定の日内の全ての時間の、時間別達成数の配列
-    static func readCountsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
-        // startTimestampを生成
-        var startDateComponents = DateComponents()
-        startDateComponents.year = readYear
-        startDateComponents.month = readMonth
-        startDateComponents.day = readDay
-        let startDate = Calendar.current.date(from: startDateComponents)!
-        let startTimestamp = Timestamp(date: startDate)
-        // endTimestampを生成
-        var endDateComponents = DateComponents()
-        endDateComponents.year = readYear
-        endDateComponents.month = readMonth
-        endDateComponents.day = readDay + 1
-        let endDate = Calendar.current.date(from: endDateComponents)!
-        let endTimestamp = Timestamp(date: endDate)
-        
+//    static func readCountsOfTodoAchievedAtTheHour(readYear: Int, readMonth: Int, readDay: Int, completion: (([Int]) -> Void)?) {
+//        // startTimestampを生成
+//        var startDateComponents = DateComponents()
+//        startDateComponents.year = readYear
+//        startDateComponents.month = readMonth
+//        startDateComponents.day = readDay
+//        let startDate = Calendar.current.date(from: startDateComponents)!
+//        let startTimestamp = Timestamp(date: startDate)
+//        // endTimestampを生成
+//        var endDateComponents = DateComponents()
+//        endDateComponents.year = readYear
+//        endDateComponents.month = readMonth
+//        endDateComponents.day = readDay + 1
+//        let endDate = Calendar.current.date(from: endDateComponents)!
+//        let endTimestamp = Timestamp(date: endDate)
+//
+//        let userId = CurrentUser.userId()
+//        let db = Firestore.firestore()
+//        db.collection("todos")
+//            .whereField("userId", isEqualTo: userId)
+//            .whereField("isAchieved", isEqualTo: true)
+//            .order(by: "achievedAt")
+//            .start(at: [startTimestamp])
+//            .end(before: [endTimestamp])
+//            .getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("HELLO! Fail! Error getting Todos: \(err)")
+//                    return
+//                }
+//                if let querySnapshot = querySnapshot {
+//                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
+//                    // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
+//                    var achievedHours: [Int] = []
+//                    querySnapshot.documents.forEach { document in
+//                        let timestamp = document.get("achievedAt") as! Timestamp
+//                        let date = timestamp.dateValue()
+//                        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
+//                        let achievedHour = dateComponents.hour!
+//                        achievedHours.append(achievedHour)
+//                    }
+//
+//                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
+//                    var countsOfTodoAchieved: [Int] = []
+//                    for index in 0 ..< 24 {
+//                        let countOfTodoAchieved = achievedHours.filter({$0 == index}).count
+//                        countsOfTodoAchieved.append(countOfTodoAchieved)
+//                    }
+//                    completion?(countsOfTodoAchieved)
+//                }
+//            }
+//    }
+    
+    // 特定の日の各時間に達成された、Todoの数
+    static func readCountsInDay(year: Int, month: Int, day: Int, completion: (([Int]) -> Void)?) {
+        // Document ID
+        let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
         let userId = CurrentUser.userId()
+        let documentId = achievedYmd + userId
+
         let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
-            .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
-            .start(at: [startTimestamp])
-            .end(before: [endTimestamp])
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO! Fail! Error getting Todos: \(err)")
-                    return
-                }
-                if let querySnapshot = querySnapshot {
-                    print("HELLO! Success! Read to count of Todos achieved at: \(readYear)-\(readMonth)-\(readDay), size: \(querySnapshot.documents.count)")
-                    // achievedHoursを生成 [0, 0, 1, 1, 1, 2, 2, 3, 4, 4, 4, ...]
-                    var achievedHours: [Int] = []
-                    querySnapshot.documents.forEach { document in
-                        let timestamp = document.get("achievedAt") as! Timestamp
-                        let date = timestamp.dateValue()
-                        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: date)
-                        let achievedHour = dateComponents.hour!
-                        achievedHours.append(achievedHour)
+        db.collection("counters")
+            .document(documentId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! Read \(documentId). size: 1")
+                    // TODO: Create countsInDay array.
+                    var countsInDay: [Int] = []
+                    for index in 0 ..< 23 {
+                        let count = document.get(String(index)) as? Int ?? 0
+                        countsInDay.append(count)
                     }
-                    
-                    // countsOfTodoAchievedを生成 [3, 2, 1, 3, ...]
-                    var countsOfTodoAchieved: [Int] = []
-                    for index in 0 ..< 24 {
-                        let countOfTodoAchieved = achievedHours.filter({$0 == index}).count
-                        countsOfTodoAchieved.append(countOfTodoAchieved)
-                    }
-                    completion?(countsOfTodoAchieved)
+                    completion?(countsInDay)
+                } else {
+                    print("HELLO! Success! \(documentId) does not exists.")
+                    let countsInDay: [Int] = []
+                    completion?(countsInDay)
                 }
             }
     }
