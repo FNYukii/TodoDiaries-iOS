@@ -67,9 +67,17 @@ struct ChartPage: View {
                 self.isProgressing = false
             }
         } else if unitSelection == 1 {
-            // TODO: Get countsInMonth
+            let shiftedNow = Day.nowShiftedByMonth(offset: pageOffset)
+            FireCounter.readCountsInMonth(year: shiftedNow.year!, month: shiftedNow.month!) { value in
+                self.countsOfTodoAchieved = value
+                self.isProgressing = false
+            }
         } else {
-            // TODO: Get countsInYear
+            let shiftedNow = Day.nowShiftedByYear(offset: pageOffset)
+            FireCounter.readCountsInYear(year: shiftedNow.year!) { value in
+                self.countsOfTodoAchieved = value
+                self.isProgressing = false
+            }
         }
     }
 }

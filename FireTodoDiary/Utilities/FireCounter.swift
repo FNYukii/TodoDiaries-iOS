@@ -22,20 +22,82 @@ class FireCounter {
             .getDocument { (document, error) in
                 if let document = document, document.exists {
                     print("HELLO! Success! Read \(documentId). size: 1")
-                    // TODO: Create countsInDay array.
+                    
                     var countsInDay: [Int] = []
-                    for index in 0 ..< 23 {
+                    for index in 0 ... 23 {
                         let count = document.get(String(index)) as? Int ?? 0
                         countsInDay.append(count)
                     }
                     completion?(countsInDay)
                 } else {
                     print("HELLO! Success! \(documentId) does not exists. size: 0")
-                    let countsInDay: [Int] = []
+                    let countsInDay: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                     completion?(countsInDay)
                 }
             }
     }
+    
+    // 特定の月の各日に達成された、Todoの数
+    static func readCountsInMonth(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+        // Document ID
+        let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
+        let userId = CurrentUser.userId()
+        let documentId = achievedYm + userId
+
+        let db = Firestore.firestore()
+        db.collection("counters")
+            .document(documentId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! Read \(documentId). size: 1")
+                    
+                    var countsInMonth: [Int] = []
+                    let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
+                    for index in 1 ... dayCount {
+                        let count = document.get(String(index)) as? Int ?? 0
+                        countsInMonth.append(count)
+                    }
+                    completion?(countsInMonth)
+                } else {
+                    print("HELLO! Success! \(documentId) does not exists. size: 0")
+                    var countsInMonth: [Int] = []
+                    let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
+                    for _ in 1 ... dayCount {
+                        countsInMonth.append(0)
+                    }
+                    completion?(countsInMonth)
+                }
+            }
+    }
+    
+    // 特定の年の各月に達成された、Todoの数
+    static func readCountsInYear(year: Int, completion: (([Int]) -> Void)?) {
+        // Document ID
+        let achievedY = String(format: "%04d", year)
+        let userId = CurrentUser.userId()
+        let documentId = achievedY + userId
+
+        let db = Firestore.firestore()
+        db.collection("counters")
+            .document(documentId)
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! Read \(documentId). size: 1")
+                    
+                    var countsInYear: [Int] = []
+                    for index in 1 ... 12 {
+                        let count = document.get(String(index)) as? Int ?? 0
+                        countsInYear.append(count)
+                    }
+                    completion?(countsInYear)
+                } else {
+                    print("HELLO! Success! \(documentId) does not exists. size: 0")
+                    let countsInYear: [Int] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                    completion?(countsInYear)
+                }
+            }
+    }
+
     
     static func create(id: String, field: String) {
         let userId = CurrentUser.userId()
