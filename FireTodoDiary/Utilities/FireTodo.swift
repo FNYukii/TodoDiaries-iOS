@@ -363,6 +363,7 @@ class FireTodo {
     static func achieve(id: String) {
         update(id: id, order: -1.0)
         update(id: id, isAchieved: true)
+        FireCount.incrementAtHourInDay(achievedAt: Date())
     }
     
     static func unachieve(id: String) {

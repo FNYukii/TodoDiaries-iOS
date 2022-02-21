@@ -22,18 +22,46 @@ class FireCount {
         // Field name
         let field = String(dateComponents.hour!)
         
-        // Read
+        // Check document exists
         let db = Firestore.firestore()
-        db.collection("countsInDay")
+        db.collection("countsInDays")
             .document(documentId)
-            .updateData([
-                field: FieldValue.increment(1.0) // インクリメント
-            ]) { err in
-                if let err = err {
-                    print("Error updating document: \(err)")
+            .getDocument { (document, error) in
+                if let document = document, document.exists {
+                    print("HELLO! Success! \(documentId) existeds.")
+                    
+                    // Update
+                    db.collection("countsInDays")
+                        .document(documentId)
+                        .updateData([
+                            field: FieldValue.increment(1.0) // インクリメント
+                        ]) { err in
+                            if let err = err {
+                                print("HELLO! Fail! Error updating document: \(err)")
+                            } else {
+                                print("HELLO! Success! Updated count")
+                            }
+                        }
+                    
                 } else {
-                    print("Document successfully updated")
+                    print("HELLO! Success! \(documentId) does not exist.")
+                    
+                    // Create
+                    db.collection("countsInDays")
+                        .document(documentId)
+                        .setData([
+                            field: 1
+                        ]) { err in
+                            if let err = err {
+                                print("HELLO! Fail! Error writing document. \(err)")
+                            } else {
+                                print("HELLO! Success! Added Todo.")
+                            }
+                        }
+                    
                 }
             }
+        
+        
     }
 }
