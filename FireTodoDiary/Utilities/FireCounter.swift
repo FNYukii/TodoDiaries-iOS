@@ -73,10 +73,10 @@ class FireCounter {
             .document(documentId)
             .getDocument { (document, error) in
                 if let document = document, document.exists {
-                    print("HELLO! Success! \(documentId) existeds.")
+                    print("HELLO! Success! \(documentId) existeds. size: 1")
                     update(id: documentId, fieldToIncrement: field)
                 } else {
-                    print("HELLO! Success! \(documentId) does not exist.")
+                    print("HELLO! Success! \(documentId) does not exist. size: 0")
                     create(id: documentId, field: field)
                 }
             }

@@ -193,7 +193,7 @@ class FireTodo {
                     }
                     completion?(countsInDay)
                 } else {
-                    print("HELLO! Success! \(documentId) does not exists.")
+                    print("HELLO! Success! \(documentId) does not exists. size: 0")
                     let countsInDay: [Int] = []
                     completion?(countsInDay)
                 }
