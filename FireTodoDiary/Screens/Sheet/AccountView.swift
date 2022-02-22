@@ -35,12 +35,11 @@ struct AccountView: View {
                 }
                 .foregroundColor(.red)
                 .frame(maxWidth: .infinity, alignment: .center)
-            }
-            
-            .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
-                Button("signOut", role: .destructive) {
-                    CurrentUser.signOut()
-                    dismiss()
+                .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
+                    Button("signOut", role: .destructive) {
+                        CurrentUser.signOut()
+                        dismiss()
+                    }
                 }
             }
             
