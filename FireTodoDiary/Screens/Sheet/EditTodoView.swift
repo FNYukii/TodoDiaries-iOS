@@ -21,6 +21,7 @@ struct EditTodoView: View {
     private let oldAchievedAt: Date?
     
     @State private var isConfirming = false
+    @State private var isSended = false
     
     init(todo: Todo) {
         self.id = todo.id
@@ -111,12 +112,13 @@ struct EditTodoView: View {
                             FireCounter.decrement(achievedAt: oldAchievedAt!)
                             FireCounter.increment(achievedAt: achievedAt)
                         }
+                        isSended = true
                         dismiss()
                     }){
                         Text("done")
                             .fontWeight(.bold)
                     }
-                    .disabled(content.isEmpty)
+                    .disabled(content.isEmpty && !isSended)
                 }
             }
         }

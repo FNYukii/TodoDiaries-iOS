@@ -17,6 +17,8 @@ struct CreateTodoView: View {
     @State private var isAchieved = false
     @State private var achievedAt: Date = Date()
     
+    @State private var isSended = false
+    
     var body: some View {
         NavigationView {
             
@@ -65,12 +67,13 @@ struct CreateTodoView: View {
                         if isAchieved {
                             FireCounter.increment(achievedAt: achievedAt)
                         }
+                        isSended = true
                         dismiss()
                     }){
                         Text("add")
                             .fontWeight(.bold)
                     }
-                    .disabled(content.isEmpty)
+                    .disabled(content.isEmpty && !isSended)
                 }
             }
         }
