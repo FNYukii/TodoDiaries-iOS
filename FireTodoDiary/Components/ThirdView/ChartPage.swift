@@ -14,10 +14,10 @@ struct ChartPage: View {
     
     @State private var countsOfTodoAchieved: [Int] = []
     @State private var pageTitle = ""
-
+    
     @State private var isAppeared = false
     @State private var isProgressing = true
-        
+    
     var body: some View {
         
         VStack(alignment: .leading) {
@@ -32,7 +32,7 @@ struct ChartPage: View {
                     Text("total")
                     Text("\(countsOfTodoAchieved.reduce(0) { $0 + $1 })")
                 }
-                .foregroundColor(.secondary)                    
+                .foregroundColor(.secondary)
                 BarChart(unitSelection: unitSelection, countsOfTodoAchieved: countsOfTodoAchieved)
                     .padding(.bottom)
             }

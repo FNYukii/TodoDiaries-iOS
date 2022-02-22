@@ -15,7 +15,7 @@ class FireCounter {
         let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
         let userId = CurrentUser.userId()
         let documentId = achievedYmd + "-" + userId
-
+        
         let db = Firestore.firestore()
         db.collection("counters")
             .document(documentId)
@@ -43,7 +43,7 @@ class FireCounter {
         let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
         let userId = CurrentUser.userId()
         let documentId = achievedYm + "-" + userId
-
+        
         let db = Firestore.firestore()
         db.collection("counters")
             .document(documentId)
@@ -76,7 +76,7 @@ class FireCounter {
         let achievedY = String(format: "%04d", year)
         let userId = CurrentUser.userId()
         let documentId = achievedY + "-" + userId
-
+        
         let db = Firestore.firestore()
         db.collection("counters")
             .document(documentId)

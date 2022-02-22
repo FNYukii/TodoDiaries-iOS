@@ -36,27 +36,27 @@ class UnachievedTodosViewModel: ObservableObject {
                     self.todos = todos
                     self.isLoaded = true
                 }
-//                snapshot.documentChanges.forEach { diff in
-//                    if diff.type == .added {
-//                        let newTodo = Todo(document: diff.document)
-//                        withAnimation {
-//                            self.todos.append(newTodo)
-//                        }
-//                    }
-//                    if diff.type == .modified {
-//                        let newTodo = Todo(document: diff.document)
-//                        let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
-//                        withAnimation {
-//                            self.todos[index] = newTodo
-//                        }
-//                    }
-//                    if diff.type == .removed {
-//                        let id = diff.document.documentID
-//                        withAnimation {
-//                            self.todos.removeAll(where: {$0.id == id})
-//                        }
-//                    }
-//                }
+                //                snapshot.documentChanges.forEach { diff in
+                //                    if diff.type == .added {
+                //                        let newTodo = Todo(document: diff.document)
+                //                        withAnimation {
+                //                            self.todos.append(newTodo)
+                //                        }
+                //                    }
+                //                    if diff.type == .modified {
+                //                        let newTodo = Todo(document: diff.document)
+                //                        let index = self.todos.firstIndex(where: {$0.id == diff.document.documentID})!
+                //                        withAnimation {
+                //                            self.todos[index] = newTodo
+                //                        }
+                //                    }
+                //                    if diff.type == .removed {
+                //                        let id = diff.document.documentID
+                //                        withAnimation {
+                //                            self.todos.removeAll(where: {$0.id == id})
+                //                        }
+                //                    }
+                //                }
             }
     }
 }

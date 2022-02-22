@@ -38,7 +38,7 @@ struct TodoSection: View {
                 if from < destination {
                     destination -= 1
                 }
-                                
+                
                 if from > destination {
                     // Todoを上に移動
                     let movedTodo = todos[from]

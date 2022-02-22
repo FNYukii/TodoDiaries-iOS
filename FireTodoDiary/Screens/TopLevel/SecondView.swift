@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondView: View {
     
     @ObservedObject private var daysViewModel = DaysViewModel()
-        
+    
     var body: some View {
         NavigationView {
             
