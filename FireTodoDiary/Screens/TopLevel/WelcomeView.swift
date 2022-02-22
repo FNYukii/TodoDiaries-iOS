@@ -26,12 +26,14 @@ struct WelcomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
-                        .opacity(0.5)
+                        .opacity(0.7)
                     Text("Todoを管理しよう")
                         .font(.title3)
+                        .padding(.top)
                     Text("やりたいこと・やるべきことをアプリに保存し、管理しましょう。")
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
+                        .padding(.top, -10)
                 }
                 .tag(0)
                 
@@ -40,11 +42,14 @@ struct WelcomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
+                        .opacity(0.7)
                     Text("Todoを達成しよう")
                         .font(.title3)
+                        .padding(.top)
                     Text("Todoを達成したらアプリ内で達成済みに変更しましょう。達成したTodoは後から振り返ることができます。")
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
+                        .padding(.top, -10)
                 }
                 .tag(1)
                 
@@ -53,11 +58,14 @@ struct WelcomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
+                        .opacity(0.7)
                     Text("統計を見よう")
                         .font(.title3)
+                        .padding(.top)
                     Text("Todoを達成した時間や、日別・月別の達成数をグラフで確認できます。")
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
+                        .padding(.top, -10)
                 }
                 .tag(2)
             }
