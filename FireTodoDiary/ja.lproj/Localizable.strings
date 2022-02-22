@@ -60,6 +60,14 @@
 "areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";
 
 // Sentence
+"manage_your_todo" = "Todoを管理しよう";
+"save_what_you_want_to_do_and_what_you_need_to_do_in_this_app_and_manage_it_efficiently" = "やりたいこと・やるべきことをアプリに保存し、効率的に管理しましょう。";
+"achieve_your_todo" = "Todoを達成しよう";
+"once_you_have_achieved_todo_change_it_to_Achieved_within_the_app_You_can_look_back_on_the_achievements_of_todo_later" = "Todoを達成したら、アプリ内で達成済みに変更しましょう。達成したTodoは後から振り返ることができます。";
+"lets_see_the_stats" = "統計を見よう";
+"you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph" = "Todoを達成した時間や、日別・月別の達成数をグラフで確認できます。";
+"sign_in_to_start" = "サインインして始める";
+
 "there_is_no_todo_yet" = "まだTodoはありません";
 "when_you_create_a_todo_it_will_appear_here" = "Todoを作成するとここに表示されます";
 "no_todo_achieved_yet" = "まだ達成済みのTodoはありません";

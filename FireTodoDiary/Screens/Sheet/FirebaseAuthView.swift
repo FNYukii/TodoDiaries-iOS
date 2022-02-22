@@ -30,7 +30,10 @@ struct FirebaseAuthView: UIViewControllerRepresentable {
         // Get FirebaseUI
         let authUI = FUIAuth.defaultAuthUI()!
         authUI.providers = [
-            FUIGoogleAuth(authUI: authUI)
+            FUIGoogleAuth(authUI: authUI),
+            FUIOAuth.appleAuthProvider(withAuthUI: authUI),
+            FUIOAuth.twitterAuthProvider(withAuthUI: authUI),
+            FUIOAuth.githubAuthProvider(withAuthUI: authUI),
         ]
         
         // Show FirebaseUI
