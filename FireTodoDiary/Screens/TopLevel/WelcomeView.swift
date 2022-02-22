@@ -21,23 +21,37 @@ struct WelcomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
-                    Text("Todoを追加しましょう")
+                    Text("Todoを管理しよう")
+                        .font(.title3)
+                    Text("やりたいこと・やるべきことをアプリに保存し、管理しましょう。")
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
                 }
                 .tag(0)
+                
                 VStack {
                     Image(decorative: "image02")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
-                    Text("Todoを達成し、履歴を振り返りましょう")
+                    Text("Todoを達成しよう")
+                        .font(.title3)
+                    Text("Todoを達成したらアプリ内で達成済みに変更しましょう。達成したTodoは後から振り返ることができます。")
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
                 }
                 .tag(1)
+                
                 VStack {
                     Image(decorative: "image03")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
-                    Text("統計情報を見ることもできます")
+                    Text("統計を見よう")
+                        .font(.title3)
+                    Text("Todoを達成した時間や、日別・月別の達成数をグラフで確認できます。")
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
                 }
                 .tag(2)
             }
