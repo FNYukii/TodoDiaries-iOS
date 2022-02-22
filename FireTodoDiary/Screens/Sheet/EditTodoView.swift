@@ -71,12 +71,11 @@ struct EditTodoView: View {
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
-            }
-            
-            .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
-                Button("deleteTodo", role: .destructive) {
-                    FireTodo.delete(id: id, achievedAt: oldAchievedAt)
-                    dismiss()
+                .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
+                    Button("deleteTodo", role: .destructive) {
+                        FireTodo.delete(id: id, achievedAt: oldAchievedAt)
+                        dismiss()
+                    }
                 }
             }
             
