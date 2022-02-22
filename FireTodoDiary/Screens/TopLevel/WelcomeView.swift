@@ -21,6 +21,7 @@ struct WelcomeView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 250)
+                        .opacity(0.5)
                     Text("Todoを管理しよう")
                         .font(.title3)
                     Text("やりたいこと・やるべきことをアプリに保存し、管理しましょう。")
@@ -61,10 +62,13 @@ struct WelcomeView: View {
             Button(action: {
                 isShowSheet.toggle()
             }) {
-                Text("sign_in_to_start")
-                    .font(.title3)
+                Text("サインインして始める")
             }
-            .buttonStyle(BorderedProminentButtonStyle())
+            .padding(.vertical, 12)
+            .padding(.horizontal, 48)
+            .background(Color.accentColor)
+            .foregroundColor(.white)
+            .cornerRadius(48)
         }
         
         .sheet(isPresented: $isShowSheet) {
