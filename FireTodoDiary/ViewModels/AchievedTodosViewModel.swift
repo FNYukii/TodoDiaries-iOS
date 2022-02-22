@@ -29,9 +29,9 @@ class AchievedTodosViewModel: ObservableObject {
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt")
-            .start(at: [startTimestamp])
-            .end(before: [endTimestamp])
+            .order(by: "achievedAt", descending: true)
+            .start(at: [endTimestamp])
+            .end(before: [startTimestamp])
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
