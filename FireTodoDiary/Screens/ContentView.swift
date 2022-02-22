@@ -13,25 +13,32 @@ struct ContentView: View {
     
     var body: some View {
         
-        if !signInStateViewModel.isSignedIn {
-            WelcomeView()
-        }
-        
-        if signInStateViewModel.isSignedIn {
-            TabView {
-                FirstView()
-                    .tabItem{
-                        Label("todos", systemImage: "checkmark")
-                    }
-                SecondView()
-                    .tabItem {
-                        Label("history", systemImage: "calendar")
-                    }
-                ThirdView()
-                    .tabItem {
-                        Label("stats", systemImage: "chart.bar.xaxis")
-                    }
+        if !signInStateViewModel.isLoaded {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+        } else {
+            
+            if signInStateViewModel.isSignedIn {
+                TabView {
+                    FirstView()
+                        .tabItem{
+                            Label("todos", systemImage: "checkmark")
+                        }
+                    SecondView()
+                        .tabItem {
+                            Label("history", systemImage: "calendar")
+                        }
+                    ThirdView()
+                        .tabItem {
+                            Label("stats", systemImage: "chart.bar.xaxis")
+                        }
+                }
+            }
+            
+            if !signInStateViewModel.isSignedIn{
+                WelcomeView()
             }
         }
+        
     }
 }
