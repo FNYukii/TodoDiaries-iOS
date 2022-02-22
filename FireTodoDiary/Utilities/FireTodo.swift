@@ -30,7 +30,7 @@ class FireTodo {
                     let maxOrder = orders.max() ?? 0.0
                     completion?(maxOrder)
                 }
-        }
+            }
     }
     
     static func readMinOrder(isPinned: Bool, completion: ((Double) -> Void)?){
@@ -53,7 +53,7 @@ class FireTodo {
                     let maxOrder = orders.min() ?? 0.0
                     completion?(maxOrder)
                 }
-        }
+            }
     }
     
     static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {

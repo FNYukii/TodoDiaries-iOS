@@ -22,7 +22,7 @@ class Day {
         let nowDouble: Double = Double(nowStr)!
         return nowDouble
     }
-        
+    
     // その月の日数
     static func dayCountAtTheMonth(year: Int, month: Int) -> Int {
         var dateComponents = DateComponents()
@@ -41,7 +41,7 @@ class Day {
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: date)
     }
-        
+    
     // Date -> "2022", "2022年"
     static func toStringUpToYear(from: DateComponents) -> String {
         let date = Calendar.current.date(from: from)!

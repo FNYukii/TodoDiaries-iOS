@@ -14,8 +14,8 @@ class FireCounter {
         // Document ID
         let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
         let userId = CurrentUser.userId()
-        let documentId = achievedYmd + userId
-
+        let documentId = achievedYmd + "-" + userId
+        
         let db = Firestore.firestore()
         db.collection("counters")
             .document(documentId)
@@ -42,8 +42,8 @@ class FireCounter {
         // Document ID
         let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
         let userId = CurrentUser.userId()
-        let documentId = achievedYm + userId
-
+        let documentId = achievedYm + "-" + userId
+        
         let db = Firestore.firestore()
         db.collection("counters")
             .document(documentId)
@@ -75,8 +75,8 @@ class FireCounter {
         // Document ID
         let achievedY = String(format: "%04d", year)
         let userId = CurrentUser.userId()
-        let documentId = achievedY + userId
-
+        let documentId = achievedY + "-" + userId
+        
         let db = Firestore.firestore()
         db.collection("counters")
             .document(documentId)
@@ -97,7 +97,6 @@ class FireCounter {
                 }
             }
     }
-
     
     static func create(id: String, field: String) {
         let userId = CurrentUser.userId()
@@ -160,7 +159,7 @@ class FireCounter {
         let day = dateComponents.day!
         let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
         let userId = CurrentUser.userId()
-        let documentId = achievedYmd + userId
+        let documentId = achievedYmd + "-" + userId
         // Field name
         let field = String(dateComponents.hour!)
         // Check document exists
@@ -185,7 +184,7 @@ class FireCounter {
         let month = dateComponents.month!
         let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
         let userId = CurrentUser.userId()
-        let documentId = achievedYm + userId
+        let documentId = achievedYm + "-" + userId
         // Field name
         let field = String(dateComponents.day!)
         // Check document exists
@@ -209,7 +208,7 @@ class FireCounter {
         let year = dateComponents.year!
         let achievedY = String(format: "%04d", year)
         let userId = CurrentUser.userId()
-        let documentId = achievedY + userId
+        let documentId = achievedY + "-" + userId
         // Field name
         let field = String(dateComponents.month!)
         // Check document exists
@@ -241,7 +240,7 @@ class FireCounter {
         let day = dateComponents.day!
         let achievedYmd = String(format: "%04d", year) + String(format: "%02d", month) + String(format: "%02d", day)
         let userId = CurrentUser.userId()
-        let documentId = achievedYmd + userId
+        let documentId = achievedYmd + "-" + userId
         // Field name
         let field = String(dateComponents.hour!)
         update(id: documentId, fieldToDecrement: field)
@@ -254,7 +253,7 @@ class FireCounter {
         let month = dateComponents.month!
         let achievedYm = String(format: "%04d", year) + String(format: "%02d", month)
         let userId = CurrentUser.userId()
-        let documentId = achievedYm + userId
+        let documentId = achievedYm + "-" + userId
         // Field name
         let field = String(dateComponents.day!)
         update(id: documentId, fieldToDecrement: field)
@@ -266,7 +265,7 @@ class FireCounter {
         let year = dateComponents.year!
         let achievedY = String(format: "%04d", year)
         let userId = CurrentUser.userId()
-        let documentId = achievedY + userId
+        let documentId = achievedY + "-" + userId
         // Field name
         let field = String(dateComponents.month!)
         update(id: documentId, fieldToDecrement: field)
