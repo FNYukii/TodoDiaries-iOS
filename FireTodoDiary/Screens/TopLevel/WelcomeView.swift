@@ -42,12 +42,15 @@ struct WelcomeView: View {
                 .tag(2)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+            .frame(height: 400)
             
-            Button("sign_in_to_start") {
+            Button(action: {
                 isShowSheet.toggle()
+            }) {
+                Text("sign_in_to_start")
+                    .font(.title3)
             }
             .buttonStyle(BorderedProminentButtonStyle())
-            .opacity(selection == 2 ? 1 : 0)
         }
         
         .sheet(isPresented: $isShowSheet) {
