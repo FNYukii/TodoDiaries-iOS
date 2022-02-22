@@ -60,6 +60,14 @@
 "areYouSureYouWantToSignOut" = "Are you sure you want to sign out?";
 
 // Sentence
+"manage_your_todo" = "Manage your Todo";
+"save_what_you_want_to_do_and_what_you_need_to_do_in_this_app_and_manage_it_efficiently" = "Save what you want to do and what you neet to do in this app and manage it efficiently.";
+"achieve_your_todo" = "Achieve your Todo";
+"once_you_have_achieved_todo_change_it_to_Achieved_within_this_app_You_can_look_back_on_the_achievements_of_todo_later" = "Once you've achieved Todo, change it to achieved within this app. You can look back on the achievements of Todo later.";
+"lets_see_the_stats" = "Let's see the stats.";
+"you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph" = "You can check the time when you achieved Todo and the number of achievements by day and month in the graph.";
+"sign_in_to_start" = "Sign in to start";
+
 "there_is_no_todo_yet" = "There is no Todo yet.";
 "when_you_create_a_todo_it_will_appear_here" = "When you create a Todo, it will appear here";
 "no_todo_achieved_yet" = "No Todo achieved yet.";
