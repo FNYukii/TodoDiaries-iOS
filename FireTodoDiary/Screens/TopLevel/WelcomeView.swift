@@ -12,6 +12,11 @@ struct WelcomeView: View {
     @State private var isShowSheet = false
     @State private var selection = 0
     
+    init() {
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.label
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.gray.withAlphaComponent(0.7)
+    }
+    
     var body: some View {
         
         VStack {
