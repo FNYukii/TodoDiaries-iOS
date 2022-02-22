@@ -14,7 +14,6 @@
 		5418DC5927B652C7007D98B0 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5827B652C7007D98B0 /* Todo.swift */; };
 		5418DC5B27B6534D007D98B0 /* UnachievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5A27B6534D007D98B0 /* UnachievedTodosViewModel.swift */; };
 		5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */; };
-		5418DC5F27B66753007D98B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5418DC5E27B66753007D98B0 /* GoogleService-Info.plist */; };
 		5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6027B6680F007D98B0 /* EditTodoView.swift */; };
 		5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6227B673DB007D98B0 /* FirstView.swift */; };
 		5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6427B674CF007D98B0 /* SecondView.swift */; };
@@ -50,6 +49,7 @@
 		547F374427BE05C600B18176 /* ShowAccountViewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F374327BE05C600B18176 /* ShowAccountViewButton.swift */; };
 		54CC51B627C28C1C0072A583 /* AchievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */; };
 		54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51BB27C32F790072A583 /* FireCounter.swift */; };
+		54CC51C627C4B82B0072A583 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CC51C527C4B82B0072A583 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +62,6 @@
 		5418DC5827B652C7007D98B0 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		5418DC5A27B6534D007D98B0 /* UnachievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnachievedTodosViewModel.swift; sourceTree = "<group>"; };
 		5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoView.swift; sourceTree = "<group>"; };
-		5418DC5E27B66753007D98B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5418DC6027B6680F007D98B0 /* EditTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoView.swift; sourceTree = "<group>"; };
 		5418DC6227B673DB007D98B0 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		5418DC6427B674CF007D98B0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
@@ -91,6 +90,7 @@
 		547F374327BE05C600B18176 /* ShowAccountViewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAccountViewButton.swift; sourceTree = "<group>"; };
 		54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedTodosViewModel.swift; sourceTree = "<group>"; };
 		54CC51BB27C32F790072A583 /* FireCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCounter.swift; sourceTree = "<group>"; };
+		54CC51C527C4B82B0072A583 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +132,9 @@
 		5418DC3B27B64C4F007D98B0 /* FireTodoDiary */ = {
 			isa = PBXGroup;
 			children = (
+				54CC51C527C4B82B0072A583 /* GoogleService-Info.plist */,
 				5417287227BB7ECA0029BC44 /* Info.plist */,
 				5418DC3C27B64C4F007D98B0 /* FireTodoDiaryApp.swift */,
-				5418DC5E27B66753007D98B0 /* GoogleService-Info.plist */,
 				5418DC5527B65271007D98B0 /* Screens */,
 				5418DC5727B65285007D98B0 /* Components */,
 				5418DC5627B6527B007D98B0 /* Models */,
@@ -337,8 +337,8 @@
 			files = (
 				5418DC4127B64C51007D98B0 /* Assets.xcassets in Resources */,
 				54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */,
+				54CC51C627C4B82B0072A583 /* GoogleService-Info.plist in Resources */,
 				5418DC5427B651FB007D98B0 /* Preview Assets.xcassets in Resources */,
-				5418DC5F27B66753007D98B0 /* GoogleService-Info.plist in Resources */,
 				5458771327C13DC700D24959 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

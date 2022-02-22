@@ -6,6 +6,7 @@
 ## User settings
 xcuserdata/
 GoogleService-Info.plist
+.DS_Store
 
 ## Xcode 8 and earlier
 *.xcscmblueprint
