@@ -10,7 +10,6 @@ import SwiftUI
 struct WelcomeView: View {
     
     @State private var isShowSheet = false
-    @State private var selection = 0
     
     init() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.label
@@ -20,7 +19,7 @@ struct WelcomeView: View {
     var body: some View {
         
         VStack {
-            TabView(selection: $selection.animation()) {
+            TabView {
                 VStack {
                     Image(decorative: "image01")
                         .resizable()
@@ -35,7 +34,6 @@ struct WelcomeView: View {
                         .padding(.horizontal)
                         .padding(.top, -10)
                 }
-                .tag(0)
                 
                 VStack {
                     Image(decorative: "image02")
@@ -51,7 +49,6 @@ struct WelcomeView: View {
                         .padding(.horizontal)
                         .padding(.top, -10)
                 }
-                .tag(1)
                 
                 VStack {
                     Image(decorative: "image03")
@@ -67,7 +64,6 @@ struct WelcomeView: View {
                         .padding(.horizontal)
                         .padding(.top, -10)
                 }
-                .tag(2)
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
             .frame(height: 400)
