@@ -68,10 +68,10 @@
 "you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph" = "Todoを達成した時間や、日別・月別の達成数をグラフで確認できます。";
 "sign_in_to_start" = "サインインして始める";
 
-"there_is_no_todo_yet" = "まだTodoはありません";
-"when_you_create_a_todo_it_will_appear_here" = "Todoを作成するとここに表示されます";
-"no_todo_achieved_yet" = "まだ達成済みのTodoはありません";
-"when_you_complete_todo_you_will_see_it_here" = "Todoを達成するとここに表示されます";
+"there_is_no_todo_yet" = "まだTodoはありません。";
+"when_you_create_a_todo_it_will_appear_here" = "Todoを作成するとここに表示されます。";
+"no_todo_achieved_yet" = "まだ達成済みのTodoはありません。";
+"when_you_complete_todo_you_will_see_it_here" = "Todoを達成するとここに表示されます。";
 
 "the_count_of_todos_achieved_today_is_the_same_as_yesterday" = "今日のTodo達成数は昨日と同じです。";
 "the_count_of_todos_achieved_today_is_less_than_yesterday" = "今日のTodo達成数は昨日よりも少ないです。";
