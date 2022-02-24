@@ -25,6 +25,7 @@ struct AccountView: View {
                 Section {
                     HStack {
                         Text("email")
+                        Spacer()
                         Text(userEmail)
                             .foregroundColor(.secondary)
                     }
