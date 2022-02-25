@@ -27,6 +27,7 @@ class UnachievedTodosViewModel: ObservableObject {
                     return
                 }
                 print("HELLO! Success! Read Todos pinned \(isPinned). size: \(snapshot.documents.count)")
+                
                 var todos: [Todo] = []
                 snapshot.documents.forEach { document in
                     let todo = Todo(document: document)
@@ -34,8 +35,8 @@ class UnachievedTodosViewModel: ObservableObject {
                 }
                 withAnimation {
                     self.todos = todos
-                    self.isLoaded = true
                 }
+                self.isLoaded = true
             }
     }
 }
