@@ -55,7 +55,9 @@ struct EditTodoView: View {
                     Toggle("makeAchieved", isOn: $isAchieved.animation())
                         .onChange(of: isAchieved) { value in
                             if isAchieved {
-                                isPinned = false
+                                withAnimation {
+                                    isPinned = false
+                                }
                             }
                         }
                     // DatePicker
