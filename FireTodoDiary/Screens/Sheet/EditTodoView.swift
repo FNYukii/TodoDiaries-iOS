@@ -40,6 +40,7 @@ struct EditTodoView: View {
             Form {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
+                        .frame(minHeight: 80)
                     Text("todo")
                         .foregroundColor(Color(UIColor.placeholderText))
                         .opacity(content.isEmpty ? 1 : 0)

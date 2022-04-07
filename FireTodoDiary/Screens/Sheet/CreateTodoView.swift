@@ -25,6 +25,7 @@ struct CreateTodoView: View {
             Form {
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $content)
+                        .frame(height: 80)
                         .introspectTextView { textEditor in
                             textEditor.becomeFirstResponder()
                         }
