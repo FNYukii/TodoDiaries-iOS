@@ -29,7 +29,7 @@ struct ChartPage: View {
                 Text(pageTitle)
                     .font(.title)
                 HStack {
-                    Text("total")
+                    Text("achievedTodos")
                     Text("\(countsOfTodoAchieved.reduce(0) { $0 + $1 })")
                 }
                 .foregroundColor(.secondary)

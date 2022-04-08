@@ -13,7 +13,7 @@ struct ChartsSection: View {
     @State private var unitSelection = UserDefaults.standard.integer(forKey: "unitSelection")
     
     var body: some View {
-        Section(header: Text("achievedTodos")) {
+        Section {
             Picker(selection: $unitSelection, label: Text("picker")) {
                 Text("d")
                     .tag(0)
