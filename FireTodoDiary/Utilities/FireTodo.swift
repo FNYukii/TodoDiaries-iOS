@@ -189,7 +189,7 @@ class FireTodo {
         }
     }
     
-    static func delete(id: String, achievedAt: Date?) {
+    static func delete(id: String, achievedAt: Date? = nil) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)

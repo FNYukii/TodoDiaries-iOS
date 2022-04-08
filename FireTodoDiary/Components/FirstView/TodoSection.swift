@@ -69,11 +69,15 @@ struct TodoSection: View {
                     FireTodo.update(id: movedTodo.id, order: newOrder)
                 }
             }
+            
+            .onDelete {indexSet in
+                FireTodo.delete(id: todos[indexSet.first!].id)
+            }
         }
         
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
-                FireTodo.delete(id: todoUnderConfirm!.id, achievedAt: nil)
+                FireTodo.delete(id: todoUnderConfirm!.id)
             }
         } message: {
             if todoUnderConfirm != nil {
