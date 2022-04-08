@@ -49,17 +49,17 @@ struct FirstView: View {
             
             .navigationTitle("todos")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    CustomEditButton()
+
                     Button(action: {
                         isShowCreateSheet.toggle()
                     }) {
-                        Image(systemName: "plus.circle.fill")
-                        Text("newTodo")
+                        Image(systemName: "plus")
                     }
                 }
-                ToolbarItemGroup(placement: .navigationBarLeading) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     ShowAccountViewButton()
-                    CustomEditButton()
                 }
             }
         }
