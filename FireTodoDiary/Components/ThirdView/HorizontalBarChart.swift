@@ -21,7 +21,7 @@ struct HorizontalBarChart: UIViewRepresentable {
         // HorizontalBarChartViewをスタイリング
         horizontalBarChartView.legend.enabled = false //チャートの概要の表示可否
         horizontalBarChartView.xAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 縦グリッドの色
-        horizontalBarChartView.leftAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
+        horizontalBarChartView.rightAxis.gridColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.3) // 横グリッドの色
         horizontalBarChartView.animate(yAxisDuration: 0.5) //表示時のアニメーション
         
         horizontalBarChartView.doubleTapToZoomEnabled = false //ダブルタップによるズーム
@@ -34,10 +34,14 @@ struct HorizontalBarChart: UIViewRepresentable {
         horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisLabels) // X軸にラベルの文字列
         horizontalBarChartView.xAxis.granularity = 1 // X軸の目盛りの粒度
         
-        horizontalBarChartView.rightAxis.enabled = false // Y軸下ラベル
+        horizontalBarChartView.leftAxis.granularity = 1.0 //Y軸上ラベルの粒度
         horizontalBarChartView.leftAxis.axisMinimum = 0.0 // Y軸上ラベルの最小値
         horizontalBarChartView.leftAxis.axisMaximum = yAxisMaximum() // Y軸上ラベルの最大値
-        horizontalBarChartView.leftAxis.granularity = 1.0 //Y軸上ラベルの粒度
+        horizontalBarChartView.leftAxis.enabled = false // Y軸上ラベルの表示
+        
+        horizontalBarChartView.rightAxis.granularity = 1.0 // Y軸下ラベルの粒度
+        horizontalBarChartView.rightAxis.axisMinimum = 0.0 // Y軸下ラベルの最小値
+        horizontalBarChartView.rightAxis.axisMaximum = yAxisMaximum() // Y軸下ラベルの最大値
         
         // HorizontalBarChartViewにデータをセット
         horizontalBarChartView.data = barChartData()
