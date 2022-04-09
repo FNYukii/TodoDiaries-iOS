@@ -55,7 +55,7 @@ struct FirstView: View {
                     Button(action: {
                         isShowCreateSheet.toggle()
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "square.and.pencil")
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
