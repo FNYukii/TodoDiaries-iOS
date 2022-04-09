@@ -161,6 +161,7 @@
 			children = (
 				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
 				547B175027BE11FD00F0C7F9 /* TopLevel */,
+				548CAA982801B43300C4A767 /* SecondLevel */,
 				547B175127BE122800F0C7F9 /* Sheet */,
 			);
 			path = Screens;
@@ -223,7 +224,6 @@
 				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
 				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
 				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
-				547F373A27BD815E00B18176 /* AccountView.swift */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -257,6 +257,14 @@
 				547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */,
 			);
 			path = ThirdView;
+			sourceTree = "<group>";
+		};
+		548CAA982801B43300C4A767 /* SecondLevel */ = {
+			isa = PBXGroup;
+			children = (
+				547F373A27BD815E00B18176 /* AccountView.swift */,
+			);
+			path = SecondLevel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -542,6 +550,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,6 +581,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

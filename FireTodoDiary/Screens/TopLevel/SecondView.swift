@@ -38,11 +38,6 @@ struct SecondView: View {
             }
             
             .navigationTitle("history")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ShowAccountViewButton()
-                }
-            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

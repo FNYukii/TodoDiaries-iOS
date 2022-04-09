@@ -14,14 +14,15 @@ struct ThirdView: View {
             List {
                 ChartsSection()
                 HighlightsSection()
+                
+                Section(header: Text("settings")) {
+                    NavigationLink(destination: AccountView()) {
+                        Text("account")
+                    }
+                }
             }
             
             .navigationTitle("stats")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    ShowAccountViewButton()
-                }
-            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

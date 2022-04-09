@@ -20,6 +20,8 @@
 "email" = "Email";
 "stats" = "Stats";
 "highlights" = "Highlights";
+"settings" = "Settings";
+"account" = "Account";
 
 "theNumberOfTodos" = "The number of Todos";
 
