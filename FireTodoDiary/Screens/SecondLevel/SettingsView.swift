@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AccountView: View {
+struct SettingsView: View {
         
     private let userEmail: String
     @State private var isConfirming = false
@@ -19,7 +19,7 @@ struct AccountView: View {
     var body: some View {
         Form {
             
-            Section {
+            Section(header: Text("account")) {
                 HStack {
                     Text("email")
                     Spacer()
@@ -40,7 +40,7 @@ struct AccountView: View {
             }
         }
         
-        .navigationTitle("account")
+        .navigationTitle("settings")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

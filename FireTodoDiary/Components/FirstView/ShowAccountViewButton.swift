@@ -20,7 +20,7 @@ struct ShowAccountViewButton: View {
         }
         
         .sheet(isPresented: $isShowAccountSheet) {
-            AccountView()
+            SettingsView()
         }
         
     }
