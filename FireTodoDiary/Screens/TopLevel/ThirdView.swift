@@ -21,6 +21,9 @@ struct ThirdView: View {
                     NavigationLink(destination: TermsView()) {
                         Text("terms")
                     }
+                    NavigationLink(destination: PrivacyPolicyView()) {
+                        Text("privacy_policy")
+                    }
                     NavigationLink(destination: AboutView()) {
                         Text("about_this_app")
                     }
