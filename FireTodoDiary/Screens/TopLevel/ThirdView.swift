@@ -15,8 +15,8 @@ struct ThirdView: View {
                 ChartsSection()
                 HighlightsSection()
                 Section {
-                    NavigationLink(destination: SettingsView()) {
-                        Text("settings")
+                    NavigationLink(destination: AccountView()) {
+                        Text("account")
                     }
                     NavigationLink(destination: TermsView()) {
                         Text("terms")

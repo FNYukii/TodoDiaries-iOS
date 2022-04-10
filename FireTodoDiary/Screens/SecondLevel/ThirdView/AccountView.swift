@@ -2,13 +2,12 @@
 //  AccountView.swift
 //  FireTodoDiary
 //
-//  Created by Yu on 2022/02/17.
+//  Created by Yu on 2022/04/10.
 //
 
 import SwiftUI
 
-struct SettingsView: View {
-        
+struct AccountView: View {
     private let userEmail: String
     @State private var isConfirming = false
     
@@ -19,7 +18,7 @@ struct SettingsView: View {
     var body: some View {
         Form {
             
-            Section(header: Text("account")) {
+            Section {
                 HStack {
                     Text("email")
                     Spacer()
@@ -40,7 +39,7 @@ struct SettingsView: View {
             }
         }
         
-        .navigationTitle("settings")
+        .navigationTitle("account")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -20,10 +20,9 @@
 "email" = "Email";
 "stats" = "Stats";
 "highlights" = "Highlights";
-"settings" = "Settings";
+"account" = "Account";
 "terms" = "Terms";
 "about_this_app" = "About this app";
-"account" = "Account";
 
 "theNumberOfTodos" = "The number of Todos";
 
