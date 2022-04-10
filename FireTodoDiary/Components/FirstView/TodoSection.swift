@@ -71,7 +71,8 @@ struct TodoSection: View {
             }
             
             .onDelete {indexSet in
-                FireTodo.delete(id: todos[indexSet.first!].id)
+                todoUnderConfirm = todos[indexSet.first!]
+                isConfirming.toggle()
             }
         }
         
