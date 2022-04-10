@@ -19,6 +19,8 @@
 		5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6427B674CF007D98B0 /* SecondView.swift */; };
 		5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6627B674DE007D98B0 /* ThirdView.swift */; };
 		5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6827B68658007D98B0 /* CustomEditButton.swift */; };
+		543559D72802D29F009D64F3 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559D62802D29F009D64F3 /* TermsView.swift */; };
+		543559D92802D2B8009D64F3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559D82802D2B8009D64F3 /* AboutView.swift */; };
 		54491F6427B9885900E784D4 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6327B9885900E784D4 /* Day.swift */; };
 		54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6727B99A1500E784D4 /* AchievementSection.swift */; };
 		54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */; };
@@ -67,6 +69,8 @@
 		5418DC6427B674CF007D98B0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		5418DC6627B674DE007D98B0 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		5418DC6827B68658007D98B0 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
+		543559D62802D29F009D64F3 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
+		543559D82802D2B8009D64F3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		54491F6327B9885900E784D4 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		54491F6727B99A1500E784D4 /* AchievementSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSection.swift; sourceTree = "<group>"; };
 		54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 			isa = PBXGroup;
 			children = (
 				547F373A27BD815E00B18176 /* SettingsView.swift */,
+				543559D62802D29F009D64F3 /* TermsView.swift */,
+				543559D82802D2B8009D64F3 /* AboutView.swift */,
 			);
 			path = SecondLevel;
 			sourceTree = "<group>";
@@ -359,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */,
+				543559D92802D2B8009D64F3 /* AboutView.swift in Sources */,
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
 				54491F7827BAB33D00E784D4 /* FireTodo.swift in Sources */,
@@ -380,6 +387,7 @@
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
 				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,
 				547F373B27BD815E00B18176 /* SettingsView.swift in Sources */,
+				543559D72802D29F009D64F3 /* TermsView.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,
 				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,

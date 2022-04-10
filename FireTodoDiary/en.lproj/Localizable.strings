@@ -21,6 +21,8 @@
 "stats" = "Stats";
 "highlights" = "Highlights";
 "settings" = "Settings";
+"terms" = "Terms";
+"about_this_app" = "About this app";
 "account" = "Account";
 
 "theNumberOfTodos" = "The number of Todos";

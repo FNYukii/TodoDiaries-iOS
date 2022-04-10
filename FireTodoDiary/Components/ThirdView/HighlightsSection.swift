@@ -29,6 +29,7 @@ struct HighlightsSection: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(height: 150)
                 }
                 if !isProgressing {
                     Text(message)

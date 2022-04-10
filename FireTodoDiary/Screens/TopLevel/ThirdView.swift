@@ -18,6 +18,12 @@ struct ThirdView: View {
                     NavigationLink(destination: SettingsView()) {
                         Text("settings")
                     }
+                    NavigationLink(destination: TermsView()) {
+                        Text("terms")
+                    }
+                    NavigationLink(destination: AboutView()) {
+                        Text("about_this_app")
+                    }
                 }
             }
             
