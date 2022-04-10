@@ -189,6 +189,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		543559DA2802D663009D64F3 /* ThirdView */ = {
+			isa = PBXGroup;
+			children = (
+				547F373A27BD815E00B18176 /* SettingsView.swift */,
+				543559D62802D29F009D64F3 /* TermsView.swift */,
+				543559D82802D2B8009D64F3 /* AboutView.swift */,
+			);
+			path = ThirdView;
+			sourceTree = "<group>";
+		};
 		54491F6A27B9FD1100E784D4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,9 +276,7 @@
 		548CAA982801B43300C4A767 /* SecondLevel */ = {
 			isa = PBXGroup;
 			children = (
-				547F373A27BD815E00B18176 /* SettingsView.swift */,
-				543559D62802D29F009D64F3 /* TermsView.swift */,
-				543559D82802D2B8009D64F3 /* AboutView.swift */,
+				543559DA2802D663009D64F3 /* ThirdView */,
 			);
 			path = SecondLevel;
 			sourceTree = "<group>";
