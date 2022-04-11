@@ -31,12 +31,21 @@ struct TodoSection: View {
                     TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                    Button(action: {
-                        // Pin
-                    }) {
-                        Image(systemName: "pin")
+                    if !todos.first!.isPinned {
+                        Button(action: {
+                            // Pin
+                        }) {
+                            Image(systemName: "pin")
+                        }
+                        .tint(.accentColor)
+                    } else {
+                        Button(action: {
+                            // Unpin
+                        }) {
+                            Image(systemName: "pin.slash")
+                        }
+                        .tint(.accentColor)
                     }
-                    .tint(.accentColor)
                     Button(action: {
                         // Achieve
                     }) {
