@@ -30,6 +30,20 @@ struct TodoSection: View {
                 .contextMenu {
                     TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                 }
+                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                    Button(action: {
+                        // Pin
+                    }) {
+                        Image(systemName: "pin")
+                    }
+                    .tint(.accentColor)
+                    Button(action: {
+                        // Achieve
+                    }) {
+                        Image(systemName: "checkmark")
+                    }
+                    .tint(.orange)
+                }
             }
             .onMove {sourceIndexSet, destination in
                 // 移動元と移動先のindexを取得
