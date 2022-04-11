@@ -35,21 +35,21 @@ struct TodoSection: View {
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
                     if !todos.first!.isPinned {
                         Button(action: {
-                            // Pin
+                            FireTodo.pin(id: todo.id)
                         }) {
                             Image(systemName: "pin")
                         }
                         .tint(.accentColor)
                     } else {
                         Button(action: {
-                            // Unpin
+                            FireTodo.unpin(id: todo.id)
                         }) {
                             Image(systemName: "pin.slash")
                         }
                         .tint(.accentColor)
                     }
                     Button(action: {
-                        // Achieve
+                        FireTodo.achieve(id: todo.id)
                     }) {
                         Image(systemName: "checkmark")
                     }
