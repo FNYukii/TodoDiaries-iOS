@@ -27,8 +27,42 @@ struct TodoSection: View {
                 .sheet(isPresented: $isShowEditSheet) {
                     EditTodoView(todo: todo)
                 }
+                
                 .contextMenu {
                     TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
+                }
+                
+                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                    if !todos.first!.isPinned {
+                        Button(action: {
+                            FireTodo.pin(id: todo.id)
+                        }) {
+                            Image(systemName: "pin")
+                        }
+                        .tint(.accentColor)
+                    } else {
+                        Button(action: {
+                            FireTodo.unpin(id: todo.id)
+                        }) {
+                            Image(systemName: "pin.slash")
+                        }
+                        .tint(.accentColor)
+                    }
+                    Button(action: {
+                        FireTodo.achieve(id: todo.id)
+                    }) {
+                        Image(systemName: "checkmark")
+                    }
+                    .tint(.orange)
+                }
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(action: {
+                        todoUnderConfirm = todo
+                        isConfirming.toggle()
+                    }) {
+                        Image(systemName: "trash")
+                    }
+                    .tint(.red)
                 }
             }
             .onMove {sourceIndexSet, destination in
@@ -68,11 +102,6 @@ struct TodoSection: View {
                     }
                     FireTodo.update(id: movedTodo.id, order: newOrder)
                 }
-            }
-            
-            .onDelete {indexSet in
-                todoUnderConfirm = todos[indexSet.first!]
-                isConfirming.toggle()
             }
         }
         
