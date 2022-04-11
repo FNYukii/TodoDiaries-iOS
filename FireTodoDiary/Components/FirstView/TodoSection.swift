@@ -55,6 +55,15 @@ struct TodoSection: View {
                     }
                     .tint(.orange)
                 }
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(action: {
+                        todoUnderConfirm = todo
+                        isConfirming.toggle()
+                    }) {
+                        Image(systemName: "trash")
+                    }
+                    .tint(.red)
+                }
             }
             .onMove {sourceIndexSet, destination in
                 // 移動元と移動先のindexを取得
@@ -93,11 +102,6 @@ struct TodoSection: View {
                     }
                     FireTodo.update(id: movedTodo.id, order: newOrder)
                 }
-            }
-            
-            .onDelete {indexSet in
-                todoUnderConfirm = todos[indexSet.first!]
-                isConfirming.toggle()
             }
         }
         
