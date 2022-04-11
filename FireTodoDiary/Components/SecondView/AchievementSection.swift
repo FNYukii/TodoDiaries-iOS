@@ -41,6 +41,23 @@ struct AchievementSection: View {
                 .contextMenu {
                     TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                 }
+                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                    Button(action: {
+                        FireTodo.unachieve(id: todo.id, achievedAt: todo.achievedAt!)
+                    }) {
+                        Image(systemName: "xmark")
+                    }
+                    .tint(.orange)
+                }
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(action: {
+                        todoUnderConfirm = todo
+                        isConfirming.toggle()
+                    }) {
+                        Image(systemName: "trash")
+                    }
+                    .tint(.red)
+                }
             }
         }
         
