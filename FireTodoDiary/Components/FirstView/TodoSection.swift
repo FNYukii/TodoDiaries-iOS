@@ -27,9 +27,11 @@ struct TodoSection: View {
                 .sheet(isPresented: $isShowEditSheet) {
                     EditTodoView(todo: todo)
                 }
+                
                 .contextMenu {
                     TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
                 }
+                
                 .swipeActions(edge: .leading, allowsFullSwipe: false) {
                     if !todos.first!.isPinned {
                         Button(action: {
