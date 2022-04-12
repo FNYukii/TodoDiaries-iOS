@@ -23,27 +23,10 @@ struct SecondView: View {
     var body: some View {
         NavigationView {
             
-            ZStack {
-                
-//                if !daysViewModel.isLoaded {
-//                    ProgressView()
-//                        .progressViewStyle(CircularProgressViewStyle())
-//                } else {
-                    
-                    List {
-                        ForEach(days, id: \.self){ achievedDay in
-                            DailyAchievedTodosSection(achievedDay: achievedDay)
-                        }
-                    }
-                    
-//                    if daysViewModel.achievedDays.count == 0 {
-//                        VStack {
-//                            Text("no_todo_achieved_yet")
-//                            Text("when_you_complete_todo_you_will_see_it_here")
-//                        }
-//                        .foregroundColor(.secondary)
-//                    }
-//                }
+            List {
+                ForEach(days, id: \.self){ achievedDay in
+                    DailyAchievedTodosSection(achievedDay: achievedDay)
+                }
             }
             
             .navigationTitle("history")
