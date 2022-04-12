@@ -47,8 +47,8 @@ class Day {
     }
     
     // DateComponents -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toStringUpToWeekday(from: DateComponents) -> String {
-        let date = Calendar.current.date(from: from)!
+    static func toStringUpToWeekday(from: Int) -> String {
+        let date = toDate(from: from)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: date)
