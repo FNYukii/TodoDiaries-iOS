@@ -42,6 +42,16 @@ class Day {
         return dateFormatter.string(from: date)
     }
     
+    // Date -> 20210923
+   static func toInt(from: Date) -> Int {
+       let inputDate = from
+       let calendar = Calendar(identifier: .gregorian)
+       let year = calendar.component(.year, from: inputDate)
+       let month = calendar.component(.month, from: inputDate)
+       let day = calendar.component(.day, from: inputDate)
+       return year * 10000 + month * 100 + day
+   }
+    
     // Date -> "2022", "2022年"
     static func toStringUpToYear(from: DateComponents) -> String {
         let date = Calendar.current.date(from: from)!
