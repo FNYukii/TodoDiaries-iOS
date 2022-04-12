@@ -12,6 +12,8 @@
 "newTodo" = "New Todo";
 
 "history" = "History";
+"show_next_month" = "Show next month";
+"show_previous_month" = "Show previous month";
 "achievedTodos" = "Achieved Todos";
 "account" = "Account";
 

@@ -12,6 +12,8 @@
 "newTodo" = "新規Todo";
 
 "history" = "達成履歴";
+"show_next_month" = "次の月を表示";
+"show_previous_month" = "前の月を表示";
 "achievedTodos" = "達成したTodo";
 
 "achievedAt" = "達成日時";
