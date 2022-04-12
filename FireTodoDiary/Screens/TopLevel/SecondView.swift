@@ -40,7 +40,7 @@ struct SecondView: View {
                             let shiftedNow = Day.nowShiftedByMonth(offset: monthOffset)
                             days = Day.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
                         }) {
-                            Label("next_month", systemImage: "arrow.backward")
+                            Label("next_month", systemImage: "arrow.forward")
                         }
                         // 先月を表示
                         Button(action: {
@@ -48,7 +48,7 @@ struct SecondView: View {
                             let shiftedNow = Day.nowShiftedByMonth(offset: monthOffset)
                             days = Day.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
                         }) {
-                            Label("prev_month", systemImage: "arrow.forward")
+                            Label("prev_month", systemImage: "arrow.backward")
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")
