@@ -15,13 +15,9 @@ class DailyAchievedTodosViewModel: ObservableObject {
     
     init(achievedDay: Int) {
         // startTimestamp
-//        let startDate = Calendar.current.date(from: achievedDay)!
         let startDate = Day.toDate(from: achievedDay)
         let startTimestamp = Timestamp(date: startDate)
         // endTimestamp
-//        var endDateComponents = achievedDay
-//        endDateComponents.day! += 1
-//        let endDate = Calendar.current.date(from: endDateComponents)!
         let achievedNextDay = achievedDay + 1
         let endDate = Day.toDate(from: achievedNextDay)
         let endTimestamp = Timestamp(date: endDate)
