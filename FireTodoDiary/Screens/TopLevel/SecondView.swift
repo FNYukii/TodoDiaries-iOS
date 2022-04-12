@@ -52,7 +52,6 @@ struct SecondView: View {
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")
-//                            .font(.title2)
                     }
                 }
             }
