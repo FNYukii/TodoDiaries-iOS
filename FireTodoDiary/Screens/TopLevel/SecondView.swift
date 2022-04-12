@@ -28,17 +28,34 @@ struct SecondView: View {
                 ForEach(days, id: \.self){ achievedDay in
                     DailyAchievedTodosSection(achievedDay: achievedDay)
                 }
-                Button(action: {
-                    monthOffset -= 1
-                    let yearAndMonthShifted = Day.nowShiftedByMonth(offset: monthOffset)
-                    let daysAtPrevMonth = Day.daysAtTheMonth(year: yearAndMonthShifted.year!, month: yearAndMonthShifted.month!)
-                    days.append(contentsOf: daysAtPrevMonth)
-                }) {
-                    Text("load_prev_month")
-                }
             }
             
             .navigationTitle("history")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        // 来月を表示
+                        Button(action: {
+                            monthOffset += 1
+                            let shiftedNow = Day.nowShiftedByMonth(offset: monthOffset)
+                            days = Day.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
+                        }) {
+                            Label("next_month", systemImage: "arrow.backward")
+                        }
+                        // 先月を表示
+                        Button(action: {
+                            monthOffset -= 1
+                            let shiftedNow = Day.nowShiftedByMonth(offset: monthOffset)
+                            days = Day.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
+                        }) {
+                            Label("prev_month", systemImage: "arrow.forward")
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.title2)
+                    }
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
