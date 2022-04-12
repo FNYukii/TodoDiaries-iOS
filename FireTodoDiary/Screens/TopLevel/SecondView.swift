@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SecondView: View {
     
-//    @ObservedObject private var daysViewModel = DaysViewModel()
     var days: [Int] = []
     
     init() {
