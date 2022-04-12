@@ -23,7 +23,7 @@ struct SecondView: View {
                     
                     List {
                         ForEach(daysViewModel.achievedDays, id: \.self){ achievedDay in
-                            AchievementSection(achievedDay: achievedDay)
+                            DailyAchievedTodosSection(achievedDay: achievedDay)
                         }
                     }
                     

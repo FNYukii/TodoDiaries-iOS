@@ -8,7 +8,7 @@
 import Firebase
 import SwiftUI
 
-class AchievedTodosViewModel: ObservableObject {
+class DailyAchievedTodosViewModel: ObservableObject {
     
     @Published var todos: [Todo] = []
     @Published var isLoaded = false

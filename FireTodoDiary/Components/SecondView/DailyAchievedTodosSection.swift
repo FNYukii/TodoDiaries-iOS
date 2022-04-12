@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct AchievementSection: View {
+struct DailyAchievedTodosSection: View {
     
     private let title: String
     
-    @ObservedObject private var todosViewModel: AchievedTodosViewModel
+    @ObservedObject private var todosViewModel: DailyAchievedTodosViewModel
     
     @State private var isShowEditSheet = false
     @State private var isConfirming = false
@@ -19,7 +19,7 @@ struct AchievementSection: View {
     
     init(achievedDay: DateComponents) {
         self.title = Day.toStringUpToWeekday(from: achievedDay)
-        self.todosViewModel = AchievedTodosViewModel(achievedDay: achievedDay)
+        self.todosViewModel = DailyAchievedTodosViewModel(achievedDay: achievedDay)
     }
     
     var body: some View {

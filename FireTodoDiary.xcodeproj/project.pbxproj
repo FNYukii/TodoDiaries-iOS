@@ -23,7 +23,7 @@
 		543559D92802D2B8009D64F3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559D82802D2B8009D64F3 /* AboutView.swift */; };
 		543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559DB2802D8A5009D64F3 /* AccountView.swift */; };
 		54491F6427B9885900E784D4 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6327B9885900E784D4 /* Day.swift */; };
-		54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6727B99A1500E784D4 /* AchievementSection.swift */; };
+		54491F6827B99A1500E784D4 /* DailyAchievedTodosSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6727B99A1500E784D4 /* DailyAchievedTodosSection.swift */; };
 		54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */; };
 		54491F7027BA101400E784D4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54491F6F27BA101400E784D4 /* Introspect */; };
 		54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54491F7527BA7F8900E784D4 /* Localizable.strings */; };
@@ -49,7 +49,7 @@
 		547F373927BD6C2C00B18176 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* BarChart.swift */; };
 		547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* ChartsSection.swift */; };
 		54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B469612802DC84007343A6 /* PrivacyPolicyView.swift */; };
-		54CC51B627C28C1C0072A583 /* AchievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */; };
+		54CC51B627C28C1C0072A583 /* DailyAchievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51B527C28C1C0072A583 /* DailyAchievedTodosViewModel.swift */; };
 		54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51BB27C32F790072A583 /* FireCounter.swift */; };
 		54CC51C627C4B82B0072A583 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54CC51C527C4B82B0072A583 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -73,7 +73,7 @@
 		543559D82802D2B8009D64F3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		543559DB2802D8A5009D64F3 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		54491F6327B9885900E784D4 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
-		54491F6727B99A1500E784D4 /* AchievementSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementSection.swift; sourceTree = "<group>"; };
+		54491F6727B99A1500E784D4 /* DailyAchievedTodosSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAchievedTodosSection.swift; sourceTree = "<group>"; };
 		54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
 		54491F7427BA7F8900E784D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7627BA7F8F00E784D4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
 		54B469612802DC84007343A6 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
-		54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedTodosViewModel.swift; sourceTree = "<group>"; };
+		54CC51B527C28C1C0072A583 /* DailyAchievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAchievedTodosViewModel.swift; sourceTree = "<group>"; };
 		54CC51BB27C32F790072A583 /* FireCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCounter.swift; sourceTree = "<group>"; };
 		54CC51C527C4B82B0072A583 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -215,7 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC5A27B6534D007D98B0 /* UnachievedTodosViewModel.swift */,
-				54CC51B527C28C1C0072A583 /* AchievedTodosViewModel.swift */,
+				54CC51B527C28C1C0072A583 /* DailyAchievedTodosViewModel.swift */,
 				54491F7D27BAE46000E784D4 /* DaysViewModel.swift */,
 				547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */,
 			);
@@ -256,7 +256,7 @@
 		547F374127BDF2CE00B18176 /* SecondView */ = {
 			isa = PBXGroup;
 			children = (
-				54491F6727B99A1500E784D4 /* AchievementSection.swift */,
+				54491F6727B99A1500E784D4 /* DailyAchievedTodosSection.swift */,
 			);
 			path = SecondView;
 			sourceTree = "<group>";
@@ -382,12 +382,12 @@
 				547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */,
 				54491F6427B9885900E784D4 /* Day.swift in Sources */,
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
-				54CC51B627C28C1C0072A583 /* AchievedTodosViewModel.swift in Sources */,
+				54CC51B627C28C1C0072A583 /* DailyAchievedTodosViewModel.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
 				54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */,
-				54491F6827B99A1500E784D4 /* AchievementSection.swift in Sources */,
+				54491F6827B99A1500E784D4 /* DailyAchievedTodosSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
 				54491F7E27BAE46000E784D4 /* DaysViewModel.swift in Sources */,
 				547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */,
