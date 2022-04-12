@@ -10,20 +10,14 @@ import SwiftUI
 struct SecondView: View {
     
 //    @ObservedObject private var daysViewModel = DaysViewModel()
-    let achievedDays = [20220411]
+    var days: [Int] = []
     
     init() {
         // 今月の年と月
         let now = Calendar.current.dateComponents(in: .current, from: Date())
-        let nowYear = now.hour!
+        let nowYear = now.year!
         let nowMonth = now.month!
-        let startDay = nowYear * 10000 + nowMonth * 100 + 1
-        
-        // 今月の月末日
-        let firstDate = Calendar.current.date(from: DateComponents(year: 2020, month: 2))!
-        let add = DateComponents(month: 1, day: -1)
-        let endDate = Calendar.current.date(byAdding: add, to: firstDate)!
-        let endDay = Day.toInt(from: endDate)
+        self.days = Day.daysAtTheMonth(year: nowYear, month: nowMonth)
     }
     
     var body: some View {
@@ -37,7 +31,7 @@ struct SecondView: View {
 //                } else {
                     
                     List {
-                        ForEach(achievedDays, id: \.self){ achievedDay in
+                        ForEach(days, id: \.self){ achievedDay in
                             DailyAchievedTodosSection(achievedDay: achievedDay)
                         }
                     }
