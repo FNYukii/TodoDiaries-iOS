@@ -103,7 +103,7 @@ struct EditTodoView: View {
                         }
                         // isAchievedに変化があれば更新
                         if !oldIsAchieved && isAchieved {
-                            FireTodo.achieve(id: id)
+                            FireTodo.achieve(id: id, achievedAt: achievedAt)
                         }
                         if oldIsAchieved && !isAchieved {
                             FireTodo.unachieve(id: id, achievedAt: oldAchievedAt!)

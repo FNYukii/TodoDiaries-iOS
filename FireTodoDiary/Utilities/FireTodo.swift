@@ -174,9 +174,12 @@ class FireTodo {
         }
     }
     
-    static func achieve(id: String) {
+    static func achieve(id: String, achievedAt: Date? = nil) {
         update(id: id, order: -1.0)
         update(id: id, isAchieved: true)
+        if let achievedAt = achievedAt {
+            update(id: id, achievedAt: achievedAt)
+        }
         FireCounter.increment(achievedAt: Date())
     }
     
