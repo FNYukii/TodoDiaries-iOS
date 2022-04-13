@@ -30,6 +30,8 @@
 		54491F7827BAB33D00E784D4 /* FireTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* FireTodo.swift */; };
 		54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7927BACEB700E784D4 /* TodoSection.swift */; };
 		5458771327C13DC700D24959 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5458771527C13DC700D24959 /* InfoPlist.strings */; };
+		54633B1B280700F600B13303 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1A280700F600B13303 /* Day.swift */; };
+		54633B1D2807017E00B13303 /* AchievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1C2807017E00B13303 /* AchievedTodosViewModel.swift */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
 		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
 		547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */; };
@@ -80,6 +82,8 @@
 		54491F7927BACEB700E784D4 /* TodoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoSection.swift; sourceTree = "<group>"; };
 		5458771427C13DC700D24959 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5458771627C13DEC00D24959 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		54633B1A280700F600B13303 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		54633B1C2807017E00B13303 /* AchievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedTodosViewModel.swift; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
 		547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
 		547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC5827B652C7007D98B0 /* Todo.swift */,
+				54633B1A280700F600B13303 /* Day.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC5A27B6534D007D98B0 /* UnachievedTodosViewModel.swift */,
+				54633B1C2807017E00B13303 /* AchievedTodosViewModel.swift */,
 				54CC51B527C28C1C0072A583 /* DailyAchievedTodosViewModel.swift */,
 				547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */,
 			);
@@ -374,6 +380,7 @@
 				5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */,
 				5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */,
 				54491F7827BAB33D00E784D4 /* FireTodo.swift in Sources */,
+				54633B1D2807017E00B13303 /* AchievedTodosViewModel.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* UnachievedTodosViewModel.swift in Sources */,
 				547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */,
@@ -382,6 +389,7 @@
 				54CC51B627C28C1C0072A583 /* DailyAchievedTodosViewModel.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
+				54633B1B280700F600B13303 /* Day.swift in Sources */,
 				54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* TodoSection.swift in Sources */,
 				54491F6827B99A1500E784D4 /* DailyAchievedTodosSection.swift in Sources */,
