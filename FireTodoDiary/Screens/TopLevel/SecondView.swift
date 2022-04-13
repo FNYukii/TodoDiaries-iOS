@@ -9,62 +9,67 @@ import SwiftUI
 
 struct SecondView: View {
     
-//    @State private var days: [Int] = []
-//    @State private var monthOffset = 0
-    
     @ObservedObject private var achievedTodosViewModel = AchievedTodosViewModel()
     
-//    init() {
-//        // 今月の年と月
-//        let now = Calendar.current.dateComponents(in: .current, from: Date())
-//        let nowYear = now.year!
-//        let nowMonth = now.month!
-//        let daysAtCurrentMonth = DayConverter.daysAtTheMonth(year: nowYear, month: nowMonth)
-//        _days = State(initialValue: daysAtCurrentMonth)
-//    }
+    @State private var isShowEditSheet = false
+    @State private var isConfirming = false
+    @State private var todoUnderConfirm: Todo? = nil
     
     var body: some View {
         NavigationView {
             
             List {
-//                ForEach(days, id: \.self){ achievedDay in
-//                    DailyAchievedTodosSection(achievedDay: achievedDay)
-//                }
                 
                 ForEach(achievedTodosViewModel.days) { day in
-                    Section(header: Text(String(day.ymd))) {
-                        ForEach(day.achievedTodos) { achievedTodo in
-                            Text("\(achievedTodo.content)")
+                    Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
+                        ForEach(day.achievedTodos) { todo in
+                            Button(action: {
+                                isShowEditSheet.toggle()
+                            }) {
+                                HStack {
+                                    Text(DayConverter.toTimeString(from: todo.achievedAt!))
+                                        .foregroundColor(.secondary)
+                                    Text(todo.content)
+                                        .foregroundColor(.primary)
+                                }
+                            }
+                            .sheet(isPresented: $isShowEditSheet) {
+                                EditTodoView(todo: todo)
+                            }
+                            .contextMenu {
+                                TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
+                            }
+                            .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                Button(action: {
+                                    FireTodo.unachieve(id: todo.id, achievedAt: todo.achievedAt!)
+                                }) {
+                                    Image(systemName: "xmark")
+                                }
+                                .tint(.orange)
+                            }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(action: {
+                                    todoUnderConfirm = todo
+                                    isConfirming.toggle()
+                                }) {
+                                    Image(systemName: "trash")
+                                }
+                                .tint(.red)
+                            }
                         }
                     }
                 }
             }
             
+            .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("deleteTodo", role: .destructive) {
+                    FireTodo.delete(id: todoUnderConfirm!.id, achievedAt: todoUnderConfirm!.achievedAt)
+                }
+            } message: {
+                Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
+            }
+            
             .navigationTitle("history")
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Menu {
-//                        // 先月を表示
-//                        Button(action: {
-//                            monthOffset -= 1
-//                            let shiftedNow = DayConverter.nowShiftedByMonth(offset: monthOffset)
-//                            days = DayConverter.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
-//                        }) {
-//                            Label("show_previous_month", systemImage: "arrow.backward")
-//                        }
-//                        // 来月を表示
-//                        Button(action: {
-//                            monthOffset += 1
-//                            let shiftedNow = DayConverter.nowShiftedByMonth(offset: monthOffset)
-//                            days = DayConverter.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
-//                        }) {
-//                            Label("show_next_month", systemImage: "arrow.forward")
-//                        }
-//                    } label: {
-//                        Image(systemName: "ellipsis.circle")
-//                    }
-//                }
-//            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
