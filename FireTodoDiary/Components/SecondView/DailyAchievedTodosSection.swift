@@ -18,7 +18,7 @@ struct DailyAchievedTodosSection: View {
     @State private var todoUnderConfirm: Todo? = nil
     
     init(achievedDay: Int) {
-        self.title = Day.toStringUpToWeekday(from: achievedDay)
+        self.title = DayConverter.toStringUpToWeekday(from: achievedDay)
         self.todosViewModel = DailyAchievedTodosViewModel(achievedDay: achievedDay)
     }
     
@@ -32,7 +32,7 @@ struct DailyAchievedTodosSection: View {
                         isShowEditSheet.toggle()
                     }) {
                         HStack {
-                            Text(Day.toTimeString(from: todo.achievedAt!))
+                            Text(DayConverter.toTimeString(from: todo.achievedAt!))
                                 .foregroundColor(.secondary)
                             Text(todo.content)
                                 .foregroundColor(.primary)

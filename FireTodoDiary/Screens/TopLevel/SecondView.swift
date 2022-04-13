@@ -17,7 +17,7 @@ struct SecondView: View {
         let now = Calendar.current.dateComponents(in: .current, from: Date())
         let nowYear = now.year!
         let nowMonth = now.month!
-        let daysAtCurrentMonth = Day.daysAtTheMonth(year: nowYear, month: nowMonth)
+        let daysAtCurrentMonth = DayConverter.daysAtTheMonth(year: nowYear, month: nowMonth)
         _days = State(initialValue: daysAtCurrentMonth)
     }
     
@@ -37,16 +37,16 @@ struct SecondView: View {
                         // 先月を表示
                         Button(action: {
                             monthOffset -= 1
-                            let shiftedNow = Day.nowShiftedByMonth(offset: monthOffset)
-                            days = Day.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
+                            let shiftedNow = DayConverter.nowShiftedByMonth(offset: monthOffset)
+                            days = DayConverter.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
                         }) {
                             Label("show_previous_month", systemImage: "arrow.backward")
                         }
                         // 来月を表示
                         Button(action: {
                             monthOffset += 1
-                            let shiftedNow = Day.nowShiftedByMonth(offset: monthOffset)
-                            days = Day.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
+                            let shiftedNow = DayConverter.nowShiftedByMonth(offset: monthOffset)
+                            days = DayConverter.daysAtTheMonth(year: shiftedNow.year!, month: shiftedNow.month!)
                         }) {
                             Label("show_next_month", systemImage: "arrow.forward")
                         }

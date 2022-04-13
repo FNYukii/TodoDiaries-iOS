@@ -82,13 +82,13 @@ struct BarChart: UIViewRepresentable {
     
     private func xAxisValueFormatter() -> IndexAxisValueFormatter {
         if unitSelection == 0 {
-            let strings = Day.hourStrings()
+            let strings = DayConverter.hourStrings()
             return IndexAxisValueFormatter(values:strings)
         } else if unitSelection == 1 {
-            let strings = Day.dayStrings()
+            let strings = DayConverter.dayStrings()
             return IndexAxisValueFormatter(values:strings)
         } else {
-            let strings = Day.monthStrings()
+            let strings = DayConverter.monthStrings()
             return IndexAxisValueFormatter(values:strings)
         }
     }

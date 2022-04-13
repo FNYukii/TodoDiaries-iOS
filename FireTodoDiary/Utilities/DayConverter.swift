@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Day {
+class DayConverter {
     
     // orderに使うための、現在の日付のDouble型
     static func nowDouble() -> Double {

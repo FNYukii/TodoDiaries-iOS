@@ -15,11 +15,11 @@ class DailyAchievedTodosViewModel: ObservableObject {
     
     init(achievedDay: Int) {
         // startTimestamp
-        let startDate = Day.toDate(from: achievedDay)
+        let startDate = DayConverter.toDate(from: achievedDay)
         let startTimestamp = Timestamp(date: startDate)
         // endTimestamp
         let achievedNextDay = achievedDay + 1
-        let endDate = Day.toDate(from: achievedNextDay)
+        let endDate = DayConverter.toDate(from: achievedNextDay)
         let endTimestamp = Timestamp(date: endDate)
         
         // Read

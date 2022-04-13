@@ -60,22 +60,22 @@ struct ChartPage: View {
     
     func loadCountsOfTodoAchieved() {
         if unitSelection == 0 {
-            let shiftedNow = Day.nowShiftedByDay(offset: pageOffset)
-            self.pageTitle = Day.toStringUpToDay(from: shiftedNow)
+            let shiftedNow = DayConverter.nowShiftedByDay(offset: pageOffset)
+            self.pageTitle = DayConverter.toStringUpToDay(from: shiftedNow)
             FireCounter.readCountsInDay(year: shiftedNow.year!, month: shiftedNow.month!, day: shiftedNow.day!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
             }
         } else if unitSelection == 1 {
-            let shiftedNow = Day.nowShiftedByMonth(offset: pageOffset)
-            self.pageTitle = Day.toStringUpToMonth(from: shiftedNow)
+            let shiftedNow = DayConverter.nowShiftedByMonth(offset: pageOffset)
+            self.pageTitle = DayConverter.toStringUpToMonth(from: shiftedNow)
             FireCounter.readCountsInMonth(year: shiftedNow.year!, month: shiftedNow.month!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
             }
         } else {
-            let shiftedNow = Day.nowShiftedByYear(offset: pageOffset)
-            self.pageTitle = Day.toStringUpToYear(from: shiftedNow)
+            let shiftedNow = DayConverter.nowShiftedByYear(offset: pageOffset)
+            self.pageTitle = DayConverter.toStringUpToYear(from: shiftedNow)
             FireCounter.readCountsInYear(year: shiftedNow.year!) { value in
                 self.countsOfTodoAchieved = value
                 self.isProgressing = false
