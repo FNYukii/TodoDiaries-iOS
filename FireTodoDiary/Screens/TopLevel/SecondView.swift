@@ -18,46 +18,63 @@ struct SecondView: View {
     var body: some View {
         NavigationView {
             
-            List {
+            ZStack {
+                if !achievedTodosViewModel.isLoaded {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                }
                 
-                ForEach(achievedTodosViewModel.days) { day in
-                    Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
-                        ForEach(day.achievedTodos) { todo in
-                            Button(action: {
-                                isShowEditSheet.toggle()
-                            }) {
-                                HStack {
-                                    Text(DayConverter.toTimeString(from: todo.achievedAt!))
-                                        .foregroundColor(.secondary)
-                                    Text(todo.content)
-                                        .foregroundColor(.primary)
+                if achievedTodosViewModel.isLoaded {
+                    List {
+                        ForEach(achievedTodosViewModel.days) { day in
+                            Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
+                                ForEach(day.achievedTodos) { todo in
+                                    Button(action: {
+                                        isShowEditSheet.toggle()
+                                    }) {
+                                        HStack {
+                                            Text(DayConverter.toTimeString(from: todo.achievedAt!))
+                                                .foregroundColor(.secondary)
+                                            Text(todo.content)
+                                                .foregroundColor(.primary)
+                                        }
+                                    }
+                                    .sheet(isPresented: $isShowEditSheet) {
+                                        EditTodoView(todo: todo)
+                                    }
+                                    .contextMenu {
+                                        TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
+                                    }
+                                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                        Button(action: {
+                                            FireTodo.unachieve(id: todo.id, achievedAt: todo.achievedAt!)
+                                        }) {
+                                            Image(systemName: "xmark")
+                                        }
+                                        .tint(.orange)
+                                    }
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                        Button(action: {
+                                            todoUnderConfirm = todo
+                                            isConfirming.toggle()
+                                        }) {
+                                            Image(systemName: "trash")
+                                        }
+                                        .tint(.red)
+                                    }
                                 }
-                            }
-                            .sheet(isPresented: $isShowEditSheet) {
-                                EditTodoView(todo: todo)
-                            }
-                            .contextMenu {
-                                TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
-                            }
-                            .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                                Button(action: {
-                                    FireTodo.unachieve(id: todo.id, achievedAt: todo.achievedAt!)
-                                }) {
-                                    Image(systemName: "xmark")
-                                }
-                                .tint(.orange)
-                            }
-                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                Button(action: {
-                                    todoUnderConfirm = todo
-                                    isConfirming.toggle()
-                                }) {
-                                    Image(systemName: "trash")
-                                }
-                                .tint(.red)
                             }
                         }
                     }
+                    
+                    if achievedTodosViewModel.days.count == 0 {
+                        VStack {
+                            Text("no_todo_achieved_yet")
+                            Text("when_you_complete_todo_you_will_see_it_here")
+                        }
+                        .foregroundColor(.secondary)
+                    }
+                    
                 }
             }
             
