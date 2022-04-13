@@ -34,13 +34,35 @@ class Day {
         return dayCount
     }
     
+    // その月のすべての日をyyyymmdd形式で
+    static func daysAtTheMonth(year: Int, month: Int) -> [Int] {
+        var days: [Int] = []
+        let dayCount = dayCountAtTheMonth(year: year, month: month)
+        for index in (1...dayCount) {
+            let day = year * 10000 + month * 100 + index
+            days.append(day)
+        }
+        days = days.reversed()
+        return days
+    }
+    
     // DateComponents -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
-    static func toStringUpToWeekday(from: DateComponents) -> String {
-        let date = Calendar.current.date(from: from)!
+    static func toStringUpToWeekday(from: Int) -> String {
+        let date = toDate(from: from)
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .full
         return dateFormatter.string(from: date)
     }
+    
+    // Date -> 20210923
+   static func toInt(from: Date) -> Int {
+       let inputDate = from
+       let calendar = Calendar(identifier: .gregorian)
+       let year = calendar.component(.year, from: inputDate)
+       let month = calendar.component(.month, from: inputDate)
+       let day = calendar.component(.day, from: inputDate)
+       return year * 10000 + month * 100 + day
+   }
     
     // Date -> "2022", "2022年"
     static func toStringUpToYear(from: DateComponents) -> String {

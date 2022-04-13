@@ -6,62 +6,7 @@
   
 */
 
-// Noun
-"todo" = "Todo";
-"todos" = "Todo";
-"newTodo" = "新規Todo";
-
-"history" = "達成履歴";
-"achievedTodos" = "達成したTodo";
-
-"achievedAt" = "達成日時";
-"others" = "その他";
-"email" = "メールアドレス";
-"stats" = "統計";
-"highlights" = "ハイライト";
-"account" = "アカウント";
-"terms" = "利用規約";
-"privacy_policy" = "プライバシーポリシー";
-"about_this_app" = "このアプリについて";
-
-"theNumberOfTodos" = "Todoの数";
-
-"d" = "日";
-"m" = "月";
-"y" = "年";
-
-"today" = "今日";
-"yesterday" = "昨日";
-
-// Adjective
-"pinned" = "固定済み";
-"achieved" = "達成済み";
-"unachieved" = "未達成";
-
-// Verb
-"cancel" = "キャンセル";
-"add" = "追加";
-"done" = "完了";
-"edit" = "編集";
-
-"editTodo" = "Todoを編集";
-
-"delete" = "削除";
-"deleteTodo" = "Todoを削除";
-
-"pin" = "固定する";
-"unpin" = "固定を解除";
-
-"makeAchieved" = "達成済みにする";
-"makeUnachieved" = "未達成にする";
-
-"signOut" = "サインアウト";
-
-// Question
-"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
-"areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";
-
-// Sentence
+// WelcomeView
 "manage_your_todo" = "Todoを管理しよう";
 "save_what_you_want_to_do_and_what_you_need_to_do_in_this_app_and_manage_it_efficiently" = "やりたいこと・やるべきことをアプリに保存し、効率的に管理しましょう。";
 "achieve_your_todo" = "Todoを達成しよう";
@@ -70,11 +15,60 @@
 "you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph" = "Todoを達成した時間や、日別・月別の達成数をグラフで確認できます。";
 "sign_in_to_start" = "サインインして始める";
 
+// FirstView
+"todos" = "Todo";
+"edit" = "編集";
+"done" = "完了";
+"newTodo" = "新規Todo";
+"pinned" = "固定済み";
+"others" = "その他";
 "there_is_no_todo_yet" = "まだTodoはありません。";
 "when_you_create_a_todo_it_will_appear_here" = "Todoを作成するとここに表示されます。";
+
+// ContextMenu
+"pin" = "固定する";
+"unpin" = "固定を解除";
+"makeAchieved" = "達成済みにする";
+"makeUnachieved" = "未達成にする";
+"delete" = "削除";
+"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
+
+// CreateTodoView
+"cancel" = "キャンセル";
+"add" = "追加";
+"todo" = "Todo";
+
+"achievedAt" = "達成日時";
+
+// EditTodoView
+"editTodo" = "Todoを編集";
+"deleteTodo" = "Todoを削除";
+
+// SecondView
+"history" = "達成履歴";
+"show_next_month" = "次の月を表示";
+"show_previous_month" = "前の月を表示";
 "no_todo_achieved_yet" = "まだ達成済みのTodoはありません。";
 "when_you_complete_todo_you_will_see_it_here" = "Todoを達成するとここに表示されます。";
 
+// ThirdView
+"stats" = "統計";
+"d" = "日";
+"m" = "月";
+"y" = "年";
+"achievedTodos" = "達成したTodo";
+"highlights" = "ハイライト";
+"today" = "今日";
+"yesterday" = "昨日";
 "the_count_of_todos_achieved_today_is_the_same_as_yesterday" = "今日のTodo達成数は昨日と同じです。";
 "the_count_of_todos_achieved_today_is_less_than_yesterday" = "今日のTodo達成数は昨日よりも少ないです。";
 "the_count_of_todos_achieved_today_is_higher_than_yesterday" = "今日のTodo達成数は昨日よりも多いです。";
+"account" = "アカウント";
+"terms" = "利用規約";
+"privacy_policy" = "プライバシーポリシー";
+"about_this_app" = "このアプリについて";
+
+// AccountView
+"email" = "メールアドレス";
+"signOut" = "サインアウト";
+"areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";

@@ -8,19 +8,18 @@
 import Firebase
 import SwiftUI
 
-class AchievedTodosViewModel: ObservableObject {
+class DailyAchievedTodosViewModel: ObservableObject {
     
     @Published var todos: [Todo] = []
     @Published var isLoaded = false
     
-    init(achievedDay: DateComponents) {
+    init(achievedDay: Int) {
         // startTimestamp
-        let startDate = Calendar.current.date(from: achievedDay)!
+        let startDate = Day.toDate(from: achievedDay)
         let startTimestamp = Timestamp(date: startDate)
         // endTimestamp
-        var endDateComponents = achievedDay
-        endDateComponents.day! += 1
-        let endDate = Calendar.current.date(from: endDateComponents)!
+        let achievedNextDay = achievedDay + 1
+        let endDate = Day.toDate(from: achievedNextDay)
         let endTimestamp = Timestamp(date: endDate)
         
         // Read
@@ -37,7 +36,7 @@ class AchievedTodosViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read Todos achieved at \(achievedDay.year!)-\(achievedDay.month!)-\(achievedDay.day!). size: \(snapshot.documents.count)")
+                print("HELLO! Success! Read Todos achieved at \(achievedDay). size: \(snapshot.documents.count)")
                 var todos: [Todo] = []
                 snapshot.documents.forEach { document in
                     let todo = Todo(document: document)
