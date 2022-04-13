@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TodoSection: View {
+struct UnachievedTodosSection: View {
     
     let todos: [Todo]
     let header: Text?

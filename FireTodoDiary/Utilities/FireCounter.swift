@@ -52,7 +52,7 @@ class FireCounter {
                     print("HELLO! Success! Read \(documentId). size: 1")
                     
                     var countsInMonth: [Int] = []
-                    let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
+                    let dayCount = DayConverter.dayCountAtTheMonth(year: year, month: month)
                     for index in 1 ... dayCount {
                         let count = document.get(String(index)) as? Int ?? 0
                         countsInMonth.append(count)
@@ -61,7 +61,7 @@ class FireCounter {
                 } else {
                     print("HELLO! Success! \(documentId) does not exists. size: 0")
                     var countsInMonth: [Int] = []
-                    let dayCount = Day.dayCountAtTheMonth(year: year, month: month)
+                    let dayCount = DayConverter.dayCountAtTheMonth(year: year, month: month)
                     for _ in 1 ... dayCount {
                         countsInMonth.append(0)
                     }
