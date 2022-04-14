@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditTodoView: View {
+struct EditView: View {
     
     @Environment(\.dismiss) private var dismiss
     
@@ -120,7 +120,7 @@ struct EditTodoView: View {
                         Text("done")
                             .fontWeight(.bold)
                     }
-                    .disabled(content.isEmpty && !isSended)
+                    .disabled(content.isEmpty || isSended)
                 }
             }
         }

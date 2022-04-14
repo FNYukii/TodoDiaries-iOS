@@ -25,7 +25,7 @@ struct UnachievedTodosSection: View {
                 }
                 .foregroundColor(.primary)
                 .sheet(isPresented: $isShowEditSheet) {
-                    EditTodoView(todo: todo)
+                    EditView(todo: todo)
                 }
                 
                 .contextMenu {

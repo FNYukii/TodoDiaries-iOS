@@ -8,7 +8,7 @@
 import SwiftUI
 import Introspect
 
-struct CreateTodoView: View {
+struct CreateView: View {
     
     @Environment(\.dismiss) private var dismiss
     
@@ -76,7 +76,7 @@ struct CreateTodoView: View {
                         Text("add")
                             .fontWeight(.bold)
                     }
-                    .disabled(content.isEmpty && !isSended)
+                    .disabled(content.isEmpty || isSended)
                 }
             }
         }

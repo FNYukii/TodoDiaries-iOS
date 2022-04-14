@@ -44,7 +44,7 @@ struct FirstView: View {
             }
             
             .sheet(isPresented: $isShowCreateSheet) {
-                CreateTodoView()
+                CreateView()
             }
             
             .navigationTitle("todos")
