@@ -76,7 +76,7 @@ struct CreateTodoView: View {
                         Text("add")
                             .fontWeight(.bold)
                     }
-                    .disabled(content.isEmpty && !isSended)
+                    .disabled(content.isEmpty || isSended)
                 }
             }
         }
