@@ -13,8 +13,8 @@
 		5418DC5427B651FB007D98B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5418DC5327B651FB007D98B0 /* Preview Assets.xcassets */; };
 		5418DC5927B652C7007D98B0 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5827B652C7007D98B0 /* Todo.swift */; };
 		5418DC5B27B6534D007D98B0 /* UnachievedTodosViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5A27B6534D007D98B0 /* UnachievedTodosViewModel.swift */; };
-		5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */; };
-		5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6027B6680F007D98B0 /* EditTodoView.swift */; };
+		5418DC5D27B65BC0007D98B0 /* CreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC5C27B65BC0007D98B0 /* CreateView.swift */; };
+		5418DC6127B6680F007D98B0 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6027B6680F007D98B0 /* EditView.swift */; };
 		5418DC6327B673DB007D98B0 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6227B673DB007D98B0 /* FirstView.swift */; };
 		5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6427B674CF007D98B0 /* SecondView.swift */; };
 		5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6627B674DE007D98B0 /* ThirdView.swift */; };
@@ -62,8 +62,8 @@
 		5418DC5327B651FB007D98B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5418DC5827B652C7007D98B0 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		5418DC5A27B6534D007D98B0 /* UnachievedTodosViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnachievedTodosViewModel.swift; sourceTree = "<group>"; };
-		5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTodoView.swift; sourceTree = "<group>"; };
-		5418DC6027B6680F007D98B0 /* EditTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTodoView.swift; sourceTree = "<group>"; };
+		5418DC5C27B65BC0007D98B0 /* CreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateView.swift; sourceTree = "<group>"; };
+		5418DC6027B6680F007D98B0 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		5418DC6227B673DB007D98B0 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		5418DC6427B674CF007D98B0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		5418DC6627B674DE007D98B0 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
@@ -234,8 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
-				5418DC5C27B65BC0007D98B0 /* CreateTodoView.swift */,
-				5418DC6027B6680F007D98B0 /* EditTodoView.swift */,
+				5418DC5C27B65BC0007D98B0 /* CreateView.swift */,
+				5418DC6027B6680F007D98B0 /* EditView.swift */,
 			);
 			path = Sheet;
 			sourceTree = "<group>";
@@ -377,14 +377,14 @@
 				54633B1B280700F600B13303 /* Day.swift in Sources */,
 				54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* UnachievedTodosSection.swift in Sources */,
-				5418DC6127B6680F007D98B0 /* EditTodoView.swift in Sources */,
+				5418DC6127B6680F007D98B0 /* EditView.swift in Sources */,
 				547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */,
 				547F373927BD6C2C00B18176 /* BarChart.swift in Sources */,
 				543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
 				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,
 				543559D72802D29F009D64F3 /* TermsView.swift in Sources */,
-				5418DC5D27B65BC0007D98B0 /* CreateTodoView.swift in Sources */,
+				5418DC5D27B65BC0007D98B0 /* CreateView.swift in Sources */,
 				54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */,
 				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,

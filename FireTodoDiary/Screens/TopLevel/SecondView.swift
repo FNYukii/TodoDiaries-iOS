@@ -40,7 +40,7 @@ struct SecondView: View {
                                         }
                                     }
                                     .sheet(isPresented: $isShowEditSheet) {
-                                        EditTodoView(todo: todo)
+                                        EditView(todo: todo)
                                     }
                                     .contextMenu {
                                         TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)

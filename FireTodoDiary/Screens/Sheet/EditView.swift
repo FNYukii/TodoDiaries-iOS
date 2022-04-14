@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EditTodoView: View {
+struct EditView: View {
     
     @Environment(\.dismiss) private var dismiss
     
