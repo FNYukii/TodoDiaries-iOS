@@ -120,7 +120,7 @@ struct EditTodoView: View {
                         Text("done")
                             .fontWeight(.bold)
                     }
-                    .disabled(content.isEmpty && !isSended)
+                    .disabled(content.isEmpty || isSended)
                 }
             }
         }
