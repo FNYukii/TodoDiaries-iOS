@@ -12,10 +12,6 @@ struct UnachievedTodosSection: View {
     let todos: [Todo]
     let header: Text?
     
-    @State private var isShowEditSheet = false
-    @State private var isConfirming = false
-    @State private var todoUnderConfirm: Todo? = nil
-    
     var body: some View {
         
         Section(header: header) {

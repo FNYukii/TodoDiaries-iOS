@@ -13,10 +13,6 @@ struct SecondView: View {
     @State private var limit: Int? = 50
     @State private var isLoaded = false
     
-    @State private var isShowEditSheet = false
-    @State private var isConfirming = false
-    @State private var todoUnderConfirm: Todo? = nil
-    
     var body: some View {
         NavigationView {
             
@@ -61,14 +57,6 @@ struct SecondView: View {
                 }
             }
             .onAppear(perform: load)
-            
-            .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
-                Button("deleteTodo", role: .destructive) {
-                    FireTodo.delete(id: todoUnderConfirm!.id, achievedAt: todoUnderConfirm!.achievedAt)
-                }
-            } message: {
-                Text(todoUnderConfirm != nil ? todoUnderConfirm!.content : "")
-            }
             
             .navigationTitle("history")
         }
