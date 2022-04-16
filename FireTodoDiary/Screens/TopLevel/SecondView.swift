@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondView: View {
         
     @State private var days: [Day] = []
-    @State private var limit: Int? = 50
+    @State private var limit: Int = 50
     @State private var isLoaded = false
     
     var body: some View {
@@ -37,13 +37,12 @@ struct SecondView: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
                                 .onAppear {
-                                    limit = nil
+                                    limit += 10
                                     load()
                                 }
                             Spacer()
                         }
                         .listRowBackground(Color.clear)
-                        
                     }
                     
                     if days.count == 0 {
@@ -65,7 +64,7 @@ struct SecondView: View {
     
     private func load() {
         FireTodo.achievedTodos(limit: limit) { days in
-            withAnimation {
+            if days != self.days {
                 self.days = days
                 self.isLoaded = true
             }
