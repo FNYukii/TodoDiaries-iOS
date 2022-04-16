@@ -12,6 +12,7 @@ class AchievedDaysViewModel: ObservableObject {
     
     @Published var days: [Day] = []
     @Published var isLoaded = false
+    @Published var documents: [QueryDocumentSnapshot] = []
     
     private var listener: ListenerRegistration? = nil
     
@@ -40,6 +41,8 @@ class AchievedDaysViewModel: ObservableObject {
                     return
                 }
                 print("HELLO! Success! Read Achieved Todos. size: \(snapshot.documents.count)")
+                
+                self.documents = snapshot.documents
                 
                 // すべての達成済みTodoの配列
                 var achievedTodos: [Todo] = []

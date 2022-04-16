@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondView: View {
             
     @ObservedObject private var achievedDaysViewModel = AchievedDaysViewModel()
-    @State private var limit = 20
+    @State private var limit = 50
     
     init() {
         achievedDaysViewModel.read(limit: limit)
@@ -35,17 +35,16 @@ struct SecondView: View {
                             }
                         }
                         
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .onAppear {
-                                    limit += 5
-                                    achievedDaysViewModel.read(limit: limit)
-                                }
-                            Spacer()
+                        Button(action: {
+                            limit += 50
+                            achievedDaysViewModel.read(limit: limit)
+                        }) {
+                            if limit == achievedDaysViewModel.documents.count {
+                                Text("load_more")
+                            }
                         }
                         .listRowBackground(Color.clear)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     }
                     
                     if achievedDaysViewModel.days.count == 0 {
