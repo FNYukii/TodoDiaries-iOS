@@ -13,13 +13,27 @@ class AchievedDaysViewModel: ObservableObject {
     @Published var days: [Day] = []
     @Published var isLoaded = false
     
-    init() {
+    private var listener: ListenerRegistration? = nil
+    
+    func read(limit: Int? = nil) {
+        
+        if let listener = listener {
+            listener.remove()
+        }
+        
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
-        db.collection("todos")
+        var query = db.collection("todos")
             .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt", descending: true)
+        
+        if let limit = limit {
+            query = query
+                .limit(to: limit)
+        }
+        
+        listener = query
             .addSnapshotListener {(snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
@@ -56,11 +70,8 @@ class AchievedDaysViewModel: ObservableObject {
                 }
                 
                 // プロパティに格納
-                withAnimation {
-                    self.days = days
-                    self.isLoaded = true
-                }
-
+                self.days = days
+                self.isLoaded = true
             }
     }
 }

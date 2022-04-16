@@ -10,6 +10,11 @@ import SwiftUI
 struct SecondView: View {
             
     @ObservedObject private var achievedDaysViewModel = AchievedDaysViewModel()
+    @State private var limit = 20
+    
+    init() {
+        achievedDaysViewModel.read(limit: limit)
+    }
     
     var body: some View {
         NavigationView {
@@ -30,17 +35,17 @@ struct SecondView: View {
                             }
                         }
                         
-//                        HStack {
-//                            Spacer()
-//                            ProgressView()
-//                                .progressViewStyle(CircularProgressViewStyle())
-//                                .onAppear {
-//                                    limit += 10
-//                                    load()
-//                                }
-//                            Spacer()
-//                        }
-//                        .listRowBackground(Color.clear)
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .onAppear {
+                                    limit += 5
+                                    achievedDaysViewModel.read(limit: limit)
+                                }
+                            Spacer()
+                        }
+                        .listRowBackground(Color.clear)
                     }
                     
                     if achievedDaysViewModel.days.count == 0 {
