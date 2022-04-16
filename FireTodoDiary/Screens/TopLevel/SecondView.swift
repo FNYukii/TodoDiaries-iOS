@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct SecondView: View {
-        
-    @State private var days: [Day] = []
-    @State private var limit: Int = 10
-    @State private var isLoaded = false
+            
+    @ObservedObject private var achievedDaysViewModel = AchievedDaysViewModel()
     
     var body: some View {
         NavigationView {
             
             ZStack {
-                if !isLoaded {
+                if !achievedDaysViewModel.isLoaded {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                 }
                 
-                if isLoaded {
+                if achievedDaysViewModel.isLoaded {
                     List {
-                        ForEach(days) { day in
+                        ForEach(achievedDaysViewModel.days) { day in
                             Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
                                 ForEach(day.achievedTodos) { todo in
                                     TodoRow(todo: todo)
@@ -32,20 +30,20 @@ struct SecondView: View {
                             }
                         }
                         
-                        HStack {
-                            Spacer()
-                            ProgressView()
-                                .progressViewStyle(CircularProgressViewStyle())
-                                .onAppear {
-                                    limit += 10
-                                    load()
-                                }
-                            Spacer()
-                        }
-                        .listRowBackground(Color.clear)
+//                        HStack {
+//                            Spacer()
+//                            ProgressView()
+//                                .progressViewStyle(CircularProgressViewStyle())
+//                                .onAppear {
+//                                    limit += 10
+//                                    load()
+//                                }
+//                            Spacer()
+//                        }
+//                        .listRowBackground(Color.clear)
                     }
                     
-                    if days.count == 0 {
+                    if achievedDaysViewModel.days.count == 0 {
                         VStack {
                             Text("no_todo_achieved_yet")
                             Text("when_you_complete_todo_you_will_see_it_here")
@@ -55,19 +53,9 @@ struct SecondView: View {
                     
                 }
             }
-            .onAppear(perform: load)
             
             .navigationTitle("history")
         }
         .navigationViewStyle(StackNavigationViewStyle())
-    }
-    
-    private func load() {
-        FireTodo.achievedTodos(limit: limit) { days in
-            if days != self.days {
-                self.days = days
-                self.isLoaded = true
-            }
-        }
     }
 }
