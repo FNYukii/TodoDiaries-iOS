@@ -10,6 +10,57 @@ import Foundation
 
 class FireTodo {
     
+    static func achievedTodos(completion: (([Day]) -> Void)?) {
+                
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: true)
+            .order(by: "achievedAt", descending: true)
+            .limit(to: 20)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO. Error getting documents: \(err)")
+                } else {
+                    if let querySnapshot = querySnapshot {
+                        print("HELLO. Read achievedTodos. size: \(querySnapshot.documents.count)")
+                        
+                        // すべての達成済みTodoの配列
+                        var achievedTodos: [Todo] = []
+                        querySnapshot.documents.forEach { document in
+                            let todo = Todo(document: document)
+                            achievedTodos.append(todo)
+                        }
+                        
+                        // 配列daysを生成
+                        var days: [Day] = []
+                        var counter = 0
+                        for index in 0 ..< achievedTodos.count {
+                            // ループ初回。daysの最初の要素としてDayを追加
+                            if index == 0 {
+                                days.append(Day(ymd: DayConverter.toInt(from: achievedTodos[0].achievedAt!), achievedTodos: []))
+                            }
+                            // ループ2回目以降。前回のachievedTodoの達成日と比較。違ったらdaysに新しいDayを追加
+                            if index > 0 {
+                                let prevAchievedYmd = DayConverter.toInt(from: achievedTodos[index - 1].achievedAt!)
+                                let currentAchievedYmd = DayConverter.toInt(from: achievedTodos[index].achievedAt!)
+                                if prevAchievedYmd != currentAchievedYmd {
+                                    counter += 1
+                                    days.append(Day(ymd: DayConverter.toInt(from: achievedTodos[index].achievedAt!), achievedTodos: []))
+                                }
+                            }
+                            // Day.achievedTodosにachivedTodoを追加
+                            days[counter].achievedTodos.append(achievedTodos[index])
+                        }
+                        
+                        // 配列days完成
+                        completion?(days)
+                    }
+                }
+            }
+    }
+    
     static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
