@@ -31,39 +31,7 @@ struct SecondView: View {
                         ForEach(days) { day in
                             Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
                                 ForEach(day.achievedTodos) { todo in
-                                    Button(action: {
-                                        isShowEditSheet.toggle()
-                                    }) {
-                                        HStack {
-                                            Text(DayConverter.toTimeString(from: todo.achievedAt!))
-                                                .foregroundColor(.secondary)
-                                            Text(todo.content)
-                                                .foregroundColor(.primary)
-                                        }
-                                    }
-                                    .sheet(isPresented: $isShowEditSheet) {
-                                        EditView(todo: todo)
-                                    }
-                                    .contextMenu {
-                                        TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
-                                    }
-                                    .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                                        Button(action: {
-                                            FireTodo.unachieve(id: todo.id, achievedAt: todo.achievedAt!)
-                                        }) {
-                                            Image(systemName: "xmark")
-                                        }
-                                        .tint(.orange)
-                                    }
-                                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                        Button(action: {
-                                            todoUnderConfirm = todo
-                                            isConfirming.toggle()
-                                        }) {
-                                            Image(systemName: "trash")
-                                        }
-                                        .tint(.red)
-                                    }
+                                    TodoRow(todo: todo)
                                 }
                             }
                         }
