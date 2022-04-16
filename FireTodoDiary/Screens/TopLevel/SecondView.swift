@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondView: View {
         
     @State private var days: [Day] = []
-    @State private var limit: Int = 50
+    @State private var limit: Int = 10
     @State private var isLoaded = false
     
     var body: some View {
