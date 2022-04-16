@@ -10,15 +10,20 @@ import Foundation
 
 class FireTodo {
     
-    static func achievedTodos(completion: (([Day]) -> Void)?) {
-                
+    static func achievedTodos(isRestrict: Bool, completion: (([Day]) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
-        db.collection("todos")
+        var query = db.collection("todos")
             .whereField("userId", isEqualTo: userId)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt", descending: true)
-            .limit(to: 20)
+        
+        if isRestrict {
+            query = query
+                .limit(to: 50)
+        }
+                
+        query
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("HELLO. Error getting documents: \(err)")

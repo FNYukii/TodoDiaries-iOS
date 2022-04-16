@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct SecondView: View {
-    
-//    @ObservedObject private var achievedTodosViewModel = AchievedTodosViewModel()
-    
+        
     @State private var days: [Day] = []
+    @State private var isRestrict = true
     @State private var isLoaded = false
     
     @State private var isShowEditSheet = false
@@ -68,6 +67,21 @@ struct SecondView: View {
                                 }
                             }
                         }
+                        
+                        HStack {
+                            Spacer()
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .onAppear {
+                                    if isRestrict {
+                                        isRestrict.toggle()
+                                        load()
+                                    }
+                                }
+                            Spacer()
+                        }
+                        .listRowBackground(Color.clear)
+                        
                     }
                     
                     if days.count == 0 {
@@ -81,7 +95,6 @@ struct SecondView: View {
                 }
             }
             .onAppear(perform: load)
-            
             
             .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("deleteTodo", role: .destructive) {
@@ -97,12 +110,11 @@ struct SecondView: View {
     }
     
     private func load() {
-        FireTodo.achievedTodos { value in
+        FireTodo.achievedTodos(isRestrict: isRestrict) { value in
             withAnimation {
                 self.days = value
                 self.isLoaded = true
             }
-           
         }
     }
 }
