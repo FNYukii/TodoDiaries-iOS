@@ -46,8 +46,7 @@
 
 // SecondView
 "history" = "History";
-"show_next_month" = "Show next month";
-"show_previous_month" = "Show previous month";
+"load_more" = "Load more";
 "no_todo_achieved_yet" = "No Todo achieved yet.";
 "when_you_complete_todo_you_will_see_it_here" = "When you complete Todo, you will see it here.";
 

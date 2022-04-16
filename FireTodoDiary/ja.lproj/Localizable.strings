@@ -46,8 +46,7 @@
 
 // SecondView
 "history" = "達成履歴";
-"show_next_month" = "次の月を表示";
-"show_previous_month" = "前の月を表示";
+"load_more" = "さらに読み込む";
 "no_todo_achieved_yet" = "まだ達成済みのTodoはありません。";
 "when_you_complete_todo_you_will_see_it_here" = "Todoを達成するとここに表示されます。";
 
