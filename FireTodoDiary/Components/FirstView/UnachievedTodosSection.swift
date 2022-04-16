@@ -12,58 +12,11 @@ struct UnachievedTodosSection: View {
     let todos: [Todo]
     let header: Text?
     
-    @State private var isShowEditSheet = false
-    @State private var isConfirming = false
-    @State private var todoUnderConfirm: Todo? = nil
-    
     var body: some View {
         
         Section(header: header) {
             ForEach(todos){todo in
-                Button(todo.content) {
-                    isShowEditSheet.toggle()
-                }
-                .foregroundColor(.primary)
-                .sheet(isPresented: $isShowEditSheet) {
-                    EditView(todo: todo)
-                }
-                
-                .contextMenu {
-                    TodoContextMenuItems(todo: todo, isConfirming: $isConfirming, todoUnderConfirming: $todoUnderConfirm)
-                }
-                
-                .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                    if !todos.first!.isPinned {
-                        Button(action: {
-                            FireTodo.pin(id: todo.id)
-                        }) {
-                            Image(systemName: "pin")
-                        }
-                        .tint(.accentColor)
-                    } else {
-                        Button(action: {
-                            FireTodo.unpin(id: todo.id)
-                        }) {
-                            Image(systemName: "pin.slash")
-                        }
-                        .tint(.accentColor)
-                    }
-                    Button(action: {
-                        FireTodo.achieve(id: todo.id)
-                    }) {
-                        Image(systemName: "checkmark")
-                    }
-                    .tint(.orange)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    Button(action: {
-                        todoUnderConfirm = todo
-                        isConfirming.toggle()
-                    }) {
-                        Image(systemName: "trash")
-                    }
-                    .tint(.red)
-                }
+                TodoRow(todo: todo)
             }
             .onMove {sourceIndexSet, destination in
                 // 移動元と移動先のindexを取得
@@ -102,16 +55,6 @@ struct UnachievedTodosSection: View {
                     }
                     FireTodo.update(id: movedTodo.id, order: newOrder)
                 }
-            }
-        }
-        
-        .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
-            Button("deleteTodo", role: .destructive) {
-                FireTodo.delete(id: todoUnderConfirm!.id)
-            }
-        } message: {
-            if todoUnderConfirm != nil {
-                Text(todoUnderConfirm!.content)
             }
         }
     }

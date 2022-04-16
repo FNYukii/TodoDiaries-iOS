@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Day: Identifiable {
+struct Day: Identifiable, Equatable {
     var id = UUID()
     var ymd: Int
     var achievedTodos: [Todo]

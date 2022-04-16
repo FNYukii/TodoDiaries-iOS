@@ -11,7 +11,6 @@ struct TodoContextMenuItems: View {
     
     let todo: Todo
     @Binding var isConfirming: Bool
-    @Binding var todoUnderConfirming: Todo?
     
     var body: some View {
         Group {
@@ -49,7 +48,6 @@ struct TodoContextMenuItems: View {
             }
             
             Button(role: .destructive) {
-                todoUnderConfirming = todo
                 isConfirming.toggle()
             } label: {
                 Label("delete", systemImage: "trash")
