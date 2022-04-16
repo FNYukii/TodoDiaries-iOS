@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondView: View {
         
     @State private var days: [Day] = []
-    @State private var isRestrict = true
+    @State private var limit: Int? = 50
     @State private var isLoaded = false
     
     @State private var isShowEditSheet = false
@@ -73,10 +73,8 @@ struct SecondView: View {
                             ProgressView()
                                 .progressViewStyle(CircularProgressViewStyle())
                                 .onAppear {
-                                    if isRestrict {
-                                        isRestrict.toggle()
-                                        load()
-                                    }
+                                    limit = nil
+                                    load()
                                 }
                             Spacer()
                         }
@@ -110,9 +108,9 @@ struct SecondView: View {
     }
     
     private func load() {
-        FireTodo.achievedTodos(isRestrict: isRestrict) { value in
+        FireTodo.achievedTodos(limit: limit) { days in
             withAnimation {
-                self.days = value
+                self.days = days
                 self.isLoaded = true
             }
         }

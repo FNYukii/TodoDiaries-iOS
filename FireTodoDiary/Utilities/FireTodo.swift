@@ -10,7 +10,7 @@ import Foundation
 
 class FireTodo {
     
-    static func achievedTodos(isRestrict: Bool, completion: (([Day]) -> Void)?) {
+    static func achievedTodos(limit: Int?, completion: (([Day]) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         var query = db.collection("todos")
@@ -18,9 +18,9 @@ class FireTodo {
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt", descending: true)
         
-        if isRestrict {
+        if let limit = limit {
             query = query
-                .limit(to: 50)
+                .limit(to: limit)
         }
                 
         query
