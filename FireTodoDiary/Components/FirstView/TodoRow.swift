@@ -37,25 +37,7 @@ struct TodoRow: View {
             TodoContextMenuItems(todo: todo, isConfirming: $isConfirming)
         }
         
-        .swipeActions(edge: .leading, allowsFullSwipe: false) {
-            // Pin
-            if !todo.isPinned && !todo.isAchieved {
-                Button(action: {
-                    FireTodo.pin(id: todo.id)
-                }) {
-                    Image(systemName: "pin")
-                }
-                .tint(.accentColor)
-            }
-            // Unpin
-            if todo.isPinned && !todo.isAchieved {
-                Button(action: {
-                    FireTodo.unpin(id: todo.id)
-                }) {
-                    Image(systemName: "pin.slash")
-                }
-                .tint(.accentColor)
-            }
+        .swipeActions(edge: .leading, allowsFullSwipe: true) {
             // Achieve
             if !todo.isAchieved {
                 Button(action: {
@@ -74,8 +56,26 @@ struct TodoRow: View {
                 }
                 .tint(.orange)
             }
+            // Pin
+            if !todo.isPinned && !todo.isAchieved {
+                Button(action: {
+                    FireTodo.pin(id: todo.id)
+                }) {
+                    Image(systemName: "pin")
+                }
+                .tint(.accentColor)
+            }
+            // Unpin
+            if todo.isPinned && !todo.isAchieved {
+                Button(action: {
+                    FireTodo.unpin(id: todo.id)
+                }) {
+                    Image(systemName: "pin.slash")
+                }
+                .tint(.accentColor)
+            }
         }
-        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button(action: {
                 isConfirming.toggle()
             }) {
