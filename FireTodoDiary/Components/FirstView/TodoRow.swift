@@ -45,7 +45,7 @@ struct TodoRow: View {
                 }) {
                     Image(systemName: "checkmark")
                 }
-                .tint(.orange)
+                .tint(.accentColor)
             }
             // Unachieve
             if todo.isAchieved {
@@ -54,7 +54,7 @@ struct TodoRow: View {
                 }) {
                     Image(systemName: "xmark")
                 }
-                .tint(.orange)
+                .tint(.accentColor)
             }
             // Pin
             if !todo.isPinned && !todo.isAchieved {
@@ -63,7 +63,7 @@ struct TodoRow: View {
                 }) {
                     Image(systemName: "pin")
                 }
-                .tint(.accentColor)
+                .tint(.orange)
             }
             // Unpin
             if todo.isPinned && !todo.isAchieved {
@@ -72,7 +72,7 @@ struct TodoRow: View {
                 }) {
                     Image(systemName: "pin.slash")
                 }
-                .tint(.accentColor)
+                .tint(.orange)
             }
         }
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
