@@ -83,6 +83,5 @@ struct WelcomeView: View {
         .sheet(isPresented: $isShowSheet) {
             FirebaseAuthView()
         }
-        
     }
 }
