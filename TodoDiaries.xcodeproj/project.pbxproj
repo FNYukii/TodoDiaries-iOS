@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC3C27B64C4F007D98B0 /* FireTodoDiaryApp.swift */; };
+		5418DC3D27B64C4F007D98B0 /* TodoDiariesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC3C27B64C4F007D98B0 /* TodoDiariesApp.swift */; };
 		5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC3E27B64C4F007D98B0 /* ContentView.swift */; };
 		5418DC4127B64C51007D98B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5418DC4027B64C51007D98B0 /* Assets.xcassets */; };
 		5418DC5427B651FB007D98B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5418DC5327B651FB007D98B0 /* Preview Assets.xcassets */; };
@@ -19,6 +19,7 @@
 		5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6427B674CF007D98B0 /* SecondView.swift */; };
 		5418DC6727B674DE007D98B0 /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6627B674DE007D98B0 /* ThirdView.swift */; };
 		5418DC6927B68658007D98B0 /* CustomEditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5418DC6827B68658007D98B0 /* CustomEditButton.swift */; };
+		542290E92859E70F002D7AF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 542290E82859E70F002D7AF2 /* GoogleService-Info.plist */; };
 		543559D72802D29F009D64F3 /* TermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559D62802D29F009D64F3 /* TermsView.swift */; };
 		543559D92802D2B8009D64F3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559D82802D2B8009D64F3 /* AboutView.swift */; };
 		543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559DB2802D8A5009D64F3 /* AccountView.swift */; };
@@ -32,7 +33,6 @@
 		5458771327C13DC700D24959 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5458771527C13DC700D24959 /* InfoPlist.strings */; };
 		54633B1B280700F600B13303 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1A280700F600B13303 /* Day.swift */; };
 		54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */; };
-		547558902859D88400753284 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5475588F2859D88400753284 /* GoogleService-Info.plist */; };
 		547558932859DC0000753284 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547558922859DC0000753284 /* Charts */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
 		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
@@ -57,8 +57,8 @@
 
 /* Begin PBXFileReference section */
 		5417287227BB7ECA0029BC44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		5418DC3927B64C4F007D98B0 /* FireTodoDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireTodoDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5418DC3C27B64C4F007D98B0 /* FireTodoDiaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTodoDiaryApp.swift; sourceTree = "<group>"; };
+		5418DC3927B64C4F007D98B0 /* TodoDiaries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoDiaries.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5418DC3C27B64C4F007D98B0 /* TodoDiariesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDiariesApp.swift; sourceTree = "<group>"; };
 		5418DC3E27B64C4F007D98B0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5418DC4027B64C51007D98B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5418DC5327B651FB007D98B0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -70,6 +70,7 @@
 		5418DC6427B674CF007D98B0 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		5418DC6627B674DE007D98B0 /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		5418DC6827B68658007D98B0 /* CustomEditButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEditButton.swift; sourceTree = "<group>"; };
+		542290E82859E70F002D7AF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		543559D62802D29F009D64F3 /* TermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsView.swift; sourceTree = "<group>"; };
 		543559D82802D2B8009D64F3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		543559DB2802D8A5009D64F3 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		5458771627C13DEC00D24959 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		54633B1A280700F600B13303 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
-		5475588F2859D88400753284 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
 		547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
 		547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		5418DC3A27B64C4F007D98B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5418DC3927B64C4F007D98B0 /* FireTodoDiary.app */,
+				5418DC3927B64C4F007D98B0 /* TodoDiaries.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -138,9 +138,9 @@
 		5418DC3B27B64C4F007D98B0 /* FireTodoDiary */ = {
 			isa = PBXGroup;
 			children = (
-				5475588F2859D88400753284 /* GoogleService-Info.plist */,
 				5417287227BB7ECA0029BC44 /* Info.plist */,
-				5418DC3C27B64C4F007D98B0 /* FireTodoDiaryApp.swift */,
+				542290E82859E70F002D7AF2 /* GoogleService-Info.plist */,
+				5418DC3C27B64C4F007D98B0 /* TodoDiariesApp.swift */,
 				5418DC5527B65271007D98B0 /* Screens */,
 				5418DC5727B65285007D98B0 /* Components */,
 				5418DC5627B6527B007D98B0 /* Models */,
@@ -278,9 +278,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5418DC3827B64C4F007D98B0 /* FireTodoDiary */ = {
+		5418DC3827B64C4F007D98B0 /* TodoDiaries */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5418DC4727B64C51007D98B0 /* Build configuration list for PBXNativeTarget "FireTodoDiary" */;
+			buildConfigurationList = 5418DC4727B64C51007D98B0 /* Build configuration list for PBXNativeTarget "TodoDiaries" */;
 			buildPhases = (
 				5418DC3527B64C4F007D98B0 /* Sources */,
 				5418DC3627B64C4F007D98B0 /* Frameworks */,
@@ -290,7 +290,7 @@
 			);
 			dependencies = (
 			);
-			name = FireTodoDiary;
+			name = TodoDiaries;
 			packageProductDependencies = (
 				54491F6F27BA101400E784D4 /* Introspect */,
 				547F36F427BB9BBC00B18176 /* FirebaseAuthUI */,
@@ -304,7 +304,7 @@
 				547558922859DC0000753284 /* Charts */,
 			);
 			productName = FireTodoDiary;
-			productReference = 5418DC3927B64C4F007D98B0 /* FireTodoDiary.app */;
+			productReference = 5418DC3927B64C4F007D98B0 /* TodoDiaries.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -322,7 +322,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5418DC3427B64C4F007D98B0 /* Build configuration list for PBXProject "FireTodoDiary" */;
+			buildConfigurationList = 5418DC3427B64C4F007D98B0 /* Build configuration list for PBXProject "TodoDiaries" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -343,7 +343,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5418DC3827B64C4F007D98B0 /* FireTodoDiary */,
+				5418DC3827B64C4F007D98B0 /* TodoDiaries */,
 			);
 		};
 /* End PBXProject section */
@@ -355,7 +355,7 @@
 			files = (
 				5418DC4127B64C51007D98B0 /* Assets.xcassets in Resources */,
 				54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */,
-				547558902859D88400753284 /* GoogleService-Info.plist in Resources */,
+				542290E92859E70F002D7AF2 /* GoogleService-Info.plist in Resources */,
 				5418DC5427B651FB007D98B0 /* Preview Assets.xcassets in Resources */,
 				5458771327C13DC700D24959 /* InfoPlist.strings in Resources */,
 			);
@@ -394,7 +394,7 @@
 				543559D72802D29F009D64F3 /* TermsView.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateView.swift in Sources */,
 				54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */,
-				5418DC3D27B64C4F007D98B0 /* FireTodoDiaryApp.swift in Sources */,
+				5418DC3D27B64C4F007D98B0 /* TodoDiariesApp.swift in Sources */,
 				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
 				547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
@@ -611,7 +611,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5418DC3427B64C4F007D98B0 /* Build configuration list for PBXProject "FireTodoDiary" */ = {
+		5418DC3427B64C4F007D98B0 /* Build configuration list for PBXProject "TodoDiaries" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5418DC4527B64C51007D98B0 /* Debug */,
@@ -620,7 +620,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5418DC4727B64C51007D98B0 /* Build configuration list for PBXNativeTarget "FireTodoDiary" */ = {
+		5418DC4727B64C51007D98B0 /* Build configuration list for PBXNativeTarget "TodoDiaries" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5418DC4827B64C51007D98B0 /* Debug */,

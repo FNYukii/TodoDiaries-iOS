@@ -10,7 +10,7 @@ import Firebase
 import FirebaseAuthUI
 
 @main
-struct FireTodoDiaryApp: App {
+struct TodoDiariesApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
