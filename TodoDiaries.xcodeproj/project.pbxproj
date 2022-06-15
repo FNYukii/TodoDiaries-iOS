@@ -122,7 +122,7 @@
 		5418DC3027B64C4F007D98B0 = {
 			isa = PBXGroup;
 			children = (
-				5418DC3B27B64C4F007D98B0 /* FireTodoDiary */,
+				5418DC3B27B64C4F007D98B0 /* TodoDiaries */,
 				5418DC3A27B64C4F007D98B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,7 +135,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5418DC3B27B64C4F007D98B0 /* FireTodoDiary */ = {
+		5418DC3B27B64C4F007D98B0 /* TodoDiaries */ = {
 			isa = PBXGroup;
 			children = (
 				5417287227BB7ECA0029BC44 /* Info.plist */,
@@ -151,7 +151,7 @@
 				5418DC4027B64C51007D98B0 /* Assets.xcassets */,
 				5418DC4227B64C51007D98B0 /* Preview Content */,
 			);
-			path = FireTodoDiary;
+			path = TodoDiaries;
 			sourceTree = "<group>";
 		};
 		5418DC4227B64C51007D98B0 /* Preview Content */ = {
@@ -412,7 +412,7 @@
 				54491F7627BA7F8F00E784D4 /* ja */,
 			);
 			name = Localizable.strings;
-			path = FireTodoDiary;
+			path = TodoDiaries;
 			sourceTree = SOURCE_ROOT;
 		};
 		5458771527C13DC700D24959 /* InfoPlist.strings */ = {
@@ -552,11 +552,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FireTodoDiary/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TodoDiaries/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FireTodoDiary/Info.plist;
+				INFOPLIST_FILE = TodoDiaries/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -584,11 +584,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FireTodoDiary/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TodoDiaries/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FireTodoDiary/Info.plist;
+				INFOPLIST_FILE = TodoDiaries/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
