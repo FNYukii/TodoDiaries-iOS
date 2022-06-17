@@ -71,3 +71,6 @@
 "email" = "Email";
 "signOut" = "Sign out";
 "areYouSureYouWantToSignOut" = "Are you sure you want to sign out?";
+
+// AboutView
+"todo-diaries" = "Todo Diaries";

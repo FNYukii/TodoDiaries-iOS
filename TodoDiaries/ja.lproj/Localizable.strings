@@ -71,3 +71,6 @@
 "email" = "メールアドレス";
 "signOut" = "サインアウト";
 "areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";
+
+// AboutView
+"todo-diaries" = "Todo Diary";
