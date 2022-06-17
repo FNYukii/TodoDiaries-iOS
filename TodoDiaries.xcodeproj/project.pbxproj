@@ -30,10 +30,10 @@
 		54491F7827BAB33D00E784D4 /* FireTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* FireTodo.swift */; };
 		54491F7A27BACEB700E784D4 /* UnachievedTodosSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7927BACEB700E784D4 /* UnachievedTodosSection.swift */; };
 		54540570280AB222009245D1 /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5454056F280AB222009245D1 /* TodoRow.swift */; };
+		54550022285C8A3800F6F886 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54550021285C8A3800F6F886 /* Charts */; };
 		5458771327C13DC700D24959 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5458771527C13DC700D24959 /* InfoPlist.strings */; };
 		54633B1B280700F600B13303 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1A280700F600B13303 /* Day.swift */; };
 		54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */; };
-		547558932859DC0000753284 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547558922859DC0000753284 /* Charts */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
 		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
 		547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */; };
@@ -44,7 +44,6 @@
 		547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */; };
 		547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FE27BBA05A00B18176 /* WelcomeView.swift */; };
 		547F370327BBE61800B18176 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* CurrentUser.swift */; };
-		547F370827BC8A5B00B18176 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 547F370727BC8A5B00B18176 /* Charts */; };
 		547F372F27BD0C5B00B18176 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 547F372E27BD0C5B00B18176 /* FirebaseAnalytics */; };
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
 		547F373327BD0C5B00B18176 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373227BD0C5B00B18176 /* FirebaseDatabase */; };
@@ -104,11 +103,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				547F36F727BB9BBC00B18176 /* FirebaseGoogleAuthUI in Frameworks */,
-				547F370827BC8A5B00B18176 /* Charts in Frameworks */,
 				547F372F27BD0C5B00B18176 /* FirebaseAnalytics in Frameworks */,
 				547F36F927BB9BBC00B18176 /* FirebaseOAuthUI in Frameworks */,
 				54491F7027BA101400E784D4 /* Introspect in Frameworks */,
-				547558932859DC0000753284 /* Charts in Frameworks */,
+				54550022285C8A3800F6F886 /* Charts in Frameworks */,
 				547F373527BD0C5B00B18176 /* FirebaseFirestore in Frameworks */,
 				547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */,
 				547F373327BD0C5B00B18176 /* FirebaseDatabase in Frameworks */,
@@ -296,12 +294,11 @@
 				547F36F427BB9BBC00B18176 /* FirebaseAuthUI */,
 				547F36F627BB9BBC00B18176 /* FirebaseGoogleAuthUI */,
 				547F36F827BB9BBC00B18176 /* FirebaseOAuthUI */,
-				547F370727BC8A5B00B18176 /* Charts */,
 				547F372E27BD0C5B00B18176 /* FirebaseAnalytics */,
 				547F373027BD0C5B00B18176 /* FirebaseAuth */,
 				547F373227BD0C5B00B18176 /* FirebaseDatabase */,
 				547F373427BD0C5B00B18176 /* FirebaseFirestore */,
-				547558922859DC0000753284 /* Charts */,
+				54550021285C8A3800F6F886 /* Charts */,
 			);
 			productName = FireTodoDiary;
 			productReference = 5418DC3927B64C4F007D98B0 /* TodoDiaries.app */;
@@ -335,9 +332,8 @@
 			packageReferences = (
 				54491F6E27BA101400E784D4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				547F36F327BB9BBC00B18176 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
-				547F370627BC8A5A00B18176 /* XCRemoteSwiftPackageReference "Charts" */,
 				547F372D27BD0C5B00B18176 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				547558912859DC0000753284 /* XCRemoteSwiftPackageReference "Charts" */,
+				54550020285C8A3800F6F886 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 5418DC3A27B64C4F007D98B0 /* Products */;
 			projectDirPath = "";
@@ -555,6 +551,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"TodoDiaries/Preview Content\"";
 				DEVELOPMENT_TEAM = RY7754Y275;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TodoDiaries/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -640,7 +637,7 @@
 				kind = branch;
 			};
 		};
-		547558912859DC0000753284 /* XCRemoteSwiftPackageReference "Charts" */ = {
+		54550020285C8A3800F6F886 /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts";
 			requirement = {
@@ -654,14 +651,6 @@
 			requirement = {
 				branch = master;
 				kind = branch;
-			};
-		};
-		547F370627BC8A5A00B18176 /* XCRemoteSwiftPackageReference "Charts" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielgindi/Charts";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
 			};
 		};
 		547F372D27BD0C5B00B18176 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
@@ -680,9 +669,9 @@
 			package = 54491F6E27BA101400E784D4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		547558922859DC0000753284 /* Charts */ = {
+		54550021285C8A3800F6F886 /* Charts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 547F370627BC8A5A00B18176 /* XCRemoteSwiftPackageReference "Charts" */;
+			package = 54550020285C8A3800F6F886 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
 		547F36F427BB9BBC00B18176 /* FirebaseAuthUI */ = {
@@ -699,11 +688,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 547F36F327BB9BBC00B18176 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
 			productName = FirebaseOAuthUI;
-		};
-		547F370727BC8A5B00B18176 /* Charts */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 547F370627BC8A5A00B18176 /* XCRemoteSwiftPackageReference "Charts" */;
-			productName = Charts;
 		};
 		547F372E27BD0C5B00B18176 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

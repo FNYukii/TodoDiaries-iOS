@@ -11,6 +11,10 @@ Apple純正アプリのようなシンプルなインターフェースを実装
 
 ## スクリーンショット
 
+## 対応言語
+- 日本語
+- 英語
+
 ## フレームワーク・ライブラリ
 - SwiftUI
 - [Firebase](https://github.com/firebase/firebase-ios-sdk)
