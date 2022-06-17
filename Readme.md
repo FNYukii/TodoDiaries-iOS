@@ -10,10 +10,11 @@ Apple純正アプリのようなシンプルなインターフェースを実装
 日々の生活で達成したTodoを眺めることで、達成感や充実感を獲得することができます。
 
 ## スクリーンショット
-
-## 対応言語
-- 日本語
-- 英語
+<div style="display: flex; justify-content: space-between;">
+    <img style="display: block; width: 30%;" src="https://i.imgur.com/2HiRfkt.png"/>
+    <img style="display: block; width: 30%;" src="https://i.imgur.com/XEs2h02.png"/>
+        <img style="display: block; width: 30%;" src="https://i.imgur.com/wSTTtei.png"/>
+</div>
 
 ## フレームワーク・ライブラリ
 - SwiftUI
