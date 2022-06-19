@@ -11,8 +11,8 @@ Firebase Cloud Firestoreを使用しており、データはクラウドに保�
 
 ## スクリーンショット
 <div style="display: flex; justify-content: space-between;">
-  <img style="display: block; width: 30%;" src="https://i.imgur.com/2HiRfkt.png"/>
-  <img style="display: block; width: 30%;" src="https://i.imgur.com/XEs2h02.png"/>
+  <img style="display: block; width: 30%;" src="https://i.imgur.com/9pnp9pB.png"/>
+  <img style="display: block; width: 30%;" src="https://i.imgur.com/1Y5il0D.png"/>
   <img style="display: block; width: 30%;" src="https://i.imgur.com/wSTTtei.png"/>
 </div>
 
