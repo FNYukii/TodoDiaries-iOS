@@ -223,12 +223,12 @@ class FireTodo {
             }
     }
     
-    static func updateTodo(id: String, order: Double) {
+    static func updateTodo(id: String, order: Double?) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
-                "order": order
+                "order": order as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
@@ -255,7 +255,7 @@ class FireTodo {
     }
     
     static func achieveTodo(id: String, achievedAt: Date? = nil) {
-        updateTodo(id: id, order: -1.0)
+        updateTodo(id: id, order: nil)
         updateTodo(id: id, isAchieved: true)
         if let achievedAt = achievedAt {
             updateTodo(id: id, achievedAt: achievedAt)
@@ -264,8 +264,8 @@ class FireTodo {
     
     static func unachieveTodo(id: String, achievedAt: Date) {
         // unpinnedTodosの一番下へ
-        readMaxOrder(isPinned: false) { value in
-            updateTodo(id: id, order: value + 100.0)
+        readMaxOrder(isPinned: false) { maxOrder in
+            updateTodo(id: id, order: maxOrder + 100.0)
             updateTodo(id: id, isAchieved: false)
         }
     }

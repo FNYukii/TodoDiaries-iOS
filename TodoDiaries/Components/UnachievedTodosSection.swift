@@ -31,11 +31,11 @@ struct UnachievedTodosSection: View {
                     let movedTodo = todos[from]
                     var newOrder = 0.0
                     if destination == 0 {
-                        let minOrder = todos.first!.order
+                        let minOrder = todos.first!.order!
                         newOrder = minOrder - 100
                     } else {
-                        let prevOrder = todos[destination - 1].order
-                        let nextOrder = todos[destination].order
+                        let prevOrder = todos[destination - 1].order!
+                        let nextOrder = todos[destination].order!
                         newOrder = (prevOrder + nextOrder) / 2
                     }
                     FireTodo.updateTodo(id: movedTodo.id, order: newOrder)
@@ -46,11 +46,11 @@ struct UnachievedTodosSection: View {
                     let movedTodo = todos[from]
                     var newOrder = 0.0
                     if destination == todos.count - 1 {
-                        let maxOrder = todos.last!.order
+                        let maxOrder = todos.last!.order!
                         newOrder = maxOrder + 100
                     } else {
-                        let prevOrder = todos[destination].order
-                        let nextOrder = todos[destination + 1].order
+                        let prevOrder = todos[destination].order!
+                        let nextOrder = todos[destination + 1].order!
                         newOrder = (prevOrder + nextOrder) / 2
                     }
                     FireTodo.updateTodo(id: movedTodo.id, order: newOrder)
