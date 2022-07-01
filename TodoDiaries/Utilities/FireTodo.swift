@@ -255,7 +255,7 @@ class FireTodo {
             .updateData([
                 "isAchieved": true,
                 "achievedAt": achievedAt,
-                "order": nil
+                "order": NSNull()
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
@@ -275,7 +275,7 @@ class FireTodo {
                 .document(id)
                 .updateData([
                     "isAchieved": false,
-                    "achievedAt": nil,
+                    "achievedAt": NSNull(),
                     "order": maxOrder + 100.0,
                 ]) { err in
                     if let err = err {
