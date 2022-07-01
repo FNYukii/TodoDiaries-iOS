@@ -91,22 +91,24 @@ struct EditView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         // contentとachievedAtを更新
-                        FireTodo.updateTodo(id: id, content: content, achievedAt: achievedAt)
+                        FireTodo.updateTodo(id: id, content: content, achievedAt: isAchieved ? achievedAt : nil)
                         
-                        // isAchievedに変化があれば更新
+                        // isPinnedに変化があれば更新
+                        if oldIsPinned != true && isPinned == true && oldIsAchieved == false {
+                            FireTodo.pinTodo(id: id)
+                        }
+                        if oldIsPinned == true && isPinned != true && oldIsAchieved == false {
+                            FireTodo.unpinTodo(id: id)
+                        }
+                        
+                        // 達成済みへ
                         if !oldIsAchieved && isAchieved {
                             FireTodo.achieveTodo(id: id, achievedAt: achievedAt)
                         }
-                        if oldIsAchieved && !isAchieved {
-                            FireTodo.unachieveTodo(id: id)
-                        }
                         
-                        // isPinnedに変化があれば更新
-                        if oldIsPinned != true && isPinned == true {
-                            FireTodo.pinTodo(id: id)
-                        }
-                        if oldIsPinned == true && isPinned != true {
-                            FireTodo.unpinTodo(id: id)
+                        // 未達成へ戻す
+                        if oldIsAchieved && !isAchieved {
+                            FireTodo.unachieveTodo(id: id, isMakePinned: isPinned)
                         }
                         
                         isSended = true

@@ -289,26 +289,27 @@ class FireTodo {
             }
     }
     
-    static func unachieveTodo(id: String) {
-        // unpinnedTodosのorder最大値を読み取り
-        readMaxOrder(isPinned: false) { maxOrder in
-            
-            // Todoを未達成にし、unpinnedTodosの一番下へ
-            let db = Firestore.firestore()
-            db.collection("todos")
-                .document(id)
-                .updateData([
-                    "achievedAt": NSNull(),
-                    "isPinned": false,
-                    "order": maxOrder + 100.0,
-                ]) { err in
-                    if let err = err {
-                        print("HELLO! Fail! Error updating Todo: \(err)")
-                    } else {
-                        print("HELLO! Success! Updated 1 Todo.")
-                    }
-                }
+    static func unachieveTodo(id: String, isMakePinned: Bool) {
+        // isPinnedも設定
+        if isMakePinned {
+            FireTodo.pinTodo(id: id)
+        } else {
+            FireTodo.unpinTodo(id: id)
         }
+        
+        // 未達成へ戻す
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "achievedAt": NSNull()
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Todo: \(err)")
+                } else {
+                    print("HELLO! Success! Updated 1 Todo.")
+                }
+            }
     }
     
     static func deleteTodo(id: String) {
