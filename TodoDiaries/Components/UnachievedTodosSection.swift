@@ -38,7 +38,7 @@ struct UnachievedTodosSection: View {
                         let nextOrder = todos[destination].order
                         newOrder = (prevOrder + nextOrder) / 2
                     }
-                    FireTodo.update(id: movedTodo.id, order: newOrder)
+                    FireTodo.updateTodo(id: movedTodo.id, order: newOrder)
                 }
                 
                 if from < destination {
@@ -53,7 +53,7 @@ struct UnachievedTodosSection: View {
                         let nextOrder = todos[destination + 1].order
                         newOrder = (prevOrder + nextOrder) / 2
                     }
-                    FireTodo.update(id: movedTodo.id, order: newOrder)
+                    FireTodo.updateTodo(id: movedTodo.id, order: newOrder)
                 }
             }
         }

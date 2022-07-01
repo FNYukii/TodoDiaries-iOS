@@ -76,7 +76,7 @@ struct EditView: View {
                 }
                 .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                     Button("deleteTodo", role: .destructive) {
-                        FireTodo.delete(id: id, achievedAt: oldAchievedAt)
+                        FireTodo.deleteTodo(id: id, achievedAt: oldAchievedAt)
                         dismiss()
                     }
                 }
@@ -93,24 +93,24 @@ struct EditView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         // contentを更新
-                        FireTodo.update(id: id, content: content)
+                        FireTodo.updateTodo(id: id, content: content)
                         // isPinnedに変化があれば更新
                         if !oldIsPinned && isPinned {
-                            FireTodo.pin(id: id)
+                            FireTodo.pinTodo(id: id)
                         }
                         if oldIsPinned && !isPinned {
-                            FireTodo.unpin(id: id)
+                            FireTodo.unpinTodo(id: id)
                         }
                         // isAchievedに変化があれば更新
                         if !oldIsAchieved && isAchieved {
-                            FireTodo.achieve(id: id, achievedAt: achievedAt)
+                            FireTodo.achieveTodo(id: id, achievedAt: achievedAt)
                         }
                         if oldIsAchieved && !isAchieved {
-                            FireTodo.unachieve(id: id, achievedAt: oldAchievedAt!)
+                            FireTodo.unachieveTodo(id: id, achievedAt: oldAchievedAt!)
                         }
                         // 達成済みのままで、achievedAtに変化があれば対応
                         if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
-                            FireTodo.update(id: id, achievedAt: achievedAt)
+                            FireTodo.updateTodo(id: id, achievedAt: achievedAt)
                             FireCounter.decrement(achievedAt: oldAchievedAt!)
                             FireCounter.increment(achievedAt: achievedAt)
                         }

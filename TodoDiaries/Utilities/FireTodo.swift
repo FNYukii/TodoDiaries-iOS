@@ -10,7 +10,7 @@ import Foundation
 
 class FireTodo {
     
-    static func achievedTodos(limit: Int?, completion: (([Day]) -> Void)?) {
+    static func readAchievedTodos(limit: Int?, completion: (([Day]) -> Void)?) {
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         var query = db.collection("todos")
@@ -112,7 +112,7 @@ class FireTodo {
             }
     }
     
-    static func create(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func createTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // order最大値を取得
         readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
@@ -137,7 +137,7 @@ class FireTodo {
         }
     }
     
-    static func update(id: String, content: String) {
+    static func updateTodo(id: String, content: String) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -152,7 +152,7 @@ class FireTodo {
             }
     }
     
-    static func update(id: String, isPinned: Bool) {
+    static func updateTodo(id: String, isPinned: Bool) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -167,7 +167,7 @@ class FireTodo {
             }
     }
     
-    static func update(id: String, isAchieved: Bool) {
+    static func updateTodo(id: String, isAchieved: Bool) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -184,7 +184,7 @@ class FireTodo {
             }
     }
     
-    static func update(id: String, achievedAt: Date?) {
+    static func updateTodo(id: String, achievedAt: Date?) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -199,7 +199,7 @@ class FireTodo {
             }
     }
     
-    static func update(id: String, order: Double) {
+    static func updateTodo(id: String, order: Double) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -214,41 +214,41 @@ class FireTodo {
             }
     }
     
-    static func pin(id: String) {
+    static func pinTodo(id: String) {
         // pinnedTodosの一番下へ
         readMaxOrder(isPinned: true) { value in
-            update(id: id, order: value + 100.0)
-            update(id: id, isPinned: true)
+            updateTodo(id: id, order: value + 100.0)
+            updateTodo(id: id, isPinned: true)
         }
     }
     
-    static func unpin(id: String) {
+    static func unpinTodo(id: String) {
         // unpinnedTodosの一番上へ
         readMinOrder(isPinned: false) { value in
-            update(id: id, order: value - 100.0)
-            update(id: id, isPinned: false)
+            updateTodo(id: id, order: value - 100.0)
+            updateTodo(id: id, isPinned: false)
         }
     }
     
-    static func achieve(id: String, achievedAt: Date? = nil) {
-        update(id: id, order: -1.0)
-        update(id: id, isAchieved: true)
+    static func achieveTodo(id: String, achievedAt: Date? = nil) {
+        updateTodo(id: id, order: -1.0)
+        updateTodo(id: id, isAchieved: true)
         if let achievedAt = achievedAt {
-            update(id: id, achievedAt: achievedAt)
+            updateTodo(id: id, achievedAt: achievedAt)
         }
         FireCounter.increment(achievedAt: Date())
     }
     
-    static func unachieve(id: String, achievedAt: Date) {
+    static func unachieveTodo(id: String, achievedAt: Date) {
         // unpinnedTodosの一番下へ
         readMaxOrder(isPinned: false) { value in
-            update(id: id, order: value + 100.0)
-            update(id: id, isAchieved: false)
+            updateTodo(id: id, order: value + 100.0)
+            updateTodo(id: id, isAchieved: false)
             FireCounter.decrement(achievedAt: achievedAt)
         }
     }
     
-    static func delete(id: String, achievedAt: Date? = nil) {
+    static func deleteTodo(id: String, achievedAt: Date? = nil) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
