@@ -20,7 +20,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved to get MaxOrder.")
+                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved & \(isPinned ? "pinned" : "unpinned") to get MaxOrder.")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -42,7 +42,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved to get minOrder.")
+                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved & \(isPinned ? "pinned" : "unpinned") to get minOrder.")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -155,7 +155,7 @@ class FireTodo {
                     if let error = error {
                         print("HELLO! Fail! Error adding new Todo: \(error)")
                     } else {
-                        print("HELLO! Success! Added 1 Todo")
+                        print("HELLO! Success! Created 1 Todo.")
                     }
                 }
         }
@@ -171,7 +171,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated 1 Todo")
+                    print("HELLO! Success! Updated 1 Todo.")
                 }
             }
     }
@@ -186,7 +186,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated 1 Todo")
+                    print("HELLO! Success! Updated 1 Todo.")
                 }
             }
     }
@@ -201,7 +201,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated 1 Todo")
+                    print("HELLO! Success! Updated 1 Todo.")
                 }
             }
     }
@@ -221,7 +221,7 @@ class FireTodo {
                     if let err = err {
                         print("HELLO! Fail! Error updating Todo: \(err)")
                     } else {
-                        print("HELLO! Success! Updated 1 Todo")
+                        print("HELLO! Success! Updated 1 Todo.")
                     }
                 }
         }
@@ -242,7 +242,7 @@ class FireTodo {
                     if let err = err {
                         print("HELLO! Fail! Error updating Todo: \(err)")
                     } else {
-                        print("HELLO! Success! Updated 1 Todo")
+                        print("HELLO! Success! Updated 1 Todo.")
                     }
                 }
         }
@@ -260,7 +260,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated 1 Todo")
+                    print("HELLO! Success! Updated 1 Todo.")
                 }
             }
     }
@@ -281,7 +281,7 @@ class FireTodo {
                     if let err = err {
                         print("HELLO! Fail! Error updating Todo: \(err)")
                     } else {
-                        print("HELLO! Success! Updated 1 Todo")
+                        print("HELLO! Success! Updated 1 Todo.")
                     }
                 }
         }
@@ -295,7 +295,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Deleted 1 Todo")
+                    print("HELLO! Success! Deleted 1 Todo.")
                 }
             }
     }
