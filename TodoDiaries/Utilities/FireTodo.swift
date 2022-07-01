@@ -292,6 +292,7 @@ class FireTodo {
             .document(id)
             .updateData([
                 "achievedAt": achievedAt,
+                "isPinned": NSNull(),
                 "order": NSNull()
             ]) { err in
                 if let err = err {
@@ -312,6 +313,7 @@ class FireTodo {
                 .document(id)
                 .updateData([
                     "achievedAt": NSNull(),
+                    "isPinned": false,
                     "order": maxOrder + 100.0,
                 ]) { err in
                     if let err = err {

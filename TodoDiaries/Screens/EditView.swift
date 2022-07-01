@@ -16,7 +16,7 @@ struct EditView: View {
     @State private var isPinned: Bool
     @State private var isAchieved: Bool
     @State private var achievedAt: Date
-    private let oldIsPinned: Bool
+    private let oldIsPinned: Bool?
     private let oldIsAchieved: Bool
     private let oldAchievedAt: Date?
     
@@ -26,7 +26,7 @@ struct EditView: View {
     init(todo: Todo) {
         self.id = todo.id
         _content = State(initialValue: todo.content)
-        _isPinned = State(initialValue: todo.isPinned)
+        _isPinned = State(initialValue: todo.achievedAt == nil ? todo.isPinned! : false)
         _isAchieved = State(initialValue: todo.achievedAt != nil)
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
         self.oldIsPinned = todo.isPinned
@@ -94,13 +94,7 @@ struct EditView: View {
                     Button(action: {
                         // contentを更新
                         FireTodo.updateTodo(id: id, content: content)
-                        // isPinnedに変化があれば更新
-                        if !oldIsPinned && isPinned {
-                            FireTodo.pinTodo(id: id)
-                        }
-                        if oldIsPinned && !isPinned {
-                            FireTodo.unpinTodo(id: id)
-                        }
+                        
                         // isAchievedに変化があれば更新
                         if !oldIsAchieved && isAchieved {
                             FireTodo.achieveTodo(id: id, achievedAt: achievedAt)
@@ -108,10 +102,20 @@ struct EditView: View {
                         if oldIsAchieved && !isAchieved {
                             FireTodo.unachieveTodo(id: id)
                         }
+                        
+                        // isPinnedに変化があれば更新
+                        if oldIsPinned != true && isPinned == true {
+                            FireTodo.pinTodo(id: id)
+                        }
+                        if oldIsPinned == true && isPinned != true {
+                            FireTodo.unpinTodo(id: id)
+                        }
+                        
                         // 達成済みのままで、achievedAtに変化があれば対応
                         if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
                             FireTodo.updateTodo(id: id, achievedAt: achievedAt)
                         }
+                        
                         isSended = true
                         dismiss()
                     }){

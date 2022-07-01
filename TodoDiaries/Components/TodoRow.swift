@@ -38,7 +38,7 @@ struct TodoRow: View {
         
         // Context Menu
         .contextMenu {
-            if !todo.isPinned && todo.achievedAt == nil {
+            if todo.isPinned == false && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.pinTodo(id: todo.id)
                 }) {
@@ -46,7 +46,7 @@ struct TodoRow: View {
                 }
             }
             
-            if todo.isPinned && todo.achievedAt == nil {
+            if todo.isPinned == true && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.unpinTodo(id: todo.id)
                 }) {
@@ -98,7 +98,7 @@ struct TodoRow: View {
                 .tint(.accentColor)
             }
             // Pin
-            if !todo.isPinned && todo.achievedAt == nil {
+            if todo.isPinned == false && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.pinTodo(id: todo.id)
                 }) {
@@ -107,7 +107,7 @@ struct TodoRow: View {
                 .tint(.orange)
             }
             // Unpin
-            if todo.isPinned && todo.achievedAt == nil {
+            if todo.isPinned == true && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.unpinTodo(id: todo.id)
                 }) {
