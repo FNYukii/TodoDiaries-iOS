@@ -262,7 +262,7 @@ class FireTodo {
         }
     }
     
-    static func unachieveTodo(id: String, achievedAt: Date) {
+    static func unachieveTodo(id: String) {
         // unpinnedTodosの一番下へ
         readMaxOrder(isPinned: false) { maxOrder in
             updateTodo(id: id, order: maxOrder + 100.0)

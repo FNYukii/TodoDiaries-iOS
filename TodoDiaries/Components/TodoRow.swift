@@ -64,7 +64,7 @@ struct TodoRow: View {
             
             if todo.isAchieved {
                 Button(action: {
-                    FireTodo.unachieveTodo(id: todo.id, achievedAt: todo.achievedAt!)
+                    FireTodo.unachieveTodo(id: todo.id)
                 }) {
                     Label("makeUnachieved", systemImage: "xmark")
                 }
@@ -91,7 +91,7 @@ struct TodoRow: View {
             // Unachieve
             if todo.isAchieved {
                 Button(action: {
-                    FireTodo.unachieveTodo(id: todo.id, achievedAt: todo.achievedAt!)
+                    FireTodo.unachieveTodo(id: todo.id)
                 }) {
                     Image(systemName: "xmark")
                 }
