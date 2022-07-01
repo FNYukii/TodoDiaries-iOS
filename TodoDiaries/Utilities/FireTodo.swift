@@ -132,7 +132,7 @@ class FireTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read Todos. size: \(querySnapshot!.documents.count)")
+                print("HELLO! Success! Read Todos achieved at \(year)/\(month). size: \(querySnapshot!.documents.count)")
                 
                 // Todos
                 var todos: [Todo] = []
@@ -141,9 +141,30 @@ class FireTodo {
                     todos.append(todo)
                 }
                 
-                // TODO: Create counts
-                var counts: [Int] = []
+                // この年月の日数
+                let dayCount = DayConverter.dayCountAtTheMonth(year: year, month: month)
                 
+                // counts配列の生成開始
+                var counts: [Int] = []
+                for index in 1 ... dayCount {
+                    // todos配列内の全todoをチェックして、この日のcountを生成
+                    var count = 0
+                    todos.forEach { todo in
+                        // 比較のために3つのDateを用意
+                        let achievedAt: Date = todo.achievedAt!
+                        let currentDay: Date = Calendar.current.date(from: DateComponents(year: year, month: month, day:index))!
+                        let nextDay: Date = Calendar.current.date(from: DateComponents(year: year, month: month, day:index + 1))!
+                        // todoのachievedAtがこの日内かどうか比較
+                        if achievedAt >= currentDay && achievedAt < nextDay {
+                            count += 1
+                        }
+                    }
+                    
+                    // この日のcountが生成できたら、counts配列に追加
+                    counts.append(count)
+                }
+                
+                // counts配列をreturn
                 completion?(counts)
             }
     }
