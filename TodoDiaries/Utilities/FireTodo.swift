@@ -338,40 +338,40 @@ class FireTodo {
             }
     }
     
-    static func cleanTodos() {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .getDocuments() { (querySnapshot, err) in
-                // エラー処理
-                if let err = err {
-                    print("HELLO! Fail! Error getting Todo: \(err)")
-                    return
-                }
-                print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos.")
-                
-                // Todos
-                var todos: [Todo] = []
-                querySnapshot!.documents.forEach { document in
-                    let todo = Todo(document: document)
-                    todos.append(todo)
-                }
-                
-                // 全てのTodoドキュメントを更新
-                todos.forEach { todo in
-                    db.collection("todos")
-                        .document(todo.id)
-                        .updateData([
-                            "isPinned": NSNull()
-                        ]) { err in
-                            if let err = err {
-                                print("HELLO! Fail! Error updating Todo: \(err)")
-                            } else {
-                                print("HELLO! Success! Updated 1 Todo.")
-                            }
-                        }
-                }
-            }
-        
-    }
+//    static func cleanTodos() {
+//        let db = Firestore.firestore()
+//        db.collection("todos")
+//            .whereField("userId", isEqualTo: FireAuth.userId()!)
+//            .getDocuments() { (querySnapshot, err) in
+//                // エラー処理
+//                if let err = err {
+//                    print("HELLO! Fail! Error getting Todo: \(err)")
+//                    return
+//                }
+//                print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos.")
+//
+//                // Todos
+//                var todos: [Todo] = []
+//                querySnapshot!.documents.forEach { document in
+//                    let todo = Todo(document: document)
+//                    todos.append(todo)
+//                }
+//
+//                // 全てのTodoドキュメントを更新
+//                todos.forEach { todo in
+//                    db.collection("todos")
+//                        .document(todo.id)
+//                        .updateData([
+//                            "isPinned": NSNull()
+//                        ]) { err in
+//                            if let err = err {
+//                                print("HELLO! Fail! Error updating Todo: \(err)")
+//                            } else {
+//                                print("HELLO! Success! Updated 1 Todo.")
+//                            }
+//                        }
+//                }
+//            }
+//    }
+    
 }
