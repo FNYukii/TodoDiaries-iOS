@@ -35,8 +35,8 @@
 		54633B1B280700F600B13303 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1A280700F600B13303 /* Day.swift */; };
 		54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
-		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
-		547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */; };
+		547B175B27BF5AE300F0C7F9 /* ComparisonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* ComparisonSection.swift */; };
+		547B175D27BF5C6C00F0C7F9 /* ComparisonBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* ComparisonBarChart.swift */; };
 		547F36F527BB9BBC00B18176 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F427BB9BBC00B18176 /* FirebaseAuthUI */; };
 		547F36F727BB9BBC00B18176 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F627BB9BBC00B18176 /* FirebaseGoogleAuthUI */; };
 		547F36F927BB9BBC00B18176 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F827BB9BBC00B18176 /* FirebaseOAuthUI */; };
@@ -85,8 +85,8 @@
 		54633B1A280700F600B13303 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
-		547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
-		547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
+		547B175A27BF5AE300F0C7F9 /* ComparisonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonSection.swift; sourceTree = "<group>"; };
+		547B175C27BF5C6C00F0C7F9 /* ComparisonBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonBarChart.swift; sourceTree = "<group>"; };
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 				547F373C27BDF13800B18176 /* ChartsSection.swift */,
 				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
-				547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */,
-				547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */,
+				547B175A27BF5AE300F0C7F9 /* ComparisonSection.swift */,
+				547B175C27BF5C6C00F0C7F9 /* ComparisonBarChart.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -324,7 +324,7 @@
 				54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* UnachievedTodosViewModel.swift in Sources */,
-				547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */,
+				547B175B27BF5AE300F0C7F9 /* ComparisonSection.swift in Sources */,
 				54491F6427B9885900E784D4 /* DayConverter.swift in Sources */,
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
@@ -333,7 +333,7 @@
 				54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* UnachievedTodosSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditView.swift in Sources */,
-				547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */,
+				547B175D27BF5C6C00F0C7F9 /* ComparisonBarChart.swift in Sources */,
 				54540570280AB222009245D1 /* TodoRow.swift in Sources */,
 				547F373927BD6C2C00B18176 /* BarChart.swift in Sources */,
 				543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */,

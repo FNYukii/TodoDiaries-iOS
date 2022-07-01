@@ -13,7 +13,7 @@ struct ThirdView: View {
         NavigationView {
             List {
                 ChartsSection()
-                HighlightsSection()
+                ComparisonSection()
                 Section {
                     NavigationLink(destination: AccountView()) {
                         Text("account")
