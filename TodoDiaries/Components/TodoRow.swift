@@ -56,7 +56,7 @@ struct TodoRow: View {
             
             if !todo.isAchieved {
                 Button(action: {
-                    FireTodo.achieveTodo(id: todo.id)
+                    FireTodo.achieveTodo(id: todo.id, achievedAt: Date())
                 }) {
                     Label("makeAchieved", systemImage: "checkmark")
                 }
@@ -82,7 +82,7 @@ struct TodoRow: View {
             // Achieve
             if !todo.isAchieved {
                 Button(action: {
-                    FireTodo.achieveTodo(id: todo.id)
+                    FireTodo.achieveTodo(id: todo.id, achievedAt: Date())
                 }) {
                     Image(systemName: "checkmark")
                 }

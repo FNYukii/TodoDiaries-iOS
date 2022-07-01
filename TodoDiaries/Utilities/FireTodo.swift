@@ -191,14 +191,27 @@ class FireTodo {
             }
     }
     
+    static func updateTodo(id: String, order: Double?) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "order": order as Any
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Todo: \(err)")
+                } else {
+                    print("HELLO! Success! Updated Todo")
+                }
+            }
+    }
+    
     static func updateTodo(id: String, isAchieved: Bool) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
-                "isPinned": false,
                 "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? Date() : nil) as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
@@ -214,21 +227,6 @@ class FireTodo {
             .document(id)
             .updateData([
                 "achievedAt": achievedAt as Any
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated Todo")
-                }
-            }
-    }
-    
-    static func updateTodo(id: String, order: Double?) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "order": order as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
@@ -254,12 +252,10 @@ class FireTodo {
         }
     }
     
-    static func achieveTodo(id: String, achievedAt: Date? = nil) {
+    static func achieveTodo(id: String, achievedAt: Date) {
         updateTodo(id: id, order: nil)
         updateTodo(id: id, isAchieved: true)
-        if let achievedAt = achievedAt {
-            updateTodo(id: id, achievedAt: achievedAt)
-        }
+        updateTodo(id: id, achievedAt: achievedAt)
     }
     
     static func unachieveTodo(id: String) {
