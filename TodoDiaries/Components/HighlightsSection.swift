@@ -33,7 +33,7 @@ struct HighlightsSection: View {
             }
             
             if isLoaded {
-                VStack {
+                VStack(alignment: .leading) {
                     // Message
                     if value0 == value1 {
                         Text("the_count_of_todos_achieved_today_is_the_same_as_yesterday")
@@ -50,7 +50,7 @@ struct HighlightsSection: View {
                     HorizontalBarChart(value0: value0, value1: value1, xAxisLabels: xAxisLabels)
                         .frame(height: 150)
                 }
-                .frame(height: 250)
+                .frame(height: 230)
                 .animation(.default, value: message)
             }
         }
