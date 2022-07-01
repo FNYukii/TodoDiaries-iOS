@@ -160,12 +160,13 @@ class FireTodo {
         }
     }
     
-    static func updateTodo(id: String, content: String) {
+    static func updateTodo(id: String, content: String, achievedAt: Date?) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
                 "content": content,
+                "achievedAt": achievedAt as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
@@ -189,22 +190,7 @@ class FireTodo {
                 }
             }
     }
-    
-    static func updateTodo(id: String, achievedAt: Date?) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "achievedAt": achievedAt as Any
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated 1 Todo.")
-                }
-            }
-    }
-    
+        
     static func moveTodos(todos: [Todo], sourceIndexSet: IndexSet, destination: Int) {
         // 移動元と移動先のindexを取得
         let from = Int(sourceIndexSet.first!)
@@ -325,7 +311,7 @@ class FireTodo {
         }
     }
     
-    static func deleteTodo(id: String, achievedAt: Date? = nil) {
+    static func deleteTodo(id: String) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)

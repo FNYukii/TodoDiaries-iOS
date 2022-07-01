@@ -18,7 +18,6 @@ struct EditView: View {
     @State private var achievedAt: Date
     private let oldIsPinned: Bool?
     private let oldIsAchieved: Bool
-    private let oldAchievedAt: Date?
     
     @State private var isConfirming = false
     @State private var isSended = false
@@ -31,7 +30,6 @@ struct EditView: View {
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
         self.oldIsPinned = todo.isPinned
         self.oldIsAchieved = todo.achievedAt != nil
-        self.oldAchievedAt = todo.achievedAt
     }
     
     var body: some View {
@@ -76,7 +74,7 @@ struct EditView: View {
                 }
                 .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                     Button("deleteTodo", role: .destructive) {
-                        FireTodo.deleteTodo(id: id, achievedAt: oldAchievedAt)
+                        FireTodo.deleteTodo(id: id)
                         dismiss()
                     }
                 }
@@ -92,8 +90,8 @@ struct EditView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        // contentを更新
-                        FireTodo.updateTodo(id: id, content: content)
+                        // contentとachievedAtを更新
+                        FireTodo.updateTodo(id: id, content: content, achievedAt: achievedAt)
                         
                         // isAchievedに変化があれば更新
                         if !oldIsAchieved && isAchieved {
@@ -109,11 +107,6 @@ struct EditView: View {
                         }
                         if oldIsPinned == true && isPinned != true {
                             FireTodo.unpinTodo(id: id)
-                        }
-                        
-                        // 達成済みのままで、achievedAtに変化があれば対応
-                        if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
-                            FireTodo.updateTodo(id: id, achievedAt: achievedAt)
                         }
                         
                         isSended = true
