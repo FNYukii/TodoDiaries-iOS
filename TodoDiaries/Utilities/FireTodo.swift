@@ -11,10 +11,9 @@ import Foundation
 class FireTodo {
     
     static func readAchievedTodos(limit: Int?, completion: (([Day]) -> Void)?) {
-        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         var query = db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt", descending: true)
         
@@ -67,10 +66,9 @@ class FireTodo {
     }
     
     static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
-        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: false)
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
@@ -90,10 +88,9 @@ class FireTodo {
     }
     
     static func readMinOrder(isPinned: Bool, completion: ((Double) -> Void)?){
-        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: false)
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
@@ -119,10 +116,9 @@ class FireTodo {
         let endDate = Calendar.current.date(from: DateComponents(year: year, month: month + 1, day: 1, hour: 0, minute: 0, second: 0))
         
         // 読み取り
-        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .start(at: [startDate!])
@@ -178,7 +174,7 @@ class FireTodo {
         // 読み取り
         let db = Firestore.firestore()
         db.collection("todos")
-            .whereField("userId", isEqualTo: CurrentUser.userId())
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt")
             .start(at: [startDate!])
@@ -200,11 +196,10 @@ class FireTodo {
         // order最大値を取得
         readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
-            let userId = CurrentUser.userId()
             let db = Firestore.firestore()
             db.collection("todos")
                 .addDocument(data: [
-                    "userId": userId,
+                    "userId": FireAuth.userId()!,
                     "content": content,
                     "createdAt": Date(),
                     "isPinned": !isAchieved ? isPinned : false,

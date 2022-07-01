@@ -14,10 +14,9 @@ class UnachievedTodosViewModel: ObservableObject {
     @Published var isLoaded = false
     
     init(isPinned: Bool) {
-        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: false)
             .whereField("isPinned", isEqualTo: isPinned)
             .order(by: "order")

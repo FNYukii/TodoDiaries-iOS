@@ -8,14 +8,15 @@
 import Foundation
 import FirebaseAuth
 
-class CurrentUser {
+class FireAuth {
     
-    static func userId() -> String {
+    static func userId() -> String? {
         let user = Auth.auth().currentUser
         if let user = user {
             return user.uid
+        } else {
+            return nil
         }
-        return ""
     }
     
     static func email() -> String {
