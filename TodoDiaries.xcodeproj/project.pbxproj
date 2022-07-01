@@ -24,7 +24,6 @@
 		543559D92802D2B8009D64F3 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559D82802D2B8009D64F3 /* AboutView.swift */; };
 		543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 543559DB2802D8A5009D64F3 /* AccountView.swift */; };
 		54491F6427B9885900E784D4 /* DayConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6327B9885900E784D4 /* DayConverter.swift */; };
-		54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */; };
 		54491F7027BA101400E784D4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 54491F6F27BA101400E784D4 /* Introspect */; };
 		54491F7327BA7F8900E784D4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 54491F7527BA7F8900E784D4 /* Localizable.strings */; };
 		54491F7827BAB33D00E784D4 /* FireTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54491F7727BAB33D00E784D4 /* FireTodo.swift */; };
@@ -73,7 +72,6 @@
 		543559D82802D2B8009D64F3 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		543559DB2802D8A5009D64F3 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		54491F6327B9885900E784D4 /* DayConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayConverter.swift; sourceTree = "<group>"; };
-		54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoContextMenuItems.swift; sourceTree = "<group>"; };
 		54491F7427BA7F8900E784D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7627BA7F8F00E784D4 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		54491F7727BAB33D00E784D4 /* FireTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireTodo.swift; sourceTree = "<group>"; };
@@ -190,9 +188,8 @@
 			isa = PBXGroup;
 			children = (
 				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
-				5454056F280AB222009245D1 /* TodoRow.swift */,
 				54491F7927BACEB700E784D4 /* UnachievedTodosSection.swift */,
-				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
+				5454056F280AB222009245D1 /* TodoRow.swift */,
 				547F373C27BDF13800B18176 /* ChartsSection.swift */,
 				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
 				547F373827BD6C2C00B18176 /* BarChart.swift */,
@@ -334,7 +331,6 @@
 				547F373927BD6C2C00B18176 /* BarChart.swift in Sources */,
 				543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */,
 				5418DC5927B652C7007D98B0 /* Todo.swift in Sources */,
-				54491F6C27B9FD7200E784D4 /* TodoContextMenuItems.swift in Sources */,
 				543559D72802D29F009D64F3 /* TermsView.swift in Sources */,
 				5418DC5D27B65BC0007D98B0 /* CreateView.swift in Sources */,
 				54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */,
