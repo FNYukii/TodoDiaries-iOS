@@ -291,7 +291,6 @@ class FireTodo {
         db.collection("todos")
             .document(id)
             .updateData([
-                "isAchieved": true,
                 "achievedAt": achievedAt,
                 "order": NSNull()
             ]) { err in
@@ -312,7 +311,6 @@ class FireTodo {
             db.collection("todos")
                 .document(id)
                 .updateData([
-                    "isAchieved": false,
                     "achievedAt": NSNull(),
                     "order": maxOrder + 100.0,
                 ]) { err in
