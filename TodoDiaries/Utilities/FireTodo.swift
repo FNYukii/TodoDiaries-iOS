@@ -155,7 +155,7 @@ class FireTodo {
                     if let error = error {
                         print("HELLO! Fail! Error adding new Todo: \(error)")
                     } else {
-                        print("HELLO! Success! Added Todo")
+                        print("HELLO! Success! Added 1 Todo")
                     }
                 }
         }
@@ -171,22 +171,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated Todo")
-                }
-            }
-    }
-    
-    static func updateTodo(id: String, isPinned: Bool) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "isPinned": isPinned
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated Todo")
+                    print("HELLO! Success! Updated 1 Todo")
                 }
             }
     }
@@ -201,22 +186,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated Todo")
-                }
-            }
-    }
-    
-    static func updateTodo(id: String, isAchieved: Bool) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "isAchieved": isAchieved,
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated Todo")
+                    print("HELLO! Success! Updated 1 Todo")
                 }
             }
     }
@@ -231,38 +201,89 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated Todo")
+                    print("HELLO! Success! Updated 1 Todo")
                 }
             }
     }
     
     static func pinTodo(id: String) {
-        // pinnedTodosの一番下へ
-        readMaxOrder(isPinned: true) { value in
-            updateTodo(id: id, order: value + 100.0)
-            updateTodo(id: id, isPinned: true)
+        // pinnedTodosのorder最大値を読み取り
+        readMaxOrder(isPinned: true) { maxOrder in
+            
+            // Todoをピン留めし、pinnedTodosの一番下へ
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .document(id)
+                .updateData([
+                    "isPinned": true,
+                    "order": maxOrder + 100.0
+                ]) { err in
+                    if let err = err {
+                        print("HELLO! Fail! Error updating Todo: \(err)")
+                    } else {
+                        print("HELLO! Success! Updated 1 Todo")
+                    }
+                }
         }
     }
     
     static func unpinTodo(id: String) {
-        // unpinnedTodosの一番上へ
-        readMinOrder(isPinned: false) { value in
-            updateTodo(id: id, order: value - 100.0)
-            updateTodo(id: id, isPinned: false)
+        // unpinnedTodosのorder最小値を読み取り
+        readMinOrder(isPinned: false) { minOrder in
+            
+            // Todoのピン留めを解除し、unpinnedTodosの一番上へ
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .document(id)
+                .updateData([
+                    "isPinned": false,
+                    "order": minOrder - 100.0
+                ]) { err in
+                    if let err = err {
+                        print("HELLO! Fail! Error updating Todo: \(err)")
+                    } else {
+                        print("HELLO! Success! Updated 1 Todo")
+                    }
+                }
         }
     }
     
     static func achieveTodo(id: String, achievedAt: Date) {
-        updateTodo(id: id, order: nil)
-        updateTodo(id: id, isAchieved: true)
-        updateTodo(id: id, achievedAt: achievedAt)
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "isAchieved": true,
+                "achievedAt": achievedAt,
+                "order": nil
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Todo: \(err)")
+                } else {
+                    print("HELLO! Success! Updated 1 Todo")
+                }
+            }
     }
     
     static func unachieveTodo(id: String) {
-        // unpinnedTodosの一番下へ
+        // unpinnedTodosのorder最大値を読み取り
         readMaxOrder(isPinned: false) { maxOrder in
-            updateTodo(id: id, order: maxOrder + 100.0)
-            updateTodo(id: id, isAchieved: false)
+            
+            // Todoを未達成にし、unpinnedTodosの一番下へ
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .document(id)
+                .updateData([
+                    "isAchieved": false,
+                    "achievedAt": nil,
+                    "order": maxOrder + 100.0,
+                ]) { err in
+                    if let err = err {
+                        print("HELLO! Fail! Error updating Todo: \(err)")
+                    } else {
+                        print("HELLO! Success! Updated 1 Todo")
+                    }
+                }
         }
     }
     
@@ -274,7 +295,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Removed Todo")
+                    print("HELLO! Success! Deleted 1 Todo")
                 }
             }
     }
