@@ -112,10 +112,9 @@ class FireTodo {
             }
     }
     
-    static func readAchieveCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+    static func readAchieveCountsAtMonth(year: Int, month: Int, completion: (([Int]) -> Void)?) {
         // startDate
         let startDate = Calendar.current.date(from: DateComponents(year: year, month: month, day: 1, hour: 0, minute: 0, second: 0))
-        
         // endDate
         let endDate = Calendar.current.date(from: DateComponents(year: year, month: month + 1, day: 1, hour: 0, minute: 0, second: 0))
         
@@ -167,6 +166,10 @@ class FireTodo {
                 // counts配列をreturn
                 completion?(counts)
             }
+    }
+    
+    static func readAchieveCountAtDay(year: Int, month: Int, day: Int, completion: ((Int) -> Void)?) {
+        
     }
     
     static func createTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {

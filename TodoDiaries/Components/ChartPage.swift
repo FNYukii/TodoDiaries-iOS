@@ -58,7 +58,7 @@ struct ChartPage: View {
 //            self.isProgressing = false
 //        }
         
-        FireTodo.readAchieveCounts(year: shiftedNow.year!, month: shiftedNow.month!) { counts in
+        FireTodo.readAchieveCountsAtMonth(year: shiftedNow.year!, month: shiftedNow.month!) { counts in
             self.countsOfTodoAchieved = counts
             self.isProgressing = false
         }
