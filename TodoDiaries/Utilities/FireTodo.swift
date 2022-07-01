@@ -137,7 +137,7 @@ class FireTodo {
             }
     }
     
-    static func createTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func createTodo(content: String, isPinned: Bool, achievedAt: Date?) {
         // order最大値を取得
         readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
@@ -147,10 +147,9 @@ class FireTodo {
                     "userId": FireAuth.userId()!,
                     "content": content,
                     "createdAt": Date(),
-                    "isPinned": !isAchieved ? isPinned : false,
-                    "isAchieved": isAchieved,
-                    "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                    "order": !isAchieved ? maxOrder + 100 : -1.0
+                    "isPinned": achievedAt == nil ? isPinned : false,
+                    "achievedAt": achievedAt as Any,
+                    "order": (achievedAt == nil ? maxOrder + 100 : nil) as Any
                 ]) { error in
                     if let error = error {
                         print("HELLO! Fail! Error adding new Todo: \(error)")
