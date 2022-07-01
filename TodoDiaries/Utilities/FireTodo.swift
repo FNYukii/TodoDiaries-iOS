@@ -118,6 +118,7 @@ class FireTodo {
         // endDate
         let endDate = Calendar.current.date(from: DateComponents(year: year, month: month + 1, day: 1, hour: 0, minute: 0, second: 0))
         
+        // 読み取り
         let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         db.collection("todos")
@@ -169,7 +170,30 @@ class FireTodo {
     }
     
     static func readAchieveCountAtDay(year: Int, month: Int, day: Int, completion: ((Int) -> Void)?) {
+        // startDate
+        let startDate = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: 0, minute: 0, second: 0))
+        // endDate
+        let endDate = Calendar.current.date(from: DateComponents(year: year, month: month, day: day + 1, hour: 0, minute: 0, second: 0))
         
+        // 読み取り
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: CurrentUser.userId())
+            .whereField("isAchieved", isEqualTo: true)
+            .order(by: "achievedAt")
+            .start(at: [startDate!])
+            .end(before: [endDate!])
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos achieved at \(year)/\(month)/\(day).")
+                
+                // countを生成してreturn
+                let count = querySnapshot!.documents.count
+                completion?(count)
+            }
     }
     
     static func createTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {

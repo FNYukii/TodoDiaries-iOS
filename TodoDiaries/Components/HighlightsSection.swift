@@ -29,13 +29,13 @@ struct HighlightsSection: View {
                     ProgressView()
                         .progressViewStyle(CircularProgressViewStyle())
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .frame(height: 150)
+                        .frame(height: 170)
                 }
                 if !isProgressing {
                     Text(message)
                         .fixedSize(horizontal: false, vertical: true)
                     HorizontalBarChart(value0: value0, value1: value1, xAxisLabels: xAxisLabels)
-                        .frame(height: 150)
+                        .frame(height: 170)
                 }
             }
             .animation(.default, value: message)
@@ -48,13 +48,13 @@ struct HighlightsSection: View {
             
             // 昨日のTodo達成数
             let yesterdayComponents = Calendar.current.dateComponents(in: TimeZone.current, from: yesterday)
-            FireCounter.readCountsInDay(year: yesterdayComponents.year!, month: yesterdayComponents.month!, day: yesterdayComponents.day!) { countsInYesterday in
-                value0 = Double(countsInYesterday.reduce(0, +))
+            FireTodo.readAchieveCountAtDay(year: yesterdayComponents.year!, month: yesterdayComponents.month!, day: yesterdayComponents.day!) { countAtYesterday in
+                value0 = Double(countAtYesterday)
                 
                 // 今日のTodo達成数
                 let todayComponents = Calendar.current.dateComponents(in: TimeZone.current, from: Date())
-                FireCounter.readCountsInDay(year: todayComponents.year!, month: todayComponents.month!, day: todayComponents.day!) { countsInToday in
-                    value1 = Double(countsInToday.reduce(0, +))
+                FireTodo.readAchieveCountAtDay(year: todayComponents.year!, month: todayComponents.month!, day: todayComponents.day!) { countAtToday in
+                    value1 = Double(countAtToday)
                     
                     // message
                     if value0 == value1 {
