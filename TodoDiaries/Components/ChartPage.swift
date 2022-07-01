@@ -15,16 +15,19 @@ struct ChartPage: View {
     @State private var pageTitle = ""
     
     @State private var isAppeared = false
-    @State private var isProgressing = true
+    @State private var isLoaded = false
     
     var body: some View {
         
         VStack(alignment: .leading) {
-            if isProgressing {
+            
+            // ProgressView
+            if !isLoaded {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
             }
-            if !isProgressing {
+            
+            if isLoaded {
                 Text(pageTitle)
                     .font(.title)
                     .padding(.top)
@@ -38,19 +41,10 @@ struct ChartPage: View {
             }
         }
         .frame(height: 300)
-        
-        .onAppear {
-            isAppeared = true
-            loadCountsOfTodoAchieved()
-        }
-        
-        .onDisappear {
-            isAppeared = false
-        }
-        
+        .onAppear(perform: load)
     }
     
-    func loadCountsOfTodoAchieved() {
+    func load() {
         // 現在日時と表示日時の差を表すshiftedNowを生成
         let shiftedNow = DayConverter.nowShiftedByMonth(offset: pageOffset)
         // ページタイトルを変更
@@ -58,7 +52,7 @@ struct ChartPage: View {
         // この年月の達成counts配列を取得
         FireTodo.readAchieveCountsAtMonth(year: shiftedNow.year!, month: shiftedNow.month!) { counts in
             self.countsOfTodoAchieved = counts
-            self.isProgressing = false
+            self.isLoaded = true
         }
     }
 }
