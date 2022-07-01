@@ -53,8 +53,13 @@ struct ChartPage: View {
     func loadCountsOfTodoAchieved() {
         let shiftedNow = DayConverter.nowShiftedByMonth(offset: pageOffset)
         self.pageTitle = DayConverter.toStringUpToMonth(from: shiftedNow)
-        FireCounter.readCountsInMonth(year: shiftedNow.year!, month: shiftedNow.month!) { value in
-            self.countsOfTodoAchieved = value
+//        FireCounter.readCountsInMonth(year: shiftedNow.year!, month: shiftedNow.month!) { value in
+//            self.countsOfTodoAchieved = value
+//            self.isProgressing = false
+//        }
+        
+        FireTodo.readAchieveCounts(year: shiftedNow.year!, month: shiftedNow.month!) { counts in
+            self.countsOfTodoAchieved = counts
             self.isProgressing = false
         }
     }

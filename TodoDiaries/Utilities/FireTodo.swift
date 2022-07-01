@@ -112,6 +112,42 @@ class FireTodo {
             }
     }
     
+    static func readAchieveCounts(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+        // startDate
+        let startDate = Calendar.current.date(from: DateComponents(year: year, month: month, day: 1, hour: 0, minute: 0, second: 0))
+        
+        // endDate
+        let endDate = Calendar.current.date(from: DateComponents(year: year, month: month + 1, day: 1, hour: 0, minute: 0, second: 0))
+        
+        let userId = CurrentUser.userId()
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .whereField("userId", isEqualTo: userId)
+            .whereField("isAchieved", isEqualTo: true)
+            .order(by: "achievedAt")
+            .start(at: [startDate!])
+            .end(before: [endDate!])
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("HELLO! Fail! Error getting documents: \(err)")
+                    return
+                }
+                print("HELLO! Success! Read Todos. size: \(querySnapshot!.documents.count)")
+                
+                // Todos
+                var todos: [Todo] = []
+                querySnapshot!.documents.forEach { document in
+                    let todo = Todo(document: document)
+                    todos.append(todo)
+                }
+                
+                // TODO: Create counts
+                var counts: [Int] = []
+                
+                completion?(counts)
+            }
+    }
+    
     static func createTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
         // order最大値を取得
         readMaxOrder(isPinned: isPinned) { maxOrder in
