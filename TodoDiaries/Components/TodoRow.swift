@@ -21,7 +21,7 @@ struct TodoRow: View {
             isShowEditSheet.toggle()
         }) {
             HStack {
-                if todo.isAchieved {
+                if todo.achievedAt != nil {
                     Text(DayConverter.toTimeString(from: todo.achievedAt!))
                         .foregroundColor(.secondary)
                 }
@@ -38,7 +38,7 @@ struct TodoRow: View {
         
         // Context Menu
         .contextMenu {
-            if !todo.isPinned && !todo.isAchieved {
+            if !todo.isPinned && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.pinTodo(id: todo.id)
                 }) {
@@ -46,7 +46,7 @@ struct TodoRow: View {
                 }
             }
             
-            if todo.isPinned && !todo.isAchieved {
+            if todo.isPinned && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.unpinTodo(id: todo.id)
                 }) {
@@ -54,7 +54,7 @@ struct TodoRow: View {
                 }
             }
             
-            if !todo.isAchieved {
+            if todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.achieveTodo(id: todo.id, achievedAt: Date())
                 }) {
@@ -62,7 +62,7 @@ struct TodoRow: View {
                 }
             }
             
-            if todo.isAchieved {
+            if todo.achievedAt != nil {
                 Button(action: {
                     FireTodo.unachieveTodo(id: todo.id)
                 }) {
@@ -80,7 +80,7 @@ struct TodoRow: View {
         // Swipe Actions
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             // Achieve
-            if !todo.isAchieved {
+            if todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.achieveTodo(id: todo.id, achievedAt: Date())
                 }) {
@@ -89,7 +89,7 @@ struct TodoRow: View {
                 .tint(.accentColor)
             }
             // Unachieve
-            if todo.isAchieved {
+            if todo.achievedAt != nil {
                 Button(action: {
                     FireTodo.unachieveTodo(id: todo.id)
                 }) {
@@ -98,7 +98,7 @@ struct TodoRow: View {
                 .tint(.accentColor)
             }
             // Pin
-            if !todo.isPinned && !todo.isAchieved {
+            if !todo.isPinned && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.pinTodo(id: todo.id)
                 }) {
@@ -107,7 +107,7 @@ struct TodoRow: View {
                 .tint(.orange)
             }
             // Unpin
-            if todo.isPinned && !todo.isAchieved {
+            if todo.isPinned && todo.achievedAt == nil {
                 Button(action: {
                     FireTodo.unpinTodo(id: todo.id)
                 }) {

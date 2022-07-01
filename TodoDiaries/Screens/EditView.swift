@@ -27,10 +27,10 @@ struct EditView: View {
         self.id = todo.id
         _content = State(initialValue: todo.content)
         _isPinned = State(initialValue: todo.isPinned)
-        _isAchieved = State(initialValue: todo.isAchieved)
+        _isAchieved = State(initialValue: todo.achievedAt != nil)
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
         self.oldIsPinned = todo.isPinned
-        self.oldIsAchieved = todo.isAchieved
+        self.oldIsAchieved = todo.achievedAt != nil
         self.oldAchievedAt = todo.achievedAt
     }
     

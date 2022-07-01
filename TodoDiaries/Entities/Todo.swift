@@ -13,7 +13,6 @@ struct Todo: Identifiable, Equatable {
     let content: String
     let createdAt: Date
     let isPinned: Bool
-    let isAchieved: Bool
     let achievedAt: Date?
     let order: Double?
     
@@ -23,7 +22,6 @@ struct Todo: Identifiable, Equatable {
         self.content = document.get("content") as! String
         self.createdAt = (document.get("createdAt") as! Timestamp).dateValue()
         self.isPinned = document.get("isPinned") as! Bool
-        self.isAchieved = document.get("isAchieved") as! Bool
         let achievedTimestamp = document.get("achievedAt") as? Timestamp
         self.achievedAt = achievedTimestamp?.dateValue()
         self.order = document.get("order") as? Double
