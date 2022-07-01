@@ -19,12 +19,13 @@ class FireAuth {
         }
     }
     
-    static func email() -> String {
+    static func email() -> String! {
         let email = Auth.auth().currentUser?.email
         if let email = email {
             return email
+        } else {
+            return nil
         }
-        return ""
     }
     
     static func signOut() {

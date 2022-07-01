@@ -10,72 +10,17 @@ import Foundation
 
 class FireTodo {
     
-    static func readAchievedTodos(limit: Int?, completion: (([Day]) -> Void)?) {
-        let db = Firestore.firestore()
-        var query = db.collection("todos")
-            .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: true)
-            .order(by: "achievedAt", descending: true)
-        
-        if let limit = limit {
-            query = query
-                .limit(to: limit)
-        }
-                
-        query
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("HELLO. Error getting documents: \(err)")
-                } else {
-                    if let querySnapshot = querySnapshot {
-                        print("HELLO. Read \(querySnapshot.documents.count) Todos achieved.")
-                        
-                        // すべての達成済みTodoの配列
-                        var achievedTodos: [Todo] = []
-                        querySnapshot.documents.forEach { document in
-                            let todo = Todo(document: document)
-                            achievedTodos.append(todo)
-                        }
-                        
-                        // 配列daysを生成
-                        var days: [Day] = []
-                        var counter = 0
-                        for index in 0 ..< achievedTodos.count {
-                            // ループ初回。daysの最初の要素としてDayを追加
-                            if index == 0 {
-                                days.append(Day(ymd: DayConverter.toInt(from: achievedTodos[0].achievedAt!), achievedTodos: []))
-                            }
-                            // ループ2回目以降。前回のachievedTodoの達成日と比較。違ったらdaysに新しいDayを追加
-                            if index > 0 {
-                                let prevAchievedYmd = DayConverter.toInt(from: achievedTodos[index - 1].achievedAt!)
-                                let currentAchievedYmd = DayConverter.toInt(from: achievedTodos[index].achievedAt!)
-                                if prevAchievedYmd != currentAchievedYmd {
-                                    counter += 1
-                                    days.append(Day(ymd: DayConverter.toInt(from: achievedTodos[index].achievedAt!), achievedTodos: []))
-                                }
-                            }
-                            // Day.achievedTodosにachivedTodoを追加
-                            days[counter].achievedTodos.append(achievedTodos[index])
-                        }
-                        
-                        // 配列days完成
-                        completion?(days)
-                    }
-                }
-            }
-    }
-    
     static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: false)
+            .whereField("achievedAt", isEqualTo: NSNull())
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("HELLO! Fail! Error getting Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved to get MaxOrder.")
+                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved & \(isPinned ? "pinned" : "unpinned") to get MaxOrder.")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -91,13 +36,13 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: false)
+            .whereField("achievedAt", isEqualTo: NSNull())
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved to get minOrder.")
+                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved & \(isPinned ? "pinned" : "unpinned") to get minOrder.")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -119,7 +64,7 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: true)
+            .whereField("achievedAt", isNotEqualTo: NSNull())
             .order(by: "achievedAt")
             .start(at: [startDate!])
             .end(before: [endDate!])
@@ -175,7 +120,7 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: true)
+            .whereField("achievedAt", isNotEqualTo: NSNull())
             .order(by: "achievedAt")
             .start(at: [startDate!])
             .end(before: [endDate!])
@@ -192,7 +137,7 @@ class FireTodo {
             }
     }
     
-    static func createTodo(content: String, isPinned: Bool, isAchieved: Bool, achievedAt: Date) {
+    static func createTodo(content: String, isPinned: Bool, achievedAt: Date?) {
         // order最大値を取得
         readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
@@ -202,130 +147,172 @@ class FireTodo {
                     "userId": FireAuth.userId()!,
                     "content": content,
                     "createdAt": Date(),
-                    "isPinned": !isAchieved ? isPinned : false,
-                    "isAchieved": isAchieved,
-                    "achievedAt": (isAchieved ? achievedAt : nil) as Any,
-                    "order": !isAchieved ? maxOrder + 100 : -1.0
+                    "isPinned": achievedAt == nil ? isPinned : false,
+                    "achievedAt": achievedAt as Any,
+                    "order": (achievedAt == nil ? maxOrder + 100 : nil) as Any
                 ]) { error in
                     if let error = error {
                         print("HELLO! Fail! Error adding new Todo: \(error)")
                     } else {
-                        print("HELLO! Success! Added Todo")
+                        print("HELLO! Success! Created 1 Todo.")
                     }
                 }
         }
     }
     
-    static func updateTodo(id: String, content: String) {
+    static func updateTodo(id: String, content: String, achievedAt: Date?) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
                 "content": content,
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated Todo")
-                }
-            }
-    }
-    
-    static func updateTodo(id: String, isPinned: Bool) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "isPinned": isPinned
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated Todo")
-                }
-            }
-    }
-    
-    static func updateTodo(id: String, isAchieved: Bool) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
-                "isPinned": false,
-                "isAchieved": isAchieved,
-                "achievedAt": (isAchieved ? Date() : nil) as Any
-            ]) { err in
-                if let err = err {
-                    print("HELLO! Fail! Error updating Todo: \(err)")
-                } else {
-                    print("HELLO! Success! Updated Todo")
-                }
-            }
-    }
-    
-    static func updateTodo(id: String, achievedAt: Date?) {
-        let db = Firestore.firestore()
-        db.collection("todos")
-            .document(id)
-            .updateData([
                 "achievedAt": achievedAt as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated Todo")
+                    print("HELLO! Success! Updated 1 Todo.")
                 }
             }
     }
     
-    static func updateTodo(id: String, order: Double) {
+    static func updateTodo(id: String, order: Double?) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
             .updateData([
-                "order": order
+                "order": order as Any
             ]) { err in
                 if let err = err {
                     print("HELLO! Fail! Error updating Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Updated Todo")
+                    print("HELLO! Success! Updated 1 Todo.")
                 }
             }
     }
+        
+    static func moveTodos(todos: [Todo], sourceIndexSet: IndexSet, destination: Int) {
+        // 移動元と移動先のindexを取得
+        let from = Int(sourceIndexSet.first!)
+        var destination = destination
+        if from < destination {
+            destination -= 1
+        }
+        
+        if from > destination {
+            // Todoを上に移動
+            let movedTodo = todos[from]
+            var newOrder = 0.0
+            if destination == 0 {
+                let minOrder = todos.first!.order!
+                newOrder = minOrder - 100
+            } else {
+                let prevOrder = todos[destination - 1].order!
+                let nextOrder = todos[destination].order!
+                newOrder = (prevOrder + nextOrder) / 2
+            }
+            FireTodo.updateTodo(id: movedTodo.id, order: newOrder)
+        }
+        
+        if from < destination {
+            // Todoを下に移動
+            let movedTodo = todos[from]
+            var newOrder = 0.0
+            if destination == todos.count - 1 {
+                let maxOrder = todos.last!.order!
+                newOrder = maxOrder + 100
+            } else {
+                let prevOrder = todos[destination].order!
+                let nextOrder = todos[destination + 1].order!
+                newOrder = (prevOrder + nextOrder) / 2
+            }
+            FireTodo.updateTodo(id: movedTodo.id, order: newOrder)
+        }
+    }
     
     static func pinTodo(id: String) {
-        // pinnedTodosの一番下へ
-        readMaxOrder(isPinned: true) { value in
-            updateTodo(id: id, order: value + 100.0)
-            updateTodo(id: id, isPinned: true)
+        // pinnedTodosのorder最大値を読み取り
+        readMaxOrder(isPinned: true) { maxOrder in
+            
+            // Todoをピン留めし、pinnedTodosの一番下へ
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .document(id)
+                .updateData([
+                    "isPinned": true,
+                    "order": maxOrder + 100.0
+                ]) { err in
+                    if let err = err {
+                        print("HELLO! Fail! Error updating Todo: \(err)")
+                    } else {
+                        print("HELLO! Success! Updated 1 Todo.")
+                    }
+                }
         }
     }
     
     static func unpinTodo(id: String) {
-        // unpinnedTodosの一番上へ
-        readMinOrder(isPinned: false) { value in
-            updateTodo(id: id, order: value - 100.0)
-            updateTodo(id: id, isPinned: false)
+        // unpinnedTodosのorder最小値を読み取り
+        readMinOrder(isPinned: false) { minOrder in
+            
+            // Todoのピン留めを解除し、unpinnedTodosの一番上へ
+            let db = Firestore.firestore()
+            db.collection("todos")
+                .document(id)
+                .updateData([
+                    "isPinned": false,
+                    "order": minOrder - 100.0
+                ]) { err in
+                    if let err = err {
+                        print("HELLO! Fail! Error updating Todo: \(err)")
+                    } else {
+                        print("HELLO! Success! Updated 1 Todo.")
+                    }
+                }
         }
     }
     
-    static func achieveTodo(id: String, achievedAt: Date? = nil) {
-        updateTodo(id: id, order: -1.0)
-        updateTodo(id: id, isAchieved: true)
-        if let achievedAt = achievedAt {
-            updateTodo(id: id, achievedAt: achievedAt)
-        }
+    static func achieveTodo(id: String, achievedAt: Date) {
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "achievedAt": achievedAt,
+                "isPinned": NSNull(),
+                "order": NSNull()
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Todo: \(err)")
+                } else {
+                    print("HELLO! Success! Updated 1 Todo.")
+                }
+            }
     }
     
-    static func unachieveTodo(id: String, achievedAt: Date) {
-        // unpinnedTodosの一番下へ
-        readMaxOrder(isPinned: false) { value in
-            updateTodo(id: id, order: value + 100.0)
-            updateTodo(id: id, isAchieved: false)
+    static func unachieveTodo(id: String, isMakePinned: Bool) {
+        // isPinnedも設定
+        if isMakePinned {
+            FireTodo.pinTodo(id: id)
+        } else {
+            FireTodo.unpinTodo(id: id)
         }
+        
+        // 未達成へ戻す
+        let db = Firestore.firestore()
+        db.collection("todos")
+            .document(id)
+            .updateData([
+                "achievedAt": NSNull()
+            ]) { err in
+                if let err = err {
+                    print("HELLO! Fail! Error updating Todo: \(err)")
+                } else {
+                    print("HELLO! Success! Updated 1 Todo.")
+                }
+            }
     }
     
-    static func deleteTodo(id: String, achievedAt: Date? = nil) {
+    static func deleteTodo(id: String) {
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -333,8 +320,45 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Removed Todo")
+                    print("HELLO! Success! Deleted 1 Todo.")
                 }
             }
     }
+    
+//    static func cleanTodos() {
+//        let db = Firestore.firestore()
+//        db.collection("todos")
+//            .whereField("userId", isEqualTo: FireAuth.userId()!)
+//            .getDocuments() { (querySnapshot, err) in
+//                // エラー処理
+//                if let err = err {
+//                    print("HELLO! Fail! Error getting Todo: \(err)")
+//                    return
+//                }
+//                print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos.")
+//
+//                // Todos
+//                var todos: [Todo] = []
+//                querySnapshot!.documents.forEach { document in
+//                    let todo = Todo(document: document)
+//                    todos.append(todo)
+//                }
+//
+//                // 全てのTodoドキュメントを更新
+//                todos.forEach { todo in
+//                    db.collection("todos")
+//                        .document(todo.id)
+//                        .updateData([
+//                            "isPinned": NSNull()
+//                        ]) { err in
+//                            if let err = err {
+//                                print("HELLO! Fail! Error updating Todo: \(err)")
+//                            } else {
+//                                print("HELLO! Success! Updated 1 Todo.")
+//                            }
+//                        }
+//                }
+//            }
+//    }
+    
 }

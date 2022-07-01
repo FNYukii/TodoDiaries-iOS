@@ -16,9 +16,8 @@ struct EditView: View {
     @State private var isPinned: Bool
     @State private var isAchieved: Bool
     @State private var achievedAt: Date
-    private let oldIsPinned: Bool
+    private let oldIsPinned: Bool?
     private let oldIsAchieved: Bool
-    private let oldAchievedAt: Date?
     
     @State private var isConfirming = false
     @State private var isSended = false
@@ -26,12 +25,11 @@ struct EditView: View {
     init(todo: Todo) {
         self.id = todo.id
         _content = State(initialValue: todo.content)
-        _isPinned = State(initialValue: todo.isPinned)
-        _isAchieved = State(initialValue: todo.isAchieved)
+        _isPinned = State(initialValue: todo.achievedAt == nil ? todo.isPinned! : false)
+        _isAchieved = State(initialValue: todo.achievedAt != nil)
         _achievedAt = State(initialValue: todo.achievedAt ?? Date())
         self.oldIsPinned = todo.isPinned
-        self.oldIsAchieved = todo.isAchieved
-        self.oldAchievedAt = todo.achievedAt
+        self.oldIsAchieved = todo.achievedAt != nil
     }
     
     var body: some View {
@@ -76,7 +74,7 @@ struct EditView: View {
                 }
                 .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
                     Button("deleteTodo", role: .destructive) {
-                        FireTodo.deleteTodo(id: id, achievedAt: oldAchievedAt)
+                        FireTodo.deleteTodo(id: id)
                         dismiss()
                     }
                 }
@@ -92,26 +90,27 @@ struct EditView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        // contentを更新
-                        FireTodo.updateTodo(id: id, content: content)
+                        // contentとachievedAtを更新
+                        FireTodo.updateTodo(id: id, content: content, achievedAt: isAchieved ? achievedAt : nil)
+                        
                         // isPinnedに変化があれば更新
-                        if !oldIsPinned && isPinned {
+                        if oldIsPinned != true && isPinned == true && oldIsAchieved == false {
                             FireTodo.pinTodo(id: id)
                         }
-                        if oldIsPinned && !isPinned {
+                        if oldIsPinned == true && isPinned != true && oldIsAchieved == false {
                             FireTodo.unpinTodo(id: id)
                         }
-                        // isAchievedに変化があれば更新
+                        
+                        // 達成済みへ
                         if !oldIsAchieved && isAchieved {
                             FireTodo.achieveTodo(id: id, achievedAt: achievedAt)
                         }
+                        
+                        // 未達成へ戻す
                         if oldIsAchieved && !isAchieved {
-                            FireTodo.unachieveTodo(id: id, achievedAt: oldAchievedAt!)
+                            FireTodo.unachieveTodo(id: id, isMakePinned: isPinned)
                         }
-                        // 達成済みのままで、achievedAtに変化があれば対応
-                        if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
-                            FireTodo.updateTodo(id: id, achievedAt: achievedAt)
-                        }
+                        
                         isSended = true
                         dismiss()
                     }){

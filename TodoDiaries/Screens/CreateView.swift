@@ -14,9 +14,9 @@ struct CreateView: View {
     
     @State private var content = ""
     @State private var isPinned = false
-    @State private var isAchieved = false
     @State private var achievedAt: Date = Date()
     
+    @State private var isAchieved = false
     @State private var isSended = false
     
     var body: some View {
@@ -66,7 +66,7 @@ struct CreateView: View {
                 }
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
-                        FireTodo.createTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
+                        FireTodo.createTodo(content: content, isPinned: isPinned, achievedAt: isAchieved ? achievedAt : nil)
                         isSended = true
                         dismiss()
                     }){
