@@ -25,7 +25,7 @@ class AchievedDaysViewModel: ObservableObject {
         let db = Firestore.firestore()
         var query = db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: true)
+            .whereField("achievedAt", isNotEqualTo: NSNull())
             .order(by: "achievedAt", descending: true)
         
         if let limit = limit {

@@ -17,7 +17,7 @@ class UnachievedTodosViewModel: ObservableObject {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: false)
+            .whereField("achievedAt", isEqualTo: NSNull())
             .whereField("isPinned", isEqualTo: isPinned)
             .order(by: "order")
             .addSnapshotListener {(snapshot, error) in

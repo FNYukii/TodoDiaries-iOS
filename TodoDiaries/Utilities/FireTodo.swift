@@ -14,7 +14,7 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: false)
+            .whereField("achievedAt", isEqualTo: NSNull())
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -36,7 +36,7 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: false)
+            .whereField("achievedAt", isEqualTo: NSNull())
             .whereField("isPinned", isEqualTo: isPinned)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
@@ -64,7 +64,7 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: true)
+            .whereField("achievedAt", isNotEqualTo: NSNull())
             .order(by: "achievedAt")
             .start(at: [startDate!])
             .end(before: [endDate!])
@@ -120,7 +120,7 @@ class FireTodo {
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
-            .whereField("isAchieved", isEqualTo: true)
+            .whereField("achievedAt", isNotEqualTo: NSNull())
             .order(by: "achievedAt")
             .start(at: [startDate!])
             .end(before: [endDate!])
