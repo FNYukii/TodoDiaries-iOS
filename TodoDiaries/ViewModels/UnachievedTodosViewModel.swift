@@ -26,7 +26,7 @@ class UnachievedTodosViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read Todos pinned \(isPinned). size: \(snapshot.documents.count)")
+                print("HELLO! Success! Read \(snapshot.documents.count) Todos \(isPinned ? "pinned" : "unpinned").")
                 
                 var todos: [Todo] = []
                 snapshot.documents.forEach { document in

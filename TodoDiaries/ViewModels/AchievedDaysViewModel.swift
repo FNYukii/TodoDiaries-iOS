@@ -40,7 +40,7 @@ class AchievedDaysViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read Achieved Todos. size: \(snapshot.documents.count)")
+                print("HELLO! Success! Read \(snapshot.documents.count) Todos achieved.")
                 
                 self.documents = snapshot.documents
                 

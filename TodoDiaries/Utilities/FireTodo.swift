@@ -29,7 +29,7 @@ class FireTodo {
                     print("HELLO. Error getting documents: \(err)")
                 } else {
                     if let querySnapshot = querySnapshot {
-                        print("HELLO. Read achievedTodos. size: \(querySnapshot.documents.count)")
+                        print("HELLO. Read \(querySnapshot.documents.count) Todos achieved.")
                         
                         // すべての達成済みTodoの配列
                         var achievedTodos: [Todo] = []
@@ -77,7 +77,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting Todo: \(err)")
                 } else {
-                    print("HELLO! Success! Read Todos to get MaxOrder. size: \(querySnapshot!.documents.count)")
+                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved to get MaxOrder.")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -100,7 +100,7 @@ class FireTodo {
                 if let err = err {
                     print("HELLO! Fail! Error getting documents: \(err)")
                 } else {
-                    print("HELLO! Success! Read Todos to get minOrder. size: \(querySnapshot!.documents.count)")
+                    print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos unachieved to get minOrder.")
                     var orders: [Double] = []
                     for document in querySnapshot!.documents {
                         let order = document.get("order") as! Double
@@ -132,7 +132,7 @@ class FireTodo {
                     print("HELLO! Fail! Error getting documents: \(err)")
                     return
                 }
-                print("HELLO! Success! Read Todos achieved at \(year)/\(month). size: \(querySnapshot!.documents.count)")
+                print("HELLO! Success! Read \(querySnapshot!.documents.count) Todos achieved at \(year)/\(month).")
                 
                 // Todos
                 var todos: [Todo] = []
