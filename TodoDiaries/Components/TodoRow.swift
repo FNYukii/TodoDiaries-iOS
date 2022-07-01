@@ -15,6 +15,8 @@ struct TodoRow: View {
     @State private var isConfirming = false
     
     var body: some View {
+        
+        // Todo
         Button(action: {
             isShowEditSheet.toggle()
         }) {
@@ -27,16 +29,55 @@ struct TodoRow: View {
                     .foregroundColor(.primary)
             }
         }
-        
         .foregroundColor(.primary)
+        
+        // Sheet
         .sheet(isPresented: $isShowEditSheet) {
             EditView(todo: todo)
         }
         
+        // Context Menu
         .contextMenu {
-            TodoContextMenuItems(todo: todo, isConfirming: $isConfirming)
+            if !todo.isPinned && !todo.isAchieved {
+                Button(action: {
+                    FireTodo.pinTodo(id: todo.id)
+                }) {
+                    Label("pin", systemImage: "pin")
+                }
+            }
+            
+            if todo.isPinned && !todo.isAchieved {
+                Button(action: {
+                    FireTodo.unpinTodo(id: todo.id)
+                }) {
+                    Label("unpin", systemImage: "pin.slash")
+                }
+            }
+            
+            if !todo.isAchieved {
+                Button(action: {
+                    FireTodo.achieveTodo(id: todo.id)
+                }) {
+                    Label("makeAchieved", systemImage: "checkmark")
+                }
+            }
+            
+            if todo.isAchieved {
+                Button(action: {
+                    FireTodo.unachieveTodo(id: todo.id, achievedAt: todo.achievedAt!)
+                }) {
+                    Label("makeUnachieved", systemImage: "xmark")
+                }
+            }
+            
+            Button(role: .destructive) {
+                isConfirming.toggle()
+            } label: {
+                Label("delete", systemImage: "trash")
+            }
         }
         
+        // Swipe Actions
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             // Achieve
             if !todo.isAchieved {
@@ -75,6 +116,8 @@ struct TodoRow: View {
                 .tint(.orange)
             }
         }
+        
+        // Swipe Actions
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button(action: {
                 isConfirming.toggle()
@@ -84,6 +127,7 @@ struct TodoRow: View {
             .tint(.red)
         }
         
+        // Dialog
         .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
             Button("deleteTodo", role: .destructive) {
                 FireTodo.deleteTodo(id: todo.id)
