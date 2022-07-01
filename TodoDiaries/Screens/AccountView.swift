@@ -12,7 +12,7 @@ struct AccountView: View {
     @State private var isConfirming = false
     
     init() {
-        self.userEmail = CurrentUser.email()
+        self.userEmail = FireAuth.email()
     }
     
     var body: some View {
@@ -34,7 +34,7 @@ struct AccountView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
                 Button("signOut", role: .destructive) {
-                    CurrentUser.signOut()
+                    FireAuth.signOut()
                 }
             }
         }

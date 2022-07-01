@@ -35,15 +35,15 @@
 		54633B1B280700F600B13303 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1A280700F600B13303 /* Day.swift */; };
 		54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */; };
 		547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* ChartPage.swift */; };
-		547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */; };
-		547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */; };
+		547B175B27BF5AE300F0C7F9 /* ComparisonSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* ComparisonSection.swift */; };
+		547B175D27BF5C6C00F0C7F9 /* ComparisonBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175C27BF5C6C00F0C7F9 /* ComparisonBarChart.swift */; };
 		547F36F527BB9BBC00B18176 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F427BB9BBC00B18176 /* FirebaseAuthUI */; };
 		547F36F727BB9BBC00B18176 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F627BB9BBC00B18176 /* FirebaseGoogleAuthUI */; };
 		547F36F927BB9BBC00B18176 /* FirebaseOAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 547F36F827BB9BBC00B18176 /* FirebaseOAuthUI */; };
 		547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */; };
 		547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */; };
 		547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F36FE27BBA05A00B18176 /* WelcomeView.swift */; };
-		547F370327BBE61800B18176 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* CurrentUser.swift */; };
+		547F370327BBE61800B18176 /* FireAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F370227BBE61800B18176 /* FireAuth.swift */; };
 		547F372F27BD0C5B00B18176 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 547F372E27BD0C5B00B18176 /* FirebaseAnalytics */; };
 		547F373127BD0C5B00B18176 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373027BD0C5B00B18176 /* FirebaseAuth */; };
 		547F373327BD0C5B00B18176 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373227BD0C5B00B18176 /* FirebaseDatabase */; };
@@ -51,7 +51,6 @@
 		547F373927BD6C2C00B18176 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* BarChart.swift */; };
 		547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* ChartsSection.swift */; };
 		54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B469612802DC84007343A6 /* PrivacyPolicyView.swift */; };
-		54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51BB27C32F790072A583 /* FireCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,16 +84,15 @@
 		54633B1A280700F600B13303 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* ChartPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPage.swift; sourceTree = "<group>"; };
-		547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightsSection.swift; sourceTree = "<group>"; };
-		547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
+		547B175A27BF5AE300F0C7F9 /* ComparisonSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonSection.swift; sourceTree = "<group>"; };
+		547B175C27BF5C6C00F0C7F9 /* ComparisonBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonBarChart.swift; sourceTree = "<group>"; };
 		547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthView.swift; sourceTree = "<group>"; };
 		547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInStateViewModel.swift; sourceTree = "<group>"; };
 		547F36FE27BBA05A00B18176 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
-		547F370227BBE61800B18176 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		547F370227BBE61800B18176 /* FireAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAuth.swift; sourceTree = "<group>"; };
 		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
 		54B469612802DC84007343A6 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
-		54CC51BB27C32F790072A583 /* FireCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +139,7 @@
 				5418DC3C27B64C4F007D98B0 /* TodoDiariesApp.swift */,
 				5418DC5527B65271007D98B0 /* Screens */,
 				5418DC5727B65285007D98B0 /* Components */,
-				5418DC5627B6527B007D98B0 /* Models */,
+				5418DC5627B6527B007D98B0 /* Entities */,
 				54491F6D27BA0B1B00E784D4 /* ViewModels */,
 				54491F6A27B9FD1100E784D4 /* Utilities */,
 				54491F7527BA7F8900E784D4 /* Localizable.strings */,
@@ -164,49 +162,52 @@
 			isa = PBXGroup;
 			children = (
 				5418DC3E27B64C4F007D98B0 /* ContentView.swift */,
-				547B175027BE11FD00F0C7F9 /* TopLevel */,
-				548CAA982801B43300C4A767 /* SecondLevel */,
-				547B175127BE122800F0C7F9 /* Sheet */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		5418DC5627B6527B007D98B0 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				5418DC5827B652C7007D98B0 /* Todo.swift */,
-				54633B1A280700F600B13303 /* Day.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		5418DC5727B65285007D98B0 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				547F374027BDF2A700B18176 /* FirstView */,
-				547F374227BDF2E700B18176 /* ThirdView */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		543559DA2802D663009D64F3 /* ThirdView */ = {
-			isa = PBXGroup;
-			children = (
+				547F36FE27BBA05A00B18176 /* WelcomeView.swift */,
+				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
+				5418DC6227B673DB007D98B0 /* FirstView.swift */,
+				5418DC5C27B65BC0007D98B0 /* CreateView.swift */,
+				5418DC6027B6680F007D98B0 /* EditView.swift */,
+				5418DC6427B674CF007D98B0 /* SecondView.swift */,
+				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
 				543559DB2802D8A5009D64F3 /* AccountView.swift */,
 				543559D62802D29F009D64F3 /* TermsView.swift */,
 				54B469612802DC84007343A6 /* PrivacyPolicyView.swift */,
 				543559D82802D2B8009D64F3 /* AboutView.swift */,
 			);
-			path = ThirdView;
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5418DC5627B6527B007D98B0 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5418DC5827B652C7007D98B0 /* Todo.swift */,
+				54633B1A280700F600B13303 /* Day.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		5418DC5727B65285007D98B0 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
+				5454056F280AB222009245D1 /* TodoRow.swift */,
+				54491F7927BACEB700E784D4 /* UnachievedTodosSection.swift */,
+				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
+				547F373C27BDF13800B18176 /* ChartsSection.swift */,
+				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
+				547F373827BD6C2C00B18176 /* BarChart.swift */,
+				547B175A27BF5AE300F0C7F9 /* ComparisonSection.swift */,
+				547B175C27BF5C6C00F0C7F9 /* ComparisonBarChart.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		54491F6A27B9FD1100E784D4 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				547F370227BBE61800B18176 /* FireAuth.swift */,
 				54491F7727BAB33D00E784D4 /* FireTodo.swift */,
-				54CC51BB27C32F790072A583 /* FireCounter.swift */,
 				54491F6327B9885900E784D4 /* DayConverter.swift */,
-				547F370227BBE61800B18176 /* CurrentUser.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -219,58 +220,6 @@
 				547F36FC27BB9D6400B18176 /* SignInStateViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		547B175027BE11FD00F0C7F9 /* TopLevel */ = {
-			isa = PBXGroup;
-			children = (
-				547F36FE27BBA05A00B18176 /* WelcomeView.swift */,
-				5418DC6227B673DB007D98B0 /* FirstView.swift */,
-				5418DC6427B674CF007D98B0 /* SecondView.swift */,
-				5418DC6627B674DE007D98B0 /* ThirdView.swift */,
-			);
-			path = TopLevel;
-			sourceTree = "<group>";
-		};
-		547B175127BE122800F0C7F9 /* Sheet */ = {
-			isa = PBXGroup;
-			children = (
-				547F36FA27BB9C7300B18176 /* FirebaseAuthView.swift */,
-				5418DC5C27B65BC0007D98B0 /* CreateView.swift */,
-				5418DC6027B6680F007D98B0 /* EditView.swift */,
-			);
-			path = Sheet;
-			sourceTree = "<group>";
-		};
-		547F374027BDF2A700B18176 /* FirstView */ = {
-			isa = PBXGroup;
-			children = (
-				5418DC6827B68658007D98B0 /* CustomEditButton.swift */,
-				5454056F280AB222009245D1 /* TodoRow.swift */,
-				54491F7927BACEB700E784D4 /* UnachievedTodosSection.swift */,
-				54491F6B27B9FD7200E784D4 /* TodoContextMenuItems.swift */,
-			);
-			path = FirstView;
-			sourceTree = "<group>";
-		};
-		547F374227BDF2E700B18176 /* ThirdView */ = {
-			isa = PBXGroup;
-			children = (
-				547F373C27BDF13800B18176 /* ChartsSection.swift */,
-				547B175627BEB14A00F0C7F9 /* ChartPage.swift */,
-				547F373827BD6C2C00B18176 /* BarChart.swift */,
-				547B175A27BF5AE300F0C7F9 /* HighlightsSection.swift */,
-				547B175C27BF5C6C00F0C7F9 /* HorizontalBarChart.swift */,
-			);
-			path = ThirdView;
-			sourceTree = "<group>";
-		};
-		548CAA982801B43300C4A767 /* SecondLevel */ = {
-			isa = PBXGroup;
-			children = (
-				543559DA2802D663009D64F3 /* ThirdView */,
-			);
-			path = SecondLevel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,16 +321,15 @@
 				54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */,
 				547F36FD27BB9D6400B18176 /* SignInStateViewModel.swift in Sources */,
 				5418DC5B27B6534D007D98B0 /* UnachievedTodosViewModel.swift in Sources */,
-				547B175B27BF5AE300F0C7F9 /* HighlightsSection.swift in Sources */,
+				547B175B27BF5AE300F0C7F9 /* ComparisonSection.swift in Sources */,
 				54491F6427B9885900E784D4 /* DayConverter.swift in Sources */,
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
 				54633B1B280700F600B13303 /* Day.swift in Sources */,
-				54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* UnachievedTodosSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditView.swift in Sources */,
-				547B175D27BF5C6C00F0C7F9 /* HorizontalBarChart.swift in Sources */,
+				547B175D27BF5C6C00F0C7F9 /* ComparisonBarChart.swift in Sources */,
 				54540570280AB222009245D1 /* TodoRow.swift in Sources */,
 				547F373927BD6C2C00B18176 /* BarChart.swift in Sources */,
 				543559DC2802D8A5009D64F3 /* AccountView.swift in Sources */,
@@ -391,7 +339,7 @@
 				5418DC5D27B65BC0007D98B0 /* CreateView.swift in Sources */,
 				54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */,
 				5418DC3D27B64C4F007D98B0 /* TodoDiariesApp.swift in Sources */,
-				547F370327BBE61800B18176 /* CurrentUser.swift in Sources */,
+				547F370327BBE61800B18176 /* FireAuth.swift in Sources */,
 				547B175727BEB14A00F0C7F9 /* ChartPage.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
 				547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */,

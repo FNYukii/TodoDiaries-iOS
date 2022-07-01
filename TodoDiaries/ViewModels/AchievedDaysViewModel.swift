@@ -22,10 +22,9 @@ class AchievedDaysViewModel: ObservableObject {
             listener.remove()
         }
         
-        let userId = CurrentUser.userId()
         let db = Firestore.firestore()
         var query = db.collection("todos")
-            .whereField("userId", isEqualTo: userId)
+            .whereField("userId", isEqualTo: FireAuth.userId()!)
             .whereField("isAchieved", isEqualTo: true)
             .order(by: "achievedAt", descending: true)
         
@@ -40,7 +39,7 @@ class AchievedDaysViewModel: ObservableObject {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
-                print("HELLO! Success! Read Achieved Todos. size: \(snapshot.documents.count)")
+                print("HELLO! Success! Read \(snapshot.documents.count) Todos achieved.")
                 
                 self.documents = snapshot.documents
                 

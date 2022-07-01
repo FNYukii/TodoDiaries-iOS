@@ -8,11 +8,10 @@
 import SwiftUI
 import Charts
 
-struct HorizontalBarChart: UIViewRepresentable {
+struct ComparisonBarChart: UIViewRepresentable {
     
-    let value0: Double
-    let value1: Double
-    let xAxisLabels: [String]
+    let achieveCountAtYesterday: Double
+    let achieveCountAtToday: Double
     
     func makeUIView(context: Context) -> HorizontalBarChartView  {
         // HorizontalBarChartViewを生成
@@ -31,7 +30,7 @@ struct HorizontalBarChart: UIViewRepresentable {
         horizontalBarChartView.highlightPerTapEnabled = false //タップによるハイライト線表示
         
         horizontalBarChartView.xAxis.labelPosition = XAxis.LabelPosition.bottom // X軸ラベルの位置を右から左へ
-        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xAxisLabels) // X軸にラベルの文字列
+        horizontalBarChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: [NSLocalizedString("yesterday", comment: ""), NSLocalizedString("today", comment: "")]) // X軸にラベルの文字列
         horizontalBarChartView.xAxis.granularity = 1 // X軸の目盛りの粒度
         
         horizontalBarChartView.leftAxis.granularity = 1.0 //Y軸上ラベルの粒度
@@ -58,8 +57,8 @@ struct HorizontalBarChart: UIViewRepresentable {
     private func barChartData() -> BarChartData {
         // BarChartDataEntryを生成
         var barChartDataEntries : [BarChartDataEntry] = []
-        barChartDataEntries.append(BarChartDataEntry(x: 0.0, y: value0))
-        barChartDataEntries.append(BarChartDataEntry(x: 1.0, y: value1))
+        barChartDataEntries.append(BarChartDataEntry(x: 0.0, y: achieveCountAtYesterday))
+        barChartDataEntries.append(BarChartDataEntry(x: 1.0, y: achieveCountAtToday))
         
         // BarChartDataSetを生成
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
@@ -73,7 +72,7 @@ struct HorizontalBarChart: UIViewRepresentable {
     }
     
     private func yAxisMaximum() -> Double {
-        let maxCountOfTodoAchieved = [value0, value1].max() ?? 0
+        let maxCountOfTodoAchieved = [achieveCountAtYesterday, achieveCountAtToday].max() ?? 0
         if maxCountOfTodoAchieved > 5 {
             return Double(maxCountOfTodoAchieved)
         } else {
