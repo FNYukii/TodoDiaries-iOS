@@ -111,8 +111,6 @@ struct EditView: View {
                         // 達成済みのままで、achievedAtに変化があれば対応
                         if oldIsAchieved && isAchieved && oldAchievedAt != achievedAt {
                             FireTodo.updateTodo(id: id, achievedAt: achievedAt)
-                            FireCounter.decrement(achievedAt: oldAchievedAt!)
-                            FireCounter.increment(achievedAt: achievedAt)
                         }
                         isSended = true
                         dismiss()

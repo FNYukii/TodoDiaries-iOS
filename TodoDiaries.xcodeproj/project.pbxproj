@@ -51,7 +51,6 @@
 		547F373927BD6C2C00B18176 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* BarChart.swift */; };
 		547F373D27BDF13800B18176 /* ChartsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* ChartsSection.swift */; };
 		54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B469612802DC84007343A6 /* PrivacyPolicyView.swift */; };
-		54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54CC51BB27C32F790072A583 /* FireCounter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +93,6 @@
 		547F373827BD6C2C00B18176 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* ChartsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsSection.swift; sourceTree = "<group>"; };
 		54B469612802DC84007343A6 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
-		54CC51BB27C32F790072A583 /* FireCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCounter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				54491F7727BAB33D00E784D4 /* FireTodo.swift */,
-				54CC51BB27C32F790072A583 /* FireCounter.swift */,
 				54491F6327B9885900E784D4 /* DayConverter.swift */,
 				547F370227BBE61800B18176 /* CurrentUser.swift */,
 			);
@@ -330,7 +327,6 @@
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
 				54633B1B280700F600B13303 /* Day.swift in Sources */,
-				54CC51BC27C32F790072A583 /* FireCounter.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* UnachievedTodosSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditView.swift in Sources */,
 				547B175D27BF5C6C00F0C7F9 /* ComparisonBarChart.swift in Sources */,

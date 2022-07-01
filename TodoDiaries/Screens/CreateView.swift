@@ -67,9 +67,6 @@ struct CreateView: View {
                 ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         FireTodo.createTodo(content: content, isPinned: isPinned, isAchieved: isAchieved, achievedAt: achievedAt)
-                        if isAchieved {
-                            FireCounter.increment(achievedAt: achievedAt)
-                        }
                         isSended = true
                         dismiss()
                     }){

@@ -320,7 +320,6 @@ class FireTodo {
         if let achievedAt = achievedAt {
             updateTodo(id: id, achievedAt: achievedAt)
         }
-        FireCounter.increment(achievedAt: Date())
     }
     
     static func unachieveTodo(id: String, achievedAt: Date) {
@@ -328,7 +327,6 @@ class FireTodo {
         readMaxOrder(isPinned: false) { value in
             updateTodo(id: id, order: value + 100.0)
             updateTodo(id: id, isAchieved: false)
-            FireCounter.decrement(achievedAt: achievedAt)
         }
     }
     
@@ -341,10 +339,6 @@ class FireTodo {
                     print("HELLO! Fail! Error removing Todo: \(err)")
                 } else {
                     print("HELLO! Success! Removed Todo")
-                    // 達成済みTodoならCounterを更新
-                    if let achievedAt = achievedAt {
-                        FireCounter.decrement(achievedAt: achievedAt)
-                    }
                 }
             }
     }
