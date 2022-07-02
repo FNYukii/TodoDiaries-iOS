@@ -41,7 +41,7 @@ struct CreateView: View {
                     Toggle("pin", isOn: $isPinned)
                         .disabled(isAchieved)
                     // 達成切り替え
-                    Toggle("makeAchieved", isOn: $isAchieved.animation())
+                    Toggle("make_achieved", isOn: $isAchieved.animation())
                         .onChange(of: isAchieved) { value in
                             if isAchieved {
                                 withAnimation {
@@ -51,12 +51,12 @@ struct CreateView: View {
                         }
                     // DatePicker
                     if isAchieved {
-                        DatePicker("achievedAt", selection: $achievedAt)
+                        DatePicker("achieved_at", selection: $achievedAt)
                     }
                 }
             }
             
-            .navigationTitle("newTodo")
+            .navigationTitle("new_todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

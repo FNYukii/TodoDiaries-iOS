@@ -22,6 +22,10 @@ class AchievedDaysViewModel: ObservableObject {
             listener.remove()
         }
         
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         var query = db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
@@ -72,8 +76,10 @@ class AchievedDaysViewModel: ObservableObject {
                 }
                 
                 // プロパティに格納
-                self.days = days
-                self.isLoaded = true
+                withAnimation {
+                    self.days = days
+                    self.isLoaded = true
+                }
             }
     }
 }
