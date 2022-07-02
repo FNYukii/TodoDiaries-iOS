@@ -11,6 +11,11 @@ import Foundation
 class FireTodo {
     
     static func readMaxOrder(isPinned: Bool, completion: ((Double) -> Void)?){
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
@@ -33,6 +38,11 @@ class FireTodo {
     }
     
     static func readMinOrder(isPinned: Bool, completion: ((Double) -> Void)?){
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
@@ -55,6 +65,11 @@ class FireTodo {
     }
     
     static func readAchieveCountsAtMonth(year: Int, month: Int, completion: (([Int]) -> Void)?) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         // startDate
         let startDate = Calendar.current.date(from: DateComponents(year: year, month: month, day: 1, hour: 0, minute: 0, second: 0))
         // endDate
@@ -111,6 +126,11 @@ class FireTodo {
     }
     
     static func readAchieveCountAtDay(year: Int, month: Int, day: Int, completion: ((Int) -> Void)?) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         // startDate
         let startDate = Calendar.current.date(from: DateComponents(year: year, month: month, day: day, hour: 0, minute: 0, second: 0))
         // endDate
@@ -138,6 +158,11 @@ class FireTodo {
     }
     
     static func createTodo(content: String, isPinned: Bool, achievedAt: Date?) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         // order最大値を取得
         readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
@@ -161,6 +186,11 @@ class FireTodo {
     }
     
     static func updateTodo(id: String, content: String, achievedAt: Date?) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -177,6 +207,11 @@ class FireTodo {
     }
     
     static func updateTodo(id: String, order: Double?) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -231,6 +266,11 @@ class FireTodo {
     }
     
     static func pinTodo(id: String) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         // pinnedTodosのorder最大値を読み取り
         readMaxOrder(isPinned: true) { maxOrder in
             
@@ -252,6 +292,11 @@ class FireTodo {
     }
     
     static func unpinTodo(id: String) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         // unpinnedTodosのorder最小値を読み取り
         readMinOrder(isPinned: false) { minOrder in
             
@@ -273,6 +318,11 @@ class FireTodo {
     }
     
     static func achieveTodo(id: String, achievedAt: Date) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)
@@ -290,6 +340,11 @@ class FireTodo {
     }
     
     static func unachieveTodo(id: String, isMakePinned: Bool) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         // isPinnedも設定
         if isMakePinned {
             FireTodo.pinTodo(id: id)
@@ -313,6 +368,11 @@ class FireTodo {
     }
     
     static func deleteTodo(id: String) {
+        
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         db.collection("todos")
             .document(id)

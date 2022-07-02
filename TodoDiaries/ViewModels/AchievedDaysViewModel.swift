@@ -22,6 +22,10 @@ class AchievedDaysViewModel: ObservableObject {
             listener.remove()
         }
         
+        if FireAuth.userId() == nil {
+            return
+        }
+        
         let db = Firestore.firestore()
         var query = db.collection("todos")
             .whereField("userId", isEqualTo: FireAuth.userId()!)
