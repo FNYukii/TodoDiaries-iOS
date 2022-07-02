@@ -54,7 +54,7 @@ struct FirstView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    CustomEditButton()
+                    MyEditButton()
                 }
             }
         }

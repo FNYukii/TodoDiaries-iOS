@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomEditButton: View {
+struct MyEditButton: View {
     
     @Environment(\.editMode) private var editMode
     
