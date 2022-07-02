@@ -6,6 +6,11 @@
   
 */
 
+// ContentView
+"todos" = "Todo";
+"history" = "History";
+"stats" = "Stats";
+
 // WelcomeView
 "manage_your_todo" = "Manage your Todo";
 "save_what_you_want_to_do_and_what_you_need_to_do_in_this_app_and_manage_it_efficiently" = "Save what you want to do and what you neet to do in this app and manage it efficiently.";
@@ -16,7 +21,6 @@
 "sign_in_to_start" = "Sign in to start";
 
 // FirstView
-"todos" = "Todo";
 "edit" = "Edit";
 "done" = "Done";
 "newTodo" = "New Todo";
@@ -45,16 +49,11 @@
 "deleteTodo" = "Delete Todo";
 
 // SecondView
-"history" = "History";
 "load_more" = "Load more";
 "no_todo_achieved_yet" = "No Todo achieved yet.";
 "when_you_complete_todo_you_will_see_it_here" = "When you complete Todo, you will see it here.";
 
 // ThirdView
-"stats" = "Stats";
-"d" = "D";
-"m" = "M";
-"y" = "Y";
 "achievedTodos" = "Achieved Todos";
 "highlights" = "Highlights";
 "today" = "Today";
