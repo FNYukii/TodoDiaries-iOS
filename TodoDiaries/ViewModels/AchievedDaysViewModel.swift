@@ -72,8 +72,10 @@ class AchievedDaysViewModel: ObservableObject {
                 }
                 
                 // プロパティに格納
-                self.days = days
-                self.isLoaded = true
+                withAnimation {
+                    self.days = days
+                    self.isLoaded = true
+                }
             }
     }
 }
