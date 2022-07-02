@@ -23,7 +23,7 @@
 // FirstView
 "edit" = "Edit";
 "done" = "Done";
-"newTodo" = "New Todo";
+"new_todo" = "New Todo";
 "pinned" = "Pinned";
 "others" = "Others";
 "there_is_no_todo_yet" = "There is no Todo yet.";
@@ -32,21 +32,21 @@
 // ContextMenu
 "pin" = "Pin";
 "unpin" = "Unpin";
-"makeAchieved" = "Make achieved";
-"makeUnachieved" = "Make unachieved";
+"make_achieved" = "Make achieved";
+"make_unachieved" = "Make unachieved";
 "delete" = "Delete";
-"areYouSureYouWantToDeleteThisTodo" = "Are you sure you want to delete this Todo?";
+"are_you_sure_you_want_to_delete_this_todo" = "Are you sure you want to delete this Todo?";
 
 // CreateTodoView
 "cancel" = "Cancel";
 "add" = "Add";
 "todo" = "Todo";
 
-"achievedAt" = "AchievedAt";
+"achieved_at" = "AchievedAt";
 
 // EditTodoView
-"editTodo" = "Edit Todo";
-"deleteTodo" = "Delete Todo";
+"edit_todo" = "Edit Todo";
+"delete_todo" = "Delete Todo";
 
 // SecondView
 "load_more" = "Load more";
@@ -54,7 +54,7 @@
 "when_you_complete_todo_you_will_see_it_here" = "When you complete Todo, you will see it here.";
 
 // ThirdView
-"achievedTodos" = "Achieved Todos";
+"achieved_todos" = "Achieved Todos";
 "highlights" = "Highlights";
 "today" = "Today";
 "yesterday" = "Yesterday";
@@ -68,8 +68,8 @@
 
 // AccountView
 "email" = "Email";
-"signOut" = "Sign out";
-"areYouSureYouWantToSignOut" = "Are you sure you want to sign out?";
+"sign_out" = "Sign out";
+"are_you_sure_you_want_to_sign_out" = "Are you sure you want to sign out?";
 
 // AboutView
-"todo-diaries" = "Todo Diaries";
+"todo_diaries" = "Todo Diaries";

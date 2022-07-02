@@ -51,7 +51,7 @@ struct EditView: View {
                     Toggle("pin", isOn: $isPinned)
                         .disabled(isAchieved)
                     // 達成切り替え
-                    Toggle("makeAchieved", isOn: $isAchieved.animation())
+                    Toggle("make_achieved", isOn: $isAchieved.animation())
                         .onChange(of: isAchieved) { value in
                             if isAchieved {
                                 withAnimation {
@@ -61,26 +61,26 @@ struct EditView: View {
                         }
                     // DatePicker
                     if isAchieved {
-                        DatePicker("achievedAt", selection: $achievedAt)
+                        DatePicker("achieved_at", selection: $achievedAt)
                     }
                 }
                 
                 Button(action: {
                     isConfirming.toggle()
                 }){
-                    Text("deleteTodo")
+                    Text("delete_todo")
                         .foregroundColor(.red)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
-                    Button("deleteTodo", role: .destructive) {
+                .confirmationDialog("are_you_sure_you_want_to_delete_this_todo", isPresented: $isConfirming, titleVisibility: .visible) {
+                    Button("delete_todo", role: .destructive) {
                         FireTodo.deleteTodo(id: id)
                         dismiss()
                     }
                 }
             }
             
-            .navigationTitle("editTodo")
+            .navigationTitle("edit_todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

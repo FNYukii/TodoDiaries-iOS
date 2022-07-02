@@ -23,7 +23,7 @@
 // FirstView
 "edit" = "編集";
 "done" = "完了";
-"newTodo" = "新規Todo";
+"new_todo" = "新規Todo";
 "pinned" = "固定済み";
 "others" = "その他";
 "there_is_no_todo_yet" = "まだTodoはありません。";
@@ -32,21 +32,21 @@
 // ContextMenu
 "pin" = "固定する";
 "unpin" = "固定を解除";
-"makeAchieved" = "達成済みにする";
-"makeUnachieved" = "未達成にする";
+"make_achieved" = "達成済みにする";
+"make_unachieved" = "未達成にする";
 "delete" = "削除";
-"areYouSureYouWantToDeleteThisTodo" = "このTodoを削除してもよろしいですか?";
+"are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";
 
 // CreateTodoView
 "cancel" = "キャンセル";
 "add" = "追加";
 "todo" = "Todo";
 
-"achievedAt" = "達成日時";
+"achieved_at" = "達成日時";
 
 // EditTodoView
-"editTodo" = "Todoを編集";
-"deleteTodo" = "Todoを削除";
+"edit_todo" = "Todoを編集";
+"delete_todo" = "Todoを削除";
 
 // SecondView
 "load_more" = "さらに読み込む";
@@ -54,7 +54,7 @@
 "when_you_complete_todo_you_will_see_it_here" = "Todoを達成するとここに表示されます。";
 
 // ThirdView
-"achievedTodos" = "達成したTodo";
+"achieved_todos" = "達成したTodo";
 "highlights" = "ハイライト";
 "today" = "今日";
 "yesterday" = "昨日";
@@ -68,8 +68,8 @@
 
 // AccountView
 "email" = "メールアドレス";
-"signOut" = "サインアウト";
-"areYouSureYouWantToSignOut" = "サインアウトしてもよろしいですか?";
+"sign_out" = "サインアウト";
+"are_you_sure_you_want_to_sign_out" = "サインアウトしてもよろしいですか?";
 
 // AboutView
-"todo-diaries" = "Todo Diaries";
+"todo_diaries" = "Todo Diaries";

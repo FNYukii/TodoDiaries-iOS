@@ -58,7 +58,7 @@ struct TodoRow: View {
                 Button(action: {
                     FireTodo.achieveTodo(id: todo.id, achievedAt: Date())
                 }) {
-                    Label("makeAchieved", systemImage: "checkmark")
+                    Label("make_achieved", systemImage: "checkmark")
                 }
             }
             
@@ -66,7 +66,7 @@ struct TodoRow: View {
                 Button(action: {
                     FireTodo.unachieveTodo(id: todo.id, isMakePinned: false)
                 }) {
-                    Label("makeUnachieved", systemImage: "xmark")
+                    Label("make_unachieved", systemImage: "xmark")
                 }
             }
             
@@ -128,8 +128,8 @@ struct TodoRow: View {
         }
         
         // Dialog
-        .confirmationDialog("areYouSureYouWantToDeleteThisTodo", isPresented: $isConfirming, titleVisibility: .visible) {
-            Button("deleteTodo", role: .destructive) {
+        .confirmationDialog("are_you_sure_you_want_to_delete_this_todo", isPresented: $isConfirming, titleVisibility: .visible) {
+            Button("delete_todo", role: .destructive) {
                 FireTodo.deleteTodo(id: todo.id)
             }
         } message: {

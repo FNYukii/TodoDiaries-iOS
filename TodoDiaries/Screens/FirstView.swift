@@ -49,7 +49,7 @@ struct FirstView: View {
                     }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
-                            Text("newTodo")
+                            Text("new_todo")
                         }
                     }
                 }

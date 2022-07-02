@@ -17,7 +17,7 @@ struct AboutView: View {
                         .resizable()
                         .frame(width: 50, height: 50)
                         .cornerRadius(8)
-                    Text("todo-diaries")
+                    Text("todo_diaries")
                     Text("Version 0.8.2")
                         .foregroundColor(.secondary)                    
                 }

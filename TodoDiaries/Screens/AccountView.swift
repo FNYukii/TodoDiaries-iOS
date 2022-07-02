@@ -27,13 +27,13 @@ struct AccountView: View {
                 }
             }
             
-            Button("signOut") {
+            Button("sign_out") {
                 isConfirming.toggle()
             }
             .foregroundColor(.red)
             .frame(maxWidth: .infinity, alignment: .center)
-            .confirmationDialog("areYouSureYouWantToSignOut", isPresented: $isConfirming, titleVisibility: .visible) {
-                Button("signOut", role: .destructive) {
+            .confirmationDialog("are_you_sure_you_want_to_sign_out", isPresented: $isConfirming, titleVisibility: .visible) {
+                Button("sign_out", role: .destructive) {
                     FireAuth.signOut()
                 }
             }
