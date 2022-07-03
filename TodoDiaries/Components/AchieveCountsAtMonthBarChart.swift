@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct BarChart: UIViewRepresentable {
+struct AchieveCountsAtMonthBarChart: UIViewRepresentable {
     
     let countsOfTodoAchieved: [Int]
     

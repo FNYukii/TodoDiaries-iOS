@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ComparisonSection: View {
+struct AchieveCountsAt2DaysSection: View {
     
     @State private var message = ""
     
@@ -47,7 +47,7 @@ struct ComparisonSection: View {
                     }
 
                     // BarChart
-                    ComparisonBarChart(achieveCountAtYesterday: achieveCountAtYesterday, achieveCountAtToday: achieveCountAtToday)
+                    AchieveCountsAt2DaysBarChart(achieveCountAtYesterday: achieveCountAtYesterday, achieveCountAtToday: achieveCountAtToday)
                         .frame(height: 150)
                 }
                 .frame(height: 230)

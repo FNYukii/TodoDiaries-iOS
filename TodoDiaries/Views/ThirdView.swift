@@ -12,8 +12,8 @@ struct ThirdView: View {
     var body: some View {
         NavigationView {
             List {
-                ChartsSection()
-                ComparisonSection()
+                AchieveCountsAtMonthSection()
+                AchieveCountsAt2DaysSection()
                 Section {
                     NavigationLink(destination: AccountView()) {
                         Text("account")

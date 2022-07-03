@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChartsSection: View {
+struct AchieveCountsAtMonthSection: View {
     
     @State private var pageSelection = 0
     
@@ -16,7 +16,7 @@ struct ChartsSection: View {
             
             TabView(selection: $pageSelection) {
                 ForEach(-50 ..< 51){ index in
-                    ChartPage(pageOffset: index)
+                    AchieveCountsAtMonthPage(pageOffset: index)
                         .tag(index)
                 }
             }

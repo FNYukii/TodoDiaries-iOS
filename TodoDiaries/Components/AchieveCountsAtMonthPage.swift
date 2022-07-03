@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChartPage: View {
+struct AchieveCountsAtMonthPage: View {
     
     let pageOffset: Int
     
@@ -36,7 +36,7 @@ struct ChartPage: View {
                     Text("\(countsOfTodoAchieved.reduce(0) { $0 + $1 })")
                 }
                 .foregroundColor(.secondary)
-                BarChart(countsOfTodoAchieved: countsOfTodoAchieved)
+                AchieveCountsAtMonthBarChart(countsOfTodoAchieved: countsOfTodoAchieved)
                     .padding(.bottom)
             }
         }

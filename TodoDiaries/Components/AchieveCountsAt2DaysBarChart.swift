@@ -8,7 +8,7 @@
 import SwiftUI
 import Charts
 
-struct ComparisonBarChart: UIViewRepresentable {
+struct AchieveCountsAt2DaysBarChart: UIViewRepresentable {
     
     let achieveCountAtYesterday: Double
     let achieveCountAtToday: Double
