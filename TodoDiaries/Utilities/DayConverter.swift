@@ -72,9 +72,9 @@ class DayConverter {
         return dateFormatter.string(from: date)
     }
     
-    // Date -> "February 2022", "2022年 2月"
-    static func toStringUpToMonth(from: DateComponents) -> String {
-        let date = Calendar.current.date(from: from)!
+    // 年・月 -> "February 2022", "2022年 2月"
+    static func toStringUpToMonth(year: Int, month: Int) -> String {
+        let date = Calendar.current.date(from: DateComponents(year: year, month: month))!
         let dateFormatter = DateFormatter()
         dateFormatter.setLocalizedDateFormatFromTemplate("YYYY MMMM")
         return dateFormatter.string(from: date)
@@ -158,12 +158,12 @@ class DayConverter {
         return date
     }
         
-    // 月単位でシフトされた、年・月が入ったDateComponents
-    static func nowShiftedByMonth(offset: Int) -> DateComponents {
+    // 月単位でシフトされた日付の年・月
+    static func nowShiftedByMonth(offset: Int) -> (year: Int, month: Int) {
         let date = Date()
         let shiftedDate = Calendar.current.date(byAdding: .month, value: offset, to: date)!
         let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
-        return dateComponents
+        return (dateComponents.year!, dateComponents.month!)
     }
     
 }

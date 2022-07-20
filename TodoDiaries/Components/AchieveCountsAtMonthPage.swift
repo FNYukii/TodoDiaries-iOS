@@ -46,9 +46,9 @@ struct AchieveCountsAtMonthPage: View {
         // 現在日時と表示日時の差を表すshiftedNowを生成
         let shiftedNow = DayConverter.nowShiftedByMonth(offset: pageOffset)
         // ページタイトルを変更
-        self.pageTitle = DayConverter.toStringUpToMonth(from: shiftedNow)
+        self.pageTitle = DayConverter.toStringUpToMonth(year: shiftedNow.year, month: shiftedNow.month)
         // この年月の達成counts配列を取得
-        FireTodo.readAchieveCountsAtMonth(year: shiftedNow.year!, month: shiftedNow.month!) { counts in
+        FireTodo.readAchieveCountsAtMonth(year: shiftedNow.year, month: shiftedNow.month) { counts in
             self.countsOfTodoAchieved = counts
             self.isLoaded = true
         }
