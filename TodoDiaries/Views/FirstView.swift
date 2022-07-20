@@ -28,6 +28,13 @@ struct FirstView: View {
                     }
                 }
                 
+                if pinnedTodosViewModel.todos.count == 0 && unpinnedTodosViewModel.todos.count == 0 {
+                    if !pinnedTodosViewModel.isLoaded || !unpinnedTodosViewModel.isLoaded {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                    }
+                }
+                
                 if pinnedTodosViewModel.todos.count == 0 && unpinnedTodosViewModel.todos.count == 0 && pinnedTodosViewModel.isLoaded && unpinnedTodosViewModel.isLoaded {
                     VStack {
                         Text("there_is_no_todo_yet")

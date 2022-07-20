@@ -28,15 +28,18 @@ class UnachievedTodosViewModel: ObservableObject {
                     }
                     print("HELLO! Success! Read \(snapshot.documents.count) Todos \(isPinned ? "pinned" : "unpinned").")
                     
+                    // Todos
                     var todos: [Todo] = []
                     snapshot.documents.forEach { document in
                         let todo = Todo(document: document)
                         todos.append(todo)
                     }
+                    
+                    // Set values
                     withAnimation {
                         self.todos = todos
+                        self.isLoaded = true
                     }
-                    self.isLoaded = true
                 }
         }
     }
