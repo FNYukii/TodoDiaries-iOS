@@ -157,15 +157,7 @@ class DayConverter {
         let date = DateComponents(calendar: Calendar.current, year: year, month: month, day: day).date!
         return date
     }
-    
-    // 年単位でシフトされた、年が入ったDateComponents
-    static func nowShiftedByYear(offset: Int) -> DateComponents {
-        let date = Date()
-        let shiftedDate = Calendar.current.date(byAdding: .year, value: offset, to: date)!
-        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
-        return dateComponents
-    }
-    
+        
     // 月単位でシフトされた、年・月が入ったDateComponents
     static func nowShiftedByMonth(offset: Int) -> DateComponents {
         let date = Date()
@@ -174,11 +166,4 @@ class DayConverter {
         return dateComponents
     }
     
-    //　日単位でシフトされた、年・月・日が入ったDateComponents
-    static func nowShiftedByDay(offset: Int) -> DateComponents {
-        let date = Date()
-        let shiftedDate = Calendar.current.date(byAdding: .day, value: offset, to: date)!
-        let dateComponents = Calendar.current.dateComponents(in: TimeZone.current, from: shiftedDate)
-        return dateComponents
-    }
 }
