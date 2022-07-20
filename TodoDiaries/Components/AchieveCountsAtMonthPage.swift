@@ -13,8 +13,6 @@ struct AchieveCountsAtMonthPage: View {
     
     @State private var countsOfTodoAchieved: [Int] = []
     @State private var pageTitle = ""
-    
-    @State private var isAppeared = false
     @State private var isLoaded = false
     
     var body: some View {
