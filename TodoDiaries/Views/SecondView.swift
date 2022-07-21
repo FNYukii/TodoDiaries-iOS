@@ -39,7 +39,7 @@ struct SecondView: View {
                             limit += 50
                             achievedDaysViewModel.read(limit: limit)
                         }) {
-                            if limit == achievedDaysViewModel.documents.count {
+                            if limit == achievedDaysViewModel.todoCount {
                                 Text("load_more")
                             }
                         }

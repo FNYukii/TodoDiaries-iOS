@@ -11,8 +11,8 @@ import Firebase
 class AchievedDaysViewModel: ObservableObject {
     
     @Published var achievedDays: [AchievedDay] = []
+    @Published var todoCount = 0
     @Published var isLoaded = false
-    @Published var documents: [QueryDocumentSnapshot] = []
     
     private var listener: ListenerRegistration? = nil
     
@@ -39,13 +39,12 @@ class AchievedDaysViewModel: ObservableObject {
         
         listener = query
             .addSnapshotListener {(snapshot, error) in
+                // エラー処理
                 guard let snapshot = snapshot else {
                     print("HELLO! Fail! Error fetching snapshots: \(error!)")
                     return
                 }
                 print("HELLO! Success! Read \(snapshot.documents.count) Todos achieved.")
-                
-                self.documents = snapshot.documents
                 
                 // Todosを生成
                 var todos: [Todo] = []
@@ -58,7 +57,6 @@ class AchievedDaysViewModel: ObservableObject {
                 var achievedDays: [AchievedDay] = []
                 var counter = 0
                 for index in 0 ..< todos.count {
-                    
                     // ループ初回
                     if index == 0 {
                         // 0番目のTodoの達成年月日
@@ -102,6 +100,7 @@ class AchievedDaysViewModel: ObservableObject {
                 // Viewに反映
                 withAnimation {
                     self.achievedDays = achievedDays
+                    self.todoCount = todos.count
                     self.isLoaded = true
                 }
             }
