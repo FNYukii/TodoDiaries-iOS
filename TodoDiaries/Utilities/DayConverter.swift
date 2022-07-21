@@ -39,7 +39,7 @@ class DayConverter {
         return dayCount
     }
         
-    // 20220721: Int -> "Sunday, February 13, 2022", "2022年2月13日 日曜日"
+    // 20220721: Int -> "Sunday, February 13, 2022" / "2022年2月13日 日曜日"
     static func toStringUpToWeekday(from: Int) -> String {
         let date = toDate(from: from)
         let dateFormatter = DateFormatter()
@@ -54,7 +54,7 @@ class DayConverter {
         return dateFormatter.string(from: from)
     }
     
-    // 年・月 -> "February 2022", "2022年 2月"
+    // 年・月 -> "February 2022" / "2022年 2月"
     static func toStringUpToMonth(year: Int, month: Int) -> String {
         let date = Calendar.current.date(from: DateComponents(year: year, month: month))!
         let dateFormatter = DateFormatter()
@@ -62,7 +62,7 @@ class DayConverter {
         return dateFormatter.string(from: date)
     }
     
-    // ["1", "2", "3", ...] , ["1日", "2日", "3日", ...]
+    // ["1", "2", "3", ...] / ["1日", "2日", "3日", ...]
     static func dayStrings() -> [String] {
         var dayStrings: [String] = []
         for index in 0 ..< 31 {
