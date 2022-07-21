@@ -49,6 +49,7 @@
 		547F373527BD0C5B00B18176 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373427BD0C5B00B18176 /* FirebaseFirestore */; };
 		547F373927BD6C2C00B18176 /* AchieveCountsAtMonthBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* AchieveCountsAtMonthBarChart.swift */; };
 		547F373D27BDF13800B18176 /* AchieveCountsAtMonthSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* AchieveCountsAtMonthSection.swift */; };
+		54A663822888F802001C99F4 /* AchievedDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A663812888F802001C99F4 /* AchievedDay.swift */; };
 		54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B469612802DC84007343A6 /* PrivacyPolicyView.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 		547F370227BBE61800B18176 /* FireAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAuth.swift; sourceTree = "<group>"; };
 		547F373827BD6C2C00B18176 /* AchieveCountsAtMonthBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCountsAtMonthBarChart.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* AchieveCountsAtMonthSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCountsAtMonthSection.swift; sourceTree = "<group>"; };
+		54A663812888F802001C99F4 /* AchievedDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDay.swift; sourceTree = "<group>"; };
 		54B469612802DC84007343A6 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +182,7 @@
 			children = (
 				5418DC5827B652C7007D98B0 /* Todo.swift */,
 				54633B1A280700F600B13303 /* Day.swift */,
+				54A663812888F802001C99F4 /* AchievedDay.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				547B175727BEB14A00F0C7F9 /* AchieveCountsAtMonthPage.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
 				547F373D27BDF13800B18176 /* AchieveCountsAtMonthSection.swift in Sources */,
+				54A663822888F802001C99F4 /* AchievedDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

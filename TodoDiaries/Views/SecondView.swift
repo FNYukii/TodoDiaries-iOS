@@ -27,9 +27,9 @@ struct SecondView: View {
                 
                 if achievedDaysViewModel.isLoaded {
                     List {
-                        ForEach(achievedDaysViewModel.days) { day in
-                            Section(header: Text("\(DayConverter.toStringUpToWeekday(from: day.ymd))")) {
-                                ForEach(day.achievedTodos) { todo in
+                        ForEach(achievedDaysViewModel.achievedDays) { achievedDay in
+                            Section(header: Text("\(DayConverter.toStringUpToWeekday(year: achievedDay.year, month: achievedDay.month, day: achievedDay.day))")) {
+                                ForEach(achievedDay.achievedTodos) { todo in
                                     TodoRow(todo: todo)
                                 }
                             }
@@ -47,7 +47,7 @@ struct SecondView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                     }
                     
-                    if achievedDaysViewModel.days.count == 0 {
+                    if achievedDaysViewModel.achievedDays.count == 0 {
                         VStack {
                             Text("no_todo_achieved_yet")
                             Text("when_you_complete_todo_you_will_see_it_here")

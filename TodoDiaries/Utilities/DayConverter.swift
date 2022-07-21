@@ -47,6 +47,14 @@ class DayConverter {
         return dateFormatter.string(from: date)
     }
     
+    // 2022, 7, 21 -> "Sunday, February 13, 2022" / "2022年2月13日 日曜日"
+    static func toStringUpToWeekday(year: Int, month: Int, day: Int) -> String {
+        let date = Calendar.current.date(from: DateComponents(year: year, month: month, day: day))!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
+        return dateFormatter.string(from: date)
+    }
+    
     // Date -> "7:31 PM", "19:31"
     static func toTimeString(from: Date) -> String {
         let dateFormatter = DateFormatter()
