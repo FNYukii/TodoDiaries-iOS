@@ -31,7 +31,6 @@
 		54540570280AB222009245D1 /* TodoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5454056F280AB222009245D1 /* TodoRow.swift */; };
 		54550022285C8A3800F6F886 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 54550021285C8A3800F6F886 /* Charts */; };
 		5458771327C13DC700D24959 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5458771527C13DC700D24959 /* InfoPlist.strings */; };
-		54633B1B280700F600B13303 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1A280700F600B13303 /* Day.swift */; };
 		54633B1D2807017E00B13303 /* AchievedDaysViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */; };
 		547B175727BEB14A00F0C7F9 /* AchieveCountsAtMonthPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175627BEB14A00F0C7F9 /* AchieveCountsAtMonthPage.swift */; };
 		547B175B27BF5AE300F0C7F9 /* AchieveCountsAt2DaysSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547B175A27BF5AE300F0C7F9 /* AchieveCountsAt2DaysSection.swift */; };
@@ -49,6 +48,7 @@
 		547F373527BD0C5B00B18176 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 547F373427BD0C5B00B18176 /* FirebaseFirestore */; };
 		547F373927BD6C2C00B18176 /* AchieveCountsAtMonthBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373827BD6C2C00B18176 /* AchieveCountsAtMonthBarChart.swift */; };
 		547F373D27BDF13800B18176 /* AchieveCountsAtMonthSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547F373C27BDF13800B18176 /* AchieveCountsAtMonthSection.swift */; };
+		54A663822888F802001C99F4 /* AchievedDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54A663812888F802001C99F4 /* AchievedDay.swift */; };
 		54B469622802DC84007343A6 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B469612802DC84007343A6 /* PrivacyPolicyView.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +79,6 @@
 		5454056F280AB222009245D1 /* TodoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRow.swift; sourceTree = "<group>"; };
 		5458771427C13DC700D24959 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5458771627C13DEC00D24959 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		54633B1A280700F600B13303 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		54633B1C2807017E00B13303 /* AchievedDaysViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDaysViewModel.swift; sourceTree = "<group>"; };
 		547B175627BEB14A00F0C7F9 /* AchieveCountsAtMonthPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCountsAtMonthPage.swift; sourceTree = "<group>"; };
 		547B175A27BF5AE300F0C7F9 /* AchieveCountsAt2DaysSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCountsAt2DaysSection.swift; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		547F370227BBE61800B18176 /* FireAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireAuth.swift; sourceTree = "<group>"; };
 		547F373827BD6C2C00B18176 /* AchieveCountsAtMonthBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCountsAtMonthBarChart.swift; sourceTree = "<group>"; };
 		547F373C27BDF13800B18176 /* AchieveCountsAtMonthSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchieveCountsAtMonthSection.swift; sourceTree = "<group>"; };
+		54A663812888F802001C99F4 /* AchievedDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievedDay.swift; sourceTree = "<group>"; };
 		54B469612802DC84007343A6 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,7 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				5418DC5827B652C7007D98B0 /* Todo.swift */,
-				54633B1A280700F600B13303 /* Day.swift */,
+				54A663812888F802001C99F4 /* AchievedDay.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -323,7 +323,6 @@
 				5418DC6527B674CF007D98B0 /* SecondView.swift in Sources */,
 				5418DC3F27B64C4F007D98B0 /* ContentView.swift in Sources */,
 				547F36FB27BB9C7300B18176 /* FirebaseAuthView.swift in Sources */,
-				54633B1B280700F600B13303 /* Day.swift in Sources */,
 				54491F7A27BACEB700E784D4 /* UnachievedTodosSection.swift in Sources */,
 				5418DC6127B6680F007D98B0 /* EditView.swift in Sources */,
 				547B175D27BF5C6C00F0C7F9 /* AchieveCountsAt2DaysBarChart.swift in Sources */,
@@ -339,6 +338,7 @@
 				547B175727BEB14A00F0C7F9 /* AchieveCountsAtMonthPage.swift in Sources */,
 				547F36FF27BBA05A00B18176 /* WelcomeView.swift in Sources */,
 				547F373D27BDF13800B18176 /* AchieveCountsAtMonthSection.swift in Sources */,
+				54A663822888F802001C99F4 /* AchievedDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
