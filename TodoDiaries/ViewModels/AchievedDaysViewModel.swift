@@ -10,7 +10,6 @@ import Firebase
 
 class AchievedDaysViewModel: ObservableObject {
     
-//    @Published var days: [Day] = []
     @Published var achievedDays: [AchievedDay] = []
     @Published var isLoaded = false
     @Published var documents: [QueryDocumentSnapshot] = []
@@ -48,40 +47,14 @@ class AchievedDaysViewModel: ObservableObject {
                 
                 self.documents = snapshot.documents
                 
-//                // すべての達成済みTodoの配列
-//                var achievedTodos: [Todo] = []
-//                snapshot.documents.forEach { document in
-//                    let todo = Todo(document: document)
-//                    achievedTodos.append(todo)
-//                }
-//
-//                // 配列daysを生成
-//                var days: [Day] = []
-//                var counter = 0
-//                for index in 0 ..< achievedTodos.count {
-//                    // ループ初回。daysの最初の要素としてDayを追加
-//                    if index == 0 {
-//                        days.append(Day(ymd: DayConverter.toInt(from: achievedTodos[0].achievedAt!), achievedTodos: []))
-//                    }
-//                    // ループ2回目以降。前回のachievedTodoの達成日と比較。違ったらdaysに新しいDayを追加
-//                    if index > 0 {
-//                        let prevAchievedYmd = DayConverter.toInt(from: achievedTodos[index - 1].achievedAt!)
-//                        let currentAchievedYmd = DayConverter.toInt(from: achievedTodos[index].achievedAt!)
-//                        if prevAchievedYmd != currentAchievedYmd {
-//                            counter += 1
-//                            days.append(Day(ymd: DayConverter.toInt(from: achievedTodos[index].achievedAt!), achievedTodos: []))
-//                        }
-//                    }
-//                    // Day.achievedTodosにachivedTodoを追加
-//                    days[counter].achievedTodos.append(achievedTodos[index])
-//                }
-                                
+                // Todosを生成
                 var todos: [Todo] = []
                 snapshot.documents.forEach { document in
                     let todo = Todo(document: document)
                     todos.append(todo)
                 }
                 
+                // 配列achievedDaysを生成
                 var achievedDays: [AchievedDay] = []
                 var counter = 0
                 for index in 0 ..< todos.count {
@@ -131,14 +104,6 @@ class AchievedDaysViewModel: ObservableObject {
                     self.achievedDays = achievedDays
                     self.isLoaded = true
                 }
-                
-                
-
-//                // プロパティに格納
-//                withAnimation {
-//                    self.days = days
-//                    self.isLoaded = true
-//                }
             }
     }
 }
