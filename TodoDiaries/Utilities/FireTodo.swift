@@ -157,7 +157,7 @@ class FireTodo {
             }
     }
     
-    static func createTodo(content: String, isPinned: Bool, achievedAt: Date?) {
+    static func createTodo(content: String, isPinned: Bool, achievedAt: Date?, completion: ((String?) -> Void)?) {
         
         if FireAuth.userId() == nil {
             return
@@ -167,7 +167,8 @@ class FireTodo {
         readMaxOrder(isPinned: isPinned) { maxOrder in
             // ドキュメント追加
             let db = Firestore.firestore()
-            db.collection("todos")
+            var ref: DocumentReference? = nil
+            ref = db.collection("todos")
                 .addDocument(data: [
                     "userId": FireAuth.userId()!,
                     "content": content,
@@ -176,11 +177,16 @@ class FireTodo {
                     "achievedAt": achievedAt as Any,
                     "order": (achievedAt == nil ? maxOrder + 100 : nil) as Any
                 ]) { error in
+                    // 失敗
                     if let error = error {
-                        print("HELLO! Fail! Error adding new Todo: \(error)")
-                    } else {
-                        print("HELLO! Success! Created 1 Todo.")
+                        print("HELLO! Fail! Error adding new Todo. \(error)")
+                        completion?(nil)
+                        return
                     }
+                    
+                    // 成功
+                    print("HELLO! Success! Added 1 Todo.")
+                    completion?(ref!.documentID)
                 }
         }
     }
