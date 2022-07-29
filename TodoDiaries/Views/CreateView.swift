@@ -10,14 +10,19 @@ import Introspect
 
 struct CreateView: View {
     
+    // Environments
     @Environment(\.dismiss) private var dismiss
     
+    // States
     @State private var content = ""
     @State private var isPinned = false
     @State private var achievedAt: Date = Date()
     
     @State private var isAchieved = false
-    @State private var isSended = false
+    
+    // Loadings
+    @State private var isLoading = false
+    @State private var isShowDialogError = false
     
     var body: some View {
         NavigationView {
@@ -56,6 +61,14 @@ struct CreateView: View {
                 }
             }
             
+            .alert("failed", isPresented: $isShowDialogError) {
+                Button("ok") {
+                    isShowDialogError = false
+                }
+            } message: {
+                Text("todo_creation_failed")
+            }
+            
             .navigationTitle("new_todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -64,16 +77,34 @@ struct CreateView: View {
                         dismiss()
                     }
                 }
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: {
-                        FireTodo.createTodo(content: content, isPinned: isPinned, achievedAt: isAchieved ? achievedAt : nil)
-                        isSended = true
-                        dismiss()
-                    }){
-                        Text("add")
-                            .fontWeight(.bold)
+                ToolbarItemGroup(placement: .primaryAction) {
+                    // Create Button
+                    if !isLoading {
+                        Button(action: {
+                            isLoading = true
+                            FireTodo.createTodo(content: content, isPinned: isPinned, achievedAt: isAchieved ? achievedAt : nil) { documentId in
+                                // 失敗
+                                if documentId == nil {
+                                    isLoading = false
+                                    isShowDialogError = true
+                                    return
+                                }
+                                
+                                // 成功
+                                dismiss()
+                            }
+                        }){
+                            Text("add")
+                                .fontWeight(.bold)
+                        }
+                        .disabled(content.isEmpty)
                     }
-                    .disabled(content.isEmpty || isSended)
+                    
+                    // Progress View
+                    if isLoading {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                    }
                 }
             }
         }
