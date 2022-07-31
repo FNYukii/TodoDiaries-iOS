@@ -20,10 +20,6 @@ struct CreateView: View {
     
     @State private var isAchieved = false
     
-    // Loadings
-    @State private var isLoading = false
-    @State private var isShowDialogError = false
-    
     var body: some View {
         NavigationView {
             
@@ -61,14 +57,6 @@ struct CreateView: View {
                 }
             }
             
-            .alert("failed", isPresented: $isShowDialogError) {
-                Button("ok") {
-                    isShowDialogError = false
-                }
-            } message: {
-                Text("todo_creation_failed")
-            }
-            
             .navigationTitle("new_todo")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -77,34 +65,17 @@ struct CreateView: View {
                         dismiss()
                     }
                 }
-                ToolbarItemGroup(placement: .primaryAction) {
-                    // Create Button
-                    if !isLoading {
-                        Button(action: {
-                            isLoading = true
-                            FireTodo.createTodo(content: content, isPinned: isPinned, achievedAt: isAchieved ? achievedAt : nil) { documentId in
-                                // 失敗
-                                if documentId == nil {
-                                    isLoading = false
-                                    isShowDialogError = true
-                                    return
-                                }
-                                
-                                // 成功
-                                dismiss()
-                            }
-                        }){
-                            Text("add")
-                                .fontWeight(.bold)
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {
+                        FireTodo.createTodo(content: content, isPinned: isPinned, achievedAt: isAchieved ? achievedAt : nil) { documentId in
+                            // Do nothing
                         }
-                        .disabled(content.isEmpty)
+                        dismiss()
+                    }){
+                        Text("add")
+                            .fontWeight(.bold)
                     }
-                    
-                    // Progress View
-                    if isLoading {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                    }
+                    .disabled(content.isEmpty)
                 }
             }
         }
