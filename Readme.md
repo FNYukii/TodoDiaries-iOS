@@ -24,6 +24,12 @@ iOS向けのTodo管理アプリです。
 
 ## スクリーンショット
 <div style="display: flex; justify-content: space-between;">
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/187866777-2ec98532-80ab-4231-89f4-0bf93123e4b2.png"/>
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/187867052-59996553-c0f1-4db8-8da9-9ce08fb534bf.png"/>
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/187866787-768862c7-1dd9-4583-a9b0-a42cf08ba02b.png"/>
+</div>
+
+<div style="display: flex; justify-content: space-between;">
   <img style="display: block; width: 30%;" src="https://i.imgur.com/9pnp9pB.png"/>
   <img style="display: block; width: 30%;" src="https://i.imgur.com/1Y5il0D.png"/>
   <img style="display: block; width: 30%;" src="https://i.imgur.com/wSTTtei.png"/>
