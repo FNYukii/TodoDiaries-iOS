@@ -26,5 +26,5 @@ iOS向けのTodo管理アプリです。
 <div style="display: flex; justify-content: space-between;">
   <img style="display: block; width: 30%;" src="https://i.imgur.com/9pnp9pB.png"/>
   <img style="display: block; width: 30%;" src="https://i.imgur.com/1Y5il0D.png"/>
-  <img style="display: block; width: 30%;" src="https://i.imgur.com/wSTTtei.png"/>
+  <img style="display: block; width: 30%;" src="https://user-images.githubusercontent.com/65577595/214471327-0f41cb39-b08e-4a3c-af73-b839a1311e73.png"/>
 </div>
