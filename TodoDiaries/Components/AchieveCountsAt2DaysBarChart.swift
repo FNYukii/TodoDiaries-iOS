@@ -64,8 +64,8 @@ struct AchieveCountsAt2DaysBarChart: UIViewRepresentable {
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
         barChartDataSet.colors = [UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5) , UIColor.systemBlue] // 棒の色
         // BarChartDataを生成
-        let barChartData = BarChartData()
-        barChartData.addDataSet(barChartDataSet)
+        let barChartData = BarChartData(dataSet: barChartDataSet)
+//        barChartData.addDataSet(barChartDataSet)
         barChartData.setDrawValues(false) // 棒の右の値
         barChartData.barWidth = 0.5 // 棒の幅
         return barChartData

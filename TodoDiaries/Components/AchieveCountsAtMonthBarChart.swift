@@ -64,8 +64,8 @@ struct AchieveCountsAtMonthBarChart: UIViewRepresentable {
         let barChartDataSet = BarChartDataSet(barChartDataEntries)
         barChartDataSet.setColor(UIColor.systemBlue)
         // BarChartDataを生成
-        let barChartData = BarChartData()
-        barChartData.addDataSet(barChartDataSet)
+        let barChartData = BarChartData(dataSet: barChartDataSet)
+//        barChartData.addDataSet(barChartDataSet) // This code is no longer available after Charts 4.0
         barChartData.setDrawValues(false)
         return barChartData
     }
