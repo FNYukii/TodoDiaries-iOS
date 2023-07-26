@@ -59,7 +59,7 @@ struct WelcomeView: View {
                     Text("lets_see_the_stats")
                         .font(.title3)
                         .padding(.top)
-                    Text("you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph")
+                    Text("check_the_number_of_Todo_achievements_by_day_and_look_back_on_what_you_did_every_day")
                         .foregroundColor(.secondary)
                         .padding(.horizontal)
                         .padding(.top, -10)

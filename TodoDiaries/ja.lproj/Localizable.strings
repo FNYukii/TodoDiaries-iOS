@@ -17,36 +17,29 @@
 "achieve_your_todo" = "Todoを達成しよう";
 "once_you_have_achieved_todo_change_it_to_Achieved_within_the_app_You_can_look_back_on_the_achievements_of_todo_later" = "Todoを達成したら、アプリ内で達成済みに変更しましょう。達成したTodoは後から振り返ることができます。";
 "lets_see_the_stats" = "統計を見よう";
-"you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph" = "Todoを達成した時間や、日別・月別の達成数をグラフで確認できます。";
+"check_the_number_of_Todo_achievements_by_day_and_look_back_on_what_you_did_every_day" = "日別のTodo達成数を確認し、日々やったことを振り返りましょう。";
 "sign_in_to_start" = "サインインして始める";
 
 // FirstView
-"edit" = "編集";
-"done" = "完了";
 "new_todo" = "新規Todo";
 "pinned" = "固定済み";
 "others" = "その他";
 "there_is_no_todo_yet" = "まだTodoはありません。";
 "when_you_create_a_todo_it_will_appear_here" = "Todoを作成するとここに表示されます。";
 
-// ContextMenu
-"pin" = "固定する";
-"unpin" = "固定を解除";
-"make_achieved" = "達成済みにする";
-"make_unachieved" = "未達成にする";
-"delete" = "削除";
-"are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";
-
 // CreateTodoView
 "cancel" = "キャンセル";
 "add" = "追加";
 "todo" = "Todo";
-
+"pin" = "固定する";
+"make_achieved" = "達成済みにする";
 "achieved_at" = "達成日時";
 
 // EditTodoView
 "edit_todo" = "Todoを編集";
 "delete_todo" = "Todoを削除";
+"are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";
+
 
 // SecondView
 "load_more" = "さらに読み込む";

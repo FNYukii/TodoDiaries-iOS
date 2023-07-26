@@ -60,9 +60,6 @@ struct FirstView: View {
                         }
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    MyEditButton()
-                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

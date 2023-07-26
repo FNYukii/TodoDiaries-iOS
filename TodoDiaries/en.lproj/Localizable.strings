@@ -17,36 +17,28 @@
 "achieve_your_todo" = "Achieve your Todo";
 "once_you_have_achieved_todo_change_it_to_Achieved_within_the_app_You_can_look_back_on_the_achievements_of_todo_later" = "Once you've achieved Todo, change it to achieved within this app. You can look back on the achievements of Todo later.";
 "lets_see_the_stats" = "Let's see the stats";
-"you_can_check_the_time_when_you_achieved_todo_and_the_number_of_achievements_by_day_and_month_in_the_graph" = "You can check the time when you achieved Todo and the number of achievements by day and month in the graph.";
+"check_the_number_of_Todo_achievements_by_day_and_look_back_on_what_you_did_every_day" = "Check the number of Todo achievements by day and look back on what you did every day.";
 "sign_in_to_start" = "Sign in to start";
 
 // FirstView
-"edit" = "Edit";
-"done" = "Done";
 "new_todo" = "New Todo";
 "pinned" = "Pinned";
 "others" = "Others";
 "there_is_no_todo_yet" = "There is no Todo yet.";
 "when_you_create_a_todo_it_will_appear_here" = "When you create a Todo, it will appear here.";
 
-// ContextMenu
-"pin" = "Pin";
-"unpin" = "Unpin";
-"make_achieved" = "Make achieved";
-"make_unachieved" = "Make unachieved";
-"delete" = "Delete";
-"are_you_sure_you_want_to_delete_this_todo" = "Are you sure you want to delete this Todo?";
-
 // CreateTodoView
 "cancel" = "Cancel";
 "add" = "Add";
 "todo" = "Todo";
-
+"pin" = "Pin";
+"make_achieved" = "Make achieved";
 "achieved_at" = "AchievedAt";
 
 // EditTodoView
 "edit_todo" = "Edit Todo";
 "delete_todo" = "Delete Todo";
+"are_you_sure_you_want_to_delete_this_todo" = "Are you sure you want to delete this Todo?";
 
 // SecondView
 "load_more" = "Load more";
