@@ -27,24 +27,18 @@
 "there_is_no_todo_yet" = "There is no Todo yet.";
 "when_you_create_a_todo_it_will_appear_here" = "When you create a Todo, it will appear here.";
 
-// ContextMenu
-"pin" = "Pin";
-"unpin" = "Unpin";
-"make_achieved" = "Make achieved";
-"make_unachieved" = "Make unachieved";
-"delete" = "Delete";
-"are_you_sure_you_want_to_delete_this_todo" = "Are you sure you want to delete this Todo?";
-
 // CreateTodoView
 "cancel" = "Cancel";
 "add" = "Add";
 "todo" = "Todo";
-
+"pin" = "Pin";
+"make_achieved" = "Make achieved";
 "achieved_at" = "AchievedAt";
 
 // EditTodoView
 "edit_todo" = "Edit Todo";
 "delete_todo" = "Delete Todo";
+"are_you_sure_you_want_to_delete_this_todo" = "Are you sure you want to delete this Todo?";
 
 // SecondView
 "load_more" = "Load more";

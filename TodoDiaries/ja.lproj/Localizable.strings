@@ -27,24 +27,19 @@
 "there_is_no_todo_yet" = "まだTodoはありません。";
 "when_you_create_a_todo_it_will_appear_here" = "Todoを作成するとここに表示されます。";
 
-// ContextMenu
-"pin" = "固定する";
-"unpin" = "固定を解除";
-"make_achieved" = "達成済みにする";
-"make_unachieved" = "未達成にする";
-"delete" = "削除";
-"are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";
-
 // CreateTodoView
 "cancel" = "キャンセル";
 "add" = "追加";
 "todo" = "Todo";
-
+"pin" = "固定する";
+"make_achieved" = "達成済みにする";
 "achieved_at" = "達成日時";
 
 // EditTodoView
 "edit_todo" = "Todoを編集";
 "delete_todo" = "Todoを削除";
+"are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";
+
 
 // SecondView
 "load_more" = "さらに読み込む";
