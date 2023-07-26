@@ -36,47 +36,6 @@ struct TodoRow: View {
             EditView(todo: todo)
         }
         
-        // Context Menu
-        .contextMenu {
-            if todo.isPinned == false && todo.achievedAt == nil {
-                Button(action: {
-                    FireTodo.pinTodo(id: todo.id)
-                }) {
-                    Label("pin", systemImage: "pin")
-                }
-            }
-            
-            if todo.isPinned == true && todo.achievedAt == nil {
-                Button(action: {
-                    FireTodo.unpinTodo(id: todo.id)
-                }) {
-                    Label("unpin", systemImage: "pin.slash")
-                }
-            }
-            
-            if todo.achievedAt == nil {
-                Button(action: {
-                    FireTodo.achieveTodo(id: todo.id, achievedAt: Date())
-                }) {
-                    Label("make_achieved", systemImage: "checkmark")
-                }
-            }
-            
-            if todo.achievedAt != nil {
-                Button(action: {
-                    FireTodo.unachieveTodo(id: todo.id, isMakePinned: false)
-                }) {
-                    Label("make_unachieved", systemImage: "xmark")
-                }
-            }
-            
-            Button(role: .destructive) {
-                isConfirming.toggle()
-            } label: {
-                Label("delete", systemImage: "trash")
-            }
-        }
-        
         // Swipe Actions
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
             // Achieve
