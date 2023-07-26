@@ -21,8 +21,6 @@
 "sign_in_to_start" = "Sign in to start";
 
 // FirstView
-"edit" = "Edit";
-"done" = "Done";
 "new_todo" = "New Todo";
 "pinned" = "Pinned";
 "others" = "Others";

@@ -21,8 +21,6 @@
 "sign_in_to_start" = "サインインして始める";
 
 // FirstView
-"edit" = "編集";
-"done" = "完了";
 "new_todo" = "新規Todo";
 "pinned" = "固定済み";
 "others" = "その他";
