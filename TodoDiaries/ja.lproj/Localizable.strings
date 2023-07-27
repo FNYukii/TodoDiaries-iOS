@@ -36,6 +36,7 @@
 "achieved_at" = "達成日時";
 
 // EditTodoView
+"done" = "完了";
 "edit_todo" = "Todoを編集";
 "delete_todo" = "Todoを削除";
 "are_you_sure_you_want_to_delete_this_todo" = "このTodoを削除してもよろしいですか?";

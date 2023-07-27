@@ -36,6 +36,7 @@
 "achieved_at" = "AchievedAt";
 
 // EditTodoView
+"done" = "Done";
 "edit_todo" = "Edit Todo";
 "delete_todo" = "Delete Todo";
 "are_you_sure_you_want_to_delete_this_todo" = "Are you sure you want to delete this Todo?";
